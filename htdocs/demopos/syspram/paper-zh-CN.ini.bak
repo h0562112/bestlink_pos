@@ -1,0 +1,99 @@
+[name]
+;固定欄位名稱
+titlename="交班表"			;交班表
+salemoneyname="销售总额:"		;銷售總額:
+memberdisname="(-)会员折扣:"		;(-)會員折扣:
+chargename="(+)服务费:"			;(+)服務費:
+floorname="(+)低销溢收:"		;(+)低銷溢收:
+itemdisname="(-)单品折让金额:"		;(-)單品折讓金額:
+listdisname="(-)帐单折让金额:"		;(-)帳單折讓金額:
+totalsalename="销售小计:"		;銷售小計:
+cashcommname="(+)信用卡手续费:"		;(+)信用卡手續費:
+cashname="(-)信用卡收入:"		;(-)信用卡收入:
+otherpayname="(-)其他付款:"		;(-)其他付款:
+inmoneyname="(+)收入费用:"		;(+)收入費用:
+outmoneyname="(-)支出费用:"		;(-)支出費用:
+notmoneyname="(+)非本班现金:"		;(+)非本班現金:
+notcommname="(-)非本班手续费:"		;(-)非本班手續費:  (停用)
+notcashname="(+)非本班信用卡:"		;(+)非本班信用卡:  (停用)
+notothername="(+)非本班其他付款:"	;(+)非本班其他付款:  (停用)
+realysalename="缴回金额(不含找零金):"	;繳回金額(不含找零金):
+changename="找零金:"			;找零金:
+shouldname="钱柜金额(含找零金):"	;錢櫃金額(含找零金):
+saletitlename="營業資訊"		;營業資訊
+
+;變動欄位名稱
+salettlname="汇总"			;彙總
+listqtyttlname="帐单总数:"		;帳單總數:
+amtttlname="總金額:"			;總金額:
+avgttlname="平均金額:"			;平均金額:
+;內用
+listqty1name="帐单总数:"		;帳單總數:
+amt1name="总金额:"			;總金額:
+avg1name="平均金额:"			;平均金額:
+avgpersonname="平均客单价:"		;平均客單價:
+;外帶
+;外带
+listqty2name="帐单总数:"		;帳單總數:
+amt2name="总金额:"			;總金額:
+avg2name="平均金额:"			;平均金額:
+;外送
+listqty3name="帐单总数:"		;帳單總數:
+amt3name="总金额:"			;總金額:
+avg3name="平均金额:"			;平均金額:
+;自取
+listqty4name="帐单总数:"		;帳單總數:
+amt4name="总金额:"			;總金額:
+avg4name="平均金额:"			;平均金額:
+;作废帐单
+titleVname="作废帐单"			;作廢帳單
+listqtyVname="帐单总数:"		;帳單總數:
+amtVname="总金额:"			;總金額:
+voidlistname="作废帐单号:"		;作廢帳單號:
+;其他付款项目
+otherpaynamelist="其他付款项目"		;其他付款項目
+;非本班其他付款
+notothertitlename="非本班其他付款"	;非本班其他付款
+;发票汇总
+invnotvoidname="发票汇总(不含作废)"	;發票彙總(不含作廢)
+invalready="已开发票数:"		;已開發票數:
+invmoneyalready="已开立金额:"		;已開立金額:
+startinv="起始发票号:"			;起始發票號:
+endinv="结束发票号:"			;結束發票號:
+voidinv="作废发票"			;作廢發票
+voidqty="作廢數量:"			;作廢數量:
+voidmoney="作废金额:"			;作廢金額:
+voidinvoicenumber="作废发票号:"		;作廢發票號:
+;分析類別明細
+
+;分析类别明细
+reartitle="分析类别"			;分析類別
+rearqty="数量"				;數量
+
+;銷售明細
+saleitem="产品"				;產品
+saleqty="数量"				;數量
+saleamt="小计"				;小計
+
+;收入费用明细
+inmoneylistname="收入費用明細"		;收入費用明細
+inmoneylistlabel="科目"			;科目
+inmoneylistsub="Sub"			;金額
+
+;支出费用明细
+outmoneylistname="支出费用明细"		;支出費用明細
+outmoneylistlabel="科目"		;科目
+;會員儲值列表
+memmoneylist="會員儲值列表"
+memno="會員編號"
+paymoney="儲值金額"
+outmoneylistsub="Sub"			;金額
+
+[historypaper]
+;histitle1="交班表";			;交班表(利用原始交班表範本製作，因此注解該變數)
+histitle2="商品销售汇总"
+histitle3="时段金额汇总"
+his3title1="时段"
+his3title2="金额"
+histitle4="時段來客數彙總"
+his4title2="来客数"

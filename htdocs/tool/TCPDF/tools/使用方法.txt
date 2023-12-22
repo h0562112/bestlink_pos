@@ -1,0 +1,5 @@
+打開命令提示字元
+進入 
+D:\xampp\htdocs\outposandorder\tool\TCPDF\tools
+輸入
+D:\xampp\php\php.exe tcpdf_addfont.php -i 字型檔名

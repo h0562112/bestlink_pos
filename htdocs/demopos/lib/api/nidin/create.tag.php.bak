@@ -1,0 +1,5 @@
+<?php
+require_once("../../tool/TCPDF/examples/tcpdf_include.php");
+
+$list=$_POST['getlistarray'];
+?>

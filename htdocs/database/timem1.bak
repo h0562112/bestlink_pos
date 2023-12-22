@@ -1,0 +1,11 @@
+[time]
+bizdate="20231215"
+zcounter="1"
+isopen="0"
+opendate="2023/12/15"
+opentime="00:54:21"
+isclose="1"
+closedate="2023/12/15"
+closetime="00:54:20"
+[inv]
+ip="127.0.0.1"

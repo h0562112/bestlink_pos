@@ -1,0 +1,244 @@
+<?php
+//print_r($_POST);
+if(isset($_POST['taste'])&&sizeof($_POST['taste'])>0){
+	$init=parse_ini_file('../../../database/setup.ini',true);
+	$temp=array();
+	$tempmoney=0;
+	if(file_exists('../../../database/'.$init['basic']['company'].'-tastegroup.ini')){
+		$initaste=parse_ini_file('../../../database/'.$init['basic']['company'].'-taste.ini',true);
+		$initastegroup=parse_ini_file('../../../database/'.$init['basic']['company'].'-tastegroup.ini',true);
+		for($i=0;$i<sizeof($_POST['taste']);$i++){
+			if(isset($initaste[intval($_POST['taste'][$i])]['group'])&&isset($initastegroup[$initaste[intval($_POST['taste'][$i])]['group']]['pos'])){
+				if($initastegroup[$initaste[intval($_POST['taste'][$i])]['group']]['pos']=='1'){//群組中的元素獨立存在
+					if(isset($temp[$initaste[intval($_POST['taste'][$i])]['group']]['taste'][0])&&isset($temp[$initaste[intval($_POST['taste'][$i])]['group']]['price'][0])&&isset($temp[$initaste[intval($_POST['taste'][$i])]['group']]['number'][0])){//扣除原先的備註與加料之價格
+						$tempmoney=$tempmoney-(floatval($temp[$initaste[intval($_POST['taste'][$i])]['group']]['price'][0])*floatval($temp[$initaste[intval($_POST['taste'][$i])]['group']]['number'][0]));
+					}
+					else{
+					}
+
+					$temp[$initaste[intval($_POST['taste'][$i])]['group']]['taste'][0]=$_POST['taste'][$i];
+					$temp[$initaste[intval($_POST['taste'][$i])]['group']]['group'][0]=$initaste[intval($_POST['taste'][$i])]['group'];
+
+					if(isset($_POST['taste1'])){
+						$temp[$initaste[intval($_POST['taste'][$i])]['group']]['taste1'][0]=$_POST['taste1'][$i];
+					}
+					else{
+					}
+					if(isset($_POST['name'])){
+						$temp[$initaste[intval($_POST['taste'][$i])]['group']]['name'][0]=$_POST['name'][$i];
+					}
+					else{
+					}
+					if(isset($_POST['price'])){
+						$temp[$initaste[intval($_POST['taste'][$i])]['group']]['price'][0]=$_POST['price'][$i];
+					}
+					else{
+					}
+					if(isset($_POST['number'])){
+						$temp[$initaste[intval($_POST['taste'][$i])]['group']]['number'][0]='1';
+						//$_POST['number']='1';
+					}
+					else{
+					}
+					if(isset($_POST['number'])&&isset($_POST['price'])){
+						$tempmoney=$tempmoney+(floatval($temp[$initaste[intval($_POST['taste'][$i])]['group']]['price'][0])*floatval($temp[$initaste[intval($_POST['taste'][$i])]['group']]['number'][0]));
+					}
+					else{
+					}
+				}
+				else if($initastegroup[$initaste[intval($_POST['taste'][$i])]['group']]['pos']!='-1'){//群組中的元素最多N個同時存在
+					if(isset($tastenumber[$initaste[intval($_POST['taste'][$i])]['group']])){
+					}
+					else{
+						$tastenumber[$initaste[intval($_POST['taste'][$i])]['group']]=0;
+					}
+					if(!isset($temp[$initaste[intval($_POST['taste'][$i])]['group']]['taste'])||(isset($temp[$initaste[intval($_POST['taste'][$i])]['group']]['taste'])&&$tastenumber[$initaste[intval($_POST['taste'][$i])]['group']]<$initastegroup[$initaste[intval($_POST['taste'][$i])]['group']]['pos'])){
+						$temp[$initaste[intval($_POST['taste'][$i])]['group']]['taste'][]=$_POST['taste'][$i];
+
+						if(isset($_POST['taste1'])){
+							$temp[$initaste[intval($_POST['taste'][$i])]['group']]['taste1'][]=$_POST['taste1'][$i];
+						}
+						else{
+						}
+						if(isset($_POST['name'])){
+							$temp[$initaste[intval($_POST['taste'][$i])]['group']]['name'][]=$_POST['name'][$i];
+						}
+						else{
+						}
+						if(isset($_POST['price'])){
+							$temp[$initaste[intval($_POST['taste'][$i])]['group']]['price'][]=$_POST['price'][$i];
+						}
+						else{
+						}
+						if(isset($_POST['number'])){
+							if(($tastenumber[$initaste[intval($_POST['taste'][$i])]['group']]+$_POST['number'][$i])<$initastegroup[$initaste[intval($_POST['taste'][$i])]['group']]['pos']){
+								$temp[$initaste[intval($_POST['taste'][$i])]['group']]['number'][]=$_POST['number'][$i];
+								$tastenumber[$initaste[intval($_POST['taste'][$i])]['group']]=$tastenumber[$initaste[intval($_POST['taste'][$i])]['group']]+$_POST['number'][$i];
+							}
+							else{
+								$temp[$initaste[intval($_POST['taste'][$i])]['group']]['number'][]=$initastegroup[$initaste[intval($_POST['taste'][$i])]['group']]['pos']-$tastenumber[$initaste[intval($_POST['taste'][$i])]['group']];
+
+								$_POST['number'][$i]=$initastegroup[$initaste[intval($_POST['taste'][$i])]['group']]['pos']-$tastenumber[$initaste[intval($_POST['taste'][$i])]['group']];
+								$tastenumber[$initaste[intval($_POST['taste'][$i])]['group']]=$tastenumber[$initaste[intval($_POST['taste'][$i])]['group']]+$initastegroup[$initaste[intval($_POST['taste'][$i])]['group']]['pos']-$tastenumber[$initaste[intval($_POST['taste'][$i])]['group']];
+							}
+						}
+						else{
+							$tastenumber[$initaste[intval($_POST['taste'][$i])]['group']]++;
+						}
+						if(isset($_POST['number'])&&isset($_POST['price'])){
+							//echo floatval($_POST['price'][$i]);
+							//echo floatval($_POST['number'][$i]);
+							$tempmoney=$tempmoney+(floatval($_POST['price'][$i])*floatval($_POST['number'][$i]));
+						}
+						else{
+						}
+					}
+					else{
+					}
+				}
+				else{//群組中的元素不限制存在數量
+					$temp[$initaste[intval($_POST['taste'][$i])]['group']]['taste'][]=$_POST['taste'][$i];
+
+					if(isset($_POST['taste1'])){
+						$temp[$initaste[intval($_POST['taste'][$i])]['group']]['taste1'][]=$_POST['taste1'][$i];
+					}
+					else{
+					}
+					if(isset($_POST['name'])){
+						$temp[$initaste[intval($_POST['taste'][$i])]['group']]['name'][]=$_POST['name'][$i];
+					}
+					else{
+					}
+					if(isset($_POST['price'])){
+						$temp[$initaste[intval($_POST['taste'][$i])]['group']]['price'][]=$_POST['price'][$i];
+					}
+					else{
+					}
+					if(isset($_POST['number'])){
+						$temp[$initaste[intval($_POST['taste'][$i])]['group']]['number'][]=$_POST['number'][$i];
+					}
+					else{
+					}
+					if(isset($_POST['number'])&&isset($_POST['price'])){
+						$tempmoney=$tempmoney+(floatval($_POST['price'][$i])*floatval($_POST['number'][$i]));
+					}
+					else{
+					}
+				}
+			}
+			else{
+				$temp['-1']['taste'][]=$_POST['taste'][$i];
+
+				if(isset($_POST['taste1'])){
+					$temp['-1']['taste1'][]=$_POST['taste1'][$i];
+				}
+				else{
+				}
+				if(isset($_POST['name'])){
+					$temp['-1']['name'][]=$_POST['name'][$i];
+				}
+				else{
+				}
+				if(isset($_POST['price'])){
+					$temp['-1']['price'][]=$_POST['price'][$i];
+				}
+				else{
+				}
+				if(isset($_POST['number'])){
+					$temp['-1']['number'][]=$_POST['number'][$i];
+				}
+				else{
+				}
+				if(isset($_POST['number'])&&isset($_POST['price'])){
+					$tempmoney=$tempmoney+(floatval($_POST['price'][$i])*floatval($_POST['number'][$i]));
+				}
+				else{
+				}
+			}
+		}
+	}
+	else{
+		for($i=0;$i<sizeof($_POST['taste']);$i++){
+			$temp['-1']['taste'][]=$_POST['taste'][$i];
+			if(isset($_POST['taste1'])){
+				$temp['-1']['taste1'][]=$_POST['taste1'][$i];
+			}
+			else{
+			}
+			if(isset($_POST['name'])){
+				$temp['-1']['name'][]=$_POST['name'][$i];
+			}
+			else{
+			}
+			if(isset($_POST['price'])){
+				$temp['-1']['price'][]=$_POST['price'][$i];
+			}
+			else{
+			}
+			if(isset($_POST['number'])){
+				$temp['-1']['number'][]=$_POST['number'][$i];
+			}
+			else{
+			}
+			if(isset($_POST['number'])&&isset($_POST['price'])){
+				$tempmoney=$tempmoney+(floatval($_POST['price'][$i])*floatval($_POST['number'][$i]));
+			}
+			else{
+			}
+		}
+	}
+	$res=array();
+	if(isset($temp)&&sizeof($temp)>0){
+		foreach($temp as $value){
+			foreach($value['taste'] as $subvalue){
+				$res['taste'][]=$subvalue;
+			}
+			if(isset($value['taste1'])){
+				foreach($value['taste1'] as $subvalue){
+					$res['taste1'][]=$subvalue;
+				}
+			}
+			else{
+			}
+			if(isset($value['name'])){
+				foreach($value['name'] as $subvalue){
+					$res['name'][]=$subvalue;
+				}
+			}
+			else{
+			}
+			if(isset($value['price'])){
+				foreach($value['price'] as $subvalue){
+					$res['price'][]=$subvalue;
+				}
+			}
+			else{
+			}
+			if(isset($value['number'])){
+				foreach($value['number'] as $subvalue){
+					$res['number'][]=$subvalue;
+				}
+			}
+			else{
+			}
+			if(isset($value['group'])){
+				foreach($value['group'] as $subvalue){
+					$res['group'][]=$subvalue;
+				}
+			}
+			else{
+			}
+		}
+		if(isset($tempmoney)){
+			$res['money'][]=$tempmoney;
+		}
+		else{
+		}
+	}
+	else{
+	}
+	echo json_encode($res);
+}
+else{
+}
+?>

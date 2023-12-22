@@ -1,0 +1,12 @@
+body {
+	
+	overflow:hidden;
+}
+#numbertext {
+	font-size:350px;
+	color:#000000;
+	font-family:Arial;
+	text-align:center;
+	font-weight:bold;
+	letter-spacing:5px;
+}

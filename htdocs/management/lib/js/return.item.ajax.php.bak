@@ -1,0 +1,17 @@
+<?php
+include_once '../../../tool/dbTool.inc.php';
+include_once '../../../tool/inilib.php';
+$menu=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/'.$_POST['company'].'-menu.ini',true);
+$conn=sqlconnect('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'],'menu.db','','','','sqlite');
+for($i=0;$i<sizeof($_POST['num']);$i++){
+	$sql='UPDATE itemsdata SET state="1" WHERE inumber="'.$_POST['num'][$i].'"';
+	sqlnoresponse($conn,$sql,'sqlite');
+	if(isset($menu[$_POST['num'][$i]]['state'])){
+		$menu[$_POST['num'][$i]]['state']="1";
+	}
+	else{
+	}
+}
+sqlclose($conn,'sqlite');
+write_ini_file($menu, '../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/'.$_POST['company'].'-menu.ini')
+?>

@@ -1,0 +1,28 @@
+<?php
+function creinitsetting($company,$dep){
+	include_once '../../../tool/inilib.php';
+	$f=fopen('../../../menudata/'.$company.'/'.$dep.'/inifile/initsetting.ini','w');
+	fclose($f);
+	$initsetting_val=parse_ini_file('./inifile/initsetting_val.ini',true);
+	$initsetting=array();
+	foreach($initsetting_val as $section=>$data){
+		foreach($data as $name=>$value){
+			$initsetting[$section][$name]=$value;
+		}
+	}
+	write_ini_file($initsetting,'../../../menudata/'.$company.'/'.$dep.'/inifile/initsetting.ini');
+}
+function creprintlisttag($company,$dep){
+	include_once '../../../tool/inilib.php';
+	$f=fopen('../../../menudata/'.$company.'/'.$dep.'/inifile/printlisttag.ini','w');
+	fclose($f);
+	$printlisttag_val=parse_ini_file('./inifile/printlisttag_val.ini',true);
+	$printlisttag=array();
+	foreach($printlisttag_val as $section=>$data){
+		foreach($data as $name=>$value){
+			$printlisttag[$section][$name]=$value;
+		}
+	}
+	write_ini_file($printlisttag,'../../../menudata/'.$company.'/'.$dep.'/inifile/printlisttag.ini');
+}
+?>

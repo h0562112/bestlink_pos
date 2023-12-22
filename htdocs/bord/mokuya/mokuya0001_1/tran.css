@@ -1,0 +1,62 @@
+/*@font-face {
+	font-family:"font1";
+	src:url(msjh.ttf) format("turetype");
+}*/
+body {
+	/*background:url('img/09.png');*/
+	background-color:#000000;
+	background-size:100% 100%;
+	background-repeat: no-repeat;
+	padding:0;
+	margin:0;
+	overflow:hidden;
+	/*font-family:"font1";*/
+	
+}
+
+#numbertext {
+	font:190px/190px Arial;
+	color:#ffffff;
+	text-align:center;
+	font-weight:bold;
+}
+#tran {
+	position: absolute;
+	width:657px;
+	top:0;
+	left:0;
+	transform-origin:657px 0;
+	transform:rotate(-90deg) translateY(-657px);
+	-webkti-transform-origin:657px 0;
+	-webkti-transform:rotate(-90deg) translateY(-657px);
+}
+#tran1 {
+	position: absolute;
+	width:800px;
+	top:0;
+	left:250;
+	transform-origin:800px 0;
+	transform:rotate(-90deg) translateY(-800px);
+	-webkti-transform-origin:657px 0;
+	-webkti-transform:rotate(-90deg) translateY(-800px);
+}
+#title {
+	font:30px/30px Microsoft JhengHei;
+	color:#ffffff;
+	padding-bottom:10px;
+}
+.dyphoto {
+	width:100%;
+	margin:0 auto;
+	padding:0;
+	overflow:hidden;
+	z-index:-100;
+	position:relative;
+}
+.dyphoto img{
+	max-width:100%;
+	margin:0;
+	position:absolute;
+	top:0px;
+	left:0px;
+}

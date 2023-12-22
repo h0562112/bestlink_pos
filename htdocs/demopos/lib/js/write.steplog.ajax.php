@@ -1,0 +1,30 @@
+<?php
+date_default_timezone_set('Asia/Taipei');
+$Year=date('Y');
+$month=date('m');
+$day=date('d');
+if(file_exists('../../../steplog/'.$Year.'/'.$month.'/'.$day)){
+}
+else{
+	if(file_exists('../../../steplog/'.$Year.'/'.$month)){
+	}
+	else{
+		if(file_exists('../../../steplog/'.$Year)){
+		}
+		else{
+			if(file_exists('../../../steplog')){
+			}
+			else{
+				mkdir('../../../steplog');
+			}
+			mkdir('../../../steplog/'.$Year);
+		}
+		mkdir('../../../steplog/'.$Year.'/'.$month);
+	}
+	mkdir('../../../steplog/'.$Year.'/'.$month.'/'.$day);
+}
+
+$log=fopen('../../../steplog/'.$Year.'/'.$month.'/'.$day.'/'.$_POST['machine'].'log.txt','a');
+fwrite($log,date('Y/m/d H:i:s').' --- '.$_POST['step'].' : '.$_POST['message'].PHP_EOL);
+fclose($log);
+?>

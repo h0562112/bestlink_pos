@@ -1,0 +1,72 @@
+<?php
+include_once 'newinv.php';
+include_once '../tool/dbTool.inc.php';
+include_once '../tool/inilib.php';
+$data=parse_ini_file('./sqldata.ini',true);
+date_default_timezone_set('Asia/Taipei');
+$conn=sqlconnect('./','menu.db','','','','sqlite');
+$sql='SELECT * FROM invlist WHERE createdate LIKE "201710%" AND state=1 AND totalamount>0';
+$content=sqlquery($conn,$sql,'sqlite');
+for($i=0;$i<sizeof($content);$i++){
+	$date=date('Ymd');
+	$time=date('His');
+	$filename='C0401_'.$content[$i]['invnumber'].'_'.$date.$time.'.xml';
+	$xml=new SimpleXMLElement($xmlstr);
+	$xml->addChild('Main');
+	$xmlMain=$xml->Main;
+	$xmlMain->addChild('InvoiceNumber',$content[$i]['invnumber']);
+	$xmlMain->addChild('InvoiceDate',substr($content[$i]['createdate'],0,4).'09'.substr($content[$i]['createdate'],6,2));
+	$xmlMain->addChild('InvoiceTime',$content[$i]['createtime']);
+	$xmlMain->addChild('Seller');
+	$xmlMainSeller=$xmlMain->Seller;
+	$xmlMainSeller->addChild('Identifier',$content[$i]['sellerid']);
+	$xmlMainSeller->addChild('Name',$content[$i]['sellername']);
+	$xmlMain->addChild('Buyer');
+	$xmlMainBuyer=$xmlMain->Buyer;
+	$xmlMainBuyer->addChild('Identifier',$content[$i]['buyerid']);
+	$xmlMainBuyer->addChild('Name',$content[$i]['buyname']);
+	$xmlMain->addChild('RelateNumber',$content[$i]['relatenumber']);
+	$xmlMain->addChild('InvoiceType',$content[$i]['invtype']);
+	$xmlMain->addChild('DonateMark',$content[$i]['donatemark']);
+	$xmlMain->addChild('PrintMark','Y');
+	$xmlMain->addChild('RandomNumber',$content[$i]['randomnumber']);
+	$xml->addChild('Details');
+	$value='';
+	$xmlDetails=$xml->Details;
+	$xmlDetails->addChild('ProductItem');
+	$xmlDetails->ProductItem[0]->addChild('Description','餐點');
+	$xmlDetails->ProductItem[0]->addChild('Quantity','1');
+	$xmlDetails->ProductItem[0]->addChild('UnitPrice',$content[$i]['totalamount']);
+	$xmlDetails->ProductItem[0]->addChild('Amount',$content[$i]['totalamount']);
+	$xmlDetails->ProductItem[0]->addChild('SequenceNumber','001');
+	$xmlDetails->ProductItem[0]->addChild('Remark','Tx');
+	$xml->addChild('Amount');
+	$xmlAmount=$xml->Amount;
+	if(strlen($content[$i]['buyname'])==4){
+		$xmlAmount->addChild('SalesAmount',round(intval($content[$i]['totalamount'])/1.05));
+		$xmlAmount->addChild('FreeTaxSalesAmount','0');
+		$xmlAmount->addChild('ZeroTaxSalesAmount','0');
+		$xmlAmount->addChild('TaxType','1');
+		$xmlAmount->addChild('TaxRate','0.05');
+		$xmlAmount->addChild('TaxAmount',intval($content[$i]['totalamount'])-intval(round($content[$i]['totalamount']/1.05)));
+		$xmlAmount->addChild('TotalAmount',$content[$i]['totalamount']);
+	}
+	else{
+		$xmlAmount->addChild('SalesAmount',$content[$i]['totalamount']);
+		$xmlAmount->addChild('FreeTaxSalesAmount','0');
+		$xmlAmount->addChild('ZeroTaxSalesAmount','0');
+		$xmlAmount->addChild('TaxType','1');
+		$xmlAmount->addChild('TaxRate','0.05');
+		$xmlAmount->addChild('TaxAmount','0');
+		$xmlAmount->addChild('TotalAmount',$content[$i]['totalamount']);
+
+	}
+
+	$xml->saveXML('./print/'.$filename);
+	$data['data']['inv']=$content[$i]['invnumber'];
+}
+sqlclose($conn,'sqlite');
+
+$data['data']['num']=sizeof($content);
+write_ini_file($data,'./sqldata.ini');
+?>

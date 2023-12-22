@@ -1,0 +1,7 @@
+<?php
+//include_once "../nidin_api_inc.php";
+
+$nidinset=parse_ini_file('../data/nidinset.ini',true);
+
+echo json_encode(Reject($nidinset['init']['url'],"post",$_POST["Token"],$_POST["User"],$_POST['orderid'],$_POST['rejectcode']));
+?>

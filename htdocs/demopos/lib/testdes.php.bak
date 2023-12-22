@@ -1,0 +1,168 @@
+<?php
+/**
+ * openssl 实现的 DES 加密类，支持各种 PHP 版本
+ */
+class DES
+{
+    /**
+     * @var string $method 加解密方法，可通过 openssl_get_cipher_methods() 获得
+     */
+    protected $method;
+ 
+    /**
+     * @var string $key 加解密的密钥
+     */
+    protected $key;
+ 
+    /**
+     * @var string $output 输出格式 无、base64、hex
+     */
+    protected $output;
+ 
+    /**
+     * @var string $iv 加解密的向量
+     */
+    protected $iv;
+ 
+    /**
+     * @var string $options
+     */
+    protected $options;
+ 
+    // output 的类型
+    const OUTPUT_NULL = '';
+    const OUTPUT_BASE64 = 'base64';
+    const OUTPUT_HEX = 'hex';
+ 
+ 
+    /**
+     * DES constructor.
+     * @param string $key
+     * @param string $method
+     *      ECB DES-ECB、DES-EDE3 （为 ECB 模式时，$iv 为空即可）
+     *      CBC DES-CBC、DES-EDE3-CBC、DESX-CBC
+     *      CFB DES-CFB8、DES-EDE3-CFB8
+     *      CTR
+     *      OFB
+     *
+     * @param string $output
+     *      base64、hex
+     *
+     * @param string $iv
+     * @param int $options
+     */
+    public function __construct($key, $method = 'DES-ECB', $output = '', $iv = '', $options = OPENSSL_RAW_DATA | OPENSSL_NO_PADDING)
+    {
+        $this->key = $key;
+        $this->method = $method;
+        $this->output = $output;
+        $this->iv = $iv;
+        $this->options = $options;
+    }
+ 
+    /**
+     * 加密
+     *
+     * @param $str
+     * @return string
+     */
+    public function encrypt($str)
+    {
+        $str = $this->pkcsPadding($str, 8);
+        $sign = openssl_encrypt($str, $this->method, $this->key, $this->options, $this->iv);
+ 
+        if ($this->output == self::OUTPUT_BASE64) {
+            $sign = base64_encode($sign);
+        } else if ($this->output == self::OUTPUT_HEX) {
+            $sign = bin2hex($sign);
+        }
+ 
+        return $sign;
+    }
+ 
+    /**
+     * 解密
+     *
+     * @param $encrypted
+     * @return string
+     */
+    public function decrypt($encrypted)
+    {
+        if ($this->output == self::OUTPUT_BASE64) {
+            $encrypted = base64_decode($encrypted);
+        } else if ($this->output == self::OUTPUT_HEX) {
+            $encrypted = hex2bin($encrypted);
+        }
+ 
+        $sign = @openssl_decrypt($encrypted, $this->method, $this->key, $this->options, $this->iv);
+        $sign = $this->unPkcsPadding($sign);
+        $sign = rtrim($sign);
+        return $sign;
+    }
+ 
+    /**
+     * 填充
+     *
+     * @param $str
+     * @param $blocksize
+     * @return string
+     */
+    private function pkcsPadding($str, $blocksize)
+    {
+        $pad = $blocksize - (strlen($str) % $blocksize);
+        return $str . str_repeat(chr($pad), $pad);
+    }
+ 
+    /**
+     * 去填充
+     *
+     * @param $str
+     * @return string
+     */
+    private function unPkcsPadding($str)
+    {
+        $pad = ord($str{strlen($str) - 1});
+        if ($pad > strlen($str)) {
+            return false;
+        }
+        return substr($str, 0, -1 * $pad);
+    }
+ 
+}
+
+include_once './sample.php';
+
+$key=chr(102).chr(16).chr(93).chr(156).chr(78).chr(4).chr(218).chr(32);
+$iv=chr(55).chr(103).chr(246).chr(79).chr(36).chr(99).chr(167).chr(3);
+//$key={102, 16, 93, 156, 78, 4, 218, 32};
+//$iv={55, 103, 246, 79, 36, 99, 167, 3};
+//echo $key.'<br>';
+//echo $iv.'<br>';
+
+$xml='<?xml version="1.0" encoding="UTF-8"?>
+<Outp xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Outps><Tradeno>UWGOLA6</Tradeno><Tradedate>20220614</Tradedate><Recpno> </Recpno><Taxmark>2</Taxmark><Amount>135</Amount><Tax>0</Tax><Tamount>135</Tamount><Remark> </Remark><Monthsec>202206</Monthsec><Sendtype>外帶</Sendtype><Tradetime>11:00</Tradetime><Schno>1</Schno><Tkindno>POS</Tkindno><Imaxno>2</Imaxno><Outmark>0</Outmark><Taxrate>5</Taxrate></Outps><OutpItem><Line_no>1.0</Line_no><Goodno>26</Goodno><Saleprice>45</Saleprice><Tradeqty>2</Tradeqty><Saleprice2>35</Saleprice2><Pkno>1</Pkno><Goodname2>仙草黑糖寒天</Goodname2><Oaddpri>10</Oaddpri><Rem> </Rem><Omemo>去冰,椰果</Omemo><Mkdname>仙草</Mkdname></OutpItem><OutpItem><Line_no>2.0</Line_no><Goodno>13</Goodno><Saleprice>45</Saleprice><Tradeqty>1</Tradeqty><Saleprice2>35</Saleprice2><Pkno>2</Pkno><Goodname2>仙草蜜</Goodname2><Oaddpri>10</Oaddpri><Rem>123</Rem><Omemo>珍珠,熱</Omemo><Mkdname>仙草</Mkdname></OutpItem></Outp>
+';
+
+// DES CBC 加解密
+$des = new DES($key, 'DES-CBC', DES::OUTPUT_BASE64, $iv);
+echo '<div style="width:100%;">';
+echo $base64Sign = $des->encrypt($xml);
+echo '</div>';
+echo "\n";
+echo '<div style="width:100%;">';
+echo $des->decrypt('kqNX3Lo+gvsJzlj2pfWqnPHlSgnq6XPPrDFW2SCG/b+ErD0G8pymdMs7dkz10Hziaw4iT8PKBPf7laSQde30UAvH0fRTGe6UNWcyzUe1LT9WTE2de1VjlRoVVwqmIGqCSzi5BJvoH/dX5n91T8arUUSjXXbgXa3LUx/X90U7Jy+0+UJrnTRt99g0D6NuUUQSl3fr/84He4tD3KwxORlv6vBLVYvH2urHZf51wIVOfBZf4TdyYuMva8d8P7oJdDNHTLkOlnTQ+y1N8RRLuFDGdvAjNG1f9wFO13NPyj5z9b5rMVAKdx634skeB3h74w2biafMiiC7uCozwKb1Oya7U8YSKeBOEKIevKbj31Qwl/CWuRv9zCbEDOvEg0fyiDndaqegSzhyz5qYJbaOk2XdVWrIeN1h8Et7hbGw2wKQLsIRcRIKiuS6XiqG3n0GjcZS4ni+qOSreHS29CyS5jN7i0dDddctt93OkBT3l01vOBjvyFCsD3dgwALwF+vimF53nAKbhhwsEmF+FFZyHny91/5UirEUWJM65SnuNL2nYkZ8HFqNWaJVpqGxre6IfLMs/kXcuVCBw1UGRKlaZl5q0sE6aeUoKWvCQCOf9GQc7SxdkIOIgdi8F52XY6XzFdwyD94/Qiw5A0y0G5knwWMhM40R8xIdJodtQm1Q/X/ZtnEuVdoUAujVDjgBSRLvrH8DQwLqpAZaqNr6eMr9u2vQFutIozF4vDZGIeo35lcCYETCDdxIOfgu9fYo6x9Zug7mHiO0mVRwepqvpktU0E2xl2x8WattSmMB3rWJ9304s1L2GNVxW4ECG5nYNGOmsUuj+1Af23L0yVsDvCoAk2+/V7gxkwaY4f9ra2H/CrszO3xB7Dc1fSsjAPaRg3fDzKhXdDUgzPxiAjTBhUswkbJThk95bPBJhLJBvsjRq88ApgtwY2l3fxSb/tcY2JNrmdyHW6RUPKeIlxc5abOLHKwsDOwqljuPiXylSuFy6j5bJ129QfiQPSbLxNlj5S3pWYFVbtE6FYpV1/FANyHqd095/z28yFDQfetTRqinGJr/oZBypW4ZCavzE5xIyrzLSP4BhTM32RpCkB3bIKrTel6hwSrShAI5j/vQAsjM40BhpaZAh+8hzs9qSvBSxGbXhAAlttiNVHXuNbilqoZI4NuWlxVh5WU50UkYK8e0Dz3TJ91OUBqa+t1pNNlssVmCdpY7Moj3IvWb9hsT1LlF7KrNBXaEvom/P/NXaqe24dahbW0v3b68mXRTOOBwHOw63ghcDg0Aal4ilKke3fQrQafqSReho7OjBdeSggJGBv4HMn0Ez7RTsSURZzotWjzhIqobnIdv7c+yZKE=');
+echo '</div>';
+echo "\n";
+
+// DES ECB 加解密
+$des = new DES($key, 'DES-ECB', DES::OUTPUT_BASE64, $iv);
+echo '<div style="width:100%;">';
+echo $base64Sign = $des->encrypt($xmlstr);
+echo '</div>';
+echo "\n";
+//echo '<div style="width:100%;">';
+//echo $des->decrypt($base64Sign);
+//echo '</div>';
+echo "\n";
+?>

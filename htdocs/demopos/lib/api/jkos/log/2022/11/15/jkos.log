@@ -1,0 +1,56 @@
+2022/11/15 15:03:53 --- url: https://pos.jkopay.com/Tableplus/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 22C333334444455555
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 90191249
+    [MerchantTradeNo] => abula000120221115150355
+    [PosID] => m1
+    [PosTradeTime] => 2022/11/15 15:03:53
+    [Remark] => 
+    [SendTime] => 20221115150353
+    [StoreID] => abula0001
+    [StoreName] => TestStore
+    [TradeAmount] => 20
+    [UnRedeem] => 0
+    [Sign] => 495c6fa3572e38e26ac193fe1e118296736f6556876c32259530cf7b016828db
+)
+
+                    --- use key: 991ef03004ce4f418026349d0b472ca4
+                    --- pass string: {"CardToken":"22C333334444455555","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"90191249","MerchantTradeNo":"abula000120221115150355","PosID":"m1","PosTradeTime":"2022/11/15 15:03:53","Remark":"","SendTime":"20221115150353","StoreID":"abula0001","StoreName":"TestStore","TradeAmount":20,"UnRedeem":0,"Sign":"495c6fa3572e38e26ac193fe1e118296736f6556876c32259530cf7b016828db"}
+                    --- init result: {"MerchantID":"90191249","StoreID":"abula0001","GatewayTradeNo":"","MerchantTradeNo":"abula000120221115150355","PosID":"m1","TradeNo":"","IsRep":0,"PaymentType":0,"TradeAmount":20,"DebitAmount":0,"RedeemName":"","RedeemAmount":0,"AvailableAmount":0,"InvoiceVehicle":"","MerMemToken":"","Remark":"","Extra1":"","Extra2":"","Extra3":"","ActionCode":"9","StatusCode":"927","StatusDesc":"條碼錯誤","TradeTime":""}
+                    --- decode result: Array
+(
+    [MerchantID] => 90191249
+    [StoreID] => abula0001
+    [GatewayTradeNo] => 
+    [MerchantTradeNo] => abula000120221115150355
+    [PosID] => m1
+    [TradeNo] => 
+    [IsRep] => 0
+    [PaymentType] => 0
+    [TradeAmount] => 20
+    [DebitAmount] => 0
+    [RedeemName] => 
+    [RedeemAmount] => 0
+    [AvailableAmount] => 0
+    [InvoiceVehicle] => 
+    [MerMemToken] => 
+    [Remark] => 
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [ActionCode] => 9
+    [StatusCode] => 927
+    [StatusDesc] => 條碼錯誤
+    [TradeTime] => 
+)
+

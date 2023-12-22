@@ -1,0 +1,112 @@
+<?php
+include_once 'reinv.php';
+include_once '../tool/dbTool.inc.php';
+date_default_timezone_set('Asia/Taipei');
+$machinedata=parse_ini_file('../database/machinedata.ini',true);
+$Y=date('Y');
+$year=(intval($Y)-1911);
+if(intval(date('m'))%2==0){
+	$month=date('m');
+}
+else{
+	$month=intval(date('m'))+1;
+}
+if(strlen($month)<2){
+	$month='0'.$month;
+}
+$day=date('d');
+$hour=date('H');
+$min=date('m');
+$sec=date('i');
+$content=parse_ini_file('../database/setup.ini',true);
+$conn=sqlconnect("../database","menu.db","","","","sqlite");
+$sql='SELECT * FROM invlist WHERE invnumber ="'.strtoupper($_POST['rinvnumber']).'" AND state=1';
+$item=sqlquery($conn,$sql,'sqlite');
+if(sizeof($item)==0){
+	echo 'data_is_empty';
+}
+else{
+	$time=preg_split('/:/',$item[0]['createtime']);
+	$filename='RC0401_'.strtoupper($_POST['rinvnumber']).'_'.$item[0]['createdate'].$time[0].$time[1].$time[2].'.xml';
+	$xml=new SimpleXMLElement($xmlstr);
+	$xml->addChild('Main');
+	$xmlMain=$xml->Main;
+	$xmlMain->addChild('InvoiceNumber',strtoupper($_POST['rinvnumber']));
+	$date=$Y.$month.$day;
+	$xmlMain->addChild('InvoiceDate',$item[0]['createdate']);
+	$time=$hour.':'.$min.':'.$sec;
+	$xmlMain->addChild('InvoiceTime',$item[0]['createtime']);
+	$xmlMain->addChild('Seller');
+	$xmlMainSeller=$xmlMain->Seller;
+	$xmlMainSeller->addChild('Identifier',$item[0]['sellerid']);
+	$xmlMainSeller->addChild('Name',$item[0]['sellername']);
+	$xmlMain->addChild('Buyer');
+	$xmlMainBuyer=$xmlMain->Buyer;
+	if(strlen($item[0]['buyerid'])!='00000000'){
+		$buyerid=$item[0]['buyerid'];
+		$xmlMainBuyer->addChild('Identifier',$item[0]['buyerid']);
+		$buyername='0000';
+		$xmlMainBuyer->addChild('Name','0000');
+	}
+	else{
+		$buyerid='00000000';
+		$xmlMainBuyer->addChild('Identifier','00000000');
+		$buyername='0000000000';
+		$xmlMainBuyer->addChild('Name','0000000000');
+	}
+	$xmlMain->addChild('RelateNumber',$item[0]['relatenumber']);
+	$xmlMain->addChild('InvoiceType','07');
+	$xmlMain->addChild('DonateMark','0');
+	$xmlMain->addChild('PrintMark','Y');
+	srand(mktime(date('H'),date('i'),date('s'),date('m'),date('d'),date('Y'))/pi());
+	$rnumber=rand(0,9999);
+	while(strlen($rnumber)<4){
+		$rnumber='0'.$rnumber;
+	}
+	$xmlMain->addChild('RandomNumber',$item[0]['randomnumber']);
+	$xml->addChild('Details');
+	$value='';
+	$xmlDetails=$xml->Details;
+	$xmlDetails->addChild('ProductItem');
+	$value=$value.'"'.$content['basic']['itemname'].'",';
+	$xmlDetails->ProductItem[0]->addChild('Description',$content['basic']['itemname']);
+	$value=$value.'1,';
+	$xmlDetails->ProductItem[0]->addChild('Quantity','1');
+	$value=$value.$item[0]['totalamount'].',';
+	$xmlDetails->ProductItem[0]->addChild('UnitPrice',$item[0]['totalamount']);
+	$value=$value.$item[0]['totalamount'].',';
+	$xmlDetails->ProductItem[0]->addChild('Amount',$item[0]['totalamount']);
+	$value=$value.'1';
+	$xmlDetails->ProductItem[0]->addChild('SequenceNumber','001');
+	$xmlDetails->ProductItem[0]->addChild('Remark','Tx');
+	$xml->addChild('Amount');
+	$xmlAmount=$xml->Amount;
+	if(strlen($item[0]['buyerid'])!='00000000'){
+		$xmlAmount->addChild('SalesAmount',round(intval($item[0]['totalamount'])/1.05));
+		$xmlAmount->addChild('FreeTaxSalesAmount','0');
+		$xmlAmount->addChild('ZeroTaxSalesAmount','0');
+		$xmlAmount->addChild('TaxType','1');
+		$xmlAmount->addChild('TaxRate','0.05');
+		$xmlAmount->addChild('TaxAmount',intval($item[0]['totalamount'])-intval(round($item[0]['totalamount']/1.05)));
+		$xmlAmount->addChild('TotalAmount',$item[0]['totalamount']);
+	}
+	else{
+		$xmlAmount->addChild('SalesAmount',$item[0]['totalamount']);
+		$xmlAmount->addChild('FreeTaxSalesAmount','0');
+		$xmlAmount->addChild('ZeroTaxSalesAmount','0');
+		$xmlAmount->addChild('TaxType','1');
+		$xmlAmount->addChild('TaxRate','0.05');
+		$xmlAmount->addChild('TaxAmount','0');
+		$xmlAmount->addChild('TotalAmount',$item[0]['totalamount']);
+
+	}
+	$xml->saveXML('./'.$content['basic']['company'].'/'.$content['basic']['story'].'/'.$filename);
+}
+
+sqlclose($conn,'sqlite');
+echo "<script>
+		var mywin=window.open('ban://xml=".$filename.",company=".$content['basic']['company'].",dep=".$content['basic']['story'].",cmd=reprint,date=".$year.$month."','','width=1px,height=1px');
+		window.setTimeout(function(){location.href='./order.php';},5000);
+	</script>";
+echo "<center><img src='loading.gif'></center><br><center>列印電子發票中</center>";
+?>

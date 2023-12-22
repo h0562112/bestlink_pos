@@ -1,0 +1,238 @@
+2021-05-27 15:37:28: [E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\frame_5.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrspec.php in line 568]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_0\mask_37_0.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_1\mask_37_1.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_2\mask_37_2.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_3\mask_37_3.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_4\mask_37_4.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_5\mask_37_5.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_6\mask_37_6.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_7\mask_37_7.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+2021-05-27 15:41:13: [E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\frame_5.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrspec.php in line 568]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_0\mask_37_0.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_1\mask_37_1.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_2\mask_37_2.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_3\mask_37_3.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_4\mask_37_4.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_5\mask_37_5.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_6\mask_37_6.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_7\mask_37_7.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+2021-05-28 15:22:42: [E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\frame_4.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrspec.php in line 568]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_0\mask_33_0.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_1\mask_33_1.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_2\mask_33_2.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_3\mask_33_3.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_4\mask_33_4.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_5\mask_33_5.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_6\mask_33_6.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_7\mask_33_7.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+2021-05-28 15:27:26: [E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\frame_5.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrspec.php in line 568]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_0\mask_37_0.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_1\mask_37_1.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_2\mask_37_2.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_3\mask_37_3.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_4\mask_37_4.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_5\mask_37_5.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_6\mask_37_6.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_7\mask_37_7.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+2021-05-28 15:28:50: [E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\frame_5.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrspec.php in line 568]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_0\mask_37_0.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_1\mask_37_1.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_2\mask_37_2.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_3\mask_37_3.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_4\mask_37_4.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_5\mask_37_5.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_6\mask_37_6.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_7\mask_37_7.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+2021-05-28 15:32:11: [E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\frame_4.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrspec.php in line 568]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_0\mask_33_0.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_1\mask_33_1.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_2\mask_33_2.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_3\mask_33_3.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_4\mask_33_4.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_5\mask_33_5.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_6\mask_33_6.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_7\mask_33_7.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+2021-05-28 15:32:52: [E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\frame_4.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrspec.php in line 568]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_0\mask_33_0.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_1\mask_33_1.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_2\mask_33_2.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_3\mask_33_3.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_4\mask_33_4.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_5\mask_33_5.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_6\mask_33_6.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] mkdir(): No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 154]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>
+[E_WARNING] file_put_contents(D:\xampp\htdocs\outposandorder\tool\phpqrcode\cache\mask_7\mask_33_7.dat): failed to open stream: No such file or directory[D:\xampp\htdocs\outposandorder\tool\phpqrcode\qrmask.php in line 155]<br>
+ERROR HINT: 檔案路徑或檔案不存在。<br>

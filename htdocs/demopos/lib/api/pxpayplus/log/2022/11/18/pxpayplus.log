@@ -1,0 +1,192 @@
+2022/11/18 15:32:36 --- url: https://uat.pxpayplus.com/px-pos/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+    [1] => PX-MerCode: M0002317
+    [2] => PX-MerEnName: abula0001
+    [3] => PX-SignValue: F21C0FC1A683FEA6E0164F5802838534F16FF0372217FA8F670488E16B172468
+)
+
+                    --- data: Array
+(
+    [store_id] => 
+    [store_name] => TestStore
+    [pos_id] => m1
+    [pos_trade_time] => 20221118153236
+    [mer_trade_no] => abula000120221118153238
+    [gate_trade_no] => 
+    [pay_token] => P2A27194D27P53GR1I
+    [trans_id] => 
+    [amount] => 20
+    [none_discount_amount] => 0
+    [none_feedback_amount] => 0
+    [req_time] => 20221118153236
+    [remark1] => 
+    [remark2] => 
+    [remark3] => 
+    [marketing] => Array
+        (
+        )
+
+    [products] => Array
+        (
+            [0] => Array
+                (
+                    [name] => 冬瓜茶
+                    [amount] => 20
+                    [qty] => 1
+                )
+
+        )
+
+)
+
+                    --- use key: D2EB0E0C49724F43AF9E9EA8DB6E27C2383F09452FF5446EBF45D4B3550DB657
+                    --- hashstring: m120221118153236abula000120221118153238P2A27194D27P53GR1I2020221118153236
+                    --- pass string: {"store_id":"","store_name":"TestStore","pos_id":"m1","pos_trade_time":"20221118153236","mer_trade_no":"abula000120221118153238","gate_trade_no":"","pay_token":"P2A27194D27P53GR1I","trans_id":"","amount":20,"none_discount_amount":0,"none_feedback_amount":0,"req_time":"20221118153236","remark1":"","remark2":"","remark3":"","marketing":[],"products":[{"name":"\u51ac\u74dc\u8336","amount":"20","qty":"1"}]}
+                    --- init result: {"status_code":"PS0002","status_message":"The StoreId field is required."}
+                    --- decode result: Array
+(
+    [status_code] => PS0002
+    [status_message] => The StoreId field is required.
+)
+
+2022/11/18 15:34:06 --- url: https://uat.pxpayplus.com/px-pos/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+    [1] => PX-MerCode: M0002317
+    [2] => PX-MerEnName: abula0001
+    [3] => PX-SignValue: B3CB60B7F85601EAE08395951D57E5CFD4CC5EB950B9856BEA1D70B18950961F
+)
+
+                    --- data: Array
+(
+    [store_id] => Test
+    [store_name] => TestStore
+    [pos_id] => m1
+    [pos_trade_time] => 20221118153406
+    [mer_trade_no] => abula000120221118153408
+    [gate_trade_no] => 
+    [pay_token] => P2A27194D27P53GR1I
+    [trans_id] => 
+    [amount] => 20
+    [none_discount_amount] => 0
+    [none_feedback_amount] => 0
+    [req_time] => 20221118153406
+    [remark1] => 
+    [remark2] => 
+    [remark3] => 
+    [marketing] => Array
+        (
+        )
+
+    [products] => Array
+        (
+            [0] => Array
+                (
+                    [name] => 冬瓜茶
+                    [amount] => 20
+                    [qty] => 1
+                )
+
+        )
+
+)
+
+                    --- use key: D2EB0E0C49724F43AF9E9EA8DB6E27C2383F09452FF5446EBF45D4B3550DB657
+                    --- hashstring: Testm120221118153406abula000120221118153408P2A27194D27P53GR1I2020221118153406
+                    --- pass string: {"store_id":"Test","store_name":"TestStore","pos_id":"m1","pos_trade_time":"20221118153406","mer_trade_no":"abula000120221118153408","gate_trade_no":"","pay_token":"P2A27194D27P53GR1I","trans_id":"","amount":20,"none_discount_amount":0,"none_feedback_amount":0,"req_time":"20221118153406","remark1":"","remark2":"","remark3":"","marketing":[],"products":[{"name":"\u51ac\u74dc\u8336","amount":"20","qty":"1"}]}
+                    --- init result: {"mer_trade_no":"abula000120221118153408","gate_trade_no":"","px_trade_no":"TX000000999D2315C800","amount":20,"trade_amount":20,"discount_amount":0,"pay_tool_info":{"pay_tool":4,"tool_name":"全支付帳戶","identity":"*00060"},"invo_carrier":"/ABD.122","marketing":[],"px_trade_time":"20221118153408","mem_card_no":"","status_code":"0000","status_message":"交易成功"}
+                    --- decode result: Array
+(
+    [mer_trade_no] => abula000120221118153408
+    [gate_trade_no] => 
+    [px_trade_no] => TX000000999D2315C800
+    [amount] => 20
+    [trade_amount] => 20
+    [discount_amount] => 0
+    [pay_tool_info] => Array
+        (
+            [pay_tool] => 4
+            [tool_name] => 全支付帳戶
+            [identity] => *00060
+        )
+
+    [invo_carrier] => /ABD.122
+    [marketing] => Array
+        (
+        )
+
+    [px_trade_time] => 20221118153408
+    [mem_card_no] => 
+    [status_code] => 0000
+    [status_message] => 交易成功
+)
+
+2022/11/18 15:34:16 --- url: https://uat.pxpayplus.com/px-pos/Refund
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+    [1] => PX-MerCode: M0002317
+    [2] => PX-MerEnName: abula0001
+    [3] => PX-SignValue: B26FC93938E2DD0AC37D42FF21E8135EC084CB07794F4E3D7293736FBAAC430E
+)
+
+                    --- data: Array
+(
+    [store_id] => Test
+    [store_name] => TestStore
+    [pos_id] => m1
+    [pos_trade_time] => 20221118153416
+    [ori_mer_trade_no] => abula000120221118153408
+    [mer_trade_no] => abula000120221118153418
+    [ori_gate_trade_no] => 
+    [gate_trade_no] => 
+    [ori_px_trade_no] => TX000000999D2315C800
+    [amount] => 20
+    [none_discount_amount] => 0
+    [none_feedback_amount] => 0
+    [req_time] => 20221118153416
+    [remark1] => 
+    [remark2] => 
+    [remark3] => 
+    [marketing] => Array
+        (
+        )
+
+    [products] => Array
+        (
+            [0] => Array
+                (
+                    [name] => 冬瓜茶
+                    [amount] => 20
+                    [qty] => 0
+                )
+
+        )
+
+)
+
+                    --- use key: D2EB0E0C49724F43AF9E9EA8DB6E27C2383F09452FF5446EBF45D4B3550DB657
+                    --- hashstring: Testm120221118153416abula000120221118153408abula0001202211181534182020221118153416
+                    --- pass string: {"store_id":"Test","store_name":"TestStore","pos_id":"m1","pos_trade_time":"20221118153416","ori_mer_trade_no":"abula000120221118153408","mer_trade_no":"abula000120221118153418","ori_gate_trade_no":"","gate_trade_no":"","ori_px_trade_no":"TX000000999D2315C800","amount":20,"none_discount_amount":0,"none_feedback_amount":0,"req_time":"20221118153416","remark1":"","remark2":"","remark3":"","marketing":[],"products":[{"name":"\u51ac\u74dc\u8336","amount":20,"qty":0}]}
+                    --- init result: {"mer_trade_no":"abula000120221118153418","gate_trade_no":"","px_trade_no":"TX000000999D2D0F0800","amount":20,"trade_amount":20,"discount_amount":0,"invo_carrier":"/ABD.122","marketing":[],"px_trade_time":"20221118153418","status_code":"0000","status_message":"交易成功"}
+                    --- decode result: Array
+(
+    [mer_trade_no] => abula000120221118153418
+    [gate_trade_no] => 
+    [px_trade_no] => TX000000999D2D0F0800
+    [amount] => 20
+    [trade_amount] => 20
+    [discount_amount] => 0
+    [invo_carrier] => /ABD.122
+    [marketing] => Array
+        (
+        )
+
+    [px_trade_time] => 20221118153418
+    [status_code] => 0000
+    [status_message] => 交易成功
+)
+

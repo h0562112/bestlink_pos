@@ -1,0 +1,22 @@
+<?php
+//2022/5/30 原先有寫在main.js中，但是被註解，忘記當初用途，先保留(最早有開一版面只為了處理nidin訂單，沒有跟POS串接，可能用在這邊)
+include_once '../../../../tool/inilib.php';
+
+$machinedata=parse_ini_file('../data/machinedata.ini',true);
+date_default_timezone_set($machinedata['basic']['settime']);
+
+if(date('Ymd')!==$machinedata['basic']['bizdate']){
+	//$machinedata['basic']['bizdate']=date('Ymd');
+	//$machinedata['basic']['consecnumber']="0";
+	//$machinedata['basic']['saleno']=$machinedata['basic']['strsaleno'];
+}
+else{
+}
+
+$machinedata['basic']['consecnumber']=intval($machinedata['basic']['consecnumber'])+1;
+$machinedata['basic']['saleno']=intval($machinedata['basic']['saleno'])+1;
+
+write_ini_file($machinedata,'../../../../database/machinedata.ini');
+
+echo json_encode($machinedata['basic']);
+?>

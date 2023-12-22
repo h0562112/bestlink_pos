@@ -1,0 +1,9 @@
+<?php
+$pw=parse_ini_file('./pw.ini',true);
+if($_POST['code']==$pw['pw'][3]){
+	echo 'login';
+}
+else{
+	echo 'error';
+}
+?>

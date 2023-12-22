@@ -1,0 +1,87 @@
+<?php
+include_once '../../../tool/inilib.php';
+$front=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/'.$_POST['company'].'-front.ini',true);
+$timeout=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/timeout.ini',true);
+date_default_timezone_set($timeout['time']['name']);
+
+if(strlen($_POST['number'])>0){
+	if(isset($front[$_POST['number']]['typeno'])){
+	}
+	else{
+		$front[$_POST['number']]['typeno']=$_POST['number'];
+	}
+	$front[$_POST['number']]['name1']=$_POST['name1'];
+	$front[$_POST['number']]['size1']=$_POST['size1'];
+	$front[$_POST['number']]['color1']=$_POST['color1'];
+	if(isset($_POST['bold1'])){
+		$front[$_POST['number']]['bold1']=1;
+	}
+	else{
+		$front[$_POST['number']]['bold1']=0;
+	}
+	$front[$_POST['number']]['name2']=$_POST['name2'];
+	$front[$_POST['number']]['size2']=$_POST['size2'];
+	$front[$_POST['number']]['color2']=$_POST['color2'];
+	if(isset($_POST['bold2'])){
+		$front[$_POST['number']]['bold2']=1;
+	}
+	else{
+		$front[$_POST['number']]['bold2']=0;
+	}
+	if(isset($_POST['seq'])){
+		$front[$_POST['number']]['seq']=$_POST['seq'];
+	}
+	else{
+		$front[$_POST['number']]['seq']='1';
+	}
+	if(isset($_POST['bgcolor'])){
+		$front[$_POST['number']]['bgcolor']=$_POST['bgcolor'];
+	}
+	else{
+		$front[$_POST['number']]['bgcolor']='#84FEFF';
+	}
+}
+else{
+	$row=sizeof($front);
+	if(isset($front[$row]['typeno'])){
+	}
+	else{
+		$front[$row]['typeno']=$row;
+	}
+	$front[$row]['name1']=$_POST['name1'];
+	$front[$row]['size1']=$_POST['size1'];
+	$front[$row]['color1']=$_POST['color1'];
+	if(isset($_POST['bold1'])){
+		$front[$row]['bold1']=1;
+	}
+	else{
+		$front[$row]['bold1']=0;
+	}
+	$front[$row]['name2']=$_POST['name2'];
+	$front[$row]['size2']=$_POST['size2'];
+	$front[$row]['color2']=$_POST['color2'];
+	if(isset($_POST['bold2'])){
+		$front[$row]['bold2']=1;
+	}
+	else{
+		$front[$row]['bold2']=0;
+	}
+	if(isset($_POST['seq'])){
+		$front[$row]['seq']=$_POST['seq'];
+	}
+	else{
+		$front[$row]['seq']='1';
+	}
+	if(isset($_POST['bgcolor'])){
+		$front[$row]['bgcolor']=$_POST['bgcolor'];
+	}
+	else{
+		$front[$row]['bgcolor']='#84FEFF';
+	}
+	$front[$row]['state']='1';
+}
+write_ini_file($front,'../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/'.$_POST['company'].'-front.ini');
+$ver=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/ver.ini',true);
+$ver['ver']['update']=date('YmdHis');
+write_ini_file($ver,'../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/ver.ini');
+?>

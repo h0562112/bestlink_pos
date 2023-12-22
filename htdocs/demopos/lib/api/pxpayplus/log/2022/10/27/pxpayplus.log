@@ -1,0 +1,374 @@
+2022/10/27 15:59:14 --- url: https://uat.pxpayplus.com/px-pos/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+    [1] => PX-MerCode: M0002317
+    [2] => PX-MerEnName: TestStore
+    [3] => PX-SignValue: E91ABED594EF46E8F88A3586B609B8E2E490B00313B4EF1225CDFDF9A6F5C58A
+)
+
+                    --- data: Array
+(
+    [store_id] => test
+    [store_name] => TestStore
+    [pos_id] => m1
+    [pos_trade_time] => 20221027155914
+    [mer_trade_no] => 20221027155914
+    [gate_trade_no] => 
+    [pay_token] => P2A27194D27P53GR1I
+    [trans_id] => 
+    [amount] => 10
+    [none_discount_amount] => 0
+    [none_feedback_amount] => 0
+    [req_time] => 20221027155914
+    [remark1] => 
+    [remark2] => 
+    [remark3] => 
+    [marketing] => Array
+        (
+        )
+
+    [products] => Array
+        (
+        )
+
+)
+
+                    --- use key: D2EB0E0C49724F43AF9E9EA8DB6E27C2383F09452FF5446EBF45D4B3550DB657
+                    --- hashstring: testm12022102715591420221027155914P2A27194D27P53GR1I1020221027155914
+                    --- pass string: {"store_id":"test","store_name":"TestStore","pos_id":"m1","pos_trade_time":"20221027155914","mer_trade_no":"20221027155914","gate_trade_no":"","pay_token":"P2A27194D27P53GR1I","trans_id":"","amount":10,"none_discount_amount":0,"none_feedback_amount":0,"req_time":"20221027155914","remark1":"","remark2":"","remark3":"","marketing":[],"products":[]}
+                    --- init result: {"mer_trade_no":"20221027155914","gate_trade_no":"","px_trade_no":"TX0000007D4FE9D60800","amount":10,"trade_amount":10,"discount_amount":0,"pay_tool_info":{"pay_tool":4,"tool_name":"全支付帳戶","identity":"*00060"},"invo_carrier":"/ABD.122","marketing":[],"px_trade_time":"20221027155916","mem_card_no":"","status_code":"0000","status_message":"交易成功"}
+                    --- decode result: Array
+(
+    [mer_trade_no] => 20221027155914
+    [gate_trade_no] => 
+    [px_trade_no] => TX0000007D4FE9D60800
+    [amount] => 10
+    [trade_amount] => 10
+    [discount_amount] => 0
+    [pay_tool_info] => Array
+        (
+            [pay_tool] => 4
+            [tool_name] => 全支付帳戶
+            [identity] => *00060
+        )
+
+    [invo_carrier] => /ABD.122
+    [marketing] => Array
+        (
+        )
+
+    [px_trade_time] => 20221027155916
+    [mem_card_no] => 
+    [status_code] => 0000
+    [status_message] => 交易成功
+)
+
+2022/10/27 15:59:20 --- url: https://uat.pxpayplus.com/px-pos/Reversal/1/20221027155914/20221027155920
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+    [1] => PX-MerCode: M0002317
+    [2] => PX-MerEnName: TestStore
+    [3] => PX-SignValue: 3264051FE3D3282DDA15978CED42FF92CCB7F495E98C8D09D9B0C8F54AF3BB2A
+)
+
+                    --- data: 
+                    --- use key: D2EB0E0C49724F43AF9E9EA8DB6E27C2383F09452FF5446EBF45D4B3550DB657
+                    --- pass string: null
+                    --- init result: 
+                    --- decode result: 
+2022/10/27 15:59:45 --- url: https://uat.pxpayplus.com/px-pos/OrderStatus/1/20221027155914/20221027155945
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+    [1] => PX-MerCode: M0002317
+    [2] => PX-MerEnName: TestStore
+    [3] => PX-SignValue: E980E020FF85D276893834D97E620C888EED8E48ADB4DAE56723A291D870396E
+)
+
+                    --- data: 
+                    --- use key: D2EB0E0C49724F43AF9E9EA8DB6E27C2383F09452FF5446EBF45D4B3550DB657
+                    --- pass string: null
+                    --- init result: {"order_type":1,"trade_info":{"mer_trade_no":"20221027155914","gate_trade_no":"","px_trade_no":"TX0000007D4FE9D60800","status_code":"0000","status_message":"交易成功","amount":10,"trade_amount":10,"discount_amount":0,"pay_tool_info":{"pay_tool":4,"tool_name":"全支付帳戶","identity":"*00060"},"invo_carrier":"/ABD.122","mem_card_no":"","px_trade_time":"20221027155916","marketing":[]},"status_code":"0000","status_message":"查詢成功"}
+                    --- decode result: Array
+(
+    [order_type] => 1
+    [trade_info] => Array
+        (
+            [mer_trade_no] => 20221027155914
+            [gate_trade_no] => 
+            [px_trade_no] => TX0000007D4FE9D60800
+            [status_code] => 0000
+            [status_message] => 交易成功
+            [amount] => 10
+            [trade_amount] => 10
+            [discount_amount] => 0
+            [pay_tool_info] => Array
+                (
+                    [pay_tool] => 4
+                    [tool_name] => 全支付帳戶
+                    [identity] => *00060
+                )
+
+            [invo_carrier] => /ABD.122
+            [mem_card_no] => 
+            [px_trade_time] => 20221027155916
+            [marketing] => Array
+                (
+                )
+
+        )
+
+    [status_code] => 0000
+    [status_message] => 查詢成功
+)
+
+2022/10/27 16:00:08 --- url: https://uat.pxpayplus.com/px-pos/Refund
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+    [1] => PX-MerCode: M0002317
+    [2] => PX-MerEnName: TestStore
+    [3] => PX-SignValue: E22432A22D8CEDC3656D9C39F54CD4745A7C60A3701BE104A7FC46D12D1F5A7E
+)
+
+                    --- data: Array
+(
+    [store_id] => test
+    [store_name] => TestStore
+    [pos_id] => m1
+    [pos_trade_time] => 20221027160008
+    [ori_mer_trade_no] => 20221027155914
+    [mer_trade_no] => 20221027160008
+    [ori_gate_trade_no] => 
+    [gate_trade_no] => 
+    [ori_px_trade_no] => TX0000007D4FE9D60800
+    [amount] => 10
+    [none_discount_amount] => 0
+    [none_feedback_amount] => 0
+    [req_time] => 20221027160008
+    [remark1] => 
+    [remark2] => 
+    [remark3] => 
+    [marketing] => Array
+        (
+        )
+
+    [products] => Array
+        (
+        )
+
+)
+
+                    --- use key: D2EB0E0C49724F43AF9E9EA8DB6E27C2383F09452FF5446EBF45D4B3550DB657
+                    --- pass string: {"store_id":"test","store_name":"TestStore","pos_id":"m1","pos_trade_time":"20221027160008","ori_mer_trade_no":"20221027155914","mer_trade_no":"20221027160008","ori_gate_trade_no":"","gate_trade_no":"","ori_px_trade_no":"TX0000007D4FE9D60800","amount":10,"none_discount_amount":0,"none_feedback_amount":0,"req_time":"20221027160008","remark1":"","remark2":"","remark3":"","marketing":[],"products":[]}
+                    --- init result: {"mer_trade_no":"20221027160008","gate_trade_no":"","px_trade_no":"TX0000007D501E574800","amount":10,"trade_amount":10,"discount_amount":0,"invo_carrier":"/ABD.122","marketing":[],"px_trade_time":"20221027160010","status_code":"0000","status_message":"交易成功"}
+                    --- decode result: Array
+(
+    [mer_trade_no] => 20221027160008
+    [gate_trade_no] => 
+    [px_trade_no] => TX0000007D501E574800
+    [amount] => 10
+    [trade_amount] => 10
+    [discount_amount] => 0
+    [invo_carrier] => /ABD.122
+    [marketing] => Array
+        (
+        )
+
+    [px_trade_time] => 20221027160010
+    [status_code] => 0000
+    [status_message] => 交易成功
+)
+
+2022/10/27 16:00:26 --- url: https://uat.pxpayplus.com/px-pos/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+    [1] => PX-MerCode: M0002317
+    [2] => PX-MerEnName: TestStore
+    [3] => PX-SignValue: 1281A45D51C0D78A991FF3BE3FEA7257E01E242503F8434BD8CEC16271E33F5B
+)
+
+                    --- data: Array
+(
+    [store_id] => test
+    [store_name] => TestStore
+    [pos_id] => m1
+    [pos_trade_time] => 20221027160026
+    [mer_trade_no] => 20221027160026
+    [gate_trade_no] => 
+    [pay_token] => P2A27194D27P53GR1I
+    [trans_id] => 
+    [amount] => 10
+    [none_discount_amount] => 0
+    [none_feedback_amount] => 0
+    [req_time] => 20221027160026
+    [remark1] => 
+    [remark2] => 
+    [remark3] => 
+    [marketing] => Array
+        (
+        )
+
+    [products] => Array
+        (
+        )
+
+)
+
+                    --- use key: D2EB0E0C49724F43AF9E9EA8DB6E27C2383F09452FF5446EBF45D4B3550DB657
+                    --- hashstring: testm12022102716002620221027160026P2A27194D27P53GR1I1020221027160026
+                    --- pass string: {"store_id":"test","store_name":"TestStore","pos_id":"m1","pos_trade_time":"20221027160026","mer_trade_no":"20221027160026","gate_trade_no":"","pay_token":"P2A27194D27P53GR1I","trans_id":"","amount":10,"none_discount_amount":0,"none_feedback_amount":0,"req_time":"20221027160026","remark1":"","remark2":"","remark3":"","marketing":[],"products":[]}
+                    --- init result: {"mer_trade_no":"20221027160026","gate_trade_no":"","px_trade_no":"TX0000007D5030318800","amount":10,"trade_amount":10,"discount_amount":0,"pay_tool_info":{"pay_tool":4,"tool_name":"全支付帳戶","identity":"*00060"},"invo_carrier":"/ABD.122","marketing":[],"px_trade_time":"20221027160028","mem_card_no":"","status_code":"0000","status_message":"交易成功"}
+                    --- decode result: Array
+(
+    [mer_trade_no] => 20221027160026
+    [gate_trade_no] => 
+    [px_trade_no] => TX0000007D5030318800
+    [amount] => 10
+    [trade_amount] => 10
+    [discount_amount] => 0
+    [pay_tool_info] => Array
+        (
+            [pay_tool] => 4
+            [tool_name] => 全支付帳戶
+            [identity] => *00060
+        )
+
+    [invo_carrier] => /ABD.122
+    [marketing] => Array
+        (
+        )
+
+    [px_trade_time] => 20221027160028
+    [mem_card_no] => 
+    [status_code] => 0000
+    [status_message] => 交易成功
+)
+
+2022/10/27 16:00:29 --- url: https://uat.pxpayplus.com/px-pos/Reversal
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+    [1] => PX-MerCode: M0002317
+    [2] => PX-MerEnName: TestStore
+    [3] => PX-SignValue: 6CC6864BA48646674DC4E8A0AA29BA114820DFCC27C8A90D50F578B5F76403C7
+)
+
+                    --- data: Array
+(
+    [store_id] => test
+    [store_name] => TestStore
+    [pos_id] => m1
+    [pos_trade_time] => 20221027160029
+    [mer_trade_no] => 10
+    [gate_trade_no] => 
+    [pay_token] => P2A27194D27P53GR1I
+    [amount] => 0
+    [req_time] => 20221027160029
+)
+
+                    --- use key: D2EB0E0C49724F43AF9E9EA8DB6E27C2383F09452FF5446EBF45D4B3550DB657
+                    --- pass string: {"store_id":"test","store_name":"TestStore","pos_id":"m1","pos_trade_time":"20221027160029","mer_trade_no":"10","gate_trade_no":"","pay_token":"P2A27194D27P53GR1I","amount":0,"req_time":"20221027160029"}
+                    --- init result: {"px_trade_time":"20221027160031","status_code":"0000","status_message":"成功"}
+                    --- decode result: Array
+(
+    [px_trade_time] => 20221027160031
+    [status_code] => 0000
+    [status_message] => 成功
+)
+
+2022/10/27 16:00:43 --- url: https://uat.pxpayplus.com/px-pos/OrderStatus/1/20221027160026/20221027160043
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+    [1] => PX-MerCode: M0002317
+    [2] => PX-MerEnName: TestStore
+    [3] => PX-SignValue: D0D7B56FFE0129BC685C3C319961610E5AB05329F053840720FEBF3E0204584C
+)
+
+                    --- data: 
+                    --- use key: D2EB0E0C49724F43AF9E9EA8DB6E27C2383F09452FF5446EBF45D4B3550DB657
+                    --- pass string: null
+                    --- init result: {"order_type":1,"trade_info":{"mer_trade_no":"20221027160026","gate_trade_no":"","px_trade_no":"TX0000007D5030318800","status_code":"0000","status_message":"交易成功","amount":10,"trade_amount":10,"discount_amount":0,"pay_tool_info":{"pay_tool":4,"tool_name":"全支付帳戶","identity":"*00060"},"invo_carrier":"/ABD.122","mem_card_no":"","px_trade_time":"20221027160028","marketing":[]},"status_code":"0000","status_message":"查詢成功"}
+                    --- decode result: Array
+(
+    [order_type] => 1
+    [trade_info] => Array
+        (
+            [mer_trade_no] => 20221027160026
+            [gate_trade_no] => 
+            [px_trade_no] => TX0000007D5030318800
+            [status_code] => 0000
+            [status_message] => 交易成功
+            [amount] => 10
+            [trade_amount] => 10
+            [discount_amount] => 0
+            [pay_tool_info] => Array
+                (
+                    [pay_tool] => 4
+                    [tool_name] => 全支付帳戶
+                    [identity] => *00060
+                )
+
+            [invo_carrier] => /ABD.122
+            [mem_card_no] => 
+            [px_trade_time] => 20221027160028
+            [marketing] => Array
+                (
+                )
+
+        )
+
+    [status_code] => 0000
+    [status_message] => 查詢成功
+)
+
+2022/10/27 16:01:12 --- url: https://uat.pxpayplus.com/px-pos/OrderStatus/1/20221027160026/20221027160112
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+    [1] => PX-MerCode: M0002317
+    [2] => PX-MerEnName: TestStore
+    [3] => PX-SignValue: 48FB875CE4B4510229EC7D3D9A8B3CB9C6469A57D5F17DA1CA5573D5108D6577
+)
+
+                    --- data: 
+                    --- use key: D2EB0E0C49724F43AF9E9EA8DB6E27C2383F09452FF5446EBF45D4B3550DB657
+                    --- pass string: null
+                    --- init result: {"order_type":1,"trade_info":{"mer_trade_no":"20221027160026","gate_trade_no":"","px_trade_no":"TX0000007D5030318800","status_code":"0000","status_message":"交易成功","amount":10,"trade_amount":10,"discount_amount":0,"pay_tool_info":{"pay_tool":4,"tool_name":"全支付帳戶","identity":"*00060"},"invo_carrier":"/ABD.122","mem_card_no":"","px_trade_time":"20221027160028","marketing":[]},"status_code":"0000","status_message":"查詢成功"}
+                    --- decode result: Array
+(
+    [order_type] => 1
+    [trade_info] => Array
+        (
+            [mer_trade_no] => 20221027160026
+            [gate_trade_no] => 
+            [px_trade_no] => TX0000007D5030318800
+            [status_code] => 0000
+            [status_message] => 交易成功
+            [amount] => 10
+            [trade_amount] => 10
+            [discount_amount] => 0
+            [pay_tool_info] => Array
+                (
+                    [pay_tool] => 4
+                    [tool_name] => 全支付帳戶
+                    [identity] => *00060
+                )
+
+            [invo_carrier] => /ABD.122
+            [mem_card_no] => 
+            [px_trade_time] => 20221027160028
+            [marketing] => Array
+                (
+                )
+
+        )
+
+    [status_code] => 0000
+    [status_message] => 查詢成功
+)
+

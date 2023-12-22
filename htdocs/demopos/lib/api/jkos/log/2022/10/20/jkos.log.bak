@@ -1,0 +1,601 @@
+2022/10/20 14:47:58 --- url: https://uat-pos.jkopay.app/Test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 22J111111111111111
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 9999999
+    [MerchantTradeNo] => Test20221020144800
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/20 14:47:58
+    [Remark] => 
+    [SendTime] => 20221020144758
+    [StoreID] => Test
+    [StoreName] => TestStore
+    [TradeAmount] => 1000
+    [UnRedeem] => 0
+    [Sign] => aaf11025a0a695b26f4473a4df82b9799241109ba9a75b8765205b26418c478c
+)
+
+                    --- use key: 2AA6B9B6F9C64247ABB2677B6AF2C896
+                    --- pass string: {"CardToken":"22J111111111111111","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"9999999","MerchantTradeNo":"Test20221020144800","PosID":"m1","PosTradeTime":"2022/10/20 14:47:58","Remark":"","SendTime":"20221020144758","StoreID":"Test","StoreName":"TestStore","TradeAmount":1000,"UnRedeem":0,"Sign":"aaf11025a0a695b26f4473a4df82b9799241109ba9a75b8765205b26418c478c"}
+                    --- init result: {"MerchantID":"9999999","StoreID":"Test","GatewayTradeNo":"","MerchantTradeNo":"Test20221020144800","PosID":"m1","TradeNo":"J0065220122102000070","IsRep":0,"PaymentType":1,"TradeAmount":1000,"DebitAmount":700,"RedeemName":"Coin","RedeemAmount":-300,"AvailableAmount":0,"InvoiceVehicle":"/7DX6J02","MerMemToken":"","Remark":"","Extra1":"","Extra2":"","Extra3":"{\"CardName\":\"街口帳戶\",\"CardNo\":\"123459003417190\"}","ActionCode":"0","StatusCode":"000","StatusDesc":"交易成功","TradeTime":"2022/10/20 14:48:00"}
+                    --- decode result: Array
+(
+    [MerchantID] => 9999999
+    [StoreID] => Test
+    [GatewayTradeNo] => 
+    [MerchantTradeNo] => Test20221020144800
+    [PosID] => m1
+    [TradeNo] => J0065220122102000070
+    [IsRep] => 0
+    [PaymentType] => 1
+    [TradeAmount] => 1000
+    [DebitAmount] => 700
+    [RedeemName] => Coin
+    [RedeemAmount] => -300
+    [AvailableAmount] => 0
+    [InvoiceVehicle] => /7DX6J02
+    [MerMemToken] => 
+    [Remark] => 
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => {"CardName":"街口帳戶","CardNo":"123459003417190"}
+    [ActionCode] => 0
+    [StatusCode] => 000
+    [StatusDesc] => 交易成功
+    [TradeTime] => 2022/10/20 14:48:00
+)
+
+2022/10/20 14:48:16 --- url: https://uat-pos.jkopay.app/Test/Refund
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+)
+
+                    --- data: Array
+(
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 9999999
+    [MerchantTradeNo] => Test20221020144817
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/20 14:48:16
+    [Remark] => 
+    [SendTime] => 20221020144816
+    [StoreID] => Test
+    [StoreName] => TestStore
+    [TradeAmount] => 1000
+    [TradeNo] => J0065220122102000070
+    [Sign] => 1cb115283c9d99066b9f28554eb3462e77c12408d71722a0a3fe9b0b9208124d
+)
+
+                    --- use key: 2AA6B9B6F9C64247ABB2677B6AF2C896
+                    --- pass string: {"Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"9999999","MerchantTradeNo":"Test20221020144817","PosID":"m1","PosTradeTime":"2022/10/20 14:48:16","Remark":"","SendTime":"20221020144816","StoreID":"Test","StoreName":"TestStore","TradeAmount":1000,"TradeNo":"J0065220122102000070","Sign":"1cb115283c9d99066b9f28554eb3462e77c12408d71722a0a3fe9b0b9208124d"}
+                    --- init result: {"MerchantID":"9999999","StoreID":"Test","GatewayTradeNo":"","MerchantTradeNo":"Test20221020144817","PosID":"m1","TradeAmount":1000,"DebitAmount":700,"AvailableAmount":0,"TradeNo":"J0065220122102000070","RefundTradeNo":"K0065220122102000070","RefundTradeTime":"2022/10/20 14:48:18","IsRep":0,"PaymentType":1,"RedeemName":"Coin","RedeemAmount":300,"InvoiceVehicle":"/7DX6J02","MerMemToken":"","Remark":"","Extra1":"","Extra2":"","Extra3":"","ActionCode":"0","StatusCode":"000","StatusDesc":"交易成功"}
+                    --- decode result: Array
+(
+    [MerchantID] => 9999999
+    [StoreID] => Test
+    [GatewayTradeNo] => 
+    [MerchantTradeNo] => Test20221020144817
+    [PosID] => m1
+    [TradeAmount] => 1000
+    [DebitAmount] => 700
+    [AvailableAmount] => 0
+    [TradeNo] => J0065220122102000070
+    [RefundTradeNo] => K0065220122102000070
+    [RefundTradeTime] => 2022/10/20 14:48:18
+    [IsRep] => 0
+    [PaymentType] => 1
+    [RedeemName] => Coin
+    [RedeemAmount] => 300
+    [InvoiceVehicle] => /7DX6J02
+    [MerMemToken] => 
+    [Remark] => 
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [ActionCode] => 0
+    [StatusCode] => 000
+    [StatusDesc] => 交易成功
+)
+
+2022/10/20 14:48:33 --- url: https://uat-pos.jkopay.app/Test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 22J111111111111111
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 9999999
+    [MerchantTradeNo] => Test20221020144835
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/20 14:48:33
+    [Remark] => 
+    [SendTime] => 20221020144833
+    [StoreID] => Test
+    [StoreName] => TestStore
+    [TradeAmount] => 1000
+    [UnRedeem] => 0
+    [Sign] => 7021b462b43e4deaa6ff5537e85db687990e8bc916b78f5008df2cdae3895c2b
+)
+
+                    --- use key: 2AA6B9B6F9C64247ABB2677B6AF2C896
+                    --- pass string: {"CardToken":"22J111111111111111","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"9999999","MerchantTradeNo":"Test20221020144835","PosID":"m1","PosTradeTime":"2022/10/20 14:48:33","Remark":"","SendTime":"20221020144833","StoreID":"Test","StoreName":"TestStore","TradeAmount":1000,"UnRedeem":0,"Sign":"7021b462b43e4deaa6ff5537e85db687990e8bc916b78f5008df2cdae3895c2b"}
+                    --- init result: {"MerchantID":"9999999","StoreID":"Test","GatewayTradeNo":"","MerchantTradeNo":"Test20221020144835","PosID":"m1","TradeNo":"J0065220122102000071","IsRep":0,"PaymentType":1,"TradeAmount":1000,"DebitAmount":700,"RedeemName":"Coin","RedeemAmount":-300,"AvailableAmount":0,"InvoiceVehicle":"/7DX6J02","MerMemToken":"","Remark":"","Extra1":"","Extra2":"","Extra3":"{\"CardName\":\"街口帳戶\",\"CardNo\":\"123459003417190\"}","ActionCode":"0","StatusCode":"000","StatusDesc":"交易成功","TradeTime":"2022/10/20 14:48:35"}
+                    --- decode result: Array
+(
+    [MerchantID] => 9999999
+    [StoreID] => Test
+    [GatewayTradeNo] => 
+    [MerchantTradeNo] => Test20221020144835
+    [PosID] => m1
+    [TradeNo] => J0065220122102000071
+    [IsRep] => 0
+    [PaymentType] => 1
+    [TradeAmount] => 1000
+    [DebitAmount] => 700
+    [RedeemName] => Coin
+    [RedeemAmount] => -300
+    [AvailableAmount] => 0
+    [InvoiceVehicle] => /7DX6J02
+    [MerMemToken] => 
+    [Remark] => 
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => {"CardName":"街口帳戶","CardNo":"123459003417190"}
+    [ActionCode] => 0
+    [StatusCode] => 000
+    [StatusDesc] => 交易成功
+    [TradeTime] => 2022/10/20 14:48:35
+)
+
+2022/10/20 14:48:47 --- url: https://uat-pos.jkopay.app/Test/Refund
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+)
+
+                    --- data: Array
+(
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 9999999
+    [MerchantTradeNo] => Test20221020144849
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/20 14:48:47
+    [Remark] => 
+    [SendTime] => 20221020144847
+    [StoreID] => Test
+    [StoreName] => TestStore
+    [TradeAmount] => 1000
+    [TradeNo] => J0065220122102000071
+    [Sign] => fccdf1b1ecb94cc0d83a876f2816f5b339c3fec827ddabc7df956f7e580e3c53
+)
+
+                    --- use key: 2AA6B9B6F9C64247ABB2677B6AF2C896
+                    --- pass string: {"Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"9999999","MerchantTradeNo":"Test20221020144849","PosID":"m1","PosTradeTime":"2022/10/20 14:48:47","Remark":"","SendTime":"20221020144847","StoreID":"Test","StoreName":"TestStore","TradeAmount":1000,"TradeNo":"J0065220122102000071","Sign":"fccdf1b1ecb94cc0d83a876f2816f5b339c3fec827ddabc7df956f7e580e3c53"}
+                    --- init result: {"MerchantID":"9999999","StoreID":"Test","GatewayTradeNo":"","MerchantTradeNo":"Test20221020144849","PosID":"m1","TradeAmount":1000,"DebitAmount":700,"AvailableAmount":0,"TradeNo":"J0065220122102000071","RefundTradeNo":"K0065220122102000071","RefundTradeTime":"2022/10/20 14:48:50","IsRep":0,"PaymentType":1,"RedeemName":"Coin","RedeemAmount":300,"InvoiceVehicle":"/7DX6J02","MerMemToken":"","Remark":"","Extra1":"","Extra2":"","Extra3":"","ActionCode":"0","StatusCode":"000","StatusDesc":"交易成功"}
+                    --- decode result: Array
+(
+    [MerchantID] => 9999999
+    [StoreID] => Test
+    [GatewayTradeNo] => 
+    [MerchantTradeNo] => Test20221020144849
+    [PosID] => m1
+    [TradeAmount] => 1000
+    [DebitAmount] => 700
+    [AvailableAmount] => 0
+    [TradeNo] => J0065220122102000071
+    [RefundTradeNo] => K0065220122102000071
+    [RefundTradeTime] => 2022/10/20 14:48:50
+    [IsRep] => 0
+    [PaymentType] => 1
+    [RedeemName] => Coin
+    [RedeemAmount] => 300
+    [InvoiceVehicle] => /7DX6J02
+    [MerMemToken] => 
+    [Remark] => 
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [ActionCode] => 0
+    [StatusCode] => 000
+    [StatusDesc] => 交易成功
+)
+
+2022/10/20 14:49:17 --- url: https://uat-pos.jkopay.app/Test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 22C333334444455555
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 9999999
+    [MerchantTradeNo] => Test20221020144918
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/20 14:49:17
+    [Remark] => 
+    [SendTime] => 20221020144917
+    [StoreID] => Test
+    [StoreName] => TestStore
+    [TradeAmount] => 1000
+    [UnRedeem] => 0
+    [Sign] => ad5b36885f201fbb1c39f4724a14c0bf5c73a2d25c91edc66241bbba89c2a8ea
+)
+
+                    --- use key: 2AA6B9B6F9C64247ABB2677B6AF2C896
+                    --- pass string: {"CardToken":"22C333334444455555","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"9999999","MerchantTradeNo":"Test20221020144918","PosID":"m1","PosTradeTime":"2022/10/20 14:49:17","Remark":"","SendTime":"20221020144917","StoreID":"Test","StoreName":"TestStore","TradeAmount":1000,"UnRedeem":0,"Sign":"ad5b36885f201fbb1c39f4724a14c0bf5c73a2d25c91edc66241bbba89c2a8ea"}
+                    --- init result: {"MerchantID":"9999999","StoreID":"Test","GatewayTradeNo":"","MerchantTradeNo":"Test20221020144918","PosID":"m1","TradeNo":"J0065220122102000072","IsRep":0,"PaymentType":1,"TradeAmount":1000,"DebitAmount":1000,"RedeemName":"","RedeemAmount":0,"AvailableAmount":0,"InvoiceVehicle":"/7DX6J02","MerMemToken":"","Remark":"","Extra1":"","Extra2":"","Extra3":"{\"CardName\":\"街口帳戶\",\"CardNo\":\"123459003417190\"}","ActionCode":"0","StatusCode":"000","StatusDesc":"交易成功","TradeTime":"2022/10/20 14:49:19"}
+                    --- decode result: Array
+(
+    [MerchantID] => 9999999
+    [StoreID] => Test
+    [GatewayTradeNo] => 
+    [MerchantTradeNo] => Test20221020144918
+    [PosID] => m1
+    [TradeNo] => J0065220122102000072
+    [IsRep] => 0
+    [PaymentType] => 1
+    [TradeAmount] => 1000
+    [DebitAmount] => 1000
+    [RedeemName] => 
+    [RedeemAmount] => 0
+    [AvailableAmount] => 0
+    [InvoiceVehicle] => /7DX6J02
+    [MerMemToken] => 
+    [Remark] => 
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => {"CardName":"街口帳戶","CardNo":"123459003417190"}
+    [ActionCode] => 0
+    [StatusCode] => 000
+    [StatusDesc] => 交易成功
+    [TradeTime] => 2022/10/20 14:49:19
+)
+
+2022/10/20 14:50:31 --- url: https://uat-pos.jkopay.app/Test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => /R6RTGKU
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 9999999
+    [MerchantTradeNo] => Test20221020145033
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/20 14:50:31
+    [Remark] => 
+    [SendTime] => 20221020145031
+    [StoreID] => Test
+    [StoreName] => TestStore
+    [TradeAmount] => 1000
+    [UnRedeem] => 0
+    [Sign] => 45eea9569059205159f15cffd36fdf7d6620ea0dec87d244843a50f6497adcab
+)
+
+                    --- use key: 2AA6B9B6F9C64247ABB2677B6AF2C896
+                    --- pass string: {"CardToken":"/R6RTGKU","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"9999999","MerchantTradeNo":"Test20221020145033","PosID":"m1","PosTradeTime":"2022/10/20 14:50:31","Remark":"","SendTime":"20221020145031","StoreID":"Test","StoreName":"TestStore","TradeAmount":1000,"UnRedeem":0,"Sign":"45eea9569059205159f15cffd36fdf7d6620ea0dec87d244843a50f6497adcab"}
+                    --- init result: {"MerchantID":"9999999","StoreID":"Test","GatewayTradeNo":"","MerchantTradeNo":"Test20221020145033","PosID":"m1","TradeNo":"","IsRep":0,"PaymentType":0,"TradeAmount":1000,"DebitAmount":0,"RedeemName":"","RedeemAmount":0,"AvailableAmount":0,"InvoiceVehicle":"","MerMemToken":"","Remark":"","Extra1":"","Extra2":"","Extra3":"","ActionCode":"9","StatusCode":"927","StatusDesc":"條碼錯誤","TradeTime":""}
+                    --- decode result: Array
+(
+    [MerchantID] => 9999999
+    [StoreID] => Test
+    [GatewayTradeNo] => 
+    [MerchantTradeNo] => Test20221020145033
+    [PosID] => m1
+    [TradeNo] => 
+    [IsRep] => 0
+    [PaymentType] => 0
+    [TradeAmount] => 1000
+    [DebitAmount] => 0
+    [RedeemName] => 
+    [RedeemAmount] => 0
+    [AvailableAmount] => 0
+    [InvoiceVehicle] => 
+    [MerMemToken] => 
+    [Remark] => 
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [ActionCode] => 9
+    [StatusCode] => 927
+    [StatusDesc] => 條碼錯誤
+    [TradeTime] => 
+)
+
+2022/10/20 14:50:49 --- url: https://uat-pos.jkopay.app/Test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 22J111111111111111
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 9999999
+    [MerchantTradeNo] => Test20221020145051
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/20 14:50:49
+    [Remark] => 
+    [SendTime] => 20221020145049
+    [StoreID] => Test
+    [StoreName] => TestStore
+    [TradeAmount] => 1000
+    [UnRedeem] => 0
+    [Sign] => 461513511239ba4343529568a1398da55a28b73d07764f7261a4ae058620cc99
+)
+
+                    --- use key: 2AA6B9B6F9C64247ABB2677B6AF2C896
+                    --- pass string: {"CardToken":"22J111111111111111","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"9999999","MerchantTradeNo":"Test20221020145051","PosID":"m1","PosTradeTime":"2022/10/20 14:50:49","Remark":"","SendTime":"20221020145049","StoreID":"Test","StoreName":"TestStore","TradeAmount":1000,"UnRedeem":0,"Sign":"461513511239ba4343529568a1398da55a28b73d07764f7261a4ae058620cc99"}
+                    --- init result: {"MerchantID":"9999999","StoreID":"Test","GatewayTradeNo":"","MerchantTradeNo":"Test20221020145051","PosID":"m1","TradeNo":"J006522012210200000B","IsRep":0,"PaymentType":1,"TradeAmount":1000,"DebitAmount":700,"RedeemName":"Coin","RedeemAmount":-300,"AvailableAmount":0,"InvoiceVehicle":"/7DX6J02","MerMemToken":"","Remark":"","Extra1":"","Extra2":"","Extra3":"{\"CardName\":\"街口帳戶\",\"CardNo\":\"123459003417190\"}","ActionCode":"0","StatusCode":"000","StatusDesc":"交易成功","TradeTime":"2022/10/20 14:50:51"}
+                    --- decode result: Array
+(
+    [MerchantID] => 9999999
+    [StoreID] => Test
+    [GatewayTradeNo] => 
+    [MerchantTradeNo] => Test20221020145051
+    [PosID] => m1
+    [TradeNo] => J006522012210200000B
+    [IsRep] => 0
+    [PaymentType] => 1
+    [TradeAmount] => 1000
+    [DebitAmount] => 700
+    [RedeemName] => Coin
+    [RedeemAmount] => -300
+    [AvailableAmount] => 0
+    [InvoiceVehicle] => /7DX6J02
+    [MerMemToken] => 
+    [Remark] => 
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => {"CardName":"街口帳戶","CardNo":"123459003417190"}
+    [ActionCode] => 0
+    [StatusCode] => 000
+    [StatusDesc] => 交易成功
+    [TradeTime] => 2022/10/20 14:50:51
+)
+
+2022/10/20 14:51:30 --- url: https://uat-pos.jkopay.app/Test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 22J111111111111111
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 9999999
+    [MerchantTradeNo] => Test20221020145132
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/20 14:51:30
+    [Remark] => 
+    [SendTime] => 20221020145130
+    [StoreID] => Test
+    [StoreName] => TestStore
+    [TradeAmount] => 1000
+    [UnRedeem] => 0
+    [Sign] => e575260fc58dbb0bd2f19a11c97071f46213238e9ab7894764c9362f3ad4b139
+)
+
+                    --- use key: 2AA6B9B6F9C64247ABB2677B6AF2C896
+                    --- pass string: {"CardToken":"22J111111111111111","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"9999999","MerchantTradeNo":"Test20221020145132","PosID":"m1","PosTradeTime":"2022/10/20 14:51:30","Remark":"","SendTime":"20221020145130","StoreID":"Test","StoreName":"TestStore","TradeAmount":1000,"UnRedeem":0,"Sign":"e575260fc58dbb0bd2f19a11c97071f46213238e9ab7894764c9362f3ad4b139"}
+                    --- init result: {"MerchantID":"9999999","StoreID":"Test","GatewayTradeNo":"","MerchantTradeNo":"Test20221020145132","PosID":"m1","TradeNo":"J006522012210200000C","IsRep":0,"PaymentType":1,"TradeAmount":1000,"DebitAmount":700,"RedeemName":"Coin","RedeemAmount":-300,"AvailableAmount":0,"InvoiceVehicle":"/7DX6J02","MerMemToken":"","Remark":"","Extra1":"","Extra2":"","Extra3":"{\"CardName\":\"街口帳戶\",\"CardNo\":\"123459003417190\"}","ActionCode":"0","StatusCode":"000","StatusDesc":"交易成功","TradeTime":"2022/10/20 14:51:32"}
+                    --- decode result: Array
+(
+    [MerchantID] => 9999999
+    [StoreID] => Test
+    [GatewayTradeNo] => 
+    [MerchantTradeNo] => Test20221020145132
+    [PosID] => m1
+    [TradeNo] => J006522012210200000C
+    [IsRep] => 0
+    [PaymentType] => 1
+    [TradeAmount] => 1000
+    [DebitAmount] => 700
+    [RedeemName] => Coin
+    [RedeemAmount] => -300
+    [AvailableAmount] => 0
+    [InvoiceVehicle] => /7DX6J02
+    [MerMemToken] => 
+    [Remark] => 
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => {"CardName":"街口帳戶","CardNo":"123459003417190"}
+    [ActionCode] => 0
+    [StatusCode] => 000
+    [StatusDesc] => 交易成功
+    [TradeTime] => 2022/10/20 14:51:32
+)
+
+2022/10/20 14:51:34 --- url: https://uat-pos.jkopay.app/Test/Refund
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+)
+
+                    --- data: Array
+(
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 9999999
+    [MerchantTradeNo] => Test20221020145136
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/20 14:51:34
+    [Remark] => 
+    [SendTime] => 20221020145134
+    [StoreID] => Test
+    [StoreName] => TestStore
+    [TradeAmount] => 1000
+    [TradeNo] => J006522012210200000C
+    [Sign] => 174b822c353aba84e144a1038bfc3d1140842e71ff31468d770b51ad279e1c91
+)
+
+                    --- use key: 2AA6B9B6F9C64247ABB2677B6AF2C896
+                    --- pass string: {"Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"9999999","MerchantTradeNo":"Test20221020145136","PosID":"m1","PosTradeTime":"2022/10/20 14:51:34","Remark":"","SendTime":"20221020145134","StoreID":"Test","StoreName":"TestStore","TradeAmount":1000,"TradeNo":"J006522012210200000C","Sign":"174b822c353aba84e144a1038bfc3d1140842e71ff31468d770b51ad279e1c91"}
+                    --- init result: {"MerchantID":"9999999","StoreID":"Test","GatewayTradeNo":"","MerchantTradeNo":"Test20221020145136","PosID":"m1","TradeAmount":1000,"DebitAmount":700,"AvailableAmount":0,"TradeNo":"J006522012210200000C","RefundTradeNo":"K006522012210200000C","RefundTradeTime":"2022/10/20 14:51:36","IsRep":0,"PaymentType":1,"RedeemName":"Coin","RedeemAmount":300,"InvoiceVehicle":"/7DX6J02","MerMemToken":"","Remark":"","Extra1":"","Extra2":"","Extra3":"","ActionCode":"0","StatusCode":"000","StatusDesc":"交易成功"}
+                    --- decode result: Array
+(
+    [MerchantID] => 9999999
+    [StoreID] => Test
+    [GatewayTradeNo] => 
+    [MerchantTradeNo] => Test20221020145136
+    [PosID] => m1
+    [TradeAmount] => 1000
+    [DebitAmount] => 700
+    [AvailableAmount] => 0
+    [TradeNo] => J006522012210200000C
+    [RefundTradeNo] => K006522012210200000C
+    [RefundTradeTime] => 2022/10/20 14:51:36
+    [IsRep] => 0
+    [PaymentType] => 1
+    [RedeemName] => Coin
+    [RedeemAmount] => 300
+    [InvoiceVehicle] => /7DX6J02
+    [MerMemToken] => 
+    [Remark] => 
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [ActionCode] => 0
+    [StatusCode] => 000
+    [StatusDesc] => 交易成功
+)
+
+2022/10/20 14:51:53 --- url: https://uat-pos.jkopay.app/Test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 22C333334444455555
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 9999999
+    [MerchantTradeNo] => Test20221020145155
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/20 14:51:53
+    [Remark] => 
+    [SendTime] => 20221020145153
+    [StoreID] => Test
+    [StoreName] => TestStore
+    [TradeAmount] => 40
+    [UnRedeem] => 0
+    [Sign] => 3abd18c26e1510457bd04d5c6d6cab716be02434524015e918b0c524e77dc59f
+)
+
+                    --- use key: 2AA6B9B6F9C64247ABB2677B6AF2C896
+2022/10/20 14:51:54 --- url: https://uat-pos.jkopay.app/Test/Cancel
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 22C333334444455555
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 9999999
+    [MerchantTradeNo] => Test20221020145155
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/20 14:51:54
+    [Remark] => 
+    [SendTime] => 20221020145154
+    [StoreID] => Test
+    [StoreName] => TestStore
+    [TradeAmount] => 40
+    [UnRedeem] => 0
+    [Sign] => f13f87305976c6f8c1e24ef58335e1c5b608d3924c11420ccd007b71b00073ef
+)
+
+                    --- use key: 2AA6B9B6F9C64247ABB2677B6AF2C896
+                    --- pass string: {"CardToken":"22C333334444455555","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"9999999","MerchantTradeNo":"Test20221020145155","PosID":"m1","PosTradeTime":"2022/10/20 14:51:54","Remark":"","SendTime":"20221020145154","StoreID":"Test","StoreName":"TestStore","TradeAmount":40,"UnRedeem":0,"Sign":"f13f87305976c6f8c1e24ef58335e1c5b608d3924c11420ccd007b71b00073ef"}
+                    --- init result: {"MerchantID":"9999999","StoreID":"Test","MerchantTradeNo":"Test20221020145155","PosID":"m1","TradeAmount":40,"ActionCode":"0","StatusCode":"000","StatusDesc":"交易成功"}
+                    --- decode result: Array
+(
+    [MerchantID] => 9999999
+    [StoreID] => Test
+    [MerchantTradeNo] => Test20221020145155
+    [PosID] => m1
+    [TradeAmount] => 40
+    [ActionCode] => 0
+    [StatusCode] => 000
+    [StatusDesc] => 交易成功
+)
+
+                    --- pass string: {"CardToken":"22C333334444455555","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"9999999","MerchantTradeNo":"Test20221020145155","PosID":"m1","PosTradeTime":"2022/10/20 14:51:53","Remark":"","SendTime":"20221020145153","StoreID":"Test","StoreName":"TestStore","TradeAmount":40,"UnRedeem":0,"Sign":"3abd18c26e1510457bd04d5c6d6cab716be02434524015e918b0c524e77dc59f"}
+                    --- init result: {"MerchantID":"9999999","StoreID":"Test","GatewayTradeNo":"","MerchantTradeNo":"Test20221020145155","PosID":"m1","TradeNo":"J006522012210200000D","IsRep":0,"PaymentType":1,"TradeAmount":40,"DebitAmount":40,"RedeemName":"","RedeemAmount":0,"AvailableAmount":0,"InvoiceVehicle":"/7DX6J02","MerMemToken":"","Remark":"","Extra1":"","Extra2":"","Extra3":"{\"CardName\":\"街口帳戶\",\"CardNo\":\"123459003417190\"}","ActionCode":"0","StatusCode":"000","StatusDesc":"交易成功","TradeTime":"2022/10/20 14:51:55"}
+                    --- decode result: Array
+(
+    [MerchantID] => 9999999
+    [StoreID] => Test
+    [GatewayTradeNo] => 
+    [MerchantTradeNo] => Test20221020145155
+    [PosID] => m1
+    [TradeNo] => J006522012210200000D
+    [IsRep] => 0
+    [PaymentType] => 1
+    [TradeAmount] => 40
+    [DebitAmount] => 40
+    [RedeemName] => 
+    [RedeemAmount] => 0
+    [AvailableAmount] => 0
+    [InvoiceVehicle] => /7DX6J02
+    [MerMemToken] => 
+    [Remark] => 
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => {"CardName":"街口帳戶","CardNo":"123459003417190"}
+    [ActionCode] => 0
+    [StatusCode] => 000
+    [StatusDesc] => 交易成功
+    [TradeTime] => 2022/10/20 14:51:55
+)
+

@@ -1,0 +1,418 @@
+2022/10/18 14:29:00 --- url: https://uat-pos.jkopay.app/abula0001/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=utf-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 222822352742254769
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 2AA6B9B6F9C64247ABB2677B6AF2C896
+    [MerchantTradeNo] => abula000120221018142902
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/18 14:29:00
+    [Remark] => 
+    [SendTime] => 20221018142900
+    [StoreID] => abula0001
+    [StoreName] => 鬍子茶PLUS 誠品旗艦店
+    [TradeAmount] => 40
+    [UnRedeem] => 0
+    [Sign] => b611667e048698a6be83920e889fe8f4522b96169fa601da3d81185633aabba5
+)
+
+                    --- result: 
+2022/10/18 14:31:52 --- url: https://uat-pos.jkopay.app/abula0001/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=utf-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 226000352120822457
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 2AA6B9B6F9C64247ABB2677B6AF2C896
+    [MerchantTradeNo] => abula000120221018143154
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/18 14:31:52
+    [Remark] => 
+    [SendTime] => 20221018143152
+    [StoreID] => abula0001
+    [StoreName] => 鬍子茶PLUS 誠品旗艦店
+    [TradeAmount] => 40
+    [UnRedeem] => 0
+    [Sign] => a032ea7e9cc7aa0851518fbc9e155e16fc60dad928b19bca31d804da52e2e543
+)
+
+                    --- result: 
+2022/10/18 14:38:11 --- url: https://uat-pos.jkopay.app/test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=utf-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 226000302120327457
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 2AA6B9B6F9C64247ABB2677B6AF2C896
+    [MerchantTradeNo] => test20221018143813
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/18 14:38:11
+    [Remark] => 
+    [SendTime] => 20221018143811
+    [StoreID] => test
+    [StoreName] => TestStore
+    [TradeAmount] => 40
+    [UnRedeem] => 0
+    [Sign] => 3c4309a4ab690cafbf60d7701f483227b714e332a22963526db56221abdacb79
+)
+
+                    --- result: 
+2022/10/18 14:39:54 --- url: https://uat-pos.jkopay.app/test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=utf 8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 226000322330234471
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 2AA6B9B6F9C64247ABB2677B6AF2C896
+    [MerchantTradeNo] => test20221018143956
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/18 14:39:54
+    [Remark] => 
+    [SendTime] => 20221018143954
+    [StoreID] => test
+    [StoreName] => TestStore
+    [TradeAmount] => 40
+    [UnRedeem] => 0
+    [Sign] => 849dd948cb36148cf0c5820b203607c309b3a86c96d3aa2996e3fb601456337a
+)
+
+                    --- result: 
+2022/10/18 14:41:24 --- url: https://uat-pos.jkopay.app/test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=utf 8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 227111483691836588
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 2AA6B9B6F9C64247ABB2677B6AF2C896
+    [MerchantTradeNo] => test20221018144126
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/18 14:41:24
+    [Remark] => 
+    [SendTime] => 20221018144124
+    [StoreID] => test
+    [StoreName] => TestStore
+    [TradeAmount] => 40
+    [UnRedeem] => 0
+    [Sign] => 0702d1cb2248740ba8edeb2c7298383f29a1a5d36755ca10f574ca4fdb16a106
+)
+
+                    --- result: 
+2022/10/18 14:44:45 --- url: https://uat-pos.jkopay.app/test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=utf-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 220060513420602274
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 2AA6B9B6F9C64247ABB2677B6AF2C896
+    [MerchantTradeNo] => test20221018144447
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/18 14:44:45
+    [Remark] => 
+    [SendTime] => 20221018144445
+    [StoreID] => test
+    [StoreName] => TestStore
+    [TradeAmount] => 40
+    [UnRedeem] => 0
+    [Sign] => 1f22b5f5fbd7483726d58f9dbc9b7396768ca2b4a220bc3ea2eceaf175cd5cdf
+)
+
+                    --- result: 
+2022/10/18 14:48:21 --- url: https://uat-pos.jkopay.app/test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=utf-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 229883463595290061
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 2AA6B9B6F9C64247ABB2677B6AF2C896
+    [MerchantTradeNo] => test20221018144823
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/18 14:48:21
+    [Remark] => 
+    [SendTime] => 20221018144821
+    [StoreID] => test
+    [StoreName] => TestStore
+    [TradeAmount] => 40
+    [UnRedeem] => 0
+    [Sign] => 3c21266618b992f24273cfae02a3615b594b77c9e46c10b905d59849734b4e8e
+)
+
+                    --- result: 
+2022/10/18 14:50:54 --- url: https://uat-pos.jkopay.app/test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=utf-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 226000321380221477
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 2AA6B9B6F9C64247ABB2677B6AF2C896
+    [MerchantTradeNo] => test20221018145056
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/18 14:50:54
+    [Remark] => 
+    [SendTime] => 20221018145054
+    [StoreID] => test
+    [StoreName] => TestStore
+    [TradeAmount] => 40
+    [UnRedeem] => 0
+    [Sign] => f9d4dcd57b53a58f38f3b116a6265919b23fd789741dfe2397c48c85bae78035
+)
+
+                    --- pass string: {"CardToken":"226000321380221477","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"2AA6B9B6F9C64247ABB2677B6AF2C896","MerchantTradeNo":"test20221018145056","PosID":"m1","PosTradeTime":"2022\/10\/18 14:50:54","Remark":"","SendTime":"20221018145054","StoreID":"test","StoreName":"TestStore","TradeAmount":40,"UnRedeem":0,"Sign":"f9d4dcd57b53a58f38f3b116a6265919b23fd789741dfe2397c48c85bae78035"}
+                    --- result: 
+2022/10/18 14:52:29 --- url: https://uat-pos.jkopay.app/test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=utf-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 220600530227022947
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 9999999
+    [MerchantTradeNo] => test20221018145231
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/18 14:52:29
+    [Remark] => 
+    [SendTime] => 20221018145229
+    [StoreID] => test
+    [StoreName] => TestStore
+    [TradeAmount] => 40
+    [UnRedeem] => 0
+    [Sign] => 1a2aeb321ce30a544f4c7a535c2d59599d061fca87e9a7ab281993701a113fba
+)
+
+                    --- pass string: {"CardToken":"220600530227022947","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"9999999","MerchantTradeNo":"test20221018145231","PosID":"m1","PosTradeTime":"2022\/10\/18 14:52:29","Remark":"","SendTime":"20221018145229","StoreID":"test","StoreName":"TestStore","TradeAmount":40,"UnRedeem":0,"Sign":"1a2aeb321ce30a544f4c7a535c2d59599d061fca87e9a7ab281993701a113fba"}
+                    --- result: 
+2022/10/18 14:53:33 --- url: https://uat-pos.jkopay.app/test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json;charset=utf-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 226000352170727447
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 9999999
+    [MerchantTradeNo] => test20221018145335
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/18 14:53:33
+    [Remark] => 
+    [SendTime] => 20221018145333
+    [StoreID] => test
+    [StoreName] => TestStore
+    [TradeAmount] => 40
+    [UnRedeem] => 0
+    [Sign] => ace269725d480d05ed7279e712e19c0750086cc3947b16304e0d39fb3a0712d0
+)
+
+                    --- pass string: {"CardToken":"226000352170727447","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"9999999","MerchantTradeNo":"test20221018145335","PosID":"m1","PosTradeTime":"2022\/10\/18 14:53:33","Remark":"","SendTime":"20221018145333","StoreID":"test","StoreName":"TestStore","TradeAmount":40,"UnRedeem":0,"Sign":"ace269725d480d05ed7279e712e19c0750086cc3947b16304e0d39fb3a0712d0"}
+                    --- result: 
+2022/10/18 14:57:31 --- url: https://uat-pos.jkopay.app/test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json;charset=utf-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 227111483651938518
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 9999999
+    [MerchantTradeNo] => test20221018145733
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/18 14:57:31
+    [Remark] => 
+    [SendTime] => 20221018145731
+    [StoreID] => test
+    [StoreName] => TestStore
+    [TradeAmount] => 40
+    [UnRedeem] => 0
+    [Sign] => c0c34b65625de0f4bb07cbdded36a1966b38e0cc8740fef8127c6bbada06db97
+)
+
+                    --- pass string: {"CardToken":"227111483651938518","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"9999999","MerchantTradeNo":"test20221018145733","PosID":"m1","PosTradeTime":"2022\/10\/18 14:57:31","Remark":"","SendTime":"20221018145731","StoreID":"test","StoreName":"TestStore","TradeAmount":40,"UnRedeem":0,"Sign":"c0c34b65625de0f4bb07cbdded36a1966b38e0cc8740fef8127c6bbada06db97"}
+                    --- result: 
+                    --- decode result: 
+2022/10/18 15:07:11 --- url: https://uat-pos.jkopay.app/test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json;charset=utf-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 227111493661631538
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 9999999
+    [MerchantTradeNo] => test20221018150713
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/18 15:07:11
+    [Remark] => 
+    [SendTime] => 20221018150711
+    [StoreID] => test
+    [StoreName] => TestStore
+    [TradeAmount] => 40
+    [UnRedeem] => 0
+    [Sign] => e56976c1edce3153405b23d73ecfcf13afa9c16997f4a955883b3dd233618b6b
+)
+
+                    --- pass string: {"CardToken":"227111493661631538","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"9999999","MerchantTradeNo":"test20221018150713","PosID":"m1","PosTradeTime":"2022\/10\/18 15:07:11","Remark":"","SendTime":"20221018150711","StoreID":"test","StoreName":"TestStore","TradeAmount":"40","UnRedeem":"0","Sign":"e56976c1edce3153405b23d73ecfcf13afa9c16997f4a955883b3dd233618b6b"}
+                    --- result: 
+                    --- decode result: 
+2022/10/18 15:11:34 --- url: https://uat-pos.jkopay.app/test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json;charset=utf-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 222822754744244569
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 9999999
+    [MerchantTradeNo] => test20221018151136
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/18 15:11:34
+    [Remark] => 
+    [SendTime] => 20221018151134
+    [StoreID] => test
+    [StoreName] => TestStore
+    [TradeAmount] => 40
+    [UnRedeem] => 0
+    [Sign] => c408f6a0a9e4fcb046357f25abf412c97029314b41d5dfae03ee41f6cbc78e49
+)
+
+                    --- pass string: {"CardToken":"222822754744244569","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"9999999","MerchantTradeNo":"test20221018151136","PosID":"m1","PosTradeTime":"2022\/10\/18 15:11:34","Remark":"","SendTime":"20221018151134","StoreID":"test","StoreName":"TestStore","TradeAmount":40,"UnRedeem":0,"Sign":"c408f6a0a9e4fcb046357f25abf412c97029314b41d5dfae03ee41f6cbc78e49"}
+                    --- result: 
+                    --- decode result: 
+2022/10/18 15:20:50 --- url: https://uat-pos.jkopay.app/test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json;charset=utf-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 224404407962646418
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 9999999
+    [MerchantTradeNo] => test20221018152052
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/18 15:20:50
+    [Remark] => 
+    [SendTime] => 20221018152050
+    [StoreID] => test
+    [StoreName] => TestStore
+    [TradeAmount] => 40
+    [UnRedeem] => 0
+    [Sign] => b8bf4b7681755deb653d49e5e7f9fe48b4af13f7b7234611bb27cce90f115741
+)
+
+                    --- pass string: {"CardToken":"224404407962646418","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"9999999","MerchantTradeNo":"test20221018152052","PosID":"m1","PosTradeTime":"2022\/10\/18 15:20:50","Remark":"","SendTime":"20221018152050","StoreID":"test","StoreName":"TestStore","TradeAmount":"40","UnRedeem":"0","Sign":"b8bf4b7681755deb653d49e5e7f9fe48b4af13f7b7234611bb27cce90f115741"}
+                    --- result: 
+                    --- decode result: 
+2022/10/18 15:22:28 --- url: https://uat-pos.jkopay.app/test/Payment
+                    --- header: Array
+(
+    [0] => Content-Type:application/json; charset=utf-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 224404667965846518
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 9999999
+    [MerchantTradeNo] => test20221018152230
+    [PosID] => m1
+    [PosTradeTime] => 2022/10/18 15:22:28
+    [Remark] => 
+    [SendTime] => 20221018152228
+    [StoreID] => test
+    [StoreName] => TestStore
+    [TradeAmount] => 40
+    [UnRedeem] => 0
+    [Sign] => 0e525d787089092498e1acb5292e242e3d18515fd0c9a0bcf7290c3d38593ecb
+)
+
+                    --- pass string: {"CardToken":"224404667965846518","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"9999999","MerchantTradeNo":"test20221018152230","PosID":"m1","PosTradeTime":"2022\/10\/18 15:22:28","Remark":"","SendTime":"20221018152228","StoreID":"test","StoreName":"TestStore","TradeAmount":"40","UnRedeem":"0","Sign":"0e525d787089092498e1acb5292e242e3d18515fd0c9a0bcf7290c3d38593ecb"}
+                    --- result: 
+                    --- decode result: 

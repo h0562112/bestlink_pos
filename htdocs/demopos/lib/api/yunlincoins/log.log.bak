@@ -1,0 +1,104 @@
+2022/10/17 17:59:30 --- ConsumeNubi
+                    --- url= http://nubi-uat.tdsc.com.tw:82/api/Exchange/ConsumeNubi
+                    --- method= post
+                    --- header= Array
+(
+    [0] => Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbGlfaHV3ZWkiLCJqdGkiOiI2NWI0MGVmYi02MTJhLTQ0M2EtOTY0OC0yYWRjZWUyNzVmOTUiLCJyb2xlcyI6WyJBZG1pbiIsIlVzZXJzIl0sIm5iZiI6MTY2NjAwMDc1OCwiZXhwIjoxNjY2MDAwODE4LCJpYXQiOjE2NjYwMDA3NTgsImlzcyI6IkRpZ2l0aXRDaXRpemVuIn0.wefb1Htv-0rMvp7i2RJ4Rt9JVDaOVMq4_GdKMa6gLso
+    [1] => Content-Type: application/json
+)
+
+                    --- json string= {"From":"Huwei","Account":"0978320351","ConsumeAmount":"10","ConsumeItems":"\u514c\u63db\u5132\u503c\u91d1","CommodityHolder":"TestStore","Timestamp":"2022-10-17 17:59:29"}
+                    --- encrypt string= RHF6jb2p03Xj16SDBbKPSP0HY/ZqNi/pj+FIVaX0gaFcatd6r/nxs8mzS72oM82r8/S+7qMeQSbUZ5kKRCa5x9eCol8vrFcDcgrFUallcMi+uJ5JbCuZWmMRqkazTrKrnFwNrfX9M/i5OzPBCddwOeflUUoO+MZ4v+N+LQVDDWDWnPnhu7IvLRsXDZIQyVj8FZwAnEHW9VFk1dVnW80e0dKdp09HgRWKTIxF19iZDbY=
+                    --- request= {"type":"huwei","data":"RHF6jb2p03Xj16SDBbKPSP0HY\/ZqNi\/pj+FIVaX0gaFcatd6r\/nxs8mzS72oM82r8\/S+7qMeQSbUZ5kKRCa5x9eCol8vrFcDcgrFUallcMi+uJ5JbCuZWmMRqkazTrKrnFwNrfX9M\/i5OzPBCddwOeflUUoO+MZ4v+N+LQVDDWDWnPnhu7IvLRsXDZIQyVj8FZwAnEHW9VFk1dVnW80e0dKdp09HgRWKTIxF19iZDbY="}
+                    --- response= {"valid":true,"resultCode":0,"resultMessage":"success","value":{"result":false,"message":"不明錯誤","resultCode":"999"}}
+2022/10/17 18:01:54 --- ConsumeNubi
+                    --- url= http://nubi-uat.tdsc.com.tw:82/api/Exchange/ConsumeNubi
+                    --- method= post
+                    --- header= Array
+(
+    [0] => Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbGlfaHV3ZWkiLCJqdGkiOiJhYzY3MTRiOC05NmI0LTQ0ZTItOWUwMC1lMDA4YWExYzg3MGEiLCJyb2xlcyI6WyJBZG1pbiIsIlVzZXJzIl0sIm5iZiI6MTY2NjAwMDkwNSwiZXhwIjoxNjY2MDAwOTY1LCJpYXQiOjE2NjYwMDA5MDUsImlzcyI6IkRpZ2l0aXRDaXRpemVuIn0.OjBR8evjESfBB10ly-28zUk3HK-daOAFFT26cxQwqLE
+    [1] => Content-Type: application/json
+)
+
+                    --- json string= {"From":"Huwei","Account":"0978320351","ConsumeAmount":"10","Timestamp":"2022-10-17 18:01:54"}
+                    --- encrypt string= RHF6jb2p03Xj16SDBbKPSP0HY/ZqNi/pj+FIVaX0gaFcatd6r/nxs8mzS72oM82rE09DZ9Nk3ostMFHzDsq0GahZ7BWbISVL2YJQy8YBC+jQdQfAUqDeQ0m0I7Ikb3dp
+                    --- request= {"type":"huwei","data":"RHF6jb2p03Xj16SDBbKPSP0HY\/ZqNi\/pj+FIVaX0gaFcatd6r\/nxs8mzS72oM82rE09DZ9Nk3ostMFHzDsq0GahZ7BWbISVL2YJQy8YBC+jQdQfAUqDeQ0m0I7Ikb3dp"}
+                    --- response= {"valid":true,"resultCode":0,"resultMessage":"success","value":{"result":false,"message":"不明錯誤","resultCode":"999"}}
+2022/10/17 18:13:49 --- ConsumeNubi
+                    --- url= http://nubi-uat.tdsc.com.tw:82/api/Exchange/ConsumeNubi
+                    --- method= post
+                    --- header= Array
+(
+    [0] => Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbGlfaHV3ZWkiLCJqdGkiOiJlOTZkZDNiYi04Nzk3LTQ1MjQtYmRjYS1mMzFkN2IzMjI5YjIiLCJyb2xlcyI6WyJBZG1pbiIsIlVzZXJzIl0sIm5iZiI6MTY2NjAwMTYyMiwiZXhwIjoxNjY2MDAxNjgyLCJpYXQiOjE2NjYwMDE2MjIsImlzcyI6IkRpZ2l0aXRDaXRpemVuIn0.co4HNh1F8z1wChb_HhCHgqxgc8tFRZavm8BmN4iudBM
+    [1] => Content-Type: application/json
+)
+
+                    --- json string= {"From":"Huwei","Account":"0978320351","ConsumeAmount":"10","ConsumeItems":"BuyItmes","CommodityHolder":"TestStore","Timestamp":"2022-10-17 18:13:49"}
+                    --- encrypt string= RHF6jb2p03Xj16SDBbKPSP0HY/ZqNi/pj+FIVaX0gaFcatd6r/nxs8mzS72oM82r8/S+7qMeQSbUZ5kKRCa5x8XRBeGjYI+8uhFTueuwcIB3gfRsrFUj6GuGbin5+jSthE8P5gTBJVZO0UY85yIMNKFWvm5fsh9j/D3YU9Y3pms6U3rUpVgRdk8mKgr2L2jAfvnRq/gGh/46+YW6gsSE4A==
+                    --- request= {"type":"huwei","data":"RHF6jb2p03Xj16SDBbKPSP0HY\/ZqNi\/pj+FIVaX0gaFcatd6r\/nxs8mzS72oM82r8\/S+7qMeQSbUZ5kKRCa5x8XRBeGjYI+8uhFTueuwcIB3gfRsrFUj6GuGbin5+jSthE8P5gTBJVZO0UY85yIMNKFWvm5fsh9j\/D3YU9Y3pms6U3rUpVgRdk8mKgr2L2jAfvnRq\/gGh\/46+YW6gsSE4A=="}
+                    --- response= {"valid":true,"resultCode":0,"resultMessage":"success","value":{"result":false,"message":"不明錯誤","resultCode":"999"}}
+2022/10/17 18:19:47 --- ConsumeNubi
+                    --- url= http://nubi-uat.tdsc.com.tw:82/api/Exchange/ConsumeNubi
+                    --- method= post
+                    --- header= Array
+(
+    [0] => Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbGlfaHV3ZWkiLCJqdGkiOiI1M2VjZWM0Zi1kNDYyLTQ5NDctYTU0OS02ZjBiYmJkYWVkZDgiLCJyb2xlcyI6WyJBZG1pbiIsIlVzZXJzIl0sIm5iZiI6MTY2NjAwMTk2MSwiZXhwIjoxNjY2MDAyMDIxLCJpYXQiOjE2NjYwMDE5NjEsImlzcyI6IkRpZ2l0aXRDaXRpemVuIn0.JK7Xaa02szx02eAckI3IUV5TKleZrSUZ57-2hus_hOU
+    [1] => Content-Type: application/json
+)
+
+                    --- json string= {"From":"Huwei","Account":"0978320351","ConsumeAmount":"10","ConsumeItems":"BuyItems","CommodityHolder":"TestStore","Timestamp":"2022-10-17 18:19:46"}
+                    --- encrypt string= RHF6jb2p03Xj16SDBbKPSP0HY/ZqNi/pj+FIVaX0gaFcatd6r/nxs8mzS72oM82r8/S+7qMeQSbUZ5kKRCa5x8XRBeGjYI+8uhFTueuwcIDXTnliS/vu3Ct92p6cKpdCH3kQS0ukdcmL9r2QysVgBNi1QBGgnzPCCJpjNYmgA7gIXRiXiAcfftW5aHlVd7bGn/iJlPNDq27ZCW2LtrMdNg==
+                    --- request= {"type":"huwei","data":"RHF6jb2p03Xj16SDBbKPSP0HY\/ZqNi\/pj+FIVaX0gaFcatd6r\/nxs8mzS72oM82r8\/S+7qMeQSbUZ5kKRCa5x8XRBeGjYI+8uhFTueuwcIDXTnliS\/vu3Ct92p6cKpdCH3kQS0ukdcmL9r2QysVgBNi1QBGgnzPCCJpjNYmgA7gIXRiXiAcfftW5aHlVd7bGn\/iJlPNDq27ZCW2LtrMdNg=="}
+                    --- response= {"valid":true,"resultCode":0,"resultMessage":"success","value":{"result":false,"message":"不明錯誤","resultCode":"999"}}
+2022/10/27 14:20:41 --- ConsumeNubi
+                    --- url= https://nubiapi.yunlin.gov.tw/api/Exchange/ConsumeNubi
+                    --- method= post
+                    --- header= Array
+(
+    [0] => Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbGlfaHV3ZWkiLCJqdGkiOiIzMzg4MmM0Yy05NDE1LTRlYjItOTk0Yi03MWJiODkwOTAzOWMiLCJyb2xlcyI6WyJBZG1pbiIsIlVzZXJzIl0sIm5iZiI6MTY2Njg1MTUyNSwiZXhwIjoxNjY2ODUxNTg1LCJpYXQiOjE2NjY4NTE1MjUsImlzcyI6IkRpZ2l0aXRDaXRpemVuIn0.ioP5Cfa6fqF8a4NVhTUpIgsczejLPhqtr8Bl-VhqQyY
+    [1] => Content-Type: application/json
+)
+
+                    --- json string= {"From":"Huwei","Account":"0903356558","ConsumeAmount":"10","ConsumeItems":"\u514c\u63db\u96f2\u6797\u5e63","CommodityHolder":"doubleplus0019","Description":"\u864e\u5c3e\u514c\u9ede\u7d00\u9304","Timestamp":"2022-10-27 14:20:41"}
+                    --- encrypt string= eqAP52Za6VCjWGYrXy3lKYAabqkqEm+woNPE3nI7U6hwTpF6F0WPlsRUXgM8c/h4fm5oTbVkj6cXGHedML0pZRvJo+/LxgWW7OQq/QfjFQrA8a5QvHz3Ls9d3lhxEwlouY+B5KppbuUH/y6bHKcvERUFZ/k7YM5WSbmWr7cI0JuBEu+qq5j/gjfAWqqW4xUV4d3W/6xWJ41nqvnmS/zAofLrpV1Rui6L3zE4W/4t6BBfqRyAkVf81BSLQu7RnVLzgSpFWQZxhe6zZ+JYb1dJXQH0fjlHQsQEvXW8cAmhZoJIJIwmQAAyKvb77xZXEvf5
+                    --- request= {"type":"huwei","data":"eqAP52Za6VCjWGYrXy3lKYAabqkqEm+woNPE3nI7U6hwTpF6F0WPlsRUXgM8c\/h4fm5oTbVkj6cXGHedML0pZRvJo+\/LxgWW7OQq\/QfjFQrA8a5QvHz3Ls9d3lhxEwlouY+B5KppbuUH\/y6bHKcvERUFZ\/k7YM5WSbmWr7cI0JuBEu+qq5j\/gjfAWqqW4xUV4d3W\/6xWJ41nqvnmS\/zAofLrpV1Rui6L3zE4W\/4t6BBfqRyAkVf81BSLQu7RnVLzgSpFWQZxhe6zZ+JYb1dJXQH0fjlHQsQEvXW8cAmhZoJIJIwmQAAyKvb77xZXEvf5"}
+                    --- response= {"valid":true,"resultCode":0,"resultMessage":"success","value":{"result":false,"message":"不明錯誤","resultCode":"999"}}
+2022/10/27 14:21:19 --- ConsumeNubi
+                    --- url= http://nubi-uat.tdsc.com.tw:82/api/Exchange/ConsumeNubi
+                    --- method= post
+                    --- header= Array
+(
+    [0] => Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbGlfaHV3ZWkiLCJqdGkiOiIwNzRiZmM1MS0zZjE1LTRkOTEtYWMzNy0yN2FhMDRkMGQzZjQiLCJyb2xlcyI6WyJBZG1pbiIsIlVzZXJzIl0sIm5iZiI6MTY2Njg1MTY1OCwiZXhwIjoxNjY2ODUxNzE4LCJpYXQiOjE2NjY4NTE2NTgsImlzcyI6IkRpZ2l0aXRDaXRpemVuIn0.NyK8mSihaH2UQG-VoHocnHraQejmwzBp6lkbyvKdqgg
+    [1] => Content-Type: application/json
+)
+
+                    --- json string= {"From":"Huwei","Account":"0978320351","ConsumeAmount":"10","ConsumeItems":"\u514c\u63db\u96f2\u6797\u5e63","CommodityHolder":"doubleplus0019","Description":"\u864e\u5c3e\u514c\u9ede\u7d00\u9304","Timestamp":"2022-10-27 14:21:19"}
+                    --- encrypt string= RHF6jb2p03Xj16SDBbKPSP0HY/ZqNi/pj+FIVaX0gaFcatd6r/nxs8mzS72oM82r8/S+7qMeQSbUZ5kKRCa5x9eCol8vrFcDcgrFUallcMjTrdBe/L1PrwQ2sP1OAyx3fwtxg5uT0ROmfzAykyV0JmF8uC7GocoRUIEnVlSTX0qLSsEAg/4XqUWBDMRc2bqaLcrbXQVEmOuO0Df5Fk7lN1clZZMlNQEpdlN2f47RqY2h0DPYzLKdrpxg6SLyL9jCLLfqQYEuiRqYqW1R13ouvaoH41QKV8bjd2xQE4rRs/Yp44nMAi0q5GSsDmAlfiLx
+                    --- request= {"type":"huwei","data":"RHF6jb2p03Xj16SDBbKPSP0HY\/ZqNi\/pj+FIVaX0gaFcatd6r\/nxs8mzS72oM82r8\/S+7qMeQSbUZ5kKRCa5x9eCol8vrFcDcgrFUallcMjTrdBe\/L1PrwQ2sP1OAyx3fwtxg5uT0ROmfzAykyV0JmF8uC7GocoRUIEnVlSTX0qLSsEAg\/4XqUWBDMRc2bqaLcrbXQVEmOuO0Df5Fk7lN1clZZMlNQEpdlN2f47RqY2h0DPYzLKdrpxg6SLyL9jCLLfqQYEuiRqYqW1R13ouvaoH41QKV8bjd2xQE4rRs\/Yp44nMAi0q5GSsDmAlfiLx"}
+                    --- response= {"valid":true,"resultCode":0,"resultMessage":"success","value":{"result":false,"message":"不明錯誤","resultCode":"999"}}
+2022/10/27 14:27:19 --- ConsumeNubi
+                    --- url= https://nubiapi.yunlin.gov.tw/api/Exchange/ConsumeNubi
+                    --- method= post
+                    --- header= Array
+(
+    [0] => Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbGlfaHV3ZWkiLCJqdGkiOiJmZTVmMmMyZC0yYjhhLTQyN2UtYmE1Yi04MTA2NWNhYzZjYTgiLCJyb2xlcyI6WyJBZG1pbiIsIlVzZXJzIl0sIm5iZiI6MTY2Njg1MjAyOSwiZXhwIjoxNjY2ODUyMDg5LCJpYXQiOjE2NjY4NTIwMjksImlzcyI6IkRpZ2l0aXRDaXRpemVuIn0.PsbkstLYqPCVcExRsq6RK0ni3MDRo2L2hPc5P5QodnQ
+    [1] => Content-Type: application/json
+)
+
+                    --- json string= {"From":"Huwei","Account":"0903356558","ConsumeAmount":"10","ConsumeItems":"\u514c\u63db\u96f2\u6797\u5e63","CommodityHolder":"doubleplus0019","Description":"\u864e\u5c3e\u514c\u9ede\u7d00\u9304","Timestamp":"2022-10-27 14:27:19"}
+                    --- encrypt string= eqAP52Za6VCjWGYrXy3lKYAabqkqEm+woNPE3nI7U6hwTpF6F0WPlsRUXgM8c/h4fm5oTbVkj6cXGHedML0pZRvJo+/LxgWW7OQq/QfjFQrA8a5QvHz3Ls9d3lhxEwlouY+B5KppbuUH/y6bHKcvERUFZ/k7YM5WSbmWr7cI0JuBEu+qq5j/gjfAWqqW4xUV4d3W/6xWJ41nqvnmS/zAofLrpV1Rui6L3zE4W/4t6BBfqRyAkVf81BSLQu7RnVLzgSpFWQZxhe6zZ+JYb1dJXQH0fjlHQsQEvXW8cAmhZoK1sfitQI6MBB7L3gjmcIze
+                    --- request= {"type":"huwei","data":"eqAP52Za6VCjWGYrXy3lKYAabqkqEm+woNPE3nI7U6hwTpF6F0WPlsRUXgM8c\/h4fm5oTbVkj6cXGHedML0pZRvJo+\/LxgWW7OQq\/QfjFQrA8a5QvHz3Ls9d3lhxEwlouY+B5KppbuUH\/y6bHKcvERUFZ\/k7YM5WSbmWr7cI0JuBEu+qq5j\/gjfAWqqW4xUV4d3W\/6xWJ41nqvnmS\/zAofLrpV1Rui6L3zE4W\/4t6BBfqRyAkVf81BSLQu7RnVLzgSpFWQZxhe6zZ+JYb1dJXQH0fjlHQsQEvXW8cAmhZoK1sfitQI6MBB7L3gjmcIze"}
+                    --- response= {"valid":true,"resultCode":0,"resultMessage":"success","value":{"result":false,"message":"不明錯誤","resultCode":"999"}}
+2022/10/27 14:27:46 --- ConsumeNubi
+                    --- url= https://nubiapi.yunlin.gov.tw/api/Exchange/ConsumeNubi
+                    --- method= post
+                    --- header= Array
+(
+    [0] => Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbGlfaHV3ZWkiLCJqdGkiOiJmZTVmMmMyZC0yYjhhLTQyN2UtYmE1Yi04MTA2NWNhYzZjYTgiLCJyb2xlcyI6WyJBZG1pbiIsIlVzZXJzIl0sIm5iZiI6MTY2Njg1MjAyOSwiZXhwIjoxNjY2ODUyMDg5LCJpYXQiOjE2NjY4NTIwMjksImlzcyI6IkRpZ2l0aXRDaXRpemVuIn0.PsbkstLYqPCVcExRsq6RK0ni3MDRo2L2hPc5P5QodnQ
+    [1] => Content-Type: application/json
+)
+
+                    --- json string= {"From":"Huwei","Account":"0903356558","ConsumeAmount":"10","ConsumeItems":"\u514c\u63db\u96f2\u6797\u5e63","CommodityHolder":"doubleplus0019","Description":"Huwei\u514c\u9ede\u7d00\u9304","Timestamp":"2022-10-27 14:27:46"}
+                    --- encrypt string= eqAP52Za6VCjWGYrXy3lKYAabqkqEm+woNPE3nI7U6hwTpF6F0WPlsRUXgM8c/h4fm5oTbVkj6cXGHedML0pZRvJo+/LxgWW7OQq/QfjFQrA8a5QvHz3Ls9d3lhxEwlouY+B5KppbuUH/y6bHKcvERUFZ/k7YM5WSbmWr7cI0JuBEu+qq5j/gjfAWqqW4xUVBGArPOzLd9Bk3cYpEMU6fY3ggUybnIvcx3UG2M1JCdcKtg+DJgC3Lh3ArxFGIbZfRYIBWkpLYLAmQe54FjL7DftJrV1E0wbn+45a0k/zMLQ=
+                    --- request= {"type":"huwei","data":"eqAP52Za6VCjWGYrXy3lKYAabqkqEm+woNPE3nI7U6hwTpF6F0WPlsRUXgM8c\/h4fm5oTbVkj6cXGHedML0pZRvJo+\/LxgWW7OQq\/QfjFQrA8a5QvHz3Ls9d3lhxEwlouY+B5KppbuUH\/y6bHKcvERUFZ\/k7YM5WSbmWr7cI0JuBEu+qq5j\/gjfAWqqW4xUVBGArPOzLd9Bk3cYpEMU6fY3ggUybnIvcx3UG2M1JCdcKtg+DJgC3Lh3ArxFGIbZfRYIBWkpLYLAmQe54FjL7DftJrV1E0wbn+45a0k\/zMLQ="}
+                    --- response= {"valid":true,"resultCode":0,"resultMessage":"success","value":{"result":false,"message":"不明錯誤","resultCode":"999"}}

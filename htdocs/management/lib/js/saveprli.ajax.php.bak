@@ -1,0 +1,123 @@
+<?php
+include_once '../../../tool/inilib.php';
+$prli=parse_ini_file('../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/itemprinttype.ini',true);
+if(!file_exists('../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/timeout.ini')){
+	date_default_timezone_set('Asia/Taipei');
+}
+else{
+	$timeout=parse_ini_file('../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/timeout.ini',true);
+	if(!isset($timeout['time']['name'])){
+		date_default_timezone_set('Asia/Taipei');
+	}
+	else{
+		date_default_timezone_set($timeout['time']['name']);
+	}
+}
+$ver=parse_ini_file('../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/ver.ini',true);
+$ver['ver']['update']=date('YmdHis');
+write_ini_file($ver,'../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/ver.ini');
+$prli[$_POST['number']]['name']=$_POST['name'];
+if(isset($_POST['type'])){
+	$prli[$_POST['number']]['type']=$_POST['type'];
+}
+else{
+	$prli[$_POST['number']]['type']='1';
+}
+if(isset($_POST['clientlist1'])){
+	$prli[$_POST['number']]['clientlist1']='1';
+}
+else{
+	$prli[$_POST['number']]['clientlist1']='0';
+}
+if(isset($_POST['tag1'])){
+	$prli[$_POST['number']]['tag1']='1';
+}
+else{
+	$prli[$_POST['number']]['tag1']='0';
+}
+if(isset($_POST['kitchen1'])){
+	$prli[$_POST['number']]['kitchen1']='1';
+}
+else{
+	$prli[$_POST['number']]['kitchen1']='0';
+}
+if(isset($_POST['list1'])){
+	$prli[$_POST['number']]['list1']='1';
+}
+else{
+	$prli[$_POST['number']]['list1']='0';
+}
+if(isset($_POST['clientlist2'])){
+	$prli[$_POST['number']]['clientlist2']='1';
+}
+else{
+	$prli[$_POST['number']]['clientlist2']='0';
+}
+if(isset($_POST['tag2'])){
+	$prli[$_POST['number']]['tag2']='1';
+}
+else{
+	$prli[$_POST['number']]['tag2']='0';
+}
+if(isset($_POST['kitchen2'])){
+	$prli[$_POST['number']]['kitchen2']='1';
+}
+else{
+	$prli[$_POST['number']]['kitchen2']='0';
+}
+if(isset($_POST['list2'])){
+	$prli[$_POST['number']]['list2']='1';
+}
+else{
+	$prli[$_POST['number']]['list2']='0';
+}
+if(isset($_POST['clientlist3'])){
+	$prli[$_POST['number']]['clientlist3']='1';
+}
+else{
+	$prli[$_POST['number']]['clientlist3']='0';
+}
+if(isset($_POST['tag3'])){
+	$prli[$_POST['number']]['tag3']='1';
+}
+else{
+	$prli[$_POST['number']]['tag3']='0';
+}
+if(isset($_POST['kitchen3'])){
+	$prli[$_POST['number']]['kitchen3']='1';
+}
+else{
+	$prli[$_POST['number']]['kitchen3']='0';
+}
+if(isset($_POST['list3'])){
+	$prli[$_POST['number']]['list3']='1';
+}
+else{
+	$prli[$_POST['number']]['list3']='0';
+}
+if(isset($_POST['clientlist4'])){
+	$prli[$_POST['number']]['clientlist4']='1';
+}
+else{
+	$prli[$_POST['number']]['clientlist4']='0';
+}
+if(isset($_POST['tag4'])){
+	$prli[$_POST['number']]['tag4']='1';
+}
+else{
+	$prli[$_POST['number']]['tag4']='0';
+}
+if(isset($_POST['kitchen4'])){
+	$prli[$_POST['number']]['kitchen4']='1';
+}
+else{
+	$prli[$_POST['number']]['kitchen4']='0';
+}
+if(isset($_POST['list4'])){
+	$prli[$_POST['number']]['list4']='1';
+}
+else{
+	$prli[$_POST['number']]['list4']='0';
+}
+write_ini_file($prli,'../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/itemprinttype.ini');
+?>

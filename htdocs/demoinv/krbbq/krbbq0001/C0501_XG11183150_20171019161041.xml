@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CancelInvoice xmlns="urn:GEINV:eInvoiceMessage:C0501:3.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:GEINV:eInvoiceMessage:C0501:3.1 C0501.xsd">
+<CancelInvoiceNumber>XG11183150</CancelInvoiceNumber><InvoiceDate>20171019</InvoiceDate><BuyerId>0000000000</BuyerId><SellerId>72322233</SellerId><CancelDate>20171019</CancelDate><CancelTime>16:41:40</CancelTime><CancelReason>作廢發票</CancelReason></CancelInvoice>

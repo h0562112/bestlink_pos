@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Socket.IO chat</title>
+		<!-- //new addition -->
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<!-- //end -->
+	</head>
+	<body>
+		<ul id="messages"></ul>
+		<form action="">
+			<input id="m" autocomplete="off" /><button>发送</button>
+		</form>
+	</body>
+
+	<!-- //new addition -->
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		var name   = prompt("请输入你的昵称：");
+		var socket = io();
+		function addLine(msg) {
+			if(typeof msg==='object'){
+				if(msg[0]==name){
+					$('#messages').append($('<li>').text(msg[0]+':'+msg[1]));
+				}
+				else{
+				}
+			}
+			else{
+				$('#messages').append($('<li>').text(msg));
+			}
+		};
+		socket.emit("join", name);
+		socket.on("join", function (user) {
+			addLine(user + " 加入了群聊");
+		});
+
+		//接收到服务器发来的message事件
+		socket.on("message", function(msg) {
+			if(msg[1]=='reload'){
+				location.reload();
+			}
+			else{
+				addLine(msg);
+			}
+		});
+
+		$('form').submit(function () {
+			//solve code
+			var msg = [name,$("#m").val()];
+			socket.emit("message", msg); //将消息发送给服务器
+			$("#m").val(""); //置空消息框
+			return false; //阻止form提交
+		})
+	</script>
+	<!-- //end -->
+</html>

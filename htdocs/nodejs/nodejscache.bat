@@ -1,0 +1,1 @@
+npm config set cache "C:\POS\htdocs\nodejs\node_cache"

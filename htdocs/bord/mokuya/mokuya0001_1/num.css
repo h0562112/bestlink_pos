@@ -1,0 +1,13 @@
+body {
+	
+	overflow:hidden;
+}
+#numbertext {
+	/*font-size:300px;*/
+	font-size:200px;
+	font-family:Arial;
+	/*letter-spacing:28px;*/
+	letter-spacing:12px;
+	text-align:center;
+	font-weight:bold;
+}

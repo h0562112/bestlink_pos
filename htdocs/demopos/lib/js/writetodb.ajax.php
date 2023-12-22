@@ -1,0 +1,107 @@
+<?php
+include_once '../../../tool/dbTool.inc.php';
+$init=parse_ini_file('../../../database/initsetting.ini',true);
+//date_default_timezone_set('Asia/Taipei');
+date_default_timezone_set($init['init']['settime']);
+
+if(file_exists('../../../database/mapping.ini')){
+	$dbmapping=parse_ini_file('../../../database/mapping.ini',true);
+	if(isset($dbmapping['map'][$_POST['machinetype']])){
+		$invmachine=$dbmapping['map'][$_POST['machinetype']];
+	}
+	else{
+		$invmachine='m1';
+	}
+}
+else{
+	$invmachine='';
+}
+/*因為找不到進入點，所以故意造成error*/
+/*if(isset($init['init']['accounting'])&&$init['init']['accounting']=='2'&&isset($invmachine)&&$invmachine!=''){//帳務以每台分機為個別主體計算
+	$timeini=parse_ini_file('../../../database/time'.$invmachine.'.ini',true);
+}
+else{
+	$timeini=parse_ini_file('../../../database/timem1.ini',true);
+}*/
+$machinedata=parse_ini_file('../../../database/machinedata.ini',true);
+$filename='SALES_'.date('Ym');
+if(file_exists("../../../database/sale/".$filename.".DB")){
+}
+else{
+	copy("../../../database/sale/empty.DB","../../../database/sale/".$filename.".DB");
+}
+$sqliteconn=sqlconnect("../../../sale/database",$filename.".DB","","","","sqlite");
+$sql="INSERT INTO CST012 (TERMINALNUMBER,BIZDATE,CONSECNUMBER,LINENUMBER,CLKCODE,CLKNAME,DTLMODE,DTLTYPE,DTLFUNC,ITEMCODE,ITEMNAME,ITEMGRPCODE,ITEMGRPNAME,ITEMDEPTCODE,ITEMDEPTNAME,SELECTIVEITEM1,SELECTIVEITEM2,SELECTIVEITEM3,SELECTIVEITEM4,SELECTIVEITEM5,SELECTIVEITEM6,SELECTIVEITEM7,SELECTIVEITEM8,SELECTIVEITEM9,SELECTIVEITEM10,WEIGHT,QTY,UNITPRICE,AMT,ZCOUNTER,CREATEDATETIME) VALUES ";
+$values='';
+for($i=0;$i<sizeof($_POST['no']);$i++){
+	if(strlen($values)==0){
+		$values='("'.$machinedata['basic']['terminalnumber'].'","'.$timeini['time']['bizdate'].'","'.str_pad($machinedata['basic']['consecnumber'],6,'0',STR_PAD_LEFT).'","'.str_pad(($i+1),3,'0',STR_PAD_LEFT).'","","","1","1","01","'.str_pad($_POST['no'][$i],16,'0',STR_PAD_LEFT).'","'.$_POST['name'][$i].'","'.str_pad($_POST['typeno'][$i],6,'0',STR_PAD_LEFT).'","'.$_POST['type'][$i].'","'.str_pad($_POST['typeno'][$i],6,'0',STR_PAD_LEFT).'","'.$_POST['type'][$i].'",';
+		$temptasteno=preg_split('/,/',$_POST['taste1'][$i]);
+		//2021/7/9 修改備註只能儲存10種的限制，利用字串串接的方式(與原本結構通用)
+		for($j=0;$j<sizeof($temptasteno);$j++){
+			if($j!=0){
+				$values=$values.',';
+			}
+			else{
+				$values=$values.'"';
+			}
+			if(isset($temptasteno[$j])){
+				$values=$values.str_pad($temptasteno[$j],6,'0',STR_PAD_LEFT);
+			}
+			else{
+				$values=$values.'000000';
+			}
+		}
+		$values=$values.'",';
+		for($j=2;$j<=10){
+			$values=$values.'"000000",';
+		}
+		/*for($j=0;$j<10;$j++){
+			if(isset($temptasteno[$j])){
+				$values=$values.'"'.str_pad($temptasteno[$j],6,'0',STR_PAD_LEFT).'",';
+			}
+			else{
+				$values=$values.'"000000",';
+			}
+		}*/
+		$values=$values.'0,'.$_POST['number'][$i].','.$_POST['unitprice'][$i].','.$_POST['money'][$i].',"'.$timeini['time']['zcounter'].'","'.date('YmdHis').'")';
+	}
+	else{
+		$values=$values.',("'.$machinedata['basic']['terminalnumber'].'","'.$timeini['time']['bizdate'].'","'.str_pad($machinedata['basic']['consecnumber'],6,'0',STR_PAD_LEFT).'","'.str_pad(($i+1),3,'0',STR_PAD_LEFT).'","","","1","1","01","'.str_pad($_POST['no'][$i],16,'0',STR_PAD_LEFT).'","'.$_POST['name'][$i].'","'.str_pad($_POST['typeno'][$i],6,'0',STR_PAD_LEFT).'","'.$_POST['type'][$i].'","'.str_pad($_POST['typeno'][$i],6,'0',STR_PAD_LEFT).'","'.$_POST['type'][$i].'",';
+		$temptasteno=preg_split('/,/',$_POST['taste1'][$i]);
+		//2021/7/9 修改備註只能儲存10種的限制，利用字串串接的方式(與原本結構通用)
+		for($j=0;$j<sizeof($temptasteno);$j++){
+			if($j!=0){
+				$values=$values.',';
+			}
+			else{
+				$values=$values.'"';
+			}
+			if(isset($temptasteno[$j])){
+				$values=$values.str_pad($temptasteno[$j],6,'0',STR_PAD_LEFT);
+			}
+			else{
+				$values=$values.'000000';
+			}
+		}
+		$values=$values.'",';
+		for($j=2;$j<=10){
+			$values=$values.'"000000",';
+		}
+		/*for($j=0;$j<10;$j++){
+			if(isset($temptasteno[$j])){
+				$values=$values.'"'.str_pad($temptasteno[$j],6,'0',STR_PAD_LEFT).'",';
+			}
+			else{
+				$values=$values.'"000000",';
+			}
+		}*/
+		$values=$values.'0,'.$_POST['number'][$i].','.$_POST['unitprice'][$i].','.$_POST['money'][$i].',"'.$timeini['time']['zcounter'].'","'.date('YmdHis').'")';
+	}
+}
+$sql=$sql.$values;
+$lasttime=sqlnoresponse($sqliteconn,$sql,'sqlite');
+$sql='INSERT INTO CST011 (TERMINALNUMBER,BIZDATE,CONSECNUMBER,INVOICENUMBER,INVOICEDATE,INVOICETIME,OPENCLKCODE,CLKCODE,CLKNAME,REGMODE,REGTYPE,REGFUNC,SALESTTLAMT,UPDATEDATETIME,CREATEDATETIME) VALUES ("'.$machinedata['basic']['terminalnumber'].'","'.$timeini['time']['bizdate'].'","'.str_pad($machinedata['basic']['consecnumber'],6,'0',STR_PAD_LEFT).'","","'.date('Ymd').'","'.date('His').'","","","","","","",'.$_POST['total'].',"'.date('YmdHis').'","'.date('YmdHis').'")';
+$orderdate=sqlnoresponse($sqliteconn,$sql,'sqlite');
+sqlclose($sqliteconn,'sqlite');
+?>

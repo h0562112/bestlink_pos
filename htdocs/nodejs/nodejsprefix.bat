@@ -1,0 +1,1 @@
+npm config set prefix "C:\POS\htdocs\nodejs\node_global"

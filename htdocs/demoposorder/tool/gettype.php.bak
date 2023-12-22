@@ -1,0 +1,29 @@
+<?php
+include '../../tool/dbTool.inc.php';
+$conn=sqlconnect("localhost","papermanagement","paperadmin","1qaz2wsx","utf-8",'mysql');
+$sql='SELECT * FROM '.$_POST['type'].'typemap WHERE company="'.$_POST['company'].'"';
+$type=sqlquery($conn,$sql,'mysql');
+sqlclose($conn,'mysql');
+if(file_exists('../data/'.$filename.'-'.$_POST['type'].'type.ini')){
+	$tasteitems=parse_ini_file($filename.'-'.$_POST['type'].'type.ini',true);
+}
+else{
+}
+for($i=0;$i<sizeof($type);$i++){
+	if($_POST['type']==){
+		if(isset($tasteitems[$type[$i]['']])){
+		}
+		else{
+		}
+
+	}
+	else{
+		if(isset($tasteitems[$type[$i]['']])){
+		}
+		else{
+		}
+
+	}
+}
+echo json_encode($type);
+?>

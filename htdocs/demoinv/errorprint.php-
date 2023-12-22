@@ -1,0 +1,33 @@
+<?php
+include_once 'voidinv.php';
+include_once '../tool/dbTool.inc.php';
+include_once '../tool/inilib.php';
+$data=parse_ini_file('./sqldata.ini',true);
+date_default_timezone_set('Asia/Taipei');
+$conn=sqlconnect('./','menu.db','','','','sqlite');
+$sql='SELECT * FROM invlist WHERE createdate LIKE "201710%" AND state=1 AND totalamount>0';
+$content=sqlquery($conn,$sql,'sqlite');
+sqlclose($conn,'sqlite');
+for($i=0;$i<sizeof($content);$i++){
+	$date=date('Ymd');
+	$h=date('H');
+	$m=date('i');
+	$s=date('s');
+	$time=$h.':'.$m.':'.$s;
+	$filename='C0701_'.$content[$i]['invnumber'].'_'.$date.$h.$m.$s.'.xml';
+	$xml=new SimpleXMLElement($xmlstr);
+	$xml->addChild('VoidInvoiceNumber',$content[$i]['invnumber']);
+	$xml->addChild('InvoiceDate',$content[$i]['createdate']);
+	$xml->addChild('BuyerId',$content[$i]['buyerid']);
+	$xml->addChild('SellerId',$content[$i]['sellerid']);
+	$xml->addChild('VoidDate',$date);
+	$xml->addChild('VoidTime',$time);
+	$xml->addChild('VoidReason','時間輸入錯誤');
+
+	$xml->saveXML('./errorprint/'.$filename);
+	$data['data']['inv']=$content[$i]['invnumber'];
+}
+
+$data['data']['num']=sizeof($content);
+write_ini_file($data,'./sqldata.ini');
+?>

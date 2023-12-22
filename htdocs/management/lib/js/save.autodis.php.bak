@@ -1,0 +1,83 @@
+<?php
+//print_r($_POST);
+date_default_timezone_set('Asia/Taipei');
+include_once '../../../tool/inilib.php';
+include_once '../../../tool/create.prime.php';
+if(file_exists('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/'.$_POST['disfile'].'.ini')){
+}
+else{
+	$f=fopen('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/'.$_POST['disfile'].'.ini','w');
+	fclose($f);
+}
+$dis=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/'.$_POST['disfile'].'.ini',true);
+if(isset($_POST['number'])&&$_POST['number']!=''){
+	$dis[$_POST['number']]['gnumber']=$_POST['gnumber'];
+	$dis[$_POST['number']]['name']=$_POST['name'];
+	if($_POST['listtype']=='other'){
+		$dis[$_POST['number']]['listtype']=$_POST['listtypenumber'];
+	}
+	else{
+		$dis[$_POST['number']]['listtype']=$_POST['listtype'];
+	}
+	$dis[$_POST['number']]['buy']=$_POST['buy'];
+	$dis[$_POST['number']]['free']=$_POST['free'];
+	$dis[$_POST['number']]['type']=$_POST['type'];
+	$dis[$_POST['number']]['itemtype']='1';
+	if($_POST['max']=='other'){
+		$dis[$_POST['number']]['max']=$_POST['maxnumber'];
+	}
+	else{
+		$dis[$_POST['number']]['max']=$_POST['max'];
+	}
+	$dis[$_POST['number']]['taste']=$_POST['taste'];
+	$dis[$_POST['number']]['group']=$_POST['group'];
+	if(isset($_POST['gpstart'])){
+		$dis[$_POST['number']]['gpstart']=$_POST['gpstart'];
+	}
+	else{
+		$dis[$_POST['number']]['gpstart']='1';
+	}
+	$dis[$_POST['number']]['disitem']=$_POST['disitem'];
+}
+else{
+	//print_r($_POST);
+	$gnumber=prime(sizeof($dis)+1);
+	if($gnumber!='prime overflow'){
+		$row=sizeof($dis)+1;
+		echo 'prime('.$row.')='.$gnumber.'<br>';
+		$dis[$row]['gnumber']=$gnumber;
+		$dis[$row]['name']=$_POST['name'];
+		if($_POST['listtype']=='other'){
+			$dis[$row]['listtype']=$_POST['listtypenumber'];
+		}
+		else{
+			$dis[$row]['listtype']=$_POST['listtype'];
+		}
+		$dis[$row]['buy']=$_POST['buy'];
+		$dis[$row]['free']=$_POST['free'];
+		$dis[$row]['type']=$_POST['type'];
+		$dis[$row]['itemtype']='1';
+		if($_POST['max']=='other'){
+			$dis[$row]['max']=$_POST['maxnumber'];
+		}
+		else{
+			$dis[$row]['max']=$_POST['max'];
+		}
+		$dis[$row]['taste']=$_POST['taste'];
+		$dis[$row]['group']=$_POST['group'];
+		if(isset($_POST['gpstart'])){
+			$dis[$row]['gpstart']=$_POST['gpstart'];
+		}
+		else{
+			$dis[$row]['gpstart']='1';
+		}
+		$dis[$row]['disitem']=$_POST['disitem'];
+	}
+	else{//質數超出容許範圍，無法新增新的優惠方案
+	}
+}
+write_ini_file($dis,'../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/'.$_POST['disfile'].'.ini');
+$ver=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/ver.ini',true);
+$ver['ver']['update']=date('YmdHis');
+write_ini_file($ver,'../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/ver.ini');
+?>

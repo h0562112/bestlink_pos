@@ -1,0 +1,22 @@
+GetToken
+url= http://nubi-uat.tdsc.com.tw:82/api/Auth/GetToken
+header= Content-Type: application/json
+request= 
+{
+	"client_id" : "cli_huwei",
+	"client_secret" : "sec#TR75!Y&az",
+	"grant_type" : "client_credentials"
+}
+response=
+{"valid":true,"resultCode":0,"resultMessage":"success","value":{"result":true,"message":"success","resultCode":"000","access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbGlfaHV3ZWkiLCJqdGkiOiJhNWE4MTIzZC1iYjE5LTRmYTUtYTk0Yy1lMWNmZGZiNTZjMWIiLCJyb2xlcyI6WyJBZG1pbiIsIlVzZXJzIl0sIm5iZiI6MTY2MzgxMDUzNywiZXhwIjoxNjYzODEwNTk3LCJpYXQiOjE2NjM4MTA1MzcsImlzcyI6IkRpZ2l0aXRDaXRpemVuIn0.2PR153fHjpa81iHP1AJdnHyla-JKAoz6Ooh8dSOOTQw","expires_in":60,"token_type":"Bearer"}}
+
+CheckWalletBalance
+url= http://nubi-uat.tdsc.com.tw:82/api/Wallet/CheckWalletBalance
+header= Content-Type: application/json
+        Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjbGlfaHV3ZWkiLCJqdGkiOiJhNWE4MTIzZC1iYjE5LTRmYTUtYTk0Yy1lMWNmZGZiNTZjMWIiLCJyb2xlcyI6WyJBZG1pbiIsIlVzZXJzIl0sIm5iZiI6MTY2MzgxMDUzNywiZXhwIjoxNjYzODEwNTk3LCJpYXQiOjE2NjM4MTA1MzcsImlzcyI6IkRpZ2l0aXRDaXRpemVuIn0.2PR153fHjpa81iHP1AJdnHyla-JKAoz6Ooh8dSOOTQw
+request=
+{
+	"account" : "0978320351"
+}
+response=
+{"valid":true,"resultCode":0,"resultMessage":"success","value":{"result":false,"message":"account does not exist","resultCode":"100","balance":0}}

@@ -1,0 +1,5 @@
+<?php
+include_once './Sign.php';
+
+echo Sign($_POST['comString'],$_POST['SecrecrKey']);
+?>

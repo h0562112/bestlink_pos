@@ -1,0 +1,27 @@
+2023/10/20 17:13:37 -- start point-tree-search transfer
+2023/10/20 17:13:37 -- end point-tree-search transfer
+2023/10/20 17:13:54 -- start point-tree-search transfer
+2023/10/20 17:13:54 -- end point-tree-search transfer
+2023/10/20 17:14:09 -- start point-tree-gift transfer
+2023/10/20 17:14:10 -- point-tree-gift transfer error 
+2023/10/20 17:14:10 -- status:406
+2023/10/20 17:14:10 -- code:invalid_amount
+2023/10/20 17:14:10 -- message:點數不足
+2023/10/20 17:14:10 -- end point-tree-gift transfer
+2023/10/20 17:37:17 -- start point-tree-search transfer
+2023/10/20 17:37:18 -- end point-tree-search transfer
+2023/10/20 17:40:27 -- start point-tree-search transfer
+2023/10/20 17:40:27 -- end point-tree-search transfer
+2023/10/27 16:03:41 -- start point-tree-void transfer
+2023/10/27 16:03:41 -- point-tree-void voidpoint 意外錯誤
+2023/10/27 16:03:41 -- end point-tree-void transfer
+2023/10/27 16:10:13 -- start point-tree-void transfer
+2023/10/27 16:10:13 -- point-tree-void voidpoint 意外錯誤
+2023/10/27 16:10:13 -- end point-tree-void transfer
+2023/10/27 16:13:04 -- start point-tree-void transfer
+2023/10/27 16:13:04 -- point-tree-void voidpoint 意外錯誤
+2023/10/27 16:13:04 -- end point-tree-void transfer
+2023/11/11 17:54:32 -- start point-tree-search transfer
+2023/11/11 17:54:33 -- end point-tree-search transfer
+2023/11/11 18:09:42 -- start point-tree-search transfer
+2023/11/11 18:09:42 -- end point-tree-search transfer

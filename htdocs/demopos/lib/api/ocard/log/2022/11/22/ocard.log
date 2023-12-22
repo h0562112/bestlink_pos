@@ -1,0 +1,249 @@
+2022/11/22 15:52:53 --- url: https://api.ocard.co/api2/auth
+                    --- data: Array
+(
+    [key] => tablepos
+    [secrect] => jhjwwo6oeedd2yf0e8dn7sootrw04qh0
+    [for_web] => 0
+)
+
+                    --- pass string: {"key":"tablepos","secrect":"jhjwwo6oeedd2yf0e8dn7sootrw04qh0","for_web":0}
+                    --- init result: Disallowed Key Characters.
+                    --- decode result: 
+2022/11/22 15:56:09 --- url: https://api.ocard.co/api2/auth
+                    --- data: Array
+(
+    [key] => ocard
+    [secrect] => d8db49fe7770c8d84f50e6e07cc457a3
+    [for_web] => 0
+)
+
+                    --- pass string: {"key":"ocard","secrect":"d8db49fe7770c8d84f50e6e07cc457a3","for_web":0}
+                    --- init result: Disallowed Key Characters.
+                    --- decode result: 
+2022/11/22 16:05:02 --- url: https://api.ocard.co/api2/auth
+                    --- data: Array
+(
+    [key] => tableplus
+    [secret] => jhjwwo6oeedd2yf0e8dn7sootrw04qh0
+    [for_web] => 0
+)
+
+                    --- pass string: {"key":"tableplus","secret":"jhjwwo6oeedd2yf0e8dn7sootrw04qh0","for_web":0}
+                    --- init result: Disallowed Key Characters.
+                    --- decode result: 
+2022/11/22 16:06:35 --- url: https://api.ocard.co/api2/auth
+                    --- data: Array
+(
+    [key] => ocard_pos
+    [secret] => d8db49fe7770c8d84f50e6e07cc457a3
+    [for_web] => 0
+)
+
+                    --- pass string: {"key":"ocard_pos","secret":"d8db49fe7770c8d84f50e6e07cc457a3","for_web":0}
+                    --- init result: Disallowed Key Characters.
+                    --- decode result: 
+2022/11/22 16:07:10 --- url: https://api.ocard.co/api2/auth
+                    --- data: Array
+(
+    [key] => ocard_pos
+    [secret] => d8db49fe7770c8d84f50e6e07cc457a3
+    [for_web] => 1
+)
+
+                    --- pass string: {"key":"ocard_pos","secret":"d8db49fe7770c8d84f50e6e07cc457a3","for_web":1}
+                    --- init result: Disallowed Key Characters.
+                    --- decode result: 
+2022/11/22 16:08:02 --- url: https://api.ocard.co/api2/auth
+                    --- data: Array
+(
+    [key] => ocard_pos
+    [secret] => d8db49fe7770c8d84f50e6e07cc457a3
+    [for_web] => 1
+)
+
+                    --- pass string: {"key":"ocard_pos","secret":"d8db49fe7770c8d84f50e6e07cc457a3","for_web":1}
+                    --- init result: Disallowed Key Characters.
+                    --- decode result: 
+2022/11/22 16:09:21 --- url: https://api.ocard.co/api2/auth
+                    --- data: Array
+(
+    [key] => ocard_pos
+    [secret] => d8db49fe7770c8d84f50e6e07cc457a3
+    [for_web] => 1
+)
+
+                    --- pass string: {"key":"ocard_pos","secret":"d8db49fe7770c8d84f50e6e07cc457a3","for_web":1}
+                    --- init result: Disallowed Key Characters.
+                    --- decode result: 
+2022/11/22 16:09:38 --- url: https://api.ocard.co/api2/auth
+                    --- data: Array
+(
+    [key] => ocard_pos
+    [secret] => d8db49fe7770c8d84f50e6e07cc457a3
+    [for_web] => 1
+)
+
+                    --- pass string: {"key":"ocard_pos","secret":"d8db49fe7770c8d84f50e6e07cc457a3","for_web":1}
+                    --- init result: Disallowed Key Characters.
+                    --- decode result: 
+2022/11/22 16:10:07 --- url: https://api.ocard.co/api2/auth
+                    --- data: Array
+(
+    [key] => ocard_pos
+    [secret] => d8db49fe7770c8d84f50e6e07cc457a3
+    [for_web] => 1
+)
+
+                    --- pass string: {"key":"ocard_pos","secret":"d8db49fe7770c8d84f50e6e07cc457a3","for_web":"1"}
+                    --- init result: {"code":500,"data":{"uid":894,"token":"tmt3wGVjabUJ4N3JNjOb","_store":1,"name":"admin"}}
+                    --- decode result: Array
+(
+    [code] => 500
+    [data] => Array
+        (
+            [uid] => 894
+            [token] => tmt3wGVjabUJ4N3JNjOb
+            [_store] => 1
+            [name] => admin
+        )
+
+)
+
+2022/11/22 16:12:04 --- url: https://api.ocard.co/api2/auth
+                    --- data: Array
+(
+    [key] => ocard_pos
+    [secret] => d8db49fe7770c8d84f50e6e07cc457a3
+    [for_web] => 1
+)
+
+                    --- pass string: {"key":"ocard_pos","secret":"d8db49fe7770c8d84f50e6e07cc457a3","for_web":"1"}
+                    --- init result: {"code":500,"data":{"uid":894,"token":"tmt3wGVjabUJ4N3JNjOb","_store":1,"name":"admin"}}
+                    --- decode result: Array
+(
+    [code] => 500
+    [data] => Array
+        (
+            [uid] => 894
+            [token] => tmt3wGVjabUJ4N3JNjOb
+            [_store] => 1
+            [name] => admin
+        )
+
+)
+
+2022/11/22 16:12:34 --- url: https://api.ocard.co/api2/auth
+                    --- data: Array
+(
+    [key] => ocard_pos
+    [secret] => d8db49fe7770c8d84f50e6e07cc457a3
+    [for_web] => 1
+)
+
+                    --- pass string: {"key":"ocard_pos","secret":"d8db49fe7770c8d84f50e6e07cc457a3","for_web":"1"}
+                    --- init result: {"code":500,"data":{"uid":894,"token":"tmt3wGVjabUJ4N3JNjOb","_store":1,"name":"admin"}}
+                    --- decode result: Array
+(
+    [code] => 500
+    [data] => Array
+        (
+            [uid] => 894
+            [token] => tmt3wGVjabUJ4N3JNjOb
+            [_store] => 1
+            [name] => admin
+        )
+
+)
+
+2022/11/22 16:13:35 --- url: https://api.ocard.co/api2/auth
+                    --- data: Array
+(
+    [key] => ocard_pos
+    [secret] => d8db49fe7770c8d84f50e6e07cc457a3
+    [for_web] => 1
+)
+
+                    --- pass string: {"key":"ocard_pos","secret":"d8db49fe7770c8d84f50e6e07cc457a3","for_web":"1"}
+                    --- init result: {"code":500,"data":{"uid":894,"token":"tmt3wGVjabUJ4N3JNjOb","_store":1,"name":"admin"}}
+                    --- decode result: Array
+(
+    [code] => 500
+    [data] => Array
+        (
+            [uid] => 894
+            [token] => tmt3wGVjabUJ4N3JNjOb
+            [_store] => 1
+            [name] => admin
+        )
+
+)
+
+2022/11/22 16:13:57 --- url: https://api.ocard.co/api2/auth
+                    --- data: Array
+(
+    [key] => ocard_pos
+    [secret] => d8db49fe7770c8d84f50e6e07cc457a3
+    [for_web] => 1
+)
+
+                    --- pass string: {"key":"ocard_pos","secret":"d8db49fe7770c8d84f50e6e07cc457a3","for_web":"1"}
+                    --- init result: {"code":500,"data":{"uid":894,"token":"tmt3wGVjabUJ4N3JNjOb","_store":1,"name":"admin"}}
+                    --- decode result: Array
+(
+    [code] => 500
+    [data] => Array
+        (
+            [uid] => 894
+            [token] => tmt3wGVjabUJ4N3JNjOb
+            [_store] => 1
+            [name] => admin
+        )
+
+)
+
+2022/11/22 16:14:51 --- url: https://api.ocard.co/api2/auth
+                    --- data: Array
+(
+    [key] => ocard_pos
+    [secret] => d8db49fe7770c8d84f50e6e07cc457a3
+    [for_web] => 1
+)
+
+                    --- pass string: {"key":"ocard_pos","secret":"d8db49fe7770c8d84f50e6e07cc457a3","for_web":"1"}
+                    --- init result: {"code":500,"data":{"uid":894,"token":"tmt3wGVjabUJ4N3JNjOb","_store":1,"name":"admin"}}
+                    --- decode result: Array
+(
+    [code] => 500
+    [data] => Array
+        (
+            [uid] => 894
+            [token] => tmt3wGVjabUJ4N3JNjOb
+            [_store] => 1
+            [name] => admin
+        )
+
+)
+
+2022/11/22 16:16:43 --- url: https://api.ocard.co/api2/auth
+                    --- data: Array
+(
+    [key] => ocard_pos
+    [secret] => d8db49fe7770c8d84f50e6e07cc457a3
+    [for_web] => 0
+)
+
+                    --- pass string: {"key":"ocard_pos","secret":"d8db49fe7770c8d84f50e6e07cc457a3","for_web":"0"}
+                    --- init result: {"code":500,"data":{"uid":894,"token":"85A9w0ZsMW0pbmmViPsK","_store":1,"name":"admin"}}
+                    --- decode result: Array
+(
+    [code] => 500
+    [data] => Array
+        (
+            [uid] => 894
+            [token] => 85A9w0ZsMW0pbmmViPsK
+            [_store] => 1
+            [name] => admin
+        )
+
+)
+

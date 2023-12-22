@@ -1,0 +1,63 @@
+function directlinepay_payment(money,orderid,code){
+	var res=$.Deferred();
+	$.ajax({
+		url:'./lib/api/directlinepay/payments.php',
+		method:'post',
+		//async:,
+		data:{'money':money,'orderid':orderid,'code':code},
+		dataType:'json',
+		timeout:25000,//25秒逾時(linepay是20秒逾時，這邊多給5秒等待)
+		success:function(d){
+			//console.log(d);
+			res.resolve(d);
+		},
+		error:function(XMLHttpRequest, textStatus, errorThrown){
+			//console.log(XMLHttpRequest);
+			res.resolve(XMLHttpRequest);
+		}
+	});
+
+	return res.promise();
+}
+function directlinepay_payment_statuscheck(orderid){
+	var res=$.Deferred();
+	$.ajax({
+		url:'./lib/api/directlinepay/status_check.php',
+		method:'post',
+		//async:,
+		data:{'orderid':orderid},
+		dataType:'json',
+		timeout:25000,//25秒逾時(linepay是20秒逾時，這邊多給5秒等待)
+		success:function(d){
+			//console.log(d);
+			res.resolve(d);
+		},
+		error:function(XMLHttpRequest, textStatus, errorThrown){
+			//console.log(XMLHttpRequest);
+			res.resolve(XMLHttpRequest);
+		}
+	});
+
+	return res.promise();	
+}
+function directlinepay_refund(orderid){
+	var res=$.Deferred();
+	$.ajax({
+		url:'./lib/api/directlinepay/refund.php',
+		method:'post',
+		//async:,
+		data:{'orderid':orderid},
+		dataType:'json',
+		timeout:25000,//25秒逾時(linepay是20秒逾時，這邊多給5秒等待)
+		success:function(d){
+			//console.log(d);
+			res.resolve(d);
+		},
+		error:function(XMLHttpRequest, textStatus, errorThrown){
+			//console.log(XMLHttpRequest);
+			res.resolve(XMLHttpRequest);
+		}
+	});
+
+	return res.promise();	
+}

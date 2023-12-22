@@ -1,0 +1,47 @@
+2021/05/12 15:42:37 Function=>intellauser
+                    Parameters=>Array
+(
+    [consecnumber] => 20210512154233941
+    [total] => 1
+    [dep] => abula0001
+    [usercode] => 111
+    [authcode] => 315293378370296373
+    [machine] => m1
+)
+
+                    Request=>Array
+(
+    [Header] => Array
+        (
+            [StatusCode] => 0000
+            [StatusDesc] => 執行成功
+            [Method] => 11500
+            [ServiceType] => Micropay
+            [ResponseTime] => 20210512154238
+            [MethodName] => Linepay
+        )
+
+    [Data] => Array
+        (
+            [SysOrderNo] => 2021051265675436210
+            [StoreOrderNo] => 20210512154233941
+            [TotalFee] => 1
+            [AuthCode] => 315293378370296373
+            [PlatformRsp] => {"returnCode":"0000","returnMessage":"Success.","info":{"transactionId":2021051265675436210,"orderId":"20210512154233941","payInfo":[{"method":"CREDIT_CARD","amount":1,"maskedCreditCardNumber":"************4515"}],"needCheck":"N","transactionDate":"2021-05-12T07:42:38Z"}}
+        )
+
+)
+
+
+2021/05/12 15:42:48 Function=>void_intellaother
+                    Parameters=>Array
+(
+    [consecnumber] => 20210512154233941
+    [total] => 1
+    [dep] => abula0001
+    [usercode] => 111
+    [machine] => m1
+)
+
+                    Request=>{"Header":{"StatusCode":"0000","StatusDesc":"執行成功","Method":"11500","ServiceType":"Refund","MchId":"slowly0025","ResponseTime":"20210512154249"},"Data":{"SysOrderNo":"2021051265675436210","SysRefundNo":"2021051265675517011","StoreOrderNo":"20210512154233941","StoreRefundNo":"20210512154233941","RefundedAt":"20210512154249","PlatformRsp":"{\"returnCode\":\"0000\",\"returnMessage\":\"Success.\",\"info\":{\"refundTransactionId\":2021051265675517011,\"refundTransactionDate\":\"2021-05-12T07:42:49Z\"}}"}}
+

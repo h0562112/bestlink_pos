@@ -1,0 +1,2462 @@
+/*2021/11/22 隱藏右上方X按鈕，避免意外流程發生*/
+.ui-dialog-titlebar-close.hidden {
+	display:none;
+}
+/*2021/3/9 提醒訊息視窗*/
+.nidinalertmessage {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    min-width: 200px;
+    margin-left: -100px;
+    z-index: 99999;
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.alert-info {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.alert-warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+}
+
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+input::-ms-reveal{/*2020/8/24 IE/Edge私有CSS屬性 針對input type='password'可查看密碼明文的狀況*/
+	display: none;
+}
+.order#order .type button {
+	background-color:#84FEFF;
+}
+
+.order#order .type button#empty {
+	background-color: transparent;
+}
+
+.order#order .item button {
+	background-color:#FFFF85;
+}
+
+.order#order .item button#empty {
+	background-color: transparent;
+}
+
+.order#order #banner #type button {
+	background-color:#DFDEDB;
+}
+
+.order#order #banner #type button:disabled {
+	background-color:#000000;
+	color:#ffffff;
+	font-weight:bold;
+}
+
+.membermoneylist #moneylist .moneylist {
+	width: max-content;
+    padding: 10px 0;
+    overflow: hidden;
+    border-bottom: 1px solid #898989;
+	background-color:#ffffff;
+}
+.membermoneylist #moneylist .moneylist div {
+	float:left;
+	margin:0 5px;
+	text-align:right;
+}
+
+@media screen and (width: 1024px) {
+    body {
+        width:1024px;
+        height: 100%;
+        font-size: 20px;
+        overflow: hidden;
+    }
+
+	.ui-widget {
+		font-size:15px;
+	}
+
+	div#name1 {
+		padding: 0 3px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+        box-sizing: border-box;
+	}
+
+	div#name2 {
+		padding: 0 3px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+        box-sizing: border-box;
+	}
+
+	button:disabled div#name1,
+	button:disabled div#name2,
+	button:disabled div {
+		background-color:transparent;
+		color: #a7a7a7;
+	}
+	
+	.order#order #banner #type button {
+		width:calc(25% - 4px);
+	}
+
+    .order#order #banner button,
+	.order#order #banner input {
+        width: 65px;
+        font-size: 20px;
+    }
+	
+	.order#order #banner button {
+		position: relative;
+	}
+
+	.order#order #banner button #name1 {
+		width: 100%;
+		text-align:	center;
+		font-size: 20px;
+		position: absolute;
+		top: 0;
+	}
+
+	.order#order #banner #tablenumber div {
+		text-align:	center;
+		font-size: 18px;
+	}
+
+	.order#order #banner button #name2 {
+		width: 100%;
+		text-align:	center;
+		font-size: 12px;
+		position: absolute;
+		bottom: 0;
+	}
+	
+	.order#order #banner span#name1 {
+		font-size: 20px;
+	}
+
+	.order#order #banner span#name2 {
+		margin-left: 5px;
+		font-size: 15px;
+	}
+
+    .order#order #banner #view {
+        font-size: 10px;
+    }
+
+    .order#order #otherbut #fontsmall {
+        font-size: 18px;
+    }
+
+	.order#order #MemberBill #tabs1 {
+		height: calc(100% - 8px);
+	}
+
+    .order#order #MemberBill #tabs2,
+	.order#order #MemberBill #tabs3,
+	.order#order #MemberBill #tabs4,
+	.order#order #MemberBill #tabs5,
+	.order#order #MemberBill #billfun1,
+	.order#order #MemberBill #billfun2,
+	.order#order #MemberBill #billfun3,
+	.order#order #MemberBill #billfun4 {
+        height: 100%;
+    }
+
+    .order#order #MemberBill ul {
+        font-size: 13px;
+    }
+
+	.order#order #MemberBill ul span#name1 {
+		font-size: 13px;
+	}
+
+	.order#order #MemberBill ul span#name2 {
+		font-size: 8px;
+	}
+
+    .order#order #MemberBill #tabs1,
+	.order#order #MemberBill #tabs2,
+	.order#order #MemberBill #tabs3,
+	.order#order #MemberBill #tabs4,
+	.order#order #MemberBill #tabs5 {
+        font-size: 13px;
+    }
+
+    .order#order #MemberBill #tabs4,
+	.order#order #MemberBill #tabs5,
+	.salelist #salelist .saletitle div,
+	.salelist #list .listtitle div,
+	.salevoid #salelist .saletitle div,
+	.salevoid #list .listtitle div,
+	.viewtemp #salelist .saletitle div,
+	.viewtemp #list .listtitle div,
+	.kvm #salelist .saletitle div,
+	.kvm #list .listtitle div,
+	#outmoney #salelist .saletitle div,
+	#outmoney #list .listtitle div {
+        height: 100%;
+        font-size: 12px;
+    }
+
+	.order#order #MemberBill #tabs4 .listcontent,
+	.order#order #MemberBill #tabs5 .listcontent {
+		font-size: 17px;
+	}
+
+	.order#order #MemberBill #tabs4 div#name1 {
+		width: 100%;
+		text-align: center;
+		font-size: 17px;
+	}
+
+	.order#order #MemberBill #tabs4 div#name2 {
+		width: 100%;
+		text-align: center;
+		font-size: 10px;
+	}
+
+    .order#order #MemberBill #list {
+        font-size: 13px;
+    }
+
+    .order#order #MemberBill #list input {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+	.order#order #MemberBill #list #funbox,
+	.order#order #MemberBill #list #viewtemp {
+		height: 45px;
+	}
+
+	.order#order #MemberBill #list button {
+		height: 100%;
+		position: relative;
+	}
+
+	.order#order #MemberBill #list button div#name1 {
+		width: 100%;
+		text-align: center;
+        font-size: 16px;
+		position: absolute;
+		top: 0;
+    }
+
+	.order#order #MemberBill #list button div#name2 {
+		width: 100%;
+		text-align: center;
+        font-size: 8px;
+		position: absolute;
+		bottom: 0;
+    }
+	
+	.order#order #billfun1 button,
+	.order#order #billfun2 button,
+	.order#order #billfun3 button {
+		position: relative;
+	}
+
+	.order#order #billfun1 button div#name1,
+	.order#order #billfun2 button div#name1,
+	.order#order #billfun3 button div#name1 {
+		width: 100%;
+		text-align: center;
+		font-size: 15px;
+		position: absolute;
+		top: 0;
+	}
+
+	.order#order #billfun1 button div#name2,
+	.order#order #billfun2 button div#name2,
+	.order#order #billfun3 button div#name2 {
+		width: 100%;
+		text-align: center;
+		font-size: 10px;
+		position: absolute;
+		bottom: 0;
+	}
+
+    .order#order #content #numbox input {
+        font-size: 28px;
+    }
+
+	.order#order #content #numbox button {
+		position: relative;
+	}
+
+	.order#order #content #numbox button div#name1 {
+		width: 100%;
+		text-align: center;
+		font-size: 15px;
+		position: absolute;
+		top: 0;
+	}
+
+	.order#order #content #numbox button div#name2 {
+		width: 100%;
+		text-align: center;
+		font-size: 9px;
+		position: absolute;
+		bottom: 0;
+	}
+
+    .order#order #menubox #itemfun input {
+        font-size: 20px;
+    }
+
+	.order#order #menubox #itemfun button {
+		position: relative;
+	}
+
+	.order#order #menubox #itemfun button div#name1{
+		width: 100%;
+		text-align: center;
+		font-size: 15px;
+		position: absolute;
+		top: 0;
+	}
+
+	.order#order #menubox #itemfun button div#name2{
+		width: 100%;
+		text-align: center;
+		font-size: 10px;
+		position: absolute;
+		bottom: 0;
+	}
+
+    .order#order #menubox #itemtype .type input,
+	.order#order #menubox #items .item input,
+	.order#order #menubox #items .childitem input {
+        font-size: 20px;
+    }
+
+	.result #funbox {
+		width: 100%;
+		height: calc(100% - 300px);
+	}
+
+	.itemdis #funbox {
+		width: 100%;
+	}
+
+	.result #funbox td {
+		width:33.33%;
+	}
+	
+	.itemdis #funbox td {
+		height: 90px;
+	}
+
+	.result button,
+	.itemdis button,
+	.setchange button {
+		width:100%;
+		height:100%;
+		position: relative;
+	}
+
+	.result button div#name1,
+	.itemdis button div#name1,
+	.setchange button div#name1 {
+		width: 100%;
+		font-size: 15px;
+		position: absolute;
+		top: 0;
+	}
+
+	.result button div#name2,
+	.itemdis button div#name2,
+	.setchange button div#name2 {
+		width: 100%;
+		font-size: 15px;
+		position: absolute;
+		bottom: 0;
+	}
+	
+	.result #viewwindow td:nth-child(odd) {
+		width:150px;
+	}
+
+	.result #viewwindow td:nth-child(even) {
+		width:90px;
+	}
+
+	.result #viewwindow div#name1 {
+		font-size: 15px;
+	}
+
+	.result #viewwindow div#name2 {
+		font-size: 8px;
+	}
+
+	.result #viewwindow button {
+		width: 105px;
+		height: 55px;
+		position: relative;
+	}
+
+	.result #viewwindow button div#name1 {
+		width: 100%;
+		font-size: 20px;
+		position: absolute;
+		top: 0;
+
+	}
+
+	.result #viewwindow button div#name2 {
+		width: 100%;
+		font-size: 15px;
+		position: absolute;
+		bottom: 0;
+	}
+
+	.result #viewwindow #title {
+		width:60px;
+		font-size:15px;
+	}
+
+	.result #paywindow div#name1,
+	.editpay #editpaywindow div#name1 {
+		font-size:20px;
+	}
+
+	.result #paywindow div#name2,
+	.editpay #editpaywindow div#name2{
+		font-size:15px;
+	}
+
+	.result #paywindow .payway span#name1,
+	.editpay #editpaywindow .payway span#name1 {
+		font-size:18px;
+	}
+
+	.result #paywindow .payway span#name2,
+	.editpay #editpaywindow .payway span#name2 {
+		font-size:13px;
+	}
+
+	.itemdis #viewwindow td {
+		width:100px;
+	}
+
+	.itemdis #viewwindow div#name1 {
+		font-size: 15px;
+	}
+
+	.itemdis #viewwindow div#name2 {
+		font-size: 8px;
+	}
+
+	.itemdis #viewwindow button {
+		width: 105px;
+		height: 55px;
+		position: relative;
+	}
+
+	.itemdis #viewwindow button div#name1 {
+		width: 100%;
+		font-size: 20px;
+		position: absolute;
+		top: 0;
+	}
+
+	.itemdis #viewwindow  button div#name2 {
+		width: 100%;
+		font-size: 15px;
+		position: absolute;
+		bottom: 0;
+	}
+
+	.changehint table {
+		width:calc(100% - 40px);
+		margin:20px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+        box-sizing: border-box;
+	}
+
+	.changehint td {
+		height:55px;
+	}
+
+	.changehint td:nth-child(odd) {
+		width:100px;
+	}
+
+	.changehint div#name1 {
+		font-size: 20px;
+	}
+
+	.changehint div#name2 {
+		font-size: 15px;
+	}
+
+	.changehint input {
+		width:calc(100% - 2px);
+		font-size: 30px;
+		padding:5px 0;
+		text-align:right;
+	}
+	
+	.changehint button {
+		width:100%;
+		height:52px;
+		position: relative;
+	}
+
+	.changehint button div#name1 {
+		width:100%;
+		font-size: 20px;
+		position: absolute;
+		top: 0;
+	}
+
+	.changehint button div#name2 {
+		width:100%;
+		font-size: 15px;
+		position: absolute;
+		bottom: 0;
+	}
+
+	.salelist button div#name1,
+	.salevoid button div#name1,
+	.viewtemp button div#name1,
+	.kvm button div#name1 {
+		font-size:15px;
+	}
+
+	.salelist button div#name2,
+	.salevoid button div#name2,
+	.viewtemp button div#name2,
+	.kvm button div#name2 {
+		font-size:12px;
+	}
+}
+
+@media screen and (width: 1280px) {
+    body {
+        width:1280px;
+        height: 800px;
+        font-size: 20px;
+        overflow: hidden;
+    }
+
+	div#name1 {
+		padding: 0 3px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+        box-sizing: border-box;
+	}
+
+	div#name2 {
+		padding: 0 3px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+        box-sizing: border-box;
+	}
+
+	button:disabled div#name1,
+	button:disabled div#name2,
+	button:disabled div {
+		background-color:transparent;
+		color: #a7a7a7;
+	}
+
+    .order#order #banner button,
+	.order#order #banner input {
+        width: 130px;
+        font-size: 20px;
+    }
+	
+	.order#order #banner button {
+		position: relative;
+	}
+
+	.order#order #banner button #name1 {
+		width: 100%;
+		text-align:	center;
+		font-size: 20px;
+		position: absolute;
+		top: 0;
+	}
+
+	.order#order #banner button #name2 {
+		width: 100%;
+		text-align:	center;
+		font-size: 12px;
+		position: absolute;
+		bottom: 0;
+	}
+	
+	.order#order #banner span#name1 {
+		font-size: 20px;
+	}
+
+	.order#order #banner span#name2 {
+		margin-left: 5px;
+		font-size: 15px;
+	}
+
+    .order#order #banner #view {
+        font-size: 10px;
+    }
+
+    .order#order #otherbut #fontsmall {
+        font-size: 18px;
+    }
+
+	.order#order #MemberBill #tabs1 {
+		height: calc(100% - 8px);
+	}
+
+    .order#order #MemberBill #tabs2,
+	.order#order #MemberBill #tabs3,
+	.order#order #MemberBill #tabs4,
+	.order#order #MemberBill #tabs5,
+	.order#order #MemberBill #billfun1,
+	.order#order #MemberBill #billfun2,
+	.order#order #MemberBill #billfun3,
+	.order#order #MemberBill #billfun4 {
+        height: 100%;
+    }
+
+    .order#order #MemberBill ul {
+        font-size: 13px;
+    }
+
+	.order#order #MemberBill ul span#name1 {
+		font-size: 13px;
+	}
+
+	.order#order #MemberBill ul span#name2 {
+		font-size: 8px;
+	}
+
+    .order#order #MemberBill #tabs1,
+	.order#order #MemberBill #tabs2,
+	.order#order #MemberBill #tabs3,
+	.order#order #MemberBill #tabs4,
+	.order#order #MemberBill #tabs5 {
+        font-size: 13px;
+    }
+
+    .order#order #MemberBill #tabs4,
+	.order#order #MemberBill #tabs5,
+	.salelist #salelist .saletitle div,
+	.salelist #list .listtitle div,
+	.salevoid #salelist .saletitle div,
+	.salevoid #list .listtitle div,
+	.viewtemp #salelist .saletitle div,
+	.viewtemp #list .listtitle div,
+	.kvm #salelist .saletitle div,
+	.kvm #list .listtitle div,
+	#outmoney #salelist .saletitle div,
+	#outmoney #list .listtitle div {
+        height: 100%;
+        font-size: 12px;
+    }
+
+	.order#order #MemberBill #tabs4 .listcontent,
+	.order#order #MemberBill #tabs5 .listcontent {
+		font-size: 17px;
+	}
+
+	.order#order #MemberBill #tabs4 div#name1 {
+		width: 100%;
+		text-align: center;
+		font-size: 17px;
+	}
+
+	.order#order #MemberBill #tabs4 div#name2 {
+		width: 100%;
+		text-align: center;
+		font-size: 10px;
+	}
+
+    .order#order #MemberBill #list {
+        font-size: 13px;
+    }
+
+    .order#order #MemberBill #list input {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+	.order#order #MemberBill #list #funbox,
+	.order#order #MemberBill #list #viewtemp {
+		height: 45px;
+	}
+
+	.order#order #MemberBill #list button {
+		height: 100%;
+		position: relative;
+	}
+
+	.order#order #MemberBill #list button div#name1 {
+		width: 100%;
+		text-align: center;
+        font-size: 16px;
+		position: absolute;
+		top: 0;
+    }
+
+	.order#order #MemberBill #list button div#name2 {
+		width: 100%;
+		text-align: center;
+        font-size: 8px;
+		position: absolute;
+		bottom: 0;
+    }
+	
+	.order#order #billfun1 button,
+	.order#order #billfun2 button,
+	.order#order #billfun3 button {
+		position: relative;
+	}
+
+	.order#order #billfun1 button div#name1,
+	.order#order #billfun2 button div#name1,
+	.order#order #billfun3 button div#name1 {
+		width: 100%;
+		text-align: center;
+		font-size: 15px;
+		position: absolute;
+		top: 0;
+	}
+
+	.order#order #billfun1 button div#name2,
+	.order#order #billfun2 button div#name2,
+	.order#order #billfun3 button div#name2 {
+		width: 100%;
+		text-align: center;
+		font-size: 10px;
+		position: absolute;
+		bottom: 0;
+	}
+
+    .order#order #content #numbox input {
+        font-size: 28px;
+    }
+
+	.order#order #content #numbox button {
+		position: relative;
+	}
+
+	.order#order #content #numbox button div#name1 {
+		width: 100%;
+		text-align: center;
+		font-size: 15px;
+		position: absolute;
+		top: 0;
+	}
+
+	.order#order #content #numbox button div#name2 {
+		width: 100%;
+		text-align: center;
+		font-size: 9px;
+		position: absolute;
+		bottom: 0;
+	}
+
+    .order#order #menubox #itemfun input {
+        font-size: 20px;
+    }
+
+	.order#order #menubox #itemfun button {
+		position: relative;
+	}
+
+	.order#order #menubox #itemfun button div#name1{
+		width: 100%;
+		text-align: center;
+		font-size: 15px;
+		position: absolute;
+		top: 0;
+	}
+
+	.order#order #menubox #itemfun button div#name2{
+		width: 100%;
+		text-align: center;
+		font-size: 10px;
+		position: absolute;
+		bottom: 0;
+	}
+
+    .order#order #menubox #itemtype .type input, 
+	.order#order #menubox #items .item input,
+	.order#order #menubox #items .childitem input {
+        font-size: 20px;
+    }
+
+	.result #funbox {
+		width: 100%;
+		height: calc(100% - 300px);
+	}
+
+	.itemdis #funbox {
+		width: 100%;
+	}
+
+	.result #funbox td {
+		width:33.33%;
+	}
+	
+	.itemdis #funbox td {
+		height: 90px;
+	}
+
+	.result button,
+	.itemdis button,
+	.setchange button {
+		width:100%;
+		height:100%;
+		position: relative;
+	}
+
+	.result button div#name1,
+	.itemdis button div#name1,
+	.setchange button div#name1 {
+		width: 100%;
+		font-size: 15px;
+		position: absolute;
+		top: 0;
+	}
+
+	.result button div#name2,
+	.itemdis button div#name2,
+	.setchange button div#name2 {
+		width: 100%;
+		font-size: 15px;
+		position: absolute;
+		bottom: 0;
+	}
+	
+	.result #viewwindow td:nth-child(odd) {
+		width:150px;
+	}
+
+	.result #viewwindow td:nth-child(even) {
+		width:90px;
+	}
+
+	.result #viewwindow div#name1 {
+		font-size: 15px;
+	}
+
+	.result #viewwindow div#name2 {
+		font-size: 8px;
+	}
+
+	.result #viewwindow button {
+		width: 105px;
+		height: 55px;
+		position: relative;
+	}
+
+	.result #viewwindow button div#name1 {
+		width: 100%;
+		font-size: 20px;
+		position: absolute;
+		top: 0;
+
+	}
+
+	.result #viewwindow button div#name2 {
+		width: 100%;
+		font-size: 15px;
+		position: absolute;
+		bottom: 0;
+	}
+
+	.result #viewwindow #title {
+		width:60px;
+		font-size:15px;
+	}
+
+	.result #paywindow div#name1,
+	.editpay #editpaywindow div#name1 {
+		font-size:20px;
+	}
+
+	.result #paywindow div#name2,
+	.editpay #editpaywindow div#name2 {
+		font-size:15px;
+	}
+
+	.result #paywindow .payway span#name1,
+	.editpay #editpaywindow .payway span#name1 {
+		font-size:18px;
+	}
+
+	.result #paywindow .payway span#name2,
+	.editpay #editpaywindow .payway span#name2 {
+		font-size:13px;
+	}
+
+	.itemdis #viewwindow td {
+		width:100px;
+	}
+
+	.itemdis #viewwindow div#name1 {
+		font-size: 15px;
+	}
+
+	.itemdis #viewwindow div#name2 {
+		font-size: 8px;
+	}
+
+	.itemdis #viewwindow button {
+		width: 105px;
+		height: 55px;
+		position: relative;
+	}
+
+	.itemdis #viewwindow button div#name1 {
+		width: 100%;
+		font-size: 20px;
+		position: absolute;
+		top: 0;
+	}
+
+	.itemdis #viewwindow  button div#name2 {
+		width: 100%;
+		font-size: 15px;
+		position: absolute;
+		bottom: 0;
+	}
+
+	.changehint table {
+		width:calc(100% - 40px);
+		margin:20px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+        box-sizing: border-box;
+	}
+
+	.changehint td {
+		height:55px;
+	}
+
+	.changehint td:nth-child(odd) {
+		width:100px;
+	}
+
+	.changehint div#name1 {
+		font-size: 20px;
+	}
+
+	.changehint div#name2 {
+		font-size: 15px;
+	}
+
+	.changehint input {
+		width:calc(100% - 2px);
+		font-size: 30px;
+		padding:5px 0;
+		text-align:right;
+	}
+	
+	.changehint button {
+		width:100%;
+		height:52px;
+		position: relative;
+	}
+
+	.changehint button div#name1 {
+		width:100%;
+		font-size: 20px;
+		position: absolute;
+		top: 0;
+	}
+
+	.changehint button div#name2 {
+		width:100%;
+		font-size: 15px;
+		position: absolute;
+		bottom: 0;
+	}
+
+	.salelist button div#name1,
+	.salevoid button div#name1,
+	.viewtemp button div#name1,
+	.kvm button div#name1 {
+		font-size:15px;
+	}
+
+	.salelist button div#name2,
+	.salevoid button div#name2,
+	.viewtemp button div#name2,
+	.kvm button div#name2 {
+		font-size:12px;
+	}
+}
+
+@media screen and (width: 1366px) {
+    body {
+        width:1366px;
+        height: 768px;
+        font-size: 20px;
+        overflow: hidden;
+    }
+
+	div#name1 {
+		padding: 0 3px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+        box-sizing: border-box;
+	}
+
+	div#name2 {
+		padding: 0 3px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+        box-sizing: border-box;
+	}
+
+	button:disabled div#name1,
+	button:disabled div#name2,
+	button:disabled div {
+		background-color:transparent;
+		color: #a7a7a7;
+	}
+
+    .order#order #banner button,
+	.order#order #banner input {
+        width: 130px;
+        font-size: 20px;
+    }
+	
+	.order#order #banner button {
+		position: relative;
+	}
+
+	.order#order #banner button #name1 {
+		width: 100%;
+		text-align:	center;
+		font-size: 20px;
+		position: absolute;
+		top: 0;
+	}
+
+	.order#order #banner button #name2 {
+		width: 100%;
+		text-align:	center;
+		font-size: 12px;
+		position: absolute;
+		bottom: 0;
+	}
+	
+	.order#order #banner span#name1 {
+		font-size: 20px;
+	}
+
+	.order#order #banner span#name2 {
+		margin-left: 5px;
+		font-size: 15px;
+	}
+
+    .order#order #banner #view {
+        font-size: 10px;
+    }
+
+    .order#order #otherbut #fontsmall {
+        font-size: 18px;
+    }
+
+	.order#order #MemberBill #tabs1 {
+		height: calc(100% - 8px);
+	}
+
+    .order#order #MemberBill #tabs2,
+	.order#order #MemberBill #tabs3,
+	.order#order #MemberBill #tabs4,
+	.order#order #MemberBill #tabs5,
+	.order#order #MemberBill #billfun1,
+	.order#order #MemberBill #billfun2,
+	.order#order #MemberBill #billfun3,
+	.order#order #MemberBill #billfun4 {
+        height: 100%;
+    }
+
+    .order#order #MemberBill ul {
+        font-size: 13px;
+    }
+
+	.order#order #MemberBill ul span#name1 {
+		font-size: 13px;
+	}
+
+	.order#order #MemberBill ul span#name2 {
+		font-size: 8px;
+	}
+
+    .order#order #MemberBill #tabs1,
+	.order#order #MemberBill #tabs2,
+	.order#order #MemberBill #tabs3,
+	.order#order #MemberBill #tabs4,
+	.order#order #MemberBill #tabs5 {
+        font-size: 13px;
+    }
+
+    .order#order #MemberBill #tabs4,
+	.order#order #MemberBill #tabs5,
+	.salelist #salelist .saletitle div,
+	.salelist #list .listtitle div,
+	.salevoid #salelist .saletitle div,
+	.salevoid #list .listtitle div,
+	.viewtemp #salelist .saletitle div,
+	.viewtemp #list .listtitle div,
+	.kvm #salelist .saletitle div,
+	.kvm #list .listtitle div,
+	#outmoney #salelist .saletitle div,
+	#outmoney #list .listtitle div {
+        height: 100%;
+        font-size: 12px;
+    }
+
+	.order#order #MemberBill #tabs4 .listcontent,
+	.order#order #MemberBill #tabs5 .listcontent {
+		font-size: 17px;
+	}
+
+	.order#order #MemberBill #tabs4 div#name1 {
+		width: 100%;
+		text-align: center;
+		font-size: 17px;
+	}
+
+	.order#order #MemberBill #tabs4 div#name2 {
+		width: 100%;
+		text-align: center;
+		font-size: 10px;
+	}
+
+    .order#order #MemberBill #list {
+        font-size: 13px;
+    }
+
+    .order#order #MemberBill #list input {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+	.order#order #MemberBill #list #funbox,
+	.order#order #MemberBill #list #viewtemp,
+	.order#order #MemberBill #list #callnumber {
+		height: 45px;
+	}
+
+	.order#order #MemberBill #list button {
+		height: 100%;
+		position: relative;
+	}
+
+	.order#order #MemberBill #list button div#name1 {
+		width: 100%;
+		text-align: center;
+        font-size: 16px;
+		position: absolute;
+		top: 0;
+    }
+
+	.order#order #MemberBill #list button div#name2 {
+		width: 100%;
+		text-align: center;
+        font-size: 8px;
+		position: absolute;
+		bottom: 0;
+    }
+	
+	.order#order #billfun1 button,
+	.order#order #billfun2 button,
+	.order#order #billfun3 button {
+		position: relative;
+	}
+
+	.order#order #billfun1 button div#name1,
+	.order#order #billfun2 button div#name1,
+	.order#order #billfun3 button div#name1 {
+		width: 100%;
+		text-align: center;
+		font-size: 15px;
+		position: absolute;
+		top: 0;
+	}
+
+	.order#order #billfun1 button div#name2,
+	.order#order #billfun2 button div#name2,
+	.order#order #billfun3 button div#name2 {
+		width: 100%;
+		text-align: center;
+		font-size: 10px;
+		position: absolute;
+		bottom: 0;
+	}
+
+    .order#order #content #numbox input {
+        font-size: 28px;
+    }
+
+	.order#order #content #numbox button {
+		position: relative;
+	}
+
+	.order#order #content #numbox button div#name1 {
+		width: 100%;
+		text-align: center;
+		font-size: 15px;
+		position: absolute;
+		top: 0;
+	}
+
+	.order#order #content #numbox button div#name2 {
+		width: 100%;
+		text-align: center;
+		font-size: 9px;
+		position: absolute;
+		bottom: 0;
+	}
+
+    .order#order #menubox #itemfun input {
+        font-size: 20px;
+    }
+
+	.order#order #menubox #itemfun button {
+		position: relative;
+	}
+
+	.order#order #menubox #itemfun button div#name1{
+		width: 100%;
+		text-align: center;
+		font-size: 15px;
+		position: absolute;
+		top: 0;
+	}
+
+	.order#order #menubox #itemfun button div#name2{
+		width: 100%;
+		text-align: center;
+		font-size: 10px;
+		position: absolute;
+		bottom: 0;
+	}
+
+    .order#order #menubox #itemtype .type input,
+	.order#order #menubox #items .item input,
+	.order#order #menubox #items .childitem input {
+        font-size: 20px;
+    }
+
+	.result #funbox {
+		width: 100%;
+		height: calc(100% - 300px);
+	}
+
+	.itemdis #funbox {
+		width: 100%;
+	}
+
+	.result #funbox td {
+		width:33.33%;
+	}
+	
+	.itemdis #funbox td {
+		height: 90px;
+	}
+
+	.result button,
+	.itemdis button,
+	.setchange button {
+		width:100%;
+		height:100%;
+		position: relative;
+	}
+
+	.result button div#name1,
+	.itemdis button div#name1,
+	.setchange button div#name1 {
+		width: 100%;
+		font-size: 15px;
+		position: absolute;
+		top: 0;
+	}
+
+	.result button div#name2,
+	.itemdis button div#name2,
+	.setchange button div#name2 {
+		width: 100%;
+		font-size: 15px;
+		position: absolute;
+		bottom: 0;
+	}
+	
+	.result #viewwindow td:nth-child(odd) {
+		max-width:150px;
+		width:150px;
+	}
+
+	.result #viewwindow td:nth-child(even) {
+		max-width:90px;
+		width:90px;
+	}
+
+	.result #viewwindow div#name1 {
+		font-size: 15px;
+	}
+
+	.result #viewwindow div#name2 {
+		font-size: 8px;
+	}
+
+	.result #viewwindow button {
+		width: 105px;
+		height: 55px;
+		position: relative;
+	}
+
+	.result #viewwindow button div#name1 {
+		width: 100%;
+		font-size: 20px;
+		position: absolute;
+		top: 0;
+
+	}
+
+	.result #viewwindow button div#name2 {
+		width: 100%;
+		font-size: 15px;
+		position: absolute;
+		bottom: 0;
+	}
+
+	.result #viewwindow #title {
+		width:60px;
+		font-size:15px;
+	}
+
+	.result #paywindow div#name1,
+	.editpay #editpaywindow div#name1 {
+		font-size:20px;
+	}
+
+	.result #paywindow div#name2,
+	.editpay #editpaywindow div#name2 {
+		font-size:15px;
+	}
+
+	.result #paywindow .payway span#name1,
+	.editpay #editpaywindow .payway span#name1 {
+		font-size:18px;
+	}
+
+	.result #paywindow .payway span#name2,
+	.editpay #editpaywindow .payway span#name2 {
+		font-size:13px;
+	}
+
+	.itemdis #viewwindow td {
+		width:100px;
+	}
+
+	.itemdis #viewwindow div#name1 {
+		font-size: 15px;
+	}
+
+	.itemdis #viewwindow div#name2 {
+		font-size: 8px;
+	}
+
+	.itemdis #viewwindow button {
+		width: 105px;
+		height: 55px;
+		position: relative;
+	}
+
+	.itemdis #viewwindow button div#name1 {
+		width: 100%;
+		font-size: 20px;
+		position: absolute;
+		top: 0;
+	}
+
+	.itemdis #viewwindow  button div#name2 {
+		width: 100%;
+		font-size: 15px;
+		position: absolute;
+		bottom: 0;
+	}
+
+	.changehint table {
+		width:calc(100% - 40px);
+		margin:20px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+        box-sizing: border-box;
+	}
+
+	.changehint td {
+		height:55px;
+	}
+
+	.changehint td:nth-child(odd) {
+		width:100px;
+	}
+
+	.changehint div#name1 {
+		font-size: 20px;
+	}
+
+	.changehint div#name2 {
+		font-size: 15px;
+	}
+
+	.changehint input {
+		width:calc(100% - 2px);
+		font-size: 30px;
+		padding:5px 0;
+		text-align:right;
+	}
+	
+	.changehint button {
+		width:100%;
+		height:52px;
+		position: relative;
+	}
+
+	.changehint button div#name1 {
+		width:100%;
+		font-size: 20px;
+		position: absolute;
+		top: 0;
+	}
+
+	.changehint button div#name2 {
+		width:100%;
+		font-size: 15px;
+		position: absolute;
+		bottom: 0;
+	}
+
+	.salelist button div#name1,
+	.salevoid button div#name1,
+	.viewtemp button div#name1,
+	.kvm button div#name1 {
+		font-size:15px;
+	}
+
+	.salelist button div#name2,
+	.salevoid button div#name2,
+	.viewtemp button div#name2,
+	.kvm button div#name2 {
+		font-size:12px;
+	}
+}
+
+@media screen and (width: 1920px) {
+    body {
+        width:1920px;
+        height: 1080px;
+        font-size: 30px;
+        overflow: hidden;
+    }
+
+    .order#order #banner button {
+        width: 102px;
+        font-size: 30px;
+    }
+
+    .order#order #banner #view {
+        font-size: 20px;
+    }
+
+    .order#order #otherbut #fontsmall {
+        font-size: 29px;
+    }
+
+    .order#order #MemberBill #tabs1,
+	.order#order #MemberBill #tabs2,
+	.order#order #MemberBill #tabs3,
+	.order#order #MemberBill #tabs4,
+	.order#order #MemberBill #tabs5,
+	.order#order #MemberBill #billfun1,
+	.order#order #MemberBill #billfun2,
+	.order#order #MemberBill #billfun3,
+	.order#order #MemberBill #billfun4 {
+        height: calc(100% - 43px - .2em - 8px);
+    }
+
+    .order#order #MemberBill ul {
+        font-size: 18px;
+    }
+
+    .order#order #MemberBill #tabs1,
+	.order#order #MemberBill #tabs2,
+	.order#order #MemberBill #tabs3,
+	.order#order #MemberBill #tabs4, 
+	.order#order #MemberBill #tabs5 {
+        font-size: 18px;
+    }
+
+    .order#order #MemberBill #tabs4,
+	.order#order #MemberBill #tabs5 {
+        height: calc(100% - 43px - .2em - 2px - 46px);
+        font-size: 22px;
+    }
+
+    .order#order #MemberBill #list {
+        font-size: 18px;
+    }
+
+    .order#order #MemberBill #list input {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .order#order #content #numbox input {
+        font-size: 40px;
+    }
+
+    .order#order #menubox #itemfun input {
+        font-size: 30px;
+    }
+
+    .order#order #menubox #itemtype .type input,
+	.order#order #menubox #items .item input,
+	.order#order #menubox #items .childitem input {
+        font-size: 30px;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: Consolas,Microsoft JhengHei,sans-serif;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    box-sizing: border-box;
+	background-color:#fbf4ec;
+	position: absolute;
+}
+
+.control#control {
+	position: absolute;
+	top:0;
+	left:0;
+	overflow:hidden;
+	width:100vw;
+	height:100vh;
+}
+
+.order#order {
+	position: absolute;
+	top:20px;
+	left:20px;
+	overflow:hidden;
+	width:calc(100vw - 40px);
+	height:calc(100vh - 40px);
+}
+
+.ui-widget{
+	font-family: Consolas,Microsoft JhengHei,sans-serif;
+}
+
+td {
+	padding:0;
+}
+
+input[type='button'],
+input[type='text'],
+input[type='number'],
+input[type='date'],
+select,
+option,
+button {
+	border-radius: 5px;
+	padding:0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.ui-dialog {
+	padding:3px;
+}
+
+.ui-widget-content{
+	background-color:#fbf4ec;
+}
+
+.ui-widget-header {
+	color:#ffffff;
+	background-color:#3E3A39;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+	border: 1px solid #3E3A39;
+	background-color: #3E3A39;
+}
+
+.ui-dialog,
+.ui-dialog input,
+.ui-dialog button {
+	font-family: Consolas,Microsoft JhengHei,sans-serif;
+}
+
+.listcontentbox::-webkit-scrollbar-track,
+#tastecontentbox::-webkit-scrollbar-track,
+#salelist::-webkit-scrollbar-track,
+#list::-webkit-scrollbar-track,
+#searchresult::-webkit-scrollbar-track,
+.membermoneylist #view::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+.listcontentbox::-webkit-scrollbar,
+#tastecontentbox::-webkit-scrollbar,
+#salelist::-webkit-scrollbar,
+#list::-webkit-scrollbar,
+#searchresult::-webkit-scrollbar,
+.membermoneylist #view::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+.listcontentbox::-webkit-scrollbar-thumb,
+#tastecontentbox::-webkit-scrollbar-thumb,
+#salelist::-webkit-scrollbar-thumb,
+#list::-webkit-scrollbar-thumb,
+#searchresult::-webkit-scrollbar-thumb,
+.membermoneylist #view::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+
+input,
+select,
+option,
+button {
+    font-family: Consolas,Microsoft JhengHei,sans-serif;
+    white-space: pre-wrap;
+    border: 1px solid #898989;
+    background-color: transparent;
+}
+
+div#name1,
+div#name2 {
+	width:100%;
+	float:left;
+}
+
+div#name2 {
+	color:#898989;
+}
+
+.order#order #content {
+    width: 100%;
+}
+
+.order#order #banner {
+	background-color:#ffffff;
+	width: calc(100% - 2px);
+    height: calc(10% - 2px);
+    padding: .2em;
+	margin: 1px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.order#order #banner div#type,
+.order#order #banner div#detail {
+    float: left;
+    height: 100%;
+    margin-right: 15px;
+}
+
+.order#order #banner input,
+.order#order #banner button {
+    height: 100%;
+    margin: 0 1px;
+    float: left;
+}
+
+.order#order #detail input,
+.order#order #detail button {
+    float: none;
+}
+
+.order#order #detail table {
+    height: 100%;
+}
+
+.order#order #content {
+    height: calc(90% - 6px);
+    background-color: transparent;
+}
+
+.order#order #content #MemberBill,
+.order#order #content #numbox,
+.order#order #content #menubox {
+    float: left;
+}
+
+.order#order #content #numbox button,
+.order#order #content #numbox input[type='button'] {
+	background-color:#9FC9C8;
+	color:#000000;
+}
+
+.order#order #content #numbox #clear,
+.order#order #content #numbox #plus,
+.order#order #content #numbox #diff,
+.order#order #content #numbox #open {
+	background-color:#FCD7A3;
+	color:#000000;
+}
+
+.order#order #content #MemberBill{
+    width: 42%;
+    height: 100%;
+}
+
+.order#order #content #menubox {
+	width: 53%;
+    height: 100%;
+	position: relative;
+}
+
+.ui-tabs, .ui-tabs-nav {
+    background-color: transparent;
+}
+
+.ui-widget.ui-widget-content, .ui-tabs-nav {
+    border: 0;
+}
+
+.ui-tabs {
+	padding:1px;
+}
+
+.order#order #MemberBill #member/*, #menubox #itemtype*/ {/*需可從設定檔設定，因此改到order.php產生*/
+	padding:1px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 13%;
+}
+
+.order#order #MemberBill #list/*, #menubox #items*/ {
+	position: relative;
+    height: calc(62% - 2px);
+}
+
+.order#order #MemberBill #list #listtabbox {
+	overflow:hidden;
+	height: calc(100% - 31px - .2em - 2px - 46px);
+}
+
+.order#order #MemberBill #billfun #citybox {
+	height:calc(100% - 32px);
+}
+
+.order#order #MemberBill #list #tabs4button,
+.order#order #MemberBill #list #tabs5button,
+.order#order #MemberBill #billfun #billfun1button,
+.order#order #MemberBill #billfun #billfun2button,
+.order#order #MemberBill #billfun #billfun3button {
+	border-bottom-width: 0;
+	background-color: #f6f6f6;
+	color: ##454545;
+	padding: .5em 1em;
+	font-size: 13px;
+	margin: 1px 0 0 .2em;
+	border: 1px solid #c5c5c5;
+	border-bottom-width: 0;
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	float:left;
+}
+
+.order#order #MemberBill #list #butobx .focus,
+.order#order #MemberBill #billfun #butobx .focus {
+	border: 1px solid #3E3A39;
+	border-bottom-width: 0;
+	background-color: #3E3A39;
+	color: #ffffff;
+}
+
+.order#order #MemberBill #billfun {
+    height: calc(25% - 2px);
+}
+
+.order#order #menubox #itemtype {
+	padding: .2em;
+	border-top:1px solid #898989;
+	border-right:1px solid #898989;
+	border-left:1px solid #898989;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    box-sizing: border-box;
+	overflow:hidden;
+}
+
+.order#order #menubox #itemfun {
+	width:calc(100% - 2px);
+	height:calc(25% - 2px);
+	margin:1px;
+    padding: .2em;
+	border:1px solid #898989;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    box-sizing: border-box;
+	overflow:hidden;
+	position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.order#order #menubox #items {
+	padding: .2em;
+	border:1px solid #898989;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    box-sizing: border-box;
+	overflow:hidden;
+}
+
+.order#order #MemberBill #tabs1,
+.order#order #MemberBill #tabs2,
+.order#order #MemberBill #tabs3,
+.order#order #MemberBill #tabs4,
+.order#order #MemberBill #tabs5,
+.order#order #MemberBill #billfun1,
+.order#order #MemberBill #billfun2,
+.order#order #MemberBill #billfun3,
+.order#order #MemberBill #billfun4 {
+    border: 1px solid #898989;
+    padding: 3px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+.order#order #MemberBill #tabs4,
+.order#order #MemberBill #tabs5 {
+    padding: 0;
+}
+
+.order#order #MemberBill #tabs4 div,
+.order#order #MemberBill #tabs5 div,
+.salelist #salelist .saletitle div,
+.salelist #list .listtitle div,
+.salelist #salelist .salecontent div,
+.salelist #list .listcontent div,
+.salevoid #salelist .saletitle div,
+.salevoid #list .listtitle div,
+.salevoid #salelist .salecontent div,
+.salevoid #list .listcontent div,
+.viewtemp #salelist .saletitle div,
+.viewtemp #list .listtitle div,
+.viewtemp #salelist .salecontent div,
+.viewtemp #list .listcontent div,
+.kvm #salelist .saletitle div,
+.kvm #list .listtitle div,
+.kvm #salelist .salecontent div,
+.kvm #list .listcontent div,
+#outmoney #salelist .saletitle div,
+#outmoney #list .listtitle div,
+#outmoney #salelist .salecontent div,
+#outmoney #list .listcontent div {
+    float: left;
+}
+
+.order#order #MemberBill #tabs4 .listcontent,
+.order#order #MemberBill #tabs5 .listcontent {
+	background-color: #F1FBFD;
+}
+
+.order#order #MemberBill #tabs4 .listcontent .focus,
+.order#order #MemberBill #tabs5 .listcontent .focus, 
+.salelist #salelist #salecontent .listitems#focus, 
+.salelist #list #listcontent div.focus, 
+.salevoid #salelist #salecontent .listitems#focus, 
+.salevoid #list #listcontent div.focus,
+.viewtemp #salelist #salecontent .listitems#focus, 
+.viewtemp #list #listcontent div.focus, 
+.kvm #salelist #salecontent .listitems#focus, 
+.kvm #list #listcontent div.focus,
+.membermoneylist #moneylist .moneylist#focus {
+    background-color: #5A748B;
+	color:#ffffff;
+}
+
+.order#order #MemberBill #tabs2 table #title {
+    color: #ff0000;
+    letter-spacing: 7px;
+}
+
+.order#order #MemberBill #tabs2 table #data {
+    color: #0000ff;
+    letter-spacing: 2px;
+}
+
+.order#order #MemberBill #billfun table,
+.order#order #MemberBill #billfun tr,
+.order#order #MemberBill #billfun td {
+    border: 0;
+    padding: 0;
+}
+
+.order#order #MemberBill #billfun input,
+.order#order #MemberBill #billfun button {
+    background-color: transparent;
+}
+
+.order#order #menubox #itemtype .type,
+.order#order #menubox #itemtype .typenext,
+.order#order #menubox #items .item,
+.order#order #menubox #items .itemnext,
+.order#order #menubox #items .gitemnext,
+.order#order #menubox #items .childitem {
+    float: left;
+	margin:1px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.order#order #menubox #itemtype .type input,
+.order#order #menubox #items .item input,
+.order#order #menubox #items .childitem input,
+.order#order #menubox #itemfun input,
+.order#order #menubox #itemtype .type button,
+.order#order #menubox #itemtype .typenext button,
+.order#order #menubox #items .item button,
+.order#order #menubox #items .itemnext button,
+.order#order #menubox #items .gitemnext button,
+.order#order #menubox #items .childitem button,
+.order#order #menubox #itemfun button {
+    width: 100%;
+    height: 100%;
+	overflow:hidden;
+}
+
+.order#order #menubox #itemtype .type input,
+.order#order #menubox #itemtype .type button {
+}
+
+.order#order #menubox #itemtype .type .focus {
+	box-shadow:rgba(0, 0, 0, 0.2) 2px 2px inset;
+}
+
+.order#order #menubox #itemfun table {
+    width: 100%;
+    height: 100%;
+}
+
+.order#order #menubox #itemfun button[class^='itemmname'] {
+	background-color:#DFDEDB;
+	color:#000000;
+}
+
+.order#order #menubox #itemfun td {
+    width: calc(100% / 6);
+}
+
+.order#order #content #numbox {
+    width: 5%;
+    height: 100%;
+    padding: 0 1px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.order#order #content #numbox #d1 {
+	width:100%;
+	height:calc(75% - 1px);
+	margin-bottom:1px;
+	overflow:hidden;
+}
+
+.order#order #content #numbox #d2 {
+	height:calc(25% - 1px);
+	margin-top:1px;
+	overflow:hidden;
+}
+
+.order#order #content #numbox #d2 #plus,
+.order#order #content #numbox #d2 #diff,
+.order#order #content #numbox #d2 button {
+    width: 100%;
+    height: calc(100% / 4 - 2px);
+	margin: 1px 0;
+	float:left;
+}
+
+.order#order #content #numbox #d1 #number {
+	width: 100%;
+	height: calc(100% / 10 - 2px);
+	margin: 1px 0;
+	float:left;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.taste2 #tastecontentbox {
+	background-color:#F1FBFD;
+}
+
+.taste2 #tastecontentbox .check {
+	background-color:#5A748B;
+	color:#ffffff;
+}
+
+.taste2 #fun button {
+	background-color:#FCD7A3;
+	color:#000000;
+}
+
+.result #funbox button,
+.itemdis #funbox button {
+	 background-color:#c6d3e3;
+	 color:#000000;
+}
+
+.result #paywindow,
+.editpay #editpaywindow {
+	border:1px solid #000000;
+	background-color:#848284;
+}
+
+.result #paywindow #th,
+.editpay #editpaywindow #th {
+	background-color:#EFEBDE;
+}
+
+.result #paywindow #th div#name1,
+.result #paywindow #th div#name2,
+.editpay #editpaywindow #th div#name1,
+.editpay #editpaywindow #th div#name2 {
+	font-size:12px;
+}
+
+.result #paywindow .paywaybox,
+.editpay #editpaywindow .paywaybox {
+	background-color: #F1FBFD;
+}
+
+.result #paywindow .paywaybox.focus,
+.editpay #editpaywindow .paywaybox.focus {
+	background-color: #5A748B;
+	color:#ffffff;
+}
+
+.result #viewwindow #checkfun {
+	width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.itemdis #viewwindow #checkfun {
+	width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.result #viewwindow table,
+.itemdis #viewwindow table,
+.editpay #viewwindow table {
+	border-collapse:collapse;
+}
+
+.result #viewwindow td,
+.itemdis #viewwindow td,
+.editpay #viewwindow td {
+	background-color:#F1FBFD;
+	border-bottom:1px solid #dfdfdf;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.editpay #viewwindow td {
+	width:50%;
+}
+
+.result .numbox button,
+.itemdis .numbox button,
+.setchange .numbox button {
+	background-color: #FCD7A3;
+    color: #000000;
+}
+
+.result .numbox input[type='button'],
+.itemdis .numbox input[type='button'] {
+	background-color: #9FC9C8;
+    color: #000000;
+	margin:1px;
+}
+
+.setchange .numbox input[type='button'] {
+    background-color: #9FC9C8;
+    color: #000000;
+	margin:1px 0;
+}
+
+.groupset #itembut #childbut {
+	width:25%;
+	height:10%;
+	float:left;
+}
+
+.oinv #buttons .input,
+.oinv #buttons .pre, 
+.oinv #buttons .next,
+.oinv #buttons #back, 
+.oinv #buttons #ac,
+.setperson #buttons .input,
+.setperson #buttons .pre, 
+.setperson #buttons .next,
+.setperson #buttons #back, 
+.setperson #buttons #ac {
+	width:calc(100% / 4 - 2px);
+	height:calc(100% / 5 - 2px);
+	margin:1px;
+	float:left;
+}
+
+.oinv #buttons #submit,
+.oinv #buttons #cancel,
+.setperson #buttons #submit,
+.setperson #buttons #cancel {
+	width:calc(100% / 2 - 2px);
+	height:calc(100% / 5 - 2px);
+	margin:1px;
+	float:left;
+}
+
+.tabinput #buttons .input,
+.tabinput #buttons .pre, 
+.tabinput #buttons .next,
+.tabinput #buttons #ac, 
+.tabinput #buttons #change,
+.verpsw #buttons .input,
+.verpsw #buttons .pre, 
+.verpsw #buttons .next,
+.verpsw #buttons #ac, 
+.verpsw #buttons #change {
+	width:calc(100% / 4 - 2px);
+	height:calc(100% / 5 - 2px);
+	margin:1px;
+	float:left;
+}
+
+.openmoney #buttons .input,
+.openmoney #buttons .pre, 
+.openmoney #buttons .next,
+.openmoney #buttons #ac, 
+.openmoney #buttons #back,
+.openmoney #buttons #changesign,
+.openmoney #buttons #empty,
+.openmoney #buttons #change {
+	width:calc(100% / 4 - 2px);
+	height:calc(100% / 5 - 2px);
+	margin:1px;
+	float:left;
+}
+
+.tabinput #buttons #submit,
+.tabinput #buttons #cancel,
+.openmoney #buttons #submit,
+.openmoney #buttons #cancel,
+.verpsw #buttons #send,
+.verpsw #buttons #cancel {
+	width:calc(100% / 2 - 2px);
+	height:calc(100% / 5 - 2px);
+	margin:1px;
+	float:left;
+}
+
+.punch #number {
+	background-color: #9FC9C8;
+	width:calc(100% / 3 - 2px);
+	height:calc((100% - 51px) / 6 - 2px);
+	float:left;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin:1px;
+}
+
+.editpay #number {
+	background-color: #9FC9C8;
+	width:calc(100% / 3 - 2px);
+	height:calc((100% - 51px) / 5 - 2px);
+	float:left;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin:1px;
+}
+
+.editpay #send,
+.editpay #cancel {
+	width:calc(45% - 2px);
+	height:calc((100% - 51px) / 5 - 2px);
+	float:left;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	background-color:#D5DC75;
+	color:#000000;
+}
+
+.temptoinv button {
+	width:calc(100% / 3 - 2px);
+	height:100%;
+	float:left;
+	margin:0 1px;
+}
+
+.temptoinv #number {
+	background-color: #9FC9C8;
+	height:calc(100% / 6 - 2px);
+	margin:1px;
+}
+
+.editoutman button {
+	width:calc(100% / 3 - 2px);
+	height:100%;
+	float:left;
+	margin:0 1px;
+}
+
+.editoutman #number {
+	background-color: #9FC9C8;
+	height:calc((100% - 51px) / 5 - 2px);
+	margin:1px;
+}
+
+.computemoney #number {
+	background-color: #9FC9C8;
+	width:calc(100% / 3 - 2px);
+	height:calc(100% / 4 - 2px);
+	margin:1px;
+	float:left;
+}
+
+.computemoney div[class^=div] input,
+.computemoney .total input,
+.computemoney .previewmoney input,
+.computemoney .TAX2 input,
+.computemoney .outmoney input,
+.computemoney .diffmoney input {
+	border:0px;
+	border-bottom:1px solid #000000;
+	color:#000000;
+}
+
+.computemoney div[class^=div]#focus {
+	background-color: #5A748B;
+	color:#ffffff;
+}
+
+.computemoney div[class^=div]#focus input {
+	border-color:#ffffff;
+	color:#ffffff;
+}
+
+/*webbooking*/
+.webbooking div,.webbooking td,.webbooking th {
+	font-family:Consolas,Microsoft JhengHei;
+	font-size:20px;
+}
+.webbooking div {
+	width:100%;
+	float:left;
+}
+.webbooking .system {
+	width: 500px;
+	height: 150px;
+	margin: 100px calc((100% - 504px) / 2) 0 calc((100% - 504px) / 2);
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+	z-index: 101;
+	background-color: #ffffff;
+	border: 2px solid #000000;
+	border-radius: 5px;
+}
+.webbooking .system .systemtitle {
+	padding:10px 0;
+	font-weight:bold;
+	text-align:center;
+}
+.webbooking .system .message {
+	height: calc(100% - 110px);
+	text-align:center;
+}
+.webbooking .system .check {
+	margin:10px auto;
+	float:unset;
+}
+.webbooking .modal {
+	width:100%;
+	height:100%;
+	position:fixed;
+	top:0;
+	left:0;
+	display:none;
+	z-index:100;
+	background-color:#89898980;
+}
+.webbooking .listheader,
+.webbooking .itemlist,
+.webbooking .remaining {
+	border-top:3px solid #000000;
+}
+.webbooking .listheader {
+	width:calc(100% - 20px);
+	padding:0 10px;
+}
+.webbooking .printbox {
+	width:max-content;
+	float:right;
+	border:3px solid #000000;
+	border-top:0;
+	border-right:0;
+	border-bottom-left-radius:5px;
+	margin-right:-10px;
+}
+.webbooking .printbox div[id-data="button"] {
+	float:right;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+.webbooking .printbox div[id-data="buttonlabel"] {
+	width:max-content;
+	padding:10px;
+	margin:5px 5px 5px 0;
+}
+.webbooking td {
+	border-top:3px solid #D6DCE5;
+	border-bottom:3px solid #D6DCE5;
+	word-wrap: anywhere;         /* All browsers since IE 5.5+ */
+	overflow-wrap: anywhere;     /* Renamed property in CSS3 draft spec */
+}
+.webbooking td[id-data="firstlabel"] {
+	width:82px;
+	font-weight:bold;
+	text-align:right;
+	background-color:transparent;
+}
+.webbooking td[id-data="label"] {
+	width:calc((100% - 82px) / 9);
+	font-weight:bold;
+	text-align:right;
+	background-color:transparent;
+}
+.webbooking td[id-data="input"] {
+	width:10%;
+	padding:0 5px;
+	background-color:#ffffff;
+}
+.webbooking .remarks {
+	height:60px;
+}
+.webbooking div[id-data="button"] {
+	width:max-content;
+	padding:10px;
+	margin:10px 5px 10px 0;
+	border-radius:5px;
+	color:#ffffff;
+	background-color:#548235;
+	cursor:pointer;
+}
+.webbooking .headertable {
+	width:calc(100% - 20px);
+}
+.webbooking .itemlist {
+	height:130px;
+	overflow:auto;
+}
+.webbooking .itemlist::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.webbooking .itemlist::-webkit-scrollbar {
+	width: 20px;
+	background-color: #F5F5F5;
+}
+
+.webbooking .itemlist::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #898989;
+}
+.webbooking .itemstable {
+	border-collapse: collapse;
+}
+.webbooking .itemstable th {
+	color:#ffffff;
+	text-align:left;
+	background-color:#4472C4;
+	border:2px solid #ffffff;
+}
+.webbooking .itemstable tr:nth-child(even) {
+	background-color:#CFD5EA;
+}
+.webbooking .itemstable tr:nth-child(odd) {
+	background-color:#E9EBF5;
+}
+.webbooking .itemstable td {
+	color:#000000;
+	border:2px solid #ffffff;
+}
+.webbooking .remaining {
+	text-align:center;
+	color:#ffffff;
+	background-color:#70AD47;
+}
+.webbooking .remainingtable {
+	border:2px solid #ffffff;
+}
+.webbooking .remainingtable td {
+	border:0;
+}
+.webbooking table {
+	width:100%;
+}

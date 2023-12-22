@@ -1,0 +1,8 @@
+<?php
+include 'dbTool.inc.php';
+$conn=sqlconnect("localhost","basic","paperadmin","1qaz2wsx","utf-8",'mysql');
+$sql="SELECT * FROM DeviceList WHERE seqno='111'";
+$table=sqlquery($conn,$sql,"mysql");
+sqlclose($conn,"mysql");
+echo $table[0];
+?>

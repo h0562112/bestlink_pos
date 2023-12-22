@@ -1,0 +1,16 @@
+<?php
+include_once '../../tool/dbTool.inc.php';
+
+$conn=sqlconnect('../../database/sale/','SALES_'.substr(preg_replace('/-/','',$_POST['date']),0,6).'.db','','','','sqlite');
+$sql='SELECT CONSECNUMBER FROM CST011 WHERE BIZDATE="'.preg_replace('/-/','',$_POST['date']).'" ORDER BY CONSECNUMBER ASC LIMIT 1';
+$consecnumber=sqlquery($conn,$sql,'sqlite');
+$sql='SELECT CONSECNUMBER FROM CST011 WHERE BIZDATE="'.preg_replace('/-/','',$_POST['date']).'" ORDER BY CONSECNUMBER DESC LIMIT 1';
+$lastconsecnumber=sqlquery($conn,$sql,'sqlite');
+sqlclose($conn,'sqlite');
+
+$res['date']=$_POST['date'];
+$res['consecnumber']=$consecnumber[0]['CONSECNUMBER'];
+$res['lastconsecnumber']=$lastconsecnumber[0]['CONSECNUMBER'];
+
+echo json_encode($res);
+?>

@@ -1,0 +1,29 @@
+<?php
+$setting=parse_ini_file('../../../database/initsetting.ini',true);
+$temp=array();
+if(file_exists('../../syspram/interface-'.$setting['init']['firlan'].'.ini')){
+	$button=parse_ini_file('../../syspram/interface-'.$setting['init']['firlan'].'.ini',true);
+	if(isset($button['name'][$_POST['name']])){
+		$temp[0]=$button['name'][$_POST['name']];
+	}
+	else{
+		$temp[0]='';
+	}
+}
+else{
+	$temp[0]='';
+}
+if(file_exists('../../syspram/interface-'.$setting['init']['seclan'].'.ini')){
+	$button=parse_ini_file('../../syspram/interface-'.$setting['init']['seclan'].'.ini',true);
+	if(isset($button['name'][$_POST['name']])){
+		$temp[1]=$button['name'][$_POST['name']];
+	}
+	else{
+		$temp[1]='';
+	}
+}
+else{
+	$temp[1]='';
+}
+echo json_encode($temp);
+?>

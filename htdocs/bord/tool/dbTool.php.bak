@@ -1,0 +1,49 @@
+<?php
+function sqlconnect($serverName,$dbName,$user,$password,$CharacterSet){
+	//$serverName = "192.168.1.240"; //serverName\instanceName
+	//$dbName="wss";
+	//$user="sa";
+	//$password="ctdainfo";
+	// Since UID and PWD are not specified in the $connectionInfo array,
+	// The connection will be attempted using Windows Authentication.
+	$connectionInfo = array( "Database"=>$dbName,"UID"=>$user,"PWD"=>$password,"CharacterSet"=>$CharacterSet);
+	$conn = sqlsrv_connect( $serverName, $connectionInfo);
+	if( $conn ) {
+		 //echo "Connection established.<br />";
+		 //sqlsrv_close( $conn );
+	}else{
+		 echo "Connection could not be established.<br />";
+		 die( print_r( sqlsrv_errors(), true));
+	}
+	return $conn;
+}
+
+function sqlquery($conn,$sql) {
+	$Table=array();
+	if($conn){
+		$stmt=sqlsrv_query($conn,$sql);
+		if($stmt){
+			while($row=sqlsrv_fetch_array($stmt,SQLSRV_FETCH_ASSOC)){
+				//echo "loop is running";
+				//echo $row['Name'];
+				array_push($Table,$row);
+			}
+		}
+		else{
+			array_push($Table,"SQL語法錯誤");
+			return $Table;
+			//echo "SQL語法錯誤!<br>".$sql;
+			//die( print_r( sqlsrv_errors(), true));
+		}
+		//echo sizeof($Table);
+		//echo $Table[0]['ID'].'<br>';
+		//echo $Table[0]['Name'].'<br>';
+		//echo $Table[0]['PWD'].'<br>';
+		return $Table;
+	}
+	else{
+		array_push($Table,"連線失敗");
+		return $Table;
+	}
+}
+?>

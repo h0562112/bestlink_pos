@@ -1,0 +1,97 @@
+[name]
+;固定欄位名稱
+titlename="Delivery schedule"			;交班表
+salemoneyname="Total sales:"		;銷售總額:
+memberdisname="(-)member discount:"		;(-)會員折扣:
+chargename="(+)Service fee:"			;(+)服務費:
+floorname="(+)低銷溢收:"		;(+)低銷溢收:
+itemdisname="(-)Single product discount amount:"		;(-)單品折讓金額:
+listdisname="(-)Billing discount amount:"		;(-)帳單折讓金額:
+totalsalename="Sales subtotal:"		;銷售小計:
+cashcommname="(+)Credit card processing fee:"		;(+)信用卡手續費:
+cashname="(-)Credit card income:"		;(-)信用卡收入:
+otherpayname="(-)Other payment:"		;(-)其他付款:
+inmoneyname="(+)Income expenses:"		;(+)收入費用:
+outmoneyname="(-)pay expenses:"		;(-)支出費用:
+notmoneyname="(+)非本班現金:"		;(+)非本班現金:
+notcommname="(-)非本班手續費:"		;(-)非本班手續費:  (停用)
+notcashname="(+)非本班信用卡:"		;(+)非本班信用卡:  (停用)
+notothername="(+)非本班其他付款:"	;(+)非本班其他付款:  (停用)
+realysalename="The amount paid (excluding the change):"	;繳回金額(不含找零金):
+changename="Change gold:"			;找零金:
+shouldname="Cash drawer amount (including change):"	;錢櫃金額(含找零金):
+saletitlename="Business information"		;營業資訊
+
+;變動欄位名稱
+salettlname="Summary"			;彙總
+listqtyttlname="Total bills:"		;帳單總數:
+amtttlname="total amount:"			;總金額:
+avgttlname="Average amount:"			;平均金額:
+;內用
+listqty1name="Total bills:"		;帳單總數:
+amt1name="total amount:"			;總金額:
+avg1name="Average amount:"			;平均金額:
+avgpersonname="The average unit price:"		;平均客單價:
+;外帶
+listqty2name="Total bills:"		;帳單總數:
+amt2name="total amount:"			;總金額:
+avg2name="Average amount:"			;平均金額:
+;外送
+listqty3name="Total bills:"		;帳單總數:
+amt3name="total amount:"			;總金額:
+avg3name="Average amount:"			;平均金額:
+;自取
+listqty4name="Total bills:"		;帳單總數:
+amt4name="total amount:"			;總金額:
+avg4name="Average amount:"			;平均金額:
+;作廢帳單
+titleVname="Obsolete bill"			;作廢帳單
+listqtyVname="Total bills:"		;帳單總數:
+amtVname="total amount:"			;總金額:
+voidlistname="Obsolete bill number:"		;作廢帳單號:
+;其他付款項目
+otherpaynamelist="Other payment items"		;其他付款項目
+;非本班其他付款
+notothertitlename="非本班其他付款"	;非本班其他付款
+;發票彙總
+invnotvoidname="Invoice summary (excluding void)"	;發票彙總(不含作廢)
+invalready="Invoiced:"		;已開發票數:
+invmoneyalready="已開立金額:"		;已開立金額:
+startinv="Starting invoice number:"			;起始發票號:
+endinv="End invoice number:"			;結束發票號:
+voidinv="Obsolete invoice"			;作廢發票
+voidqty="Obsolete quantity:"			;作廢數量:
+voidmoney="Obsolete amount:"			;作廢金額:
+voidinvoicenumber="Obsolete invoice number:"		;作廢發票號:
+
+;分析類別明細
+reartitle="Analysis category"			;分析類別
+rearqty="Quantity"				;數量
+
+;銷售明細
+saleitem="product"				;產品
+saleqty="Quantity"				;數量
+saleamt="Subtotal"				;小計
+
+;收入費用明細
+inmoneylistname="收入費用明細"		;收入費用明細
+inmoneylistlabel="subject"			;科目
+inmoneylistsub="Sub"			;金額
+
+;支出費用明細
+outmoneylistname="支出費用明細"		;支出費用明細
+outmoneylistlabel="subject"		;科目
+outmoneylistsub="Sub"			;金額
+
+;會員儲值列表
+memmoneylist="會員儲值列表"
+memno="會員編號"
+paymoney="儲值金額"
+[historypaper]
+;histitle1="交班表";			;交班表(利用原始交班表範本製作，因此注解該變數)
+histitle2="Product Sales Summary"
+histitle3="Time amount summary"
+his3title1="Time slot"
+his3title2="Amount"
+histitle4="Summary of the number of visitors"
+his4title2="Number of visitors"

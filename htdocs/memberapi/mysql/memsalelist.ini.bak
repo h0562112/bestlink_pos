@@ -1,0 +1,23 @@
+[sql]
+1='
+CREATE TABLE `memsalelist` (
+  `bizdate`		varchar(8) NOT NULL,
+  `company`		varchar(32) NOT NULL,
+  `dep`			varchar(32) NOT NULL,
+  `consecnumber`	varchar(32) NOT NULL,
+  `memno`		varchar(32) NOT NULL,
+  `cardno`		varchar(32) NOT NULL,
+  `initpoint`		int(11),
+  `initmoney`		int(11),
+  `money`		float NOT NULL,
+  `giftpoint`		int(11),
+  `memberpoint`		int(11),
+  `membermoney`		int(11),
+  `remainingpoint`	int(11),
+  `remainingmoney`	int(11),
+  `requery`		varchar(64),
+  `datetime`		varchar(32),
+  `share`		INTEGER,
+  `state`		INTEGER DEFAULT "1",
+  PRIMARY KEY (`bizdate`,`company`,`dep`,`consecnumber`,`memno`,`datetime`)
+) ENGINE=InnoDB DEFAULT CHARACTER SET=utf8;'

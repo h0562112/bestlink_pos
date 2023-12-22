@@ -1,0 +1,1 @@
+INSERT INTO moontea.member SELECT *,0 FROM webmember.member WHERE webmember.member.tel="0424732003";;;UPDATE moontea.member SET moontea.member.memno=(SELECT CONCAT("moontea0001",CAST((SELECT COUNT(*) FROM moontea.member WHERE SUBSTR(moontea.member.memno,1,LENGTH("moontea0001"))="moontea0001") AS INT))) WHERE moontea.member.tel="0424732003";;;

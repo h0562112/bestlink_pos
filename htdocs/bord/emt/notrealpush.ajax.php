@@ -1,0 +1,19 @@
+<?php
+//;若要同步多個畫面的叫號，已','串接
+include_once '../tool/inilib.php';
+$target=preg_split('/,/',$_POST['target']);
+for($i=0;$i<sizeof($target);$i++){
+	$f=array();
+	if(file_exists('./'.$target[$i].'/callnumber')){
+	}
+	else{
+		mkdir('./'.$target[$i].'/callnumber');
+	}
+	$f['data']['num']=$_POST['sendvar'];
+	$f['data']['time']=date('YmdHis');
+	write_ini_file($f,'./'.$target[$i].'/callnumber/callnumber.ini');
+	/*$f=fopen('./'.$target[$i].'/callnumber/callnumber.txt','w');
+	fwrite($f,$_POST['sendvar']);
+	fclose($f);*/
+}
+?>

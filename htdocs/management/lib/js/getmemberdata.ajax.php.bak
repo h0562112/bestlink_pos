@@ -1,0 +1,8 @@
+<?php
+include_once '../../../tool/dbTool.inc.php';
+$conn=sqlconnect('../../../menudata/'.$_POST['company'].'/person','member.db','','','','sqlite');
+$sql="SELECT person.*,powergroup.name AS pname,powergroup.seq AS seq FROM person JOIN powergroup ON powergroup.pno=person.power WHERE memno='".$_POST['focus']."' ORDER BY powergroup.seq";
+$data=sqlquery($conn,$sql,'sqlite');
+sqlclose($conn,'sqlite');
+echo json_encode($data);
+?>

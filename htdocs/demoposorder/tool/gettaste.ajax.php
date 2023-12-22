@@ -1,0 +1,20 @@
+<?php
+if($_POST['dep']==''){
+	$filename='../data/'.$_POST['company'];
+}
+else{
+	$filename='../data/'.$_POST['dep'];
+}
+if(file_exists($filename.'-taste.ini')){
+	$content=parse_ini_file($filename.'-taste.ini',true);
+	$tasteno=preg_split('/,/',$_POST['taste']);
+	for($i=0;$i<sizeof($tasteno);$i++){
+		$value[$i]['name']=$content[$tasteno[$i]]['name'];
+		$value[$i]['money']=$content[$tasteno[$i]]['money'];
+	}
+}
+else{
+	$value=0;
+}
+echo json_encode($value);
+?>

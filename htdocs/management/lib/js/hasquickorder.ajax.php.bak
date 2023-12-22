@@ -1,0 +1,14 @@
+<?php
+include_once '../../../tool/dbTool.inc.php';
+$conn=sqlconnect('../../menudata/'.$_POST['company'].'/'.$_POST['dep'],'menu.db','','','','sqlite');
+$sql='SELECT COUNT(*) AS num FROM itemsdata WHERE quickorder="'.$_POST['quickorder'].'" AND inumber!="'.$_POST['inumber'].'"';
+//echo $sql;
+$qn=sqlquery($conn,$sql,'sqlite');
+sqlclose($conn,'sqlite');
+if(!isset($qn[0]['num'])||intval($qn[0]['num'])>=1){
+	echo 'exists';
+}
+else{
+	echo 'notexists';
+}
+?>

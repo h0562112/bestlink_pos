@@ -1,0 +1,104 @@
+2022/11/07 11:52:56 --- url: https://uat.pxpayplus.com/px-pos/Refund
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+    [1] => PX-MerCode: M0002317
+    [2] => PX-MerEnName: TestStore
+    [3] => PX-SignValue: 08BDED49FE0F2E483247BE2D9B26B06E97DAB61DB58F8E3E0FBA56E705BFCC17
+)
+
+                    --- data: Array
+(
+    [store_id] => abula0001
+    [store_name] => TestStore
+    [pos_id] => m1
+    [pos_trade_time] => 20221107115256
+    [ori_mer_trade_no] => abula000120221107115242
+    [mer_trade_no] => abula000120221107115258
+    [ori_gate_trade_no] => 
+    [gate_trade_no] => 
+    [ori_px_trade_no] => TX0000008B40F701C800
+    [amount] => 20
+    [none_discount_amount] => 0
+    [none_feedback_amount] => 0
+    [req_time] => 20221107115256
+    [remark1] => 
+    [remark2] => 
+    [remark3] => 
+    [marketing] => Array
+        (
+        )
+
+    [products] => Array
+        (
+            [0] => Array
+                (
+                    [name] => 冬瓜茶
+                    [amount] => 20
+                    [qty] => 0
+                )
+
+        )
+
+)
+
+                    --- use key: D2EB0E0C49724F43AF9E9EA8DB6E27C2383F09452FF5446EBF45D4B3550DB657
+                    --- hashstring: abula0001m120221107115256abula000120221107115242abula0001202211071152582020221107115256
+                    --- pass string: {"store_id":"abula0001","store_name":"TestStore","pos_id":"m1","pos_trade_time":"20221107115256","ori_mer_trade_no":"abula000120221107115242","mer_trade_no":"abula000120221107115258","ori_gate_trade_no":"","gate_trade_no":"","ori_px_trade_no":"TX0000008B40F701C800","amount":20,"none_discount_amount":0,"none_feedback_amount":0,"req_time":"20221107115256","remark1":"","remark2":"","remark3":"","marketing":[],"products":[{"name":"\u51ac\u74dc\u8336","amount":20,"qty":0}]}
+                    --- init result: {"mer_trade_no":"abula000120221107115258","gate_trade_no":"","px_trade_no":"TX0000008B4106880800","amount":20,"trade_amount":20,"discount_amount":0,"invo_carrier":"/ABD.122","marketing":[],"px_trade_time":"20221107115258","status_code":"0000","status_message":"交易成功"}
+                    --- decode result: Array
+(
+    [mer_trade_no] => abula000120221107115258
+    [gate_trade_no] => 
+    [px_trade_no] => TX0000008B4106880800
+    [amount] => 20
+    [trade_amount] => 20
+    [discount_amount] => 0
+    [invo_carrier] => /ABD.122
+    [marketing] => Array
+        (
+        )
+
+    [px_trade_time] => 20221107115258
+    [status_code] => 0000
+    [status_message] => 交易成功
+)
+
+2022/11/07 11:52:57 --- url: https://uat.pxpayplus.com/px-pos/OrderStatus/1/abula000120221107115258/20221107115257
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+    [1] => PX-MerCode: M0002317
+    [2] => PX-MerEnName: TestStore
+    [3] => PX-SignValue: FC016AA0ED9F8371FE7B33C822A6F81527B96AD3BCABAE8F4228010857EE505C
+)
+
+                    --- data: 
+                    --- use key: D2EB0E0C49724F43AF9E9EA8DB6E27C2383F09452FF5446EBF45D4B3550DB657
+                    --- pass string: null
+                    --- init result: {"order_type":2,"trade_info":{"mer_trade_no":"abula000120221107115258","gate_trade_no":"","px_trade_no":"TX0000008B4106880800","status_code":"0000","status_message":"交易成功","amount":20,"trade_amount":20,"discount_amount":0,"invo_carrier":"/ABD.122","marketing":[],"px_trade_time":"20221107115258"},"status_code":"0000","status_message":"查詢成功"}
+                    --- decode result: Array
+(
+    [order_type] => 2
+    [trade_info] => Array
+        (
+            [mer_trade_no] => abula000120221107115258
+            [gate_trade_no] => 
+            [px_trade_no] => TX0000008B4106880800
+            [status_code] => 0000
+            [status_message] => 交易成功
+            [amount] => 20
+            [trade_amount] => 20
+            [discount_amount] => 0
+            [invo_carrier] => /ABD.122
+            [marketing] => Array
+                (
+                )
+
+            [px_trade_time] => 20221107115258
+        )
+
+    [status_code] => 0000
+    [status_message] => 查詢成功
+)
+

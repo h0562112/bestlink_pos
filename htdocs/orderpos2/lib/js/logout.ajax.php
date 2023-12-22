@@ -1,0 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION['tableplusphone'])){
+	unset($_SESSION['tableplusphone']);
+	unset($_SESSION['tableplusmemno']);
+	unset($_SESSION['tableplusname']);
+}
+else{
+}
+?>

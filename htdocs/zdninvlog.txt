@@ -1,0 +1,29 @@
+20231020114840 ---- Array
+(
+    [success] => 1
+    [data] => Array
+        (
+            [0] => Array
+                (
+                    [type] => 07
+                    [period] => 11210
+                    [track] => TP
+                    [start] => 32393100
+                    [end] => 32393399
+                    [booklet] => 6
+                )
+
+        )
+
+    [total_booklet] => Array
+        (
+            [0] => 180
+        )
+
+    [used_booklet] => Array
+        (
+            [0] => 23
+        )
+
+)
+

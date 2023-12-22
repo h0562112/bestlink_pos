@@ -1,0 +1,113 @@
+<?php
+include_once '../../../tool/inilib.php';
+$taste=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/'.$_POST['company'].'-taste.ini',true);
+if(!file_exists('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/timeout.ini')){
+	date_default_timezone_set('Asia/Taipei');
+}
+else{
+	$timeout=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/timeout.ini',true);
+	if(!isset($timeout['time']['name'])){
+		date_default_timezone_set('Asia/Taipei');
+	}
+	else{
+		date_default_timezone_set($timeout['time']['name']);
+	}
+}
+
+if(strlen($_POST['number'])>0){
+	$taste[$_POST['number']]['tasteno']=$_POST['number'];
+	$taste[$_POST['number']]['name1']=$_POST['name1'];
+	$taste[$_POST['number']]['name2']=$_POST['name2'];
+	$taste[$_POST['number']]['money']=$_POST['money'];
+	if(strlen(trim($_POST['money']))==0){
+		$taste[$_POST['number']]['selecttype']='0';//強制單選
+	}
+	else{
+		$taste[$_POST['number']]['selecttype']='1';//允許複選
+	}
+	if(isset($_POST['public'])){
+		$taste[$_POST['number']]['public']=$_POST['public'];
+	}
+	else{
+		$taste[$_POST['number']]['public']="1";
+	}
+	if(isset($_POST['seq'])){
+		$taste[$_POST['number']]['seq']=$_POST['seq'];
+	}
+	else{
+		$taste[$_POST['number']]['seq']="1";
+	}
+	if(isset($_POST['straw'])){
+		$taste[$_POST['number']]['straw']=$_POST['straw'];
+	}
+	else{
+		$taste[$_POST['number']]['straw']="999";
+	}
+	$taste[$_POST['number']]['background']=$_POST['bgcolor'];
+	if(isset($_POST['group'])){
+		$taste[$_POST['number']]['group']=$_POST['group'];
+	}
+	else{
+		$taste[$_POST['number']]['group']="";
+	}
+}
+else{
+	$row=sizeof($taste);
+	$taste[$row]['tasteno']=$row;
+	$taste[$row]['name1']=$_POST['name1'];
+	$taste[$row]['name2']=$_POST['name2'];
+	$taste[$row]['money']=$_POST['money'];
+	if(strlen(trim($_POST['money']))==0){
+		$taste[$row]['selecttype']='0';//強制單選
+	}
+	else{
+		$taste[$row]['selecttype']='1';//允許複選
+	}
+	if(isset($_POST['public'])){
+		$taste[$row]['public']=$_POST['public'];
+	}
+	else{
+		$taste[$row]['public']="1";
+	}
+	if(isset($_POST['seq'])&&$_POST['seq']!=''&&$_POST['seq']!=null){
+		$taste[$row]['seq']=$_POST['seq'];
+	}
+	else{
+		$taste[$row]['seq']="1";
+	}
+	if(isset($_POST['straw'])&&$_POST['straw']!=''&&$_POST['straw']!=null){
+		$taste[$row]['straw']=$_POST['straw'];
+	}
+	else{
+		$taste[$row]['straw']="999";
+	}
+	$taste[$row]['state']='1';
+	if(isset($_POST['bgcolor'])){
+		$taste[$row]['background']=$_POST['bgcolor'];
+	}
+	else{
+		$taste[$row]['background']='#F0C916';
+	}
+	if(isset($_POST['group'])){
+		$taste[$row]['group']=$_POST['group'];
+	}
+	else{
+		$taste[$row]['group']="";
+	}
+}
+if(isset($taste[0]['tasteno'])){
+}
+else{
+	foreach($taste as $no=>$data){
+		if(isset($data['tasteno'])){
+		}
+		else{
+			$data['tasteno']=$no;
+		}
+	}
+}
+write_ini_file($taste,'../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/'.$_POST['company'].'-taste.ini');
+$ver=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/ver.ini',true);
+$ver['ver']['update']=date('YmdHis');
+write_ini_file($ver,'../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/ver.ini');
+?>

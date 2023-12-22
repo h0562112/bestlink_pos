@@ -1,0 +1,35 @@
+<?php
+include_once '../../../../tool/dbTool.inc.php';
+if(isset($_POST['phone'])){//只有在手機點餐(顧客端)才會傳輸進來
+	$intellasetup=parse_ini_file('../../../../management/menudata/'.$_POST['machine'].'/'.$_POST['dep'].'/intellasetup.ini',true);
+}
+else{
+	$intellasetup=parse_ini_file('../../../../database/intellasetup.ini',true);
+}
+date_default_timezone_set($intellasetup['intella']['settime']);
+/*$conn=sqlconnect('../../../../database/sale','SALES_'.substr($_POST['bizdate'],0,6).'.db','','','','sqlite');
+$sql='SELECT name FROM sqlite_master WHERE type="table" AND name="intellamap"';
+$res=sqlquery($conn,$sql,'sqlite');
+if(isset($res[0]['name'])){
+}
+else{
+	$sql='CREATE TABLE intellamap ( bizdate INTEGER NOT NULL,consecnumber TEXT, intellaconsecnumber TEXT NOT NULL, type TEXT NOT NULL, money NUMERIC, createdatetime DATETIME, state INTEGER DEFAULT -1 , PRIMARY KEY (bizdate, intellaconsecnumber, type) );';
+	sqlnoresponse($conn,$sql,'sqlite');
+}*/
+
+//$intellaconsecnumber=substr(date('YmdHis'),2).$_POST['machine'];
+if(!isset($_POST['phone'])){
+	srand(date('YmdHis'));
+}
+else{
+	srand(date('YmdHis').$_POST['phone']);
+}
+$intellaconsecnumber=date('YmdHis').rand(100,999);//15碼長度
+
+
+/*$sql='INSERT INTO intellamap (bizdate,intellaconsecnumber,type,money,createdatetime) VALUES ("'.$_POST['bizdate'].'","'.$intellaconsecnumber.'","'.$_POST['type'].'","'.$_POST['money'].'","'.date('YmdHis').'")';
+sqlnoresponse($conn,$sql,'sqlite');
+sqlclose($conn,'sqlite');*/
+$res=array("data"=>array("intellaconsecnumber"=>$intellaconsecnumber,'money'=>$_POST['money']));
+echo json_encode($res);
+?>

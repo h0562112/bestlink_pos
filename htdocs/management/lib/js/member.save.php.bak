@@ -1,0 +1,305 @@
+<?php
+date_default_timezone_set('Asia/Taipei');
+include_once '../../../tool/dbTool.inc.php';
+include_once '../../../tool/inilib.php';
+$ver=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/ver.ini',true);
+$ver['ver']['update']=date('YmdHis');
+write_ini_file($ver,'../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/ver.ini');
+$initsetting=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/initsetting.ini',true);
+if($initsetting['init']['onlinemember']=='1'){//網路會員
+	$conn=sqlconnect('localhost',$_POST['company'],'orderuser','0424732003','utf8','mysql');
+	$dbtype='mysql';
+	$tablename='member';
+}
+else{
+	$conn=sqlconnect('../../../menudata/'.$_POST['company'].'/person','member.db','','','','sqlite');
+	$dbtype='sqlite';
+	$tablename='person';
+}
+$sql="SELECT firstdate AS num FROM ".$tablename." WHERE cardno='".strtoupper($_POST['cardno'])."' AND power='".$_POST['power']."'";
+$data=sqlquery($conn,$sql,$dbtype);
+$sql="SELECT COUNT(*) AS num FROM ".$tablename;
+$num=sqlquery($conn,$sql,$dbtype);
+if($_POST['type']=='new'){
+	$sql="SELECT COUNT(*) AS num FROM ".$tablename." WHERE cardno='".strtoupper($_POST['cardno'])."' AND power='".$_POST['power']."'";
+	$data=sqlquery($conn,$sql,$dbtype);
+	if(intval($data[0]['num'])>0){
+		echo 'already';
+	}
+	else{
+		if(strlen($_POST['cardno'])==0){
+			if(isset($_POST['setting'])){
+				if($dbtype=='mysql'){
+					$sql="INSERT INTO ".$tablename." (memno,cardno,name,sex,birth,tel,tel2,country,local,email,receve,zip,address,power,firstdate,lastdate,remark,howknow,setting,point,money,companynumber) SELECT '".$_POST['dep'].$num[0]['num']."',(SELECT CONCAT('".(intval(date('Y')-1911)).date('md')."',substr(CONCAT('000',(COUNT(*)+1)),-2)) FROM ".$tablename." WHERE state='1' AND firstdate LIKE '".date('Y-m-d')."%')";
+				}
+				else{
+					$sql="INSERT INTO ".$tablename." (memno,cardno,name,sex,birth,tel,tel2,country,local,email,receve,zip,address,power,firstdate,lastdate,remark,howknow,setting,point,money,companynumber) SELECT '".$_POST['dep'].$num[0]['num']."',(SELECT '".(intval(date('Y')-1911)).date('md')."'||substr('000'||(COUNT(*)+1),-2) FROM ".$tablename." WHERE state='1' AND firstdate LIKE '".date('Y-m-d')."%')";
+				}
+			}
+			else{
+				if($dbtype=='mysql'){
+					$sql="INSERT INTO ".$tablename." (memno,cardno,name,sex,birth,tel,tel2,country,local,email,receve,zip,address,power,firstdate,lastdate,remark,howknow,point,money,companynumber) SELECT '".$_POST['dep'].$num[0]['num']."',(SELECT CONCAT('".(intval(date('Y')-1911)).date('md')."',substr(CONCAT('000',(COUNT(*)+1)),-2)) FROM ".$tablename." WHERE state='1' AND firstdate LIKE '".date('Y-m-d')."%')";
+				}
+				else{
+					$sql="INSERT INTO ".$tablename." (memno,cardno,name,sex,birth,tel,tel2,country,local,email,receve,zip,address,power,firstdate,lastdate,remark,howknow,point,money,companynumber) SELECT '".$_POST['dep'].$num[0]['num']."',(SELECT '".(intval(date('Y')-1911)).date('md')."'||substr('000'||(COUNT(*)+1),-2) FROM ".$tablename." WHERE state='1' AND firstdate LIKE '".date('Y-m-d')."%')";
+				}
+			}
+		}
+		else{
+			$sql="INSERT INTO ".$tablename." (memno,cardno,name,sex,birth,tel,tel2,country,local,email,receve,zip,address,power,firstdate,lastdate,remark,howknow,setting,point,money,companynumber) VALUES ('".$_POST['dep'].$num[0]['num']."','".strtoupper($_POST['cardno'])."'";
+		}
+		$sql=$sql.',"'.$_POST['name'].'"';
+		if(isset($_POST['sex'])&&strlen($_POST['sex'])>0){
+			$sql=$sql.','.$_POST['sex'];
+		}
+		else{
+			$sql=$sql.',NULL';
+		}
+		if(isset($_POST['birth'])&&strlen($_POST['birth'])>0){
+			$sql=$sql.',"'.$_POST['birth'].'"';
+		}
+		else{
+			$sql=$sql.',NULL';
+		}
+		if(isset($_POST['tel'])&&strlen($_POST['tel'])>0){
+			$sql=$sql.',"'.$_POST['tel'].'"';
+		}
+		else{
+			$sql=$sql.',NULL';
+		}
+		if(isset($_POST['tel2'])&&strlen($_POST['tel2'])>0){
+			$sql=$sql.',"'.$_POST['tel2'].'"';
+		}
+		else{
+			$sql=$sql.',NULL';
+		}
+		if(isset($_POST['country'])&&strlen($_POST['country'])>0){
+			$sql=$sql.',"'.$_POST['country'].'"';
+			if($_POST['country']=='TW'){
+				$sql=$sql.',"'.$_POST['sublocal'].'"';
+			}
+			else if($_POST['country']=='CN'){
+				$sql=$sql.',"'.$_POST['subclocal'].'"';
+			}
+			else{
+				$sql=$sql.',NULL';
+			}
+		}
+		else{
+			$sql=$sql.',NULL,NULL';
+		}
+		if(isset($_POST['email'])&&strlen($_POST['email'])>0){
+			$sql=$sql.',"'.$_POST['email'].'"';
+		}
+		else{
+			$sql=$sql.',NULL';
+		}
+		if(isset($_POST['receve'])){
+			$sql=$sql.',1';
+		}
+		else{
+			$sql=$sql.',NULL';
+		}
+		if(isset($_POST['zip'])&&strlen($_POST['zip'])>0){
+			$sql=$sql.',"'.$_POST['zip'].'"';
+		}
+		else{
+			$sql=$sql.',NULL';
+		}
+		if(isset($_POST['address'])&&strlen($_POST['address'])>0){
+			$sql=$sql.',"'.$_POST['address'].'"';
+		}
+		else{
+			$sql=$sql.',NULL';
+		}
+		$sql=$sql.',"'.$_POST['power'].'"';
+		if(isset($_POST['firstdate'])&&strlen($_POST['firstdate'])>0){
+			$sql=$sql.',"'.$_POST['firstdate'].'"';
+			if(isset($_POST['lastdate'])&&strlen($_POST['lastdate'])>0&&strtotime($_POST['lastdate'])>strtotime($_POST['firstdate'])){
+				$sql=$sql.',"'.$_POST['lastdate'].'"';
+			}
+			else{
+				$sql=$sql.',NULL';
+			}
+		}
+		else{
+			$sql=$sql.',"'.date('Y-m-d').'"';
+			if(isset($_POST['lastdate'])&&strlen($_POST['lastdate'])>0&&strtotime($_POST['lastdate'])>strtotime(date('Y-m-d'))){
+				$sql=$sql.',"'.$_POST['lastdate'].'"';
+			}
+			else{
+				$sql=$sql.',NULL';
+			}
+		}
+		if(isset($_POST['remark'])&&strlen($_POST['remark'])>0){
+			$sql=$sql.',"'.$_POST['remark'].'"';
+		}
+		else{
+			$sql=$sql.',NULL';
+		}
+		if(isset($_POST['howknow'])){
+			$sql=$sql.",'".$_POST['howknow']."'";
+		}
+		else{
+			$sql=$sql.",NULL";
+		}
+		if(isset($_POST['setting'])){
+			$sql=$sql.",'".$_POST['setting']."'";
+		}
+		else{
+			//$sql=$sql.",NULL";
+		}
+		if(isset($_POST['point'])){
+			$sql=$sql.",".$_POST['point'];
+		}
+		else{
+			$sql=$sql.",0";
+		}
+		if(isset($_POST['money'])){
+			$sql=$sql.",".$_POST['money'];
+		}
+		else{
+			$sql=$sql.",0";
+		}
+		if(isset($_POST['companynumber'])){
+			$sql=$sql.",".$_POST['companynumber'];
+		}
+		else{
+			$sql=$sql.",NULL";
+		}
+		if(strlen($_POST['cardno'])==0){
+		}
+		else{
+			$sql=$sql.")";
+		}
+		sqlnoresponse($conn,$sql,$dbtype);
+		echo $sql;
+		echo 'success';
+	}
+}
+else{//if($_POST['type']=='edit')
+	$sql="UPDATE ".$tablename." SET name='".$_POST['name']."',sex=";
+	if(isset($_POST['sex'])&&strlen($_POST['sex'])>0){
+		$sql=$sql.$_POST['sex'].",";
+	}
+	else{
+		$sql=$sql."NULL,";
+	}
+	$sql=$sql."birth=";
+	if(isset($_POST['birth'])&&strlen($_POST['birth'])>0){
+		$sql=$sql."'".$_POST['birth']."',";
+	}
+	else{
+		$sql=$sql."NULL,";
+	}
+	$sql=$sql."tel=";
+	if(isset($_POST['tel'])&&strlen($_POST['tel'])>0){
+		$sql=$sql."'".$_POST['tel']."',";
+	}
+	else{
+		$sql=$sql."NULL,";
+	}
+	$sql=$sql."tel2=";
+	if(isset($_POST['tel2'])&&strlen($_POST['tel2'])>0){
+		$sql=$sql."'".$_POST['tel2']."',";
+	}
+	else{
+		$sql=$sql."NULL,";
+	}
+	$sql=$sql."email=";
+	if(isset($_POST['email'])&&strlen($_POST['email'])>0){
+		$sql=$sql."'".$_POST['email']."',";
+	}
+	else{
+		$sql=$sql."NULL,";
+	}
+	$sql=$sql."receve=";
+	if(isset($_POST['receve'])){
+		$sql=$sql."1,";
+	}
+	else{
+		$sql=$sql."NULL,";
+	}
+	$sql=$sql."country=";
+	if(isset($_POST['country'])&&strlen($_POST['country'])>0){
+		$sql=$sql."'".$_POST['country']."',";
+		$sql=$sql."local=";
+		if($_POST['country']=='TW'){
+			$sql=$sql."'".$_POST['sublocal']."',";
+		}
+		else if($_POST['country']=='CN'){
+			$sql=$sql."'".$_POST['subclocal']."',";
+		}
+		else{
+			$sql=$sql."NULL,";
+		}
+	}
+	else{
+		$sql=$sql."NULL,local=NULL,";
+	}
+	$sql=$sql."zip=";
+	if(isset($_POST['zip'])&&strlen($_POST['zip'])>0){
+		$sql=$sql."'".$_POST['zip']."',";
+	}
+	else{
+		$sql=$sql."NULL,";
+	}
+	$sql=$sql."address=";
+	if(isset($_POST['address'])&&strlen($_POST['address'])>0){
+		$sql=$sql."'".$_POST['address']."',";
+	}
+	else{
+		$sql=$sql."NULL,";
+	}
+	$sql=$sql."power='".$_POST['power']."'";
+	if(strlen($_POST['firstdate'])==0){
+		if(isset($_POST['lastdate'])&&strlen($_POST['lastdate'])>0&&strtotime($_POST['lastdate'])>strtotime($data[0]['firstdate'])){
+			$sql=$sql.',lastdate="'.$_POST['lastdate'].'"';
+		}
+		else{
+			$sql=$sql.',lastdate=NULL';
+		}
+	}
+	else{
+		$sql=$sql.",firstdate='".$_POST['firstdate']."'";
+		if(isset($_POST['lastdate'])&&strlen($_POST['lastdate'])>0&&strtotime($_POST['lastdate'])>strtotime($_POST['firstdate'])){
+			$sql=$sql.',lastdate="'.$_POST['lastdate'].'"';
+		}
+		else{
+			$sql=$sql.',lastdate=NULL';
+		}
+	}
+	$_POST['remark']=preg_replace("/'/",'"',$_POST['remark']);
+	$sql=$sql.",remark='".$_POST['remark']."'";	
+	if(isset($_POST['setting'])){
+		$sql=$sql.",setting='".$_POST['setting']."'";
+	}
+	else{
+		//$sql=$sql.",setting=NULL";
+	}
+	if(isset($_POST['point'])){
+		$sql=$sql.",point=".$_POST['point'];
+	}
+	else{
+		$sql=$sql.",point=0";
+	}
+	if(isset($_POST['money'])){
+		$sql=$sql.",money=".$_POST['money'];
+	}
+	else{
+		$sql=$sql.",money=0";
+	}
+	if(isset($_POST['companynumber'])){
+		$sql=$sql.",companynumber=".$_POST['companynumber'];
+	}
+	else{
+		$sql=$sql.",companynumber=NULL";
+	}
+	$sql=$sql." WHERE memno='".$_POST['memno']."'";
+	//echo $sql;
+	sqlnoresponse($conn,$sql,$dbtype);
+	//echo $sql;
+	echo 'success';
+}
+sqlclose($conn,$dbtype);
+?>

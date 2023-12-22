@@ -1,0 +1,186 @@
+<?php
+class DES
+{
+    /**
+     * @var string $method 加解密方法，可通过 openssl_get_cipher_methods() 获得
+     */
+    protected $method;
+ 
+    /**
+     * @var string $key 加解密的密钥
+     */
+    protected $key;
+ 
+    /**
+     * @var string $output 输出格式 无、base64、hex
+     */
+    protected $output;
+ 
+    /**
+     * @var string $iv 加解密的向量
+     */
+    protected $iv;
+ 
+    /**
+     * @var string $options
+     */
+    protected $options;
+ 
+    // output 的类型
+    const OUTPUT_NULL = '';
+    const OUTPUT_BASE64 = 'base64';
+    const OUTPUT_HEX = 'hex';
+ 
+ 
+    /**
+     * DES constructor.
+     * @param string $key
+     * @param string $method
+     *      ECB DES-ECB、DES-EDE3 （为 ECB 模式时，$iv 为空即可）
+     *      CBC DES-CBC、DES-EDE3-CBC、DESX-CBC
+     *      CFB DES-CFB8、DES-EDE3-CFB8
+     *      CTR
+     *      OFB
+     *
+     * @param string $output
+     *      base64、hex
+     *
+     * @param string $iv
+     * @param int $options
+     */
+    public function __construct($key, $method = 'DES-ECB', $output = '', $iv = '', $options = OPENSSL_RAW_DATA | OPENSSL_NO_PADDING)
+    {
+        $this->key = $key;
+        $this->method = $method;
+        $this->output = $output;
+        $this->iv = $iv;
+        $this->options = $options;
+    }
+ 
+    /**
+     * 加密
+     *
+     * @param $str
+     * @return string
+     */
+    public function encrypt($str)
+    {
+        $str = $this->pkcsPadding($str, 8);
+        $sign = openssl_encrypt($str, $this->method, $this->key, $this->options, $this->iv);
+ 
+        if ($this->output == self::OUTPUT_BASE64) {
+            $sign = base64_encode($sign);
+        } else if ($this->output == self::OUTPUT_HEX) {
+            $sign = bin2hex($sign);
+        }
+ 
+        return $sign;
+    }
+ 
+    /**
+     * 解密
+     *
+     * @param $encrypted
+     * @return string
+     */
+    public function decrypt($encrypted)
+    {
+        if ($this->output == self::OUTPUT_BASE64) {
+            $encrypted = base64_decode($encrypted);
+        } else if ($this->output == self::OUTPUT_HEX) {
+            $encrypted = hex2bin($encrypted);
+        }
+ 
+        $sign = @openssl_decrypt($encrypted, $this->method, $this->key, $this->options, $this->iv);
+        $sign = $this->unPkcsPadding($sign);
+        $sign = rtrim($sign);
+        return $sign;
+    }
+ 
+    /**
+     * 填充
+     *
+     * @param $str
+     * @param $blocksize
+     * @return string
+     */
+    private function pkcsPadding($str, $blocksize)
+    {
+        $pad = $blocksize - (strlen($str) % $blocksize);
+        return $str . str_repeat(chr($pad), $pad);
+    }
+ 
+    /**
+     * 去填充
+     *
+     * @param $str
+     * @return string
+     */
+    private function unPkcsPadding($str)
+    {
+        $pad = ord($str{strlen($str) - 1});
+        if ($pad > strlen($str)) {
+            return false;
+        }
+        return substr($str, 0, -1 * $pad);
+    }
+ 
+}
+
+function php_curl_ajax($method,$url,$header,$postdata){
+	/*if($method=='get'){//2021/4/13 該API無需使用該流程
+		if(sizeof($postdata)>0){
+			$url .= '?';
+			foreach($postdata as $name=>$value){
+				$url .= $name.'='.$value.'&';
+			}
+		}
+		else{
+		}
+	}
+	else{
+	}*/
+	$ch = curl_init();
+	//echo '<br>url='.$url.'<br>';
+	curl_setopt($ch, CURLOPT_URL, $url);//
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+	if($method=='post'){
+		curl_setopt($ch, CURLOPT_POST, 1);
+		//curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postdata));
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $postdata);//2022/6/9 因為他們要接收xml字串
+	}
+	else if($method=='put'){
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($postdata));
+	}
+	else{
+	}
+	// Edit: prior variable $postFields should be $postfields;
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); // On dev server only!
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+	$tempdata = curl_exec($ch);
+	$result=json_decode($tempdata,true);
+	curl_close($ch);
+	$res[]=$tempdata;
+	$res[]=$result;
+	return $res;
+}
+function Keeper_Sales($url,$method,$xmlsalelist,$apikey,$authkey,$storeid,$depid){
+	$key=chr(102).chr(16).chr(93).chr(156).chr(78).chr(4).chr(218).chr(32);
+	$iv=chr(55).chr(103).chr(246).chr(79).chr(36).chr(99).chr(167).chr(3);
+
+	$header = array('Content-Type: application/soap+xml; charset=utf-8');
+
+	$xmlstring='<?xml version="1.0" encoding="utf-8"?><soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope"><soap12:Body><Upload_ts_outp xmlns="http://tempuri.org/"><cXmlstr>';
+
+	$des = new DES($key, 'DES-CBC', DES::OUTPUT_BASE64, $iv);
+	$xmlstring .= $des->encrypt($xmlsalelist);
+	
+	$xmlstring .= '</cXmlstr><apikey>'.$apikey.'</apikey><authkey>'.$authkey.'</authkey><storeid>'.$storeid.'</storeid><depid>'.$depid.'</depid></Upload_ts_outp></soap12:Body></soap12:Envelope>';
+	
+	return php_curl_ajax($method,$url.'aspx/api/ekpapiv8.asmx',$header,$xmlstring);
+	//return $xmlstring;
+	//return $des->encrypt($xmlsalelist);
+}
+?>

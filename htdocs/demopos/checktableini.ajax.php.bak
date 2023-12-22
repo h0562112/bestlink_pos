@@ -1,0 +1,113 @@
+<?php
+$initsetting=parse_ini_file('../database/initsetting.ini',true);
+//date_default_timezone_set('Asia/Taipei');
+date_default_timezone_set($initsetting['init']['settime']);
+if($_POST['type']=='in'){
+	if(file_exists("./table/".$_POST['bizdate'].";".$_POST['zcounter'].";".iconv('utf-8','gb2312',$_POST['tabnum']).".ini")){
+		include_once '../tool/inilib.php';
+		$tabini=parse_ini_file("./table/".$_POST['bizdate'].";".$_POST['zcounter'].";".iconv('utf-8','big5',$_POST['tabnum']).".ini",true);
+		if(isset($tabini[$_POST['tabnum']]['state'])&&$tabini[$_POST['tabnum']]['state']=='0'){
+			echo 'empty-'.$tabini[$_POST['tabnum']]['machine'];
+			if(strstr($tabini[$_POST['tabnum']]['table'],',')){
+				$tablist=preg_split('/,/',$tabini[$_POST['tabnum']]['table']);
+				foreach($tablist as $tl){
+					$temp=parse_ini_file("./table/".$_POST['bizdate'].";".$_POST['zcounter'].";".iconv('utf-8','big5',$tl).".ini",true);
+					$temp[$tl]['state']='999';
+					if(isset($_POST['submachine'])&&$_POST['submachine']!='empty'){
+						$temp[$tl]['machine']=$_POST['submachine'];
+					}
+					else if(isset($_POST['machine'])&&$_POST['machine']!='empty'){
+						$temp[$tl]['machine']=$_POST['machine'];
+					}
+					else{
+						$temp[$tl]['machine']="m1";
+					}
+					write_ini_file($temp,"./table/".$_POST['bizdate'].";".$_POST['zcounter'].";".iconv('utf-8','big5',$tl).".ini");
+				}
+			}
+			else{
+				$tabini[$_POST['tabnum']]['state']='999';
+				if(isset($_POST['submachine'])&&$_POST['submachine']!='empty'){
+					$tabini[$_POST['tabnum']]['machine']=$_POST['submachine'];
+				}
+				else if(isset($_POST['machine'])&&$_POST['machine']!='empty'){
+					$tabini[$_POST['tabnum']]['machine']=$_POST['machine'];
+				}
+				else{
+					$tabini[$_POST['tabnum']]['machine']="m1";
+				}
+				write_ini_file($tabini,"./table/".$_POST['bizdate'].";".$_POST['zcounter'].";".iconv('utf-8','big5',$_POST['tabnum']).".ini");
+			}
+		}
+		else if(isset($tabini[$_POST['tabnum']]['state'])&&$tabini[$_POST['tabnum']]['state']=='999'&&($tabini[$_POST['tabnum']]['machine']!=$_POST['submachine']||$_POST['submachine']=='empty')&&($tabini[$_POST['tabnum']]['machine']!=$_POST['machine']||$_POST['machine']=='empty')){
+			echo 'lock-'.$tabini[$_POST['tabnum']]['machine'];
+		}
+		else{
+			echo 'unlock-'.$tabini[$_POST['tabnum']]['machine'];
+			if(strstr($tabini[$_POST['tabnum']]['table'],',')){
+				$tablist=preg_split('/,/',$tabini[$_POST['tabnum']]['table']);
+				foreach($tablist as $tl){
+					$temp=parse_ini_file("./table/".$_POST['bizdate'].";".$_POST['zcounter'].";".iconv('utf-8','big5',$tl).".ini",true);
+					$temp[$tl]['state']='999';
+					if(isset($_POST['submachine'])&&$_POST['submachine']!='empty'){
+						$temp[$tl]['machine']=$_POST['submachine'];
+					}
+					else if(isset($_POST['machine'])&&$_POST['machine']!='empty'){
+						$temp[$tl]['machine']=$_POST['machine'];
+					}
+					else{
+						$temp[$tl]['machine']="m1";
+					}
+					write_ini_file($temp,"./table/".$_POST['bizdate'].";".$_POST['zcounter'].";".iconv('utf-8','big5',$tl).".ini");
+				}
+			}
+			else{
+				$tabini[$_POST['tabnum']]['state']='999';
+				if(isset($_POST['submachine'])&&$_POST['submachine']!='empty'){
+					$tabini[$_POST['tabnum']]['machine']=$_POST['submachine'];
+				}
+				else if(isset($_POST['machine'])&&$_POST['machine']!='empty'){
+					$tabini[$_POST['tabnum']]['machine']=$_POST['machine'];
+				}
+				else{
+					$tabini[$_POST['tabnum']]['machine']="m1";
+				}
+				write_ini_file($tabini,"./table/".$_POST['bizdate'].";".$_POST['zcounter'].";".iconv('utf-8','big5',$_POST['tabnum']).".ini");
+			}
+		}
+	}
+	else{
+		$fileini=fopen("./table/".$_POST['bizdate'].";".$_POST['zcounter'].";".iconv('utf-8','big5',$_POST['tabnum']).".ini",'a');
+		fwrite($fileini,'['.$_POST['tabnum'].']'.PHP_EOL);
+		fwrite($fileini,'bizdate="'.$_POST['bizdate'].'"'.PHP_EOL);
+		fwrite($fileini,'zcounter="'.$_POST['zcounter'].'"'.PHP_EOL);
+		fwrite($fileini,'consecnumber=""'.PHP_EOL);
+		fwrite($fileini,'saleamt=""'.PHP_EOL);
+		fwrite($fileini,'person=""'.PHP_EOL);
+		fwrite($fileini,'createdatetime="'.date('YmdHis').'"'.PHP_EOL);
+		fwrite($fileini,'table="'.$_POST['tabnum'].'"'.PHP_EOL);
+		if(strstr($_POST['tabnum'],',')){
+			fwrite($fileini,'tablestate="1"'.PHP_EOL);
+		}
+		else{
+			fwrite($fileini,'tablestate="0"'.PHP_EOL);
+		}
+		fwrite($fileini,'state="999"'.PHP_EOL);
+		if(isset($_POST['submachine'])&&$_POST['submachine']!='empty'){
+			fwrite($fileini,'machine="'.$_POST['submachine'].'"'.PHP_EOL);
+			echo 'unlock-'.$_POST['submachine'];
+		}
+		else if(isset($_POST['machine'])&&$_POST['machine']!='empty'){
+			fwrite($fileini,'machine="'.$_POST['machine'].'"'.PHP_EOL);
+			echo 'unlock-'.$_POST['machine'];
+		}
+		else{
+			fwrite($fileini,'machine="m1"'.PHP_EOL);
+			echo 'unlock-m1';
+		}
+		fclose($fileini);
+	}
+}
+else{
+}
+?>

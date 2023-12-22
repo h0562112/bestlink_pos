@@ -1,0 +1,49 @@
+<?php
+$looptype=$_POST['looptype'];
+$content=parse_ini_file('../../../database/initsetting.ini',true);
+if(file_exists('../../syspram/buttons-'.$content['init']['firlan'].'.ini')){
+	$buttons1=parse_ini_file('../../syspram/buttons-'.$content['init']['firlan'].'.ini',true);
+}
+else{
+	$buttons1='-1';
+}
+if(file_exists('../../syspram/buttons-'.$content['init']['seclan'].'.ini')){
+	$buttons2=parse_ini_file('../../syspram/buttons-'.$content['init']['seclan'].'.ini',true);
+}
+else{
+	$buttons2='-1';
+}
+$start=23;
+$value=array();
+if($looptype=='4'){
+	if($buttons1=='-1'){
+		$name1='';
+	}
+	else{
+		$name1=$buttons1['name'][$start];
+	}
+	if($buttons2=='-1'){
+		$name2='';
+	}
+	else{
+		$name2=$buttons2['name'][$start];
+	}
+	array_push($value,$name1,$name2,'1');
+}
+else{
+	if($buttons1=='-1'){
+		$name1='';
+	}
+	else{
+		$name1=$buttons1['name'][$start+$looptype];
+	}
+	if($buttons2=='-1'){
+		$name2='';
+	}
+	else{
+		$name2=$buttons2['name'][$start+$looptype];
+	}
+	array_push($value,$name1,$name2,$looptype+1);
+}
+echo json_encode($value);
+?>

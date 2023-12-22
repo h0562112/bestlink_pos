@@ -1,0 +1,74 @@
+<?php
+$content=parse_ini_file('../../../database/initsetting.ini',true);
+$data=parse_ini_file('../../../database/setup.ini',true);
+$menu=parse_ini_file('../../../database/'.$data['basic']['company'].'-menu.ini',true);
+if(file_exists('../../../database/'.$data['basic']['company'].'-kds.ini')){
+	$kdstype=parse_ini_file('../../../database/'.$data['basic']['company'].'-kds.ini',true);
+}
+else{
+}
+
+date_default_timezone_set($content['init']['settime']);
+
+$kds=array();
+for($i=0;$i<sizeof($_POST['no']);$i++){
+	if(isset($content['init']['kds'])&&$content['init']['kds']=='1'&&isset($kdstype)){//是否開啟kds
+		if(isset($menu[$_POST['no'][$i]]['kds'])&&$menu[$_POST['no'][$i]]['kds']!=''){//產品是否設定完成kds群組
+			if(isset($kds[$menu[$_POST['no'][$i]]['kds']])){
+			}
+			else{
+				$kds[$menu[$_POST['no'][$i]]['kds']]['dir']='../../../kds/items/noread/'.$menu[$_POST['no'][$i]]['kds'];
+				$kds[$menu[$_POST['no'][$i]]['kds']]['filename']='temp'.date('YmdHis').$_POST['consecnumber'].'.ini';
+				if(file_exists($kds[$menu[$_POST['no'][$i]]['kds']]['dir'])){
+				}
+				else{
+					mkdir($kds[$menu[$_POST['no'][$i]]['kds']]['dir']);
+				}
+				$kds[$menu[$_POST['no'][$i]]['kds']]['file']=fopen($kds[$menu[$_POST['no'][$i]]['kds']]['dir'].'/'.$kds[$menu[$_POST['no'][$i]]['kds']]['filename'],'w');
+				fwrite($kds[$menu[$_POST['no'][$i]]['kds']]['file'],'['.$_POST['consecnumber'].'consecnumber'.date('YmdHis').']'.PHP_EOL);						
+			}
+			fwrite($kds[$menu[$_POST['no'][$i]]['kds']]['file'],'terminalnumber[]="'.$_POST['machinetype'].'"'.PHP_EOL);
+			if(isset($_POST['memno'])&&$_POST['memno']!=''){
+				fwrite($kds[$menu[$_POST['no'][$i]]['kds']]['file'],'customname[]="'.$memdata[0]['name'].'"'.PHP_EOL);
+			}
+			else{
+				fwrite($kds[$menu[$_POST['no'][$i]]['kds']]['file'],'customname[]=""'.PHP_EOL);
+			}
+			if(isset($_POST['saleno'])){
+				fwrite($kds[$menu[$_POST['no'][$i]]['kds']]['file'],'saleno[]="'.$_POST['saleno'][$i].'"'.PHP_EOL);
+			}
+			else{
+				//fwrite($kds[$menu[$_POST['no'][$i]]['kds']]['file'],'kdsgroup[]='.$menu[$_POST['no'][$i]]['kdsgroup'].PHP_EOL);
+			}
+			if(isset($_POST['tablenumber'])){
+				fwrite($kds[$menu[$_POST['no'][$i]]['kds']]['file'],'tablenumber[]="'.$_POST['tablenumber'].'"'.PHP_EOL);
+			}
+			else{
+			}
+			fwrite($kds[$menu[$_POST['no'][$i]]['kds']]['file'],'remarks[]="'.$_POST['listtype'].'"'.PHP_EOL);
+			fwrite($kds[$menu[$_POST['no'][$i]]['kds']]['file'],'itemtype[]="'.$_POST['typeno'][$i].'"'.PHP_EOL);
+			fwrite($kds[$menu[$_POST['no'][$i]]['kds']]['file'],'itemno[]="'.$_POST['no'][$i].'"'.PHP_EOL);
+			fwrite($kds[$menu[$_POST['no'][$i]]['kds']]['file'],'itemname[]="'.$_POST['name'][$i].'"'.PHP_EOL);
+			fwrite($kds[$menu[$_POST['no'][$i]]['kds']]['file'],'taste1[]="'.$_POST['taste1'][$i].'"'.PHP_EOL);
+			fwrite($kds[$menu[$_POST['no'][$i]]['kds']]['file'],'taste1name[]="'.$_POST['taste1name'][$i].'"'.PHP_EOL);
+			fwrite($kds[$menu[$_POST['no'][$i]]['kds']]['file'],'moneyname[]="'.$_POST['mname1'][$i].'"'.PHP_EOL);
+			fwrite($kds[$menu[$_POST['no'][$i]]['kds']]['file'],'number[]="'.$_POST['number'][$i].'"'.PHP_EOL);
+			fwrite($kds[$menu[$_POST['no'][$i]]['kds']]['file'],'kdsno[]="'.$menu[$_POST['no'][$i]]['kds'].'"'.PHP_EOL);
+			fwrite($kds[$menu[$_POST['no'][$i]]['kds']]['file'],'kdsgroup[]="'.$menu[$_POST['no'][$i]]['kdsgroup'].'"'.PHP_EOL);
+		}
+		else{
+		}
+	}
+	else{
+	}
+}
+
+if(sizeof($kds)>0){
+	foreach($kds as $v){
+		fclose($v['file']);
+		rename($v['dir'].'/'.$v['filename'],$v['dir'].'/'.substr($v['filename'],4));
+	}
+}
+else{
+}
+?>

@@ -1,0 +1,8 @@
+2020/02/14 14:13:51 --- api return error message
+------------------- --- status:406
+------------------- --- code:invalid
+------------------- --- message:點數尚未啟用
+2023/10/20 17:14:10 --- api return error message
+------------------- --- status:406
+------------------- --- code:invalid_amount
+------------------- --- message:點數不足

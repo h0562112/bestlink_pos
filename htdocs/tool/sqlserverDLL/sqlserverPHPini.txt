@@ -1,0 +1,12 @@
+extension=php_sqlsrv_56_nts.dll
+extension=php_sqlsrv_56_ts.dll
+extension=php_pdo_sqlsrv_56_nts.dll
+extension=php_pdo_sqlsrv_56_ts.dll
+extension=php_sqlsrv_55_nts.dll
+extension=php_sqlsrv_55_ts.dll
+extension=php_pdo_sqlsrv_55_nts.dll
+extension=php_pdo_sqlsrv_55_ts.dll
+extension=php_sqlsrv_54_nts.dll
+extension=php_sqlsrv_54_ts.dll
+extension=php_pdo_sqlsrv_54_nts.dll
+extension=php_pdo_sqlsrv_54_ts.dll

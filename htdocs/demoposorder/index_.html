@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src='https://code.jquery.com/jquery-1.12.4.js'></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src='http://malsup.github.com/jquery.cycle2.js'></script>
+	<script src="./jquery.fly.min.js"></script>
+	<!-- <link rel="stylesheet" href="pager.css"> -->
+	<title>食卷機DEMO</title>
+	<style>
+		body {
+			padding:0;
+			margin:0;
+			overflow:hidden;
+		}
+		.logo {
+			width:1366px;
+			height:100px;
+			text-align:center;
+			font-size:90px;
+		}
+		#main {
+			overflow:hidden;
+		}
+		.content {
+			width:1000px;
+			height:600px;
+			margin-left:10px;
+			float:left;
+		}
+		.foodbox {
+			width:1024.5px;
+			height:600px;
+		}
+		.food {
+			width:330px;
+			height:200px;
+			float:left;
+		}
+		.fdimgbox {
+			width:330px;
+			height:160px;
+			position: relative;
+		}
+		.foodimg {
+			width:330px;
+			height:160px;
+			border:1px #000000 solid;
+		}
+		.plus {
+			width:64px;
+			height:64px;
+			position: absolute;
+			bottom:0;
+			right:0;
+			font-size:60px;
+		}
+		.foodtitle {
+			width:330px;
+			font-size:30px;
+			text-align:center;
+			border:1px #000000 solid;
+		}
+		.function {
+			width:330px;
+			height:660px;
+			margin-right:10px;
+			float:right;
+		}
+		.fun {
+			width:330px;
+			height:327px;
+			float:left;
+		}
+		.funimgbox {
+			width:330px;
+			height:285px;
+			border:1px #000000 solid;
+			float:left;
+			position:relative;
+		}
+		.point {
+			width:64px;
+			height:64px;
+			position:absolute;
+			top:0;
+			left:30px;
+			color:#ffffff;
+			font-size:55px;
+			text-align:center;
+		}
+		.funimg {
+			width:330px;
+			height:285px;
+		}
+		.funtitle {
+			width:330px;
+			font-size:30px;
+			text-align:center;
+			float:left;
+			border:1px #000000 solid;
+		}
+		.list,
+		.finish {
+			font-size:28px;
+		}
+		.listcontent {
+			width:calc(100% - 2em);
+			position:absolute;
+			height:calc(100% - 1em - 55px);
+			overflow-y:auto;
+		}
+		.listcontent #item {
+			width:100%;
+			height:45px;
+			margin-bottom:5px;
+			float:left;
+		}
+		.listcontent #item #name {
+			width:40%;
+			float:left;
+		}
+		.listcontent #item #num {
+			width:calc(45% - 15px);
+			float:left;
+			overflow:hidden;
+		}
+		.listcontent #item .numbox {
+			width:150px;
+			text-align:center;
+			float:left;
+		}
+		.listcontent #item #price {
+			width:15%;
+			margin-right:15px;
+			float:right;
+			text-align:right;
+		}
+		#listfun {
+			width:45px;
+			height:45px;
+			vertical-align:top;
+			float:left;
+			margin-top:-5.5px;
+		}
+		.total {
+			width:calc(100% - 2em);
+			position:absolute;
+			bottom:.5em;
+			border-top:1px #000000 dotted;
+			text-align:right;
+			font-size:40px;
+		}
+		.total #tolbox {
+			margin-right:15px;
+		}
+
+		.ui-widget .ui-widget {
+			font-size:30px;
+		}
+
+		/* pager */
+		.pagers { 
+			text-align: center;
+			width: 1024.5px;
+			z-index: 100;
+			position: absolute;
+			bottom: 0;
+			overflow: hidden;
+			float:left;
+		}
+		.pagers span { 
+			font-family: arial;
+			font-size: 50px;
+			width: 30px; 
+			height: 16px; 
+			display: inline-block;
+			color: #ddd;
+			cursor: pointer; 
+		}
+		.pagers span.cycle-pager-active { 
+			color: #D69746;
+		}
+		.pagers > * { 
+			cursor: pointer;
+		}
+
+		.leftimg,
+		.rightimg {
+			width:50px;
+			height:50px;
+			margin:0;
+			padding:0;
+			z-index:101;
+		}
+		.leftimg {
+			position:absolute;
+			bottom:0;
+			left:10px;
+		}
+		.rightimg {
+			position:absolute;
+			bottom:0;
+			left:960px;
+		}
+	</style>
+	<script>
+		$(document).ready(function(){
+			var x=0,x1=0;
+			var t=0,t1=0,ty=0,ty1=0;
+			var f=0,f1=0;
+			var findex=0;
+			var maxlogouttime=300;
+			var logouttime=maxlogouttime;
+			var tim1;
+			function timer1(){
+				logouttime--;
+				$('.timeout').html(logouttime);
+				if(logouttime==0){
+					location.href='./bord.php';
+					/*$.ajax({
+						url:'../logoutmethod/',
+						success:function(){
+							location.href='../login/';
+						},
+						error:function(){
+							console.log('error');
+						}
+					});*/
+				}
+			}
+
+			tim1=setInterval(function(){timer1()},1000);
+
+			listlog=$('.list').dialog({
+				autoOpen:false,
+				height:768,
+				width:650,
+				resizable:false,
+				modal:true,
+				draggable:false,
+				open:function(){
+					window.clearInterval(tim1);
+				},
+				close: function(event, ui) { 
+				   tim1=setInterval(function(){timer1()},1000);
+				},
+				buttons:[
+					{
+						text:"繼續點餐",
+						click:function(){
+							for(var indexcounter=($('.listcontent #item').length-1);indexcounter>=0;indexcounter--){
+								if(parseInt($('.listcontent #item:eq('+indexcounter+') .num').html())==0){
+									$('.listcontent #item:eq('+indexcounter+')').remove();
+									$('#orderlist input[name="name'+$('#orderlist input[name^=no]:eq('+indexcounter+')').val()+'"]').remove();
+									$('#orderlist input[name="price'+$('#orderlist input[name^=no]:eq('+indexcounter+')').val()+'"]').remove();
+									$('#orderlist input[name="number'+$('#orderlist input[name^=no]:eq('+indexcounter+')').val()+'"]').remove();
+									$('#orderlist input[name^=no]:eq('+indexcounter+')').remove();
+								}
+								else{
+									console.log(indexcounter);
+								}
+							}
+							$(this).dialog('close');
+						}
+					},
+					{
+						text:"結帳",
+						click:function(){
+							if(parseInt($('.total .tmoy').html())==0){
+							}
+							else{
+								console.log(parseInt($('.total .tmoy').html()));
+								$(this).dialog('close');
+								finish.dialog('open');
+							}
+						}
+					}
+				]
+			});
+			listlog.bind('clickoutside',function(){
+				console.log('close');
+				listlog.dialog('close');
+			});
+			finish=$('.finish').dialog({
+				autoOpen:false,
+				width:500,
+				resizable:false,
+				modal:true,
+				draggable:false,
+				open:function(){
+					window.clearInterval(tim1);
+				},
+				close: function(event, ui) { 
+				   tim1=setInterval(function(){timer1()},1000);
+				},
+				buttons:[
+					{
+						text:"內用",
+						click:function(){
+							$(this).dialog('close');
+							$('#orderlist').append('<input type="hidden" name="fodtype" value="1">');
+							$('#orderlist').submit();
+						}
+					},
+					{
+						text:"外帶",
+						click:function(){
+							$(this).dialog('close');
+							$('#orderlist').append('<input type="hidden" name="fodtype" value="2">');
+							$('#orderlist').submit();
+						}
+					}
+				]
+			});
+			$(document).on('touchstart','.foodbox',function(e){
+				logouttime=maxlogouttime;
+				e.cancelable && e.preventDefault();
+				var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+				x = touch.pageX;
+			});
+			$(document).on('touchmove','.foodbox',function(e){
+				logouttime=maxlogouttime;
+				e.cancelable && e.preventDefault();
+				var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+			});
+			$(document).on('touchend','.foodbox',function(e){
+				logouttime=maxlogouttime;
+				e.cancelable && e.preventDefault();
+				var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+				x1 = touch.pageX;
+				if(x1-x>30){
+					$('.prev').trigger('click');
+					$('.leftimg').css({'opacity':'0.5'});
+					setTimeout(function(){$('.leftimg').css({'opacity':'1'});},800);
+				}
+				else if(x1-x<-30){
+					$('.next').trigger('click');
+					$('.rightimg').css({'opacity':'0.5'});
+					setTimeout(function(){$('.rightimg').css({'opacity':'1'});},800);
+				}
+			});
+			$(document).on('touchstart','.food',function(e){
+				logouttime=maxlogouttime;
+				e.cancelable && e.preventDefault();
+				var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+				t = touch.pageX;
+				ty = touch.pageY;
+				findex=$('.food').index(this);
+			});
+			$(document).on('touchend','.food',function(e){
+				logouttime=maxlogouttime;
+				e.cancelable && e.preventDefault();
+				var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+				t1 = touch.pageX;
+				ty1 = touch.pageY;
+				if(t1-t<=30 && t1-t>=-30 && ty1-ty<=30 && ty1-ty>=-30){
+					if($('.plus:eq('+findex+')').html().match(/(img)/)){
+						$('.plus:eq('+findex+')').html('1');
+					}
+					else{
+						$('.plus:eq('+findex+')').html(parseInt($('.plus:eq('+findex+')').html())+1);
+					}
+					if($('.list .img'+findex).length>0){
+						$('.list .listcontent .img'+findex+' .num').html(parseInt($('.list .listcontent .img'+findex+' .num').html())+1);
+						$('.list .tmoy').html(parseInt($('.list .tmoy').html())+parseInt($('.food:eq('+findex+') .price').val()));
+						$('#orderlist input[name="number'+findex+'"]').val(parseInt($('#orderlist input[name="number'+findex+'"]').val())+1);
+					}
+					else{
+						$('.list .listcontent').append('<div id="item" class="img'+findex+'"><div id="name">'+$('.food:eq('+findex+') .name').val()+'</div>'+'<div id="num"><img id="listfun" class="diffbun" src="ordermls.png"><div class="numbox"><span class="num">1</span>份</div><img id="listfun" class="plusbun" src="plus.png"></div>'+'<div id="price" class="price" style="">'+$('.food:eq('+findex+') .price').val()+'元</div></div>');
+						$('.list .tmoy').html(parseInt($('.list .tmoy').html())+parseInt($('.food:eq('+findex+') .price').val()));
+						$('#orderlist').append('<input type="hidden" name="no[]" value="'+findex+'"><input type="hidden" name="name'+findex+'" value="'+$('.food:eq('+findex+') .name').val()+'"><input type="hidden" name="price'+findex+'" value="'+$('.food:eq('+findex+') .price').val()+'"><input type="hidden" name="number'+findex+'" value="1">');
+					}
+					$('#orderlist input[name="tmoy"]').val(parseInt($('#orderlist input[name="tmoy"]').val())+parseInt($('.food:eq('+findex+') .price').val()));
+					$('<img id="movepoint" src="redpoint.png" style="width:20px;height:20px;">').fly({
+						start: {top: touch.pageY, left: touch.pageX},
+						end: {top: 465, left: 1080, width: 64, height: 64},
+						onEnd: function(){
+							//this.destory();
+							$('#movepoint').remove();
+							$('.point').css({'background':'url(\"redpoint.png\")'});
+							if($('.point').html().length==0){
+								$('.point').html(1);
+							}
+							else{
+								$('.point').html(parseInt($('.point').html())+1);
+							}
+						}
+					});
+				}
+				else{
+				}
+			});
+			$('#getlist').on('touchstart',function(e){
+				logouttime=maxlogouttime;
+				e.cancelable && e.preventDefault();
+				var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+				f = touch.pageX;
+				fy = touch.pageY;
+			});
+			$('#getlist').on('touchend',function(e){
+				logouttime=maxlogouttime;
+				e.cancelable && e.preventDefault();
+				var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+				f1 = touch.pageX;
+				fy1 = touch.pageY;
+				if(f1-f<=30 && f1-f>=-30 && fy1-fy<=30 && fy1-fy>=-30){
+					window.clearInterval(tim1);
+					listlog.dialog('open');
+				}
+				else{
+				}
+			});
+			$(document).on('touchstart','.plusbun',function(e){
+				e.cancelable && e.preventDefault();
+				var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+				f = touch.pageX;
+				fy = touch.pageY;
+				findex=$('.plusbun').index(this);
+			});
+			$(document).on('touchend','.plusbun',function(e){
+				e.cancelable && e.preventDefault();
+				var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+				f1 = touch.pageX;
+				fy1 = touch.pageY;
+				if(f1-f<=30 && f1-f>=-30 && fy1-fy<=30 && fy1-fy>=-30){
+					if($('.plus:eq('+$('.listcontent #item:eq('+findex+')').attr('class').substr(3)+')').html().match(/(img)/)){
+						$('.listcontent #item:eq('+findex+') .num').html('1');
+						$('.plus:eq('+$('.listcontent #item:eq('+findex+')').attr('class').substr(3)+')').html('1');
+					}
+					else{
+						console.log('1');
+						$('.listcontent #item:eq('+findex+') .num').html(parseInt($('.listcontent #item:eq('+findex+') .num').html())+1);
+						$('.plus:eq('+$('.listcontent #item:eq('+findex+')').attr('class').substr(3)+')').html(parseInt($('.plus:eq('+$('.listcontent #item:eq('+findex+')').attr('class').substr(3)+')').html())+1);
+					}
+					$('.list .tmoy').html(parseInt($('.list .tmoy').html())+parseInt($('.food:eq('+$('.listcontent #item:eq('+findex+')').attr('class').substr(3)+') .price').val()));
+					$('#orderlist input[name="tmoy"]').val(parseInt($('#orderlist input[name="tmoy"]').val())+parseInt($('.food:eq('+$('.listcontent #item:eq('+findex+')').attr('class').substr(3)+') .price').val()));
+					if($('.point').html().length==0){
+						$('.point').html(1);
+						$('.point').css({'background':'url(\"redpoint.png\")'});
+					}
+					else{
+						$('.point').html(parseInt($('.point').html())+1);
+					}
+				}
+				else{
+				}
+			});
+			$(document).on('touchstart','.diffbun',function(e){
+				e.cancelable && e.preventDefault();
+				var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+				f = touch.pageX;
+				fy = touch.pageY;
+				findex=$('.diffbun').index(this);
+			});
+			$(document).on('touchend','.diffbun',function(e){
+				e.cancelable && e.preventDefault();
+				var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+				f1 = touch.pageX;
+				fy1 = touch.pageY;
+				if(f1-f<=30 && f1-f>=-30 && fy1-fy<=30 && fy1-fy>=-30){
+					if(parseInt($('.listcontent #item:eq('+findex+') .num').html())-1<=0){
+						if(parseInt($('.listcontent #item:eq('+findex+') .num').html())-1==0){
+							$('.list .tmoy').html(parseInt($('.list .tmoy').html())-parseInt($('.food:eq('+$('.listcontent #item:eq('+findex+')').attr('class').substr(3)+') .price').val()));
+							$('#orderlist input[name="tmoy"]').val(parseInt($('#orderlist input[name="tmoy"]').val())-parseInt($('.food:eq('+$('.listcontent #item:eq('+findex+')').attr('class').substr(3)+') .price').val()));
+							if($('.point').html().length==0){
+							}
+							else{
+								$('.point').html(parseInt($('.point').html())-1);
+								if(parseInt($('.point').html())==0){
+									$('.point').html('');
+									$('.point').css({'background':''});
+								}
+								else{
+								}
+							}
+						}
+						else{
+						}
+						$('.listcontent #item:eq('+findex+') .num').html('0');
+						$('.plus:eq('+$('.listcontent #item:eq('+findex+')').attr('class').substr(3)+')').html('<img  src="plus.png">');
+					}
+					else{
+						$('.listcontent #item:eq('+findex+') .num').html(parseInt($('.listcontent #item:eq('+findex+') .num').html())-1);
+						$('.plus:eq('+$('.listcontent #item:eq('+findex+')').attr('class').substr(3)+')').html(parseInt($('.plus:eq('+$('.listcontent #item:eq('+findex+')').attr('class').substr(3)+')').html())-1);
+						$('.list .tmoy').html(parseInt($('.list .tmoy').html())-parseInt($('.food:eq('+$('.listcontent #item:eq('+findex+')').attr('class').substr(3)+') .price').val()));
+						$('#orderlist input[name="tmoy"]').val(parseInt($('#orderlist input[name="tmoy"]').val())-parseInt($('.food:eq('+$('.listcontent #item:eq('+findex+')').attr('class').substr(3)+') .price').val()));
+						$('.point').html(parseInt($('.point').html())-1);
+					}
+				}
+				else{
+				}
+			});
+			$(document).on('touchstart','.leftimg',function(e){
+				logouttime=maxlogouttime;
+				e.cancelable && e.preventDefault();
+				var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+				t = touch.pageX;
+				ty = touch.pageY;
+				findex=$('.leftimg').index(this);
+				$('.leftimg').css({'opacity':'0.5'});
+			});
+			$(document).on('touchend','.leftimg',function(e){
+				logouttime=maxlogouttime;
+				e.cancelable && e.preventDefault();
+				var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+				t1 = touch.pageX;
+				ty1 = touch.pageY;
+				if(t1-t<=30 && t1-t>=-30 && ty1-ty<=30 && ty1-ty>=-30){
+					$('.prev').trigger('click');
+					setTimeout(function(){$('.leftimg').css({'opacity':'1'});},800);
+				}
+				else{
+					$('.leftimg').css({'opacity':'1'});
+				}
+			});
+			$(document).on('touchstart','.rightimg',function(e){
+				logouttime=maxlogouttime;
+				e.cancelable && e.preventDefault();
+				var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+				t = touch.pageX;
+				ty = touch.pageY;
+				findex=$('.rightimg').index(this);
+				$('.rightimg').css({'opacity':'0.5'});
+			});
+			$(document).on('touchend','.rightimg',function(e){
+				logouttime=maxlogouttime;
+				e.cancelable && e.preventDefault();
+				var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+				t1 = touch.pageX;
+				ty1 = touch.pageY;
+				if(t1-t<=30 && t1-t>=-30 && ty1-ty<=30 && ty1-ty>=-30){
+					$('.next').trigger('click');
+					setTimeout(function(){$('.rightimg').css({'opacity':'1'});},800);
+				}
+				else{
+					$('.rightimg').css({'opacity':'1'});
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<span class='timeout' style='display:none;'></span>
+	<div style='display:none;'>
+		<a href="#" class="prev">&lt;&lt;Prev</a>
+		<a href="#" class="next">Next&gt;&gt;</a>
+		<form id='orderlist' method='post' action='create.php'>
+			<input type='hidden' name='tmoy' value='0'>
+		</form>
+	</div>
+	<div class='list' title='點餐紀錄'>
+		<div class='listcontent'></div>
+		<div class='total'><span id='tolbox'>總共<span class='tmoy'>0</span>元</span></div>
+	</div>
+	<div class='finish' title='系統訊息'>
+		您要內用？外帶？
+	</div>
+	<div class="logo">
+		紅清庭食養便當
+	</div>
+	<div id='main'>
+		<div class='cycle-slideshow content' data-cycle-fx='scrollHorz' data-cycle-pager=".pagers" data-cycle-timeout='0' data-cycle-speed='800' data-cycle-slides="> div[class='foodbox']" data-cycle-prev=".prev" data-cycle-next=".next">
+			<div class='foodbox'>
+				<div id="" class="food">
+					<div class='fdimgbox'>
+						<img class='foodimg' src='img1.png'>
+						<div class='plus'>
+							<img  src='plus.png'>
+						</div>
+					</div>
+					<div class='foodtitle'>招牌池上邊當 65</div>
+					<input type='hidden' class='name' value='招牌池上便當'>
+					<input type='hidden' class='price' value='65'>
+				</div>
+				<div id="" class="food">
+					<div class='fdimgbox'>
+						<img class='foodimg' src='img2.png'>
+						<div class='plus'>
+							<img  src='plus.png'>
+						</div>
+					</div>
+					<div class='foodtitle'>巴沙魚排便當 65</div>
+					<input type='hidden' class='name' value='巴沙魚排便當'>
+					<input type='hidden' class='price' value='65'>
+				</div>
+				<div id="" class="food">
+					<div class='fdimgbox'>
+						<img class='foodimg' src='img3.png'>
+						<div class='plus'>
+							<img  src='plus.png'>
+						</div>
+					</div>
+					<div class='foodtitle'>菲力雞排便當 65</div>
+					<input type='hidden' class='name' value='菲力雞排便當'>
+					<input type='hidden' class='price' value='65'>
+				</div>
+				<div id="" class="food">
+					<div class='fdimgbox'>
+						<img class='foodimg' src='img4.png'>
+						<div class='plus'>
+							<img  src='plus.png'>
+						</div>
+					</div>
+					<div class='foodtitle'>檸檬雞腿便當 75</div>
+					<input type='hidden' class='name' value='檸檬雞腿便當'>
+					<input type='hidden' class='price' value='75'>
+				</div>
+				<div id="" class="food">
+					<div class='fdimgbox'>
+						<img class='foodimg' src='img5.png'>
+						<div class='plus'>
+							<img  src='plus.png'>
+						</div>
+					</div>
+					<div class='foodtitle'>蒲燒鯛魚便當 75</div>
+					<input type='hidden' class='name' value='蒲燒鯛魚便當'>
+					<input type='hidden' class='price' value='75'>
+				</div>
+				<div id="" class="food">
+					<div class='fdimgbox'>
+						<img class='foodimg' src='img6.png'>
+						<div class='plus'>
+							<img  src='plus.png'>
+						</div>
+					</div>
+					<div class='foodtitle'>日式燒肉便當 75</div>
+					<input type='hidden' class='name' value='日式燒肉便當'>
+					<input type='hidden' class='price' value='75'>
+				</div>
+				<div id="" class="food">
+					<div class='fdimgbox'>
+						<img class='foodimg' src='img7.png'>
+						<div class='plus'>
+							<img  src='plus.png'>
+						</div>
+					</div>
+					<div class='foodtitle'>香蔥油雞便當 85</div>
+					<input type='hidden' class='name' value='香蔥油雞便當'>
+					<input type='hidden' class='price' value='85'>
+				</div>
+				<div id="" class="food">
+					<div class='fdimgbox'>
+						<img class='foodimg' src='img8.png'>
+						<div class='plus'>
+							<img  src='plus.png'>
+						</div>
+					</div>
+					<div class='foodtitle'>薄鹽鯖魚便當 85</div>
+					<input type='hidden' class='name' value='薄鹽鯖魚便當'>
+					<input type='hidden' class='price' value='85'>
+				</div>
+				<div id="" class="food">
+					<div class='fdimgbox'>
+						<img class='foodimg' src='img9.png'>
+						<div class='plus'>
+							<img  src='plus.png'>
+						</div>
+					</div>
+					<div class='foodtitle'>日式厚切里肌便當 85</div>
+					<input type='hidden' class='name' value='日式厚切里肌便當'>
+					<input type='hidden' class='price' value='85'>
+				</div>
+			</div>
+			<div class='foodbox'>
+				<div id="" class="food">
+					<div class='fdimgbox'>
+						<img class='foodimg' src='img10.png'>
+						<div class='plus'>
+							<img  src='plus.png'>
+						</div>
+					</div>
+					<div class='foodtitle'>虱目魚肚便當 135</div>
+					<input type='hidden' class='name' value='虱目魚肚便當'>
+					<input type='hidden' class='price' value='135'>
+				</div>
+				<div id="" class="food">
+					<div class='fdimgbox'>
+						<img class='foodimg' src='img11.png'>
+						<div class='plus'>
+							<img  src='plus.png'>
+						</div>
+					</div>
+					<div class='foodtitle'>蜂蜜芥末雞腿便當 115</div>
+					<input type='hidden' class='name' value='蜂蜜芥末雞腿便當'>
+					<input type='hidden' class='price' value='115'>
+				</div>
+				<div id="" class="food">
+					<div class='fdimgbox'>
+						<img class='foodimg' src='img12.png'>
+						<div class='plus'>
+							<img  src='plus.png'>
+						</div>
+					</div>
+					<div class='foodtitle'>照燒雞腿便當 115</div>
+					<input type='hidden' class='name' value='照燒雞腿便當'>
+					<input type='hidden' class='price' value='115'>
+				</div>
+				<div id="" class="food">
+					<div class='fdimgbox'>
+						<img class='foodimg' src='img13.png'>
+						<div class='plus'>
+							<img  src='plus.png'>
+						</div>
+					</div>
+					<div class='foodtitle'>紅燒牛腩便當 95</div>
+					<input type='hidden' class='name' value='紅燒牛腩便當'>
+					<input type='hidden' class='price' value='95'>
+				</div>
+				<div id="" class="food">
+					<div class='fdimgbox'>
+						<img class='foodimg' src='img14.png'>
+						<div class='plus'>
+							<img  src='plus.png'>
+						</div>
+					</div>
+					<div class='foodtitle'>黃金大雞腿便當 90</div>
+					<input type='hidden' class='name' value='黃金大雞腿便當'>
+					<input type='hidden' class='price' value='90'>
+				</div>
+				<div id="" class="food">
+					<div class='fdimgbox'>
+						<img class='foodimg' src='img15.png'>
+						<div class='plus'>
+							<img  src='plus.png'>
+						</div>
+					</div>
+					<div class='foodtitle'>泰式椒麻雞便當 90</div>
+					<input type='hidden' class='name' value='泰式椒麻雞便當'>
+					<input type='hidden' class='price' value='90'>
+				</div>
+				<div id="" class="food">
+					<div class='fdimgbox'>
+						<img class='foodimg' src='img16.png'>
+						<div class='plus'>
+							<img  src='plus.png'>
+						</div>
+					</div>
+					<div class='foodtitle'>古早味大排便當 80</div>
+					<input type='hidden' class='name' value='古早味大排便當'>
+					<input type='hidden' class='price' value='80'>
+				</div>
+				<div id="" class="food">
+					<div class='fdimgbox'>
+						<img class='foodimg' src='img17.png'>
+						<div class='plus'>
+							<img  src='plus.png'>
+						</div>
+					</div>
+					<div class='foodtitle'>椒鹽鮭魚便當 80</div>
+					<input type='hidden' class='name' value='椒鹽鮭魚便當'>
+					<input type='hidden' class='price' value='80'>
+				</div>
+				<div id="" class="food">
+					<div class='fdimgbox'>
+						<img class='foodimg' src='img18.png'>
+						<div class='plus'>
+							<img  src='plus.png'>
+						</div>
+					</div>
+					<div class='foodtitle'>脆皮雞排便當 80</div>
+					<input type='hidden' class='name' value='脆皮雞排便當'>
+					<input type='hidden' class='price' value='80'>
+				</div>
+			</div>
+		</div>
+		<img class='leftimg' src='left.png'>
+		<div class="pagers"></div>
+		<img class='rightimg' src='right.png'>
+		<div class="function">
+			<div id="service" class="fun">
+				<div class='funimgbox'>
+					<img class='funimg' src='service.png'>
+				</div>
+				<div class='funtitle'>服務鈴</div>
+			</div>
+			<div id="getlist" class="fun">
+				<div class='funimgbox'>
+					<div class='point'></div>
+					<img class='funimg' src='getlist.png'>
+				</div>
+				<div class='funtitle'>紀錄/結帳</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,224 @@
+2022/11/09 15:48:21 --- url: https://pos.jkopay.com/Tableplus/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 22C333334444455555
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 90191249
+    [MerchantTradeNo] => abula000120221109154823
+    [PosID] => m1
+    [PosTradeTime] => 2022/11/09 15:48:21
+    [Remark] => 
+    [SendTime] => 20221109154821
+    [StoreID] => abula0001
+    [StoreName] => TestStore
+    [TradeAmount] => 840
+    [UnRedeem] => 0
+    [Sign] => 9928b3a01771d7e424597c651fe0e250ccc72981aff62e699fde013165349ed8
+)
+
+                    --- use key: 991ef03004ce4f418026349d0b472ca4
+                    --- pass string: {"CardToken":"22C333334444455555","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"90191249","MerchantTradeNo":"abula000120221109154823","PosID":"m1","PosTradeTime":"2022/11/09 15:48:21","Remark":"","SendTime":"20221109154821","StoreID":"abula0001","StoreName":"TestStore","TradeAmount":840,"UnRedeem":0,"Sign":"9928b3a01771d7e424597c651fe0e250ccc72981aff62e699fde013165349ed8"}
+                    --- init result: {"MerchantID":"90191249","StoreID":"abula0001","GatewayTradeNo":"","MerchantTradeNo":"abula000120221109154823","PosID":"m1","TradeNo":"","IsRep":0,"PaymentType":0,"TradeAmount":840,"DebitAmount":0,"RedeemName":"","RedeemAmount":0,"AvailableAmount":0,"InvoiceVehicle":"","MerMemToken":"","Remark":"","Extra1":"","Extra2":"","Extra3":"","ActionCode":"9","StatusCode":"927","StatusDesc":"條碼錯誤","TradeTime":""}
+                    --- decode result: Array
+(
+    [MerchantID] => 90191249
+    [StoreID] => abula0001
+    [GatewayTradeNo] => 
+    [MerchantTradeNo] => abula000120221109154823
+    [PosID] => m1
+    [TradeNo] => 
+    [IsRep] => 0
+    [PaymentType] => 0
+    [TradeAmount] => 840
+    [DebitAmount] => 0
+    [RedeemName] => 
+    [RedeemAmount] => 0
+    [AvailableAmount] => 0
+    [InvoiceVehicle] => 
+    [MerMemToken] => 
+    [Remark] => 
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [ActionCode] => 9
+    [StatusCode] => 927
+    [StatusDesc] => 條碼錯誤
+    [TradeTime] => 
+)
+
+2022/11/09 15:48:48 --- url: https://pos.jkopay.com/Tableplus/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 22C333334444455555
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 90191249
+    [MerchantTradeNo] => abula000120221109154850
+    [PosID] => m1
+    [PosTradeTime] => 2022/11/09 15:48:48
+    [Remark] => 
+    [SendTime] => 20221109154848
+    [StoreID] => abula0001
+    [StoreName] => TestStore
+    [TradeAmount] => 840
+    [UnRedeem] => 0
+    [Sign] => 03296461628073b541b0c395c08a8d686738fb7d9fc5f7338c08bb7e3eb1d304
+)
+
+                    --- use key: 991ef03004ce4f418026349d0b472ca4
+                    --- pass string: {"CardToken":"22C333334444455555","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"90191249","MerchantTradeNo":"abula000120221109154850","PosID":"m1","PosTradeTime":"2022/11/09 15:48:48","Remark":"","SendTime":"20221109154848","StoreID":"abula0001","StoreName":"TestStore","TradeAmount":840,"UnRedeem":0,"Sign":"03296461628073b541b0c395c08a8d686738fb7d9fc5f7338c08bb7e3eb1d304"}
+                    --- init result: {"MerchantID":"90191249","StoreID":"abula0001","GatewayTradeNo":"","MerchantTradeNo":"abula000120221109154850","PosID":"m1","TradeNo":"","IsRep":0,"PaymentType":0,"TradeAmount":840,"DebitAmount":0,"RedeemName":"","RedeemAmount":0,"AvailableAmount":0,"InvoiceVehicle":"","MerMemToken":"","Remark":"","Extra1":"","Extra2":"","Extra3":"","ActionCode":"9","StatusCode":"927","StatusDesc":"條碼錯誤","TradeTime":""}
+                    --- decode result: Array
+(
+    [MerchantID] => 90191249
+    [StoreID] => abula0001
+    [GatewayTradeNo] => 
+    [MerchantTradeNo] => abula000120221109154850
+    [PosID] => m1
+    [TradeNo] => 
+    [IsRep] => 0
+    [PaymentType] => 0
+    [TradeAmount] => 840
+    [DebitAmount] => 0
+    [RedeemName] => 
+    [RedeemAmount] => 0
+    [AvailableAmount] => 0
+    [InvoiceVehicle] => 
+    [MerMemToken] => 
+    [Remark] => 
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [ActionCode] => 9
+    [StatusCode] => 927
+    [StatusDesc] => 條碼錯誤
+    [TradeTime] => 
+)
+
+2022/11/09 15:51:37 --- url: https://pos.jkopay.com/Tableplus/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 22J111111111111111
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 90191249
+    [MerchantTradeNo] => abula000120221109155139
+    [PosID] => m1
+    [PosTradeTime] => 2022/11/09 15:51:37
+    [Remark] => 
+    [SendTime] => 20221109155137
+    [StoreID] => abula0001
+    [StoreName] => TestStore
+    [TradeAmount] => 840
+    [UnRedeem] => 0
+    [Sign] => fe9deb38b7500b96ad6aa4c999a1c72b39ee9766d86df6973364c13291e9214f
+)
+
+                    --- use key: 991ef03004ce4f418026349d0b472ca4
+                    --- pass string: {"CardToken":"22J111111111111111","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"90191249","MerchantTradeNo":"abula000120221109155139","PosID":"m1","PosTradeTime":"2022/11/09 15:51:37","Remark":"","SendTime":"20221109155137","StoreID":"abula0001","StoreName":"TestStore","TradeAmount":840,"UnRedeem":0,"Sign":"fe9deb38b7500b96ad6aa4c999a1c72b39ee9766d86df6973364c13291e9214f"}
+                    --- init result: {"MerchantID":"90191249","StoreID":"abula0001","GatewayTradeNo":"","MerchantTradeNo":"abula000120221109155139","PosID":"m1","TradeNo":"","IsRep":0,"PaymentType":0,"TradeAmount":840,"DebitAmount":0,"RedeemName":"","RedeemAmount":0,"AvailableAmount":0,"InvoiceVehicle":"","MerMemToken":"","Remark":"","Extra1":"","Extra2":"","Extra3":"","ActionCode":"9","StatusCode":"927","StatusDesc":"條碼錯誤","TradeTime":""}
+                    --- decode result: Array
+(
+    [MerchantID] => 90191249
+    [StoreID] => abula0001
+    [GatewayTradeNo] => 
+    [MerchantTradeNo] => abula000120221109155139
+    [PosID] => m1
+    [TradeNo] => 
+    [IsRep] => 0
+    [PaymentType] => 0
+    [TradeAmount] => 840
+    [DebitAmount] => 0
+    [RedeemName] => 
+    [RedeemAmount] => 0
+    [AvailableAmount] => 0
+    [InvoiceVehicle] => 
+    [MerMemToken] => 
+    [Remark] => 
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [ActionCode] => 9
+    [StatusCode] => 927
+    [StatusDesc] => 條碼錯誤
+    [TradeTime] => 
+)
+
+2022/11/09 15:54:02 --- url: https://pos.jkopay.com/Tableplus/Payment
+                    --- header: Array
+(
+    [0] => Content-Type: application/json; charset=UTF-8
+)
+
+                    --- data: Array
+(
+    [CardToken] => 227121374611137558
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [GatewayTradeNo] => 
+    [MerchantID] => 90191249
+    [MerchantTradeNo] => abula000120221109155404
+    [PosID] => m1
+    [PosTradeTime] => 2022/11/09 15:54:02
+    [Remark] => 
+    [SendTime] => 20221109155402
+    [StoreID] => abula0001
+    [StoreName] => TestStore
+    [TradeAmount] => 840
+    [UnRedeem] => 0
+    [Sign] => 5808afbbff37f2c4741be2e808c91ad90a63dad404ab8e5be763dc846aac7770
+)
+
+                    --- use key: 991ef03004ce4f418026349d0b472ca4
+                    --- pass string: {"CardToken":"227121374611137558","Extra1":"","Extra2":"","Extra3":"","GatewayTradeNo":"","MerchantID":"90191249","MerchantTradeNo":"abula000120221109155404","PosID":"m1","PosTradeTime":"2022/11/09 15:54:02","Remark":"","SendTime":"20221109155402","StoreID":"abula0001","StoreName":"TestStore","TradeAmount":840,"UnRedeem":0,"Sign":"5808afbbff37f2c4741be2e808c91ad90a63dad404ab8e5be763dc846aac7770"}
+                    --- init result: {"MerchantID":"90191249","StoreID":"abula0001","GatewayTradeNo":"","MerchantTradeNo":"abula000120221109155404","PosID":"m1","TradeNo":"","IsRep":0,"PaymentType":0,"TradeAmount":840,"DebitAmount":0,"RedeemName":"","RedeemAmount":0,"AvailableAmount":0,"InvoiceVehicle":"","MerMemToken":"","Remark":"","Extra1":"","Extra2":"","Extra3":"","ActionCode":"9","StatusCode":"906","StatusDesc":"條碼已失效","TradeTime":""}
+                    --- decode result: Array
+(
+    [MerchantID] => 90191249
+    [StoreID] => abula0001
+    [GatewayTradeNo] => 
+    [MerchantTradeNo] => abula000120221109155404
+    [PosID] => m1
+    [TradeNo] => 
+    [IsRep] => 0
+    [PaymentType] => 0
+    [TradeAmount] => 840
+    [DebitAmount] => 0
+    [RedeemName] => 
+    [RedeemAmount] => 0
+    [AvailableAmount] => 0
+    [InvoiceVehicle] => 
+    [MerMemToken] => 
+    [Remark] => 
+    [Extra1] => 
+    [Extra2] => 
+    [Extra3] => 
+    [ActionCode] => 9
+    [StatusCode] => 906
+    [StatusDesc] => 條碼已失效
+    [TradeTime] => 
+)
+

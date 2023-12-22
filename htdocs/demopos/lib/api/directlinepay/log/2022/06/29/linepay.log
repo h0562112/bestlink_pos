@@ -1,0 +1,60 @@
+2022/06/29 14:50:05 -- channelid= 1650912832
+                    -- channelsecret= b219ddb5a1e14543595e598f11b23d5f
+                    -- url path= https://sandbox-api-pay.line.me/v2/payments/oneTimeKeys/pay
+                    -- send data= {"productName":"pos line pay","amount":null,"currency":"TWD","orderId":null,"oneTimeKey":null}
+                    -- get result= Array
+(
+    [returnCode] => 2101
+    [returnMessage] => Parameter error.
+    [errorDetailMap] => Array
+        (
+            [amount] => NotNull
+        )
+
+    [returnMessageC] => 參數錯誤
+)
+
+2022/06/29 14:51:23 -- channelid= 1650912832
+                    -- channelsecret= b219ddb5a1e14543595e598f11b23d5f
+                    -- orderid= 
+                    -- url path= https://sandbox-api-pay.line.me/v2/payments/orders//refund
+                    -- get result= Array
+(
+    [returnCode] => 2101
+    [returnMessage] => Parameter error.
+    [returnMessageC] => 參數錯誤
+)
+
+2022/06/29 14:51:43 -- channelid= 1650912832
+                    -- channelsecret= b219ddb5a1e14543595e598f11b23d5f
+                    -- orderid= 
+                    -- url path= https://sandbox-api-pay.line.me/v2/payments/orders//check
+                    -- get result= Array
+(
+    [returnCode] => 1192
+    [returnMessage] => It does not exist.
+    [returnMessageC] => �ҥ~���p
+)
+
+2022/06/29 14:52:13 -- channelid= 1650912832
+                    -- channelsecret= b219ddb5a1e14543595e598f11b23d5f
+                    -- orderid= 
+                    -- url path= https://sandbox-api-pay.line.me/v2/payments/orders//check
+                    -- get result= Array
+(
+    [returnCode] => 1192
+    [returnMessage] => It does not exist.
+    [returnMessageC] => �ҥ~���p
+)
+
+2022/06/29 14:53:45 -- channelid= 1650912832
+                    -- channelsecret= b219ddb5a1e14543595e598f11b23d5f
+                    -- orderid= 
+                    -- url path= https://sandbox-api-pay.line.me/v2/payments/orders//check
+                    -- get result= Array
+(
+    [returnCode] => 1192
+    [returnMessage] => It does not exist.
+    [returnMessageC] => 編號不存在
+)
+

@@ -1,0 +1,8 @@
+<?php
+include_once '../../../tool/dbTool.inc.php';
+$conn=sqlconnect('../../../menudata/'.$_POST['company'].'/person','member.db','','','','sqlite');
+$sql="SELECT * FROM powergroup WHERE state='1'";
+$data=sqlquery($conn,$sql,'sqlite');
+sqlclose($conn,'sqlite');
+echo json_encode($data);
+?>

@@ -1,0 +1,94 @@
+<?php
+include_once '../../../tool/inilib.php';
+include_once '../../../tool/dbTool.inc.php';
+if(file_exists('../../../database/mapping.ini')){
+	$dbmapping=parse_ini_file('../../../database/mapping.ini',true);
+	if(isset($dbmapping['map'][$_POST['machinetype']])){
+		$invmachine=$dbmapping['map'][$_POST['machinetype']];
+	}
+	else{
+		$invmachine='m1';
+	}
+}
+else{
+	$invmachine='';
+}
+$init=parse_ini_file('../../../database/initsetting.ini',true);
+if(isset($init['init']['accounting'])&&$init['init']['accounting']=='2'&&isset($invmachine)&&$invmachine!=''){//帳務以每台分機為個別主體計算
+	$content=parse_ini_file('../../../database/time'.$invmachine.'.ini',true);
+}
+else{//帳務以主機為主體計算
+	$content=parse_ini_file('../../../database/timem1.ini',true);
+}
+$machinedata=parse_ini_file('../../../database/machinedata.ini',true);
+//date_default_timezone_set('Asia/Taipei');
+date_default_timezone_set($init['init']['settime']);
+$y=date('Y');
+$m=date('m');
+if(strlen($m)<2){
+	$m='0'.$m;
+}
+$d=date('d');
+if(strlen($d)<2){
+	$d='0'.$d;
+}
+if(isset($_POST['usercode'])){
+	$usercode=$_POST['usercode'];
+	$username=$_POST['username'];
+}
+else{
+	$usercode=' ';
+	$username=' ';
+}
+if(isset($init['init']['accounting'])&&$init['init']['accounting']=='2'){//帳務以每台分機為個別主體計算
+	$addindex=$_POST['machinetype'];
+}
+else{//帳務以主機為主體計算
+	$addindex='';
+}
+if($content['time']['isopen']=='1'){
+	$content['time']['opendate']=$y.'/'.$m.'/'.$d;
+	$content['time']['opentime']=date('H:i:s');
+	$content['time']['isopen']='0';
+	if($content['time']['bizdate']!=$y.$m.$d){
+		$content['time']['bizdate']=$y.$m.$d;
+		$content['time']['zcounter']='1';
+		$machinedata['basic']['saleno']=$machinedata['basic']['strsaleno'];
+		if(substr($content['time']['bizdate'],0,6)!=$y.$m){
+			$machinedata['basic']['consecnumber']='0';
+		}
+		else{
+		}
+	}
+	else{
+		$content['time']['zcounter']=intval($content['time']['zcounter'])+1;
+		$machinedata['basic']['saleno']=$machinedata['basic']['strsaleno'];//每次開班更換起始值
+	}
+	if(file_exists('../../../database/sale/SALES_'.$y.$m.'.db')){
+	}
+	else{
+		if(file_exists("../../../database/sale/empty.DB")){
+		}
+		else{
+			include_once 'create.emptyDB.php';
+			create('empty');
+		}
+		copy("../../../database/sale/empty.DB","../../../database/sale/SALES_".$y.$m.".DB");
+	}
+	$conn=sqlconnect('../../../database/sale','SALES_'.$y.$m.'.db','','','','sqlite');
+	$sql='INSERT INTO CST012 (TERMINALNUMBER,BIZDATE,CONSECNUMBER,LINENUMBER,CLKCODE,CLKNAME,DTLMODE,DTLTYPE,DTLFUNC,ZCOUNTER,CREATEDATETIME) VALUES ("'.$_POST['machinetype'].'","'.$content['time']['bizdate'].'"," ","open","'.$usercode.'","'.$username.'","9","9","99","'.$content['time']['zcounter'].'","'.date('YmdHis').'")';
+	sqlnoresponse($conn,$sql,'sqlite');
+	sqlclose($conn,'sqlite');
+	if(isset($init['init']['accounting'])&&$init['init']['accounting']=='2'&&isset($invmachine)&&$invmachine!=''){//帳務以每台分機為個別主體計算
+		write_ini_file($content,'../../../database/time'.$invmachine.'.ini');
+	}
+	else{//帳務以主機為主體計算
+		write_ini_file($content,'../../../database/timem1.ini');
+	}
+	write_ini_file($machinedata,'../../../database/machinedata.ini');
+	echo 'success-'.$content['time']['bizdate'].'-'.$content['time']['zcounter'];
+}
+else{
+	echo 'error';
+}
+?>

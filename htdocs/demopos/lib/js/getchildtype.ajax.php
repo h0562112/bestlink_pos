@@ -1,0 +1,69 @@
+<?php
+include '../../../tool/dbTool.inc.php';
+$conn=sqlconnect("../../../database","menu.db","","","","sqlite");
+$temp=preg_split('/,/',$_POST['childtype']);
+$frontname=parse_ini_file('../../../database/'.$_POST['company'].'-front.ini',true);
+$a='';
+$other=array();
+foreach($temp as $t){
+	if(preg_match('/;/',$t)){
+		$tt=preg_split('/;/',$t);
+		$index=sizeof($other);
+		foreach($tt as $ttt){
+			$f=preg_split('/-/',$ttt);
+			if(strlen($a)==0){
+				$a='"'.$f[1].'"';
+			}
+			else{
+				$a=$a.',"'.$f[1].'"';
+			}
+			if(!isset($other[$index])){
+				$other[$index]['no']=$f[0];
+				$other[$index]['front']=$frontname[$f[0]]['name1'];
+				$other[$index]['number']=$f[2];
+				$other[$index]['items']=$f[1];
+				//2021/6/18 判斷此套餐品項類別是否為必選(先暫時定義；與上方number配合，可做到此類別中可選0-N項或必選N項品項)
+				if(!isset($frontname[$f[0]]['required'])||$frontname[$f[0]]['required']=='1'){
+					$other[$index]['required']='1';
+				}
+				else{
+					$other[$index]['required']='0';
+				}
+			}
+			else{
+				$other[$index]['items']=$other[$index]['items'].','.$f[1];
+			}
+		}
+	}
+	else{
+		$f=preg_split('/-/',$t);
+		if(strlen($a)==0){
+			$a='"'.$f[1].'"';
+		}
+		else{
+			$a=$a.',"'.$f[1].'"';
+		}
+	}
+}
+$sql='SELECT inumber,fronttype FROM itemsdata WHERE inumber IN ('.$a.') ORDER BY frontsq,inumber';
+$data=sqlquery($conn,$sql,'sqlite');
+sqlclose($conn,'sqlite');
+$list=array();
+for($i=0;$i<sizeof($data);$i++){
+	if(!isset($list[$data[$i]['fronttype']])||strlen($list[$data[$i]['fronttype']]['items'])==0){
+		$list[$data[$i]['fronttype']]['front']=$frontname[$data[$i]['fronttype']]['name1'];
+		$list[$data[$i]['fronttype']]['items']=$data[$i]['inumber'];
+	}
+	else{
+		$list[$data[$i]['fronttype']]['items']=$list[$data[$i]['fronttype']]['items'].','.$data[$i]['inumber'];
+	}
+	/*$list[$frontname[$data[$i]['fronttype']]['name1']]
+	$data[$i]['name1']=$frontname[$data[$i]['fronttype']]['name1'];*/
+}
+if(sizeof($other)==0){
+}
+else{
+	$list['other']=$other;
+}
+echo json_encode($list);
+?>

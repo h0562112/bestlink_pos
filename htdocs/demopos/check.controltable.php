@@ -1,0 +1,41 @@
+<?php
+$initsetting=parse_ini_file('../database/initsetting.ini',true);
+//date_default_timezone_set('Asia/Taipei');
+date_default_timezone_set($initsetting['init']['settime']);
+
+if(file_exists('../database/mapping.ini')){
+	$dbmapping=parse_ini_file('../database/mapping.ini',true);
+	if(isset($dbmapping['map'][$_POST['machinetype']])){
+		$invmachine=$dbmapping['map'][$_POST['machinetype']];
+	}
+	else{
+		$invmachine='m1';
+	}
+}
+else{
+	$invmachine='';
+}
+if(isset($initsetting['init']['accounting'])&&$initsetting['init']['accounting']=='2'&&isset($invmachine)&&$invmachine!=''){//帳務以每台分機為個別主體計算
+	$time=parse_ini_file('../database/time'.$invmachine.'.ini',true);
+}
+else{//帳務以主機為主體計算
+	$time=parse_ini_file('../database/timem1.ini',true);
+}
+if($initsetting['init']['controltable']=='1'){
+	if($time['time']['isclose']=='1'&&$time['time']['isopen']=='0'&&$time['time']['bizdate']!=date('Ymd')){
+		$myArray=array('control','1',$time['time']['bizdate']);
+	}
+	else{
+		$myArray=array('control','0',$time['time']['bizdate']);
+	}
+}
+else{
+	if($time['time']['isclose']=='1'&&$time['time']['isopen']=='0'&&$time['time']['bizdate']!=date('Ymd')){
+		$myArray=array('noecontrol','1',$time['time']['bizdate']);
+	}
+	else{
+		$myArray=array('noecontrol','0',$time['time']['bizdate']);
+	}
+}
+echo json_encode($myArray);
+?>

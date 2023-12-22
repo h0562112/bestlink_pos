@@ -1,0 +1,79 @@
+<h1><center>setup</center></h1>
+<div style='margin-bottom:15px;'>
+	<input type='button' class='initbutton' id='save' value='儲存'>
+</div>
+<div class='table' id="parent" style='width:100%;height:calc(100% - 164.2px);border:1px solid #898989;overflow:auto;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;'>
+	<?php
+	if(file_exists('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/setup.ini')){
+	}
+	else{
+		include_once '../../../tool/create.inifile.php';
+		cresetup($_POST['company'],$_POST['dep']);
+	}
+	$setup=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/setup.ini',true);
+	$setup_con=parse_ini_file('./inifile/setup_con.ini',true);
+	$sectionstring='';
+	foreach($setup as $section=>$data){
+		echo '<form class="'.$section.'" style="overflow: hidden;">';
+		if($sectionstring!=''){
+			$sectionstring .= '-';
+		}
+		else{
+		}
+		$sectionstring .= $section;
+		foreach($data as $name=>$value){
+			if($_POST['ini']==0){
+				if($section=='basic'){
+					if($name=='company'||$name=='story'||$name=='storyname'||$name=='Name'||$name=='Identifier'||$name=='address'||$name=='tel'||$name=='itemname'||$name=='sendinvlocation'){
+						echo '<div style="overflow:hidden;">
+								<div style="float:left;margin: 0 10px;font-size: 18px;">'.$name.'=</div>
+								<div style="float:left;"><input type="text" name="'.$name.'" value="'.$value.'" style="font-size: 18px; border: 0px; border-bottom: 1px solid #898989; padding: 0 10px 5px 10px;"><br><span style="color:#ff0000;font-size: 12px;">＊'.$setup_con[$section][$name].'</span></div>
+							</div>';
+					}
+					else if(is_array($value)){
+						for($i=0;$i<sizeof($value);$i++){
+							echo '<input type="hidden" name="'.$name.'['.$i.']" value="'.$value[$i].'">';
+						}
+					}
+					else{
+						echo '<input type="hidden" name="'.$name.'" value="'.$value.'">';
+					}
+				}
+				else if($section=='zdninv'){
+					if($name=='url'||$name=='id'||$name=='psw'||$name=='getinvbyonce'){
+						echo '<div style="overflow:hidden;">
+								<div style="float:left;margin: 0 10px;font-size: 18px;">'.$name.'=</div>
+								<div style="float:left;"><input type="text" name="'.$name.'" value="'.$value.'" style="font-size: 18px; border: 0px; border-bottom: 1px solid #898989; padding: 0 10px 5px 10px;"><br><span style="color:#ff0000;font-size: 12px;">＊'.$setup_con[$section][$name].'</span></div>
+							</div>';
+					}
+					else{
+						echo '<input type="hidden" name="'.$name.'" value="'.$value.'">';
+					}
+				}
+				else if($section=='inv'){
+					if($name=='total'){
+						echo '<div style="overflow:hidden;">
+								<div style="float:left;margin: 0 10px;font-size: 18px;">'.$name.'=</div>
+								<div style="float:left;"><input type="text" name="'.$name.'" value="'.$value.'" style="font-size: 18px; border: 0px; border-bottom: 1px solid #898989; padding: 0 10px 5px 10px;"><br><span style="color:#ff0000;font-size: 12px;">＊'.$setup_con[$section][$name].'</span></div>
+							</div>';
+					}
+					else{
+						echo '<input type="hidden" name="'.$name.'" value="'.$value.'">';
+					}
+				}
+				else{
+					echo '<input type="hidden" name="'.$name.'" value="'.$value.'">';
+				}
+			}
+			else{
+				echo '<div style="overflow:hidden;">
+						<div style="float:left;margin: 0 10px;font-size: 18px;">'.$name.'=</div>
+						<div style="float:left;"><input type="text" name="'.$name.'" value="'.$value.'" style="font-size: 18px; border: 0px; border-bottom: 1px solid #898989; padding: 0 10px 5px 10px;"><br><span style="color:#ff0000;font-size: 12px;">＊'.$setup_con[$section][$name].'</span></div>
+					</div>';
+			}
+		}
+		echo '</form>';
+	}
+	echo '<input type="hidden" class="sectionstring" value="'.$sectionstring.'">';
+	?>
+</div>

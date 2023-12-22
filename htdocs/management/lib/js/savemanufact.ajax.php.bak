@@ -1,0 +1,166 @@
+<?php
+include_once '../../../tool/dbTool.inc.php';
+date_default_timezone_set('Asia/Taipei');
+$conn=sqlconnect('../../menudata/'.$_POST['company'].'/person','manufact.db','','','','sqlite');
+if($_POST['type']=='new'){
+	$sql='SELECT COUNT(*) AS num FROM manulist';
+	$num=sqlquery($conn,$sql,'sqlite');
+	if($num[0]['num']==0){
+		$sql='INSERT INTO manulist (no,manuno,manuname,mainperson,conperson,tel,tel2,email,banno,fax,zip1,sendaddress,zip2,billaddress,remark,createdatetime) SELECT 1,"'.$_POST['manuno'].'","'.$_POST['manuname'].'",';
+	}
+	else{
+		$sql='INSERT INTO manulist (no,manuno,manuname,mainperson,conperson,tel,tel2,email,banno,fax,zip1,sendaddress,zip2,billaddress,remark,createdatetime) SELECT (SELECT no FROM manulist ORDER BY substr("0000000000"||no, -10) DESC LIMIT 1)+1,"'.$_POST['manuno'].'","'.$_POST['manuname'].'",';
+	}
+	if(isset($_POST['mainperson'])&&strlen($_POST['mainperson'])>0){
+		$sql=$sql.'"'.$_POST['mainperson'].'",';
+	}
+	else{
+		$sql=$sql.'NULL,';
+	}
+	if(isset($_POST['conperson'])&&strlen($_POST['conperson'])>0){
+		$sql=$sql.'"'.$_POST['conperson'].'",';
+	}
+	else{
+		$sql=$sql.'NULL,';
+	}
+	if(isset($_POST['tel'])&&strlen($_POST['tel'])>0){
+		$sql=$sql.'"'.$_POST['tel'].'",';
+	}
+	else{
+		$sql=$sql.'NULL,';
+	}
+	if(isset($_POST['tel2'])&&strlen($_POST['tel2'])>0){
+		$sql=$sql.'"'.$_POST['tel2'].'",';
+	}
+	else{
+		$sql=$sql.'NULL,';
+	}
+	if(isset($_POST['email'])&&strlen($_POST['email'])>0){
+		$sql=$sql.'"'.$_POST['email'].'",';
+	}
+	else{
+		$sql=$sql.'NULL,';
+	}
+	if(isset($_POST['banno'])&&strlen($_POST['banno'])>0){
+		$sql=$sql.'"'.$_POST['banno'].'",';
+	}
+	else{
+		$sql=$sql.'NULL,';
+	}
+	if(isset($_POST['fax'])&&strlen($_POST['fax'])>0){
+		$sql=$sql.'"'.$_POST['fax'].'",';
+	}
+	else{
+		$sql=$sql.'NULL,';
+	}
+	if(isset($_POST['zip1'])&&strlen($_POST['zip1'])>0){
+		$sql=$sql.'"'.$_POST['zip1'].'",';
+	}
+	else{
+		$sql=$sql.'NULL,';
+	}
+	if(isset($_POST['sendaddress'])&&strlen($_POST['sendaddress'])>0){
+		$sql=$sql.'"'.$_POST['sendaddress'].'",';
+	}
+	else{
+		$sql=$sql.'NULL,';
+	}
+	if(isset($_POST['zip2'])&&strlen($_POST['zip2'])>0){
+		$sql=$sql.'"'.$_POST['zip2'].'",';
+	}
+	else{
+		$sql=$sql.'NULL,';
+	}
+	if(isset($_POST['billaddress'])&&strlen($_POST['billaddress'])>0){
+		$sql=$sql.'"'.$_POST['billaddress'].'",';
+	}
+	else{
+		$sql=$sql.'NULL,';
+	}
+	if(isset($_POST['remark'])&&strlen($_POST['remark'])>0){
+		$sql=$sql.'"'.$_POST['remark'].'",';
+	}
+	else{
+		$sql=$sql.'NULL,';
+	}
+	$sql=$sql.'"'.date('YmdHis').'"';
+}
+else{
+	$sql='UPDATE manulist SET manuname="'.$_POST['manuname'].'",';
+	if(isset($_POST['mainperson'])&&strlen($_POST['mainperson'])>0){
+		$sql=$sql.'mainperson="'.$_POST['mainpersn'].'",';
+	}
+	else{
+		$sql=$sql.'mainperson=NULL,';
+	}
+	if(isset($_POST['conperson'])&&strlen($_POST['conperson'])>0){
+		$sql=$sql.'conperson="'.$_POST['conperson'].'",';
+	}
+	else{
+		$sql=$sql.'conperson=NULL,';
+	}
+	if(isset($_POST['tel'])&&strlen($_POST['tel'])>0){
+		$sql=$sql.'tel="'.$_POST['tel'].'",';
+	}
+	else{
+		$sql=$sql.'tel=NULL,';
+	}
+	if(isset($_POST['tel2'])&&strlen($_POST['tel2'])>0){
+		$sql=$sql.'tel2="'.$_POST['tel2'].'",';
+	}
+	else{
+		$sql=$sql.'tel2=NULL,';
+	}
+	if(isset($_POST['email'])&&strlen($_POST['email'])>0){
+		$sql=$sql.'email="'.$_POST['email'].'",';
+	}
+	else{
+		$sql=$sql.'email=NULL,';
+	}
+	if(isset($_POST['banno'])&&strlen($_POST['banno'])>0){
+		$sql=$sql.'banno="'.$_POST['banno'].'",';
+	}
+	else{
+		$sql=$sql.'banno=NULL,';
+	}
+	if(isset($_POST['fax'])&&strlen($_POST['fax'])>0){
+		$sql=$sql.'fax="'.$_POST['fax'].'",';
+	}
+	else{
+		$sql=$sql.'fax=NULL,';
+	}
+	if(isset($_POST['zip1'])&&strlen($_POST['zip1'])>0){
+		$sql=$sql.'zip1="'.$_POST['zip1'].'",';
+	}
+	else{
+		$sql=$sql.'zip1=NULL,';
+	}
+	if(isset($_POST['sendaddress'])&&strlen($_POST['sendaddress'])>0){
+		$sql=$sql.'sendaddress="'.$_POST['sendaddress'].'",';
+	}
+	else{
+		$sql=$sql.'sendaddress=NULL,';
+	}
+	if(isset($_POST['zip2'])&&strlen($_POST['zip2'])>0){
+		$sql=$sql.'zip2="'.$_POST['zip2'].'",';
+	}
+	else{
+		$sql=$sql.'zip2=NULL,';
+	}
+	if(isset($_POST['billaddress'])&&strlen($_POST['billaddress'])>0){
+		$sql=$sql.'billaddress="'.$_POST['billaddress'].'",';
+	}
+	else{
+		$sql=$sql.'billaddress=NULL,';
+	}
+	if(isset($_POST['remark'])&&strlen($_POST['remark'])>0){
+		$sql=$sql.'remark="'.$_POST['remark'].'"';
+	}
+	else{
+		$sql=$sql.'remark=NULL';
+	}
+	$sql=$sql.' WHERE no="'.$_POST['no'].'"';
+}
+sqlnoresponse($conn,$sql,'sqlite');
+sqlclose($conn,'sqlite');
+?>

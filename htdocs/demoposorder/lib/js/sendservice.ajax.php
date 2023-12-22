@@ -1,0 +1,24 @@
+<?php
+if(file_exists('../../../kds/items/noread/service')){
+}
+else{
+	mkdir('../../../kds/items/noread/service');
+}
+if(file_exists('../../../database/service.ini')){
+	print_r($_POST);
+	date_default_timezone_set('Asia/Taipei');
+	$service=parse_ini_file('../../../database/service.ini',true);
+	$f=fopen('../../../kds/items/noread/service/temp'.$_POST['tablenumber'].'_'.date('YmdHis').'.ini','w');
+	fwrite($f,'['.$_POST['tablenumber'].']'.PHP_EOL);
+	for($i=0;$i<sizeof($_POST['service']);$i++){
+		fwrite($f,'no[]="'.$_POST['service'][$i].'"'.PHP_EOL);
+		fwrite($f,'name[]="'.$service['items'][$_POST['service'][$i]].'"'.PHP_EOL);
+	}
+	fclose($f);
+	rename('../../../kds/items/noread/service/temp'.$_POST['tablenumber'].'_'.date('YmdHis').'.ini','../../../kds/items/noread/service/'.$_POST['tablenumber'].'_'.date('YmdHis').'.ini');
+	$f=fopen('../../serviceitems/'.$_POST['tablenumber'].'.ini','w');
+	fclose($f);
+}
+else{
+}
+?>

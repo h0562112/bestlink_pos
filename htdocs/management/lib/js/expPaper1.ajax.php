@@ -1,0 +1,184 @@
+<?php
+session_start();
+date_default_timezone_set('Asia/Taipei');
+include_once '../../../tool/dbTool.inc.php';
+$start=preg_replace('/-/','',$_POST['startdate']);
+$end=preg_replace('/-/','',$_POST['enddate']);
+if($_SESSION['DB']==''){
+	$floorspan=parse_ini_file('../../../ourpos/'.$_SESSION['company'].'/'.$_POST['dbname'].'/floorspend.ini',true);
+	$otherpay=parse_ini_file('../../../ourpos/'.$_SESSION['company'].'/'.$_POST['dbname'].'/otherpay.ini',true);
+}
+else{
+	$floorspan=parse_ini_file('../../../ourpos/'.$_SESSION['company'].'/'.$_SESSION['DB'].'/floorspend.ini',true);
+	$otherpay=parse_ini_file('../../../ourpos/'.$_SESSION['company'].'/'.$_SESSION['DB'].'/otherpay.ini',true);
+}
+if(file_exists('../../../ourpos/'.$_SESSION['company'].'/buttons-'.$_POST['lan'].'.ini')){
+	$saletype=parse_ini_file('../../../ourpos/'.$_SESSION['company'].'/buttons-'.$_POST['lan'].'.ini',true);
+}
+else if(file_exists('../../lan/interface'.$_POST['lan'].'.ini')){
+	$saletype=parse_ini_file('../../lan/interface'.$_POST['lan'].'.ini',true);
+}
+else{
+	$saletype=parse_ini_file('../../lan/interfaceTW.ini',true);
+}
+if(isset($_POST['startdate'])){
+	$list=array();
+	if(strtotime(date('Ymd',strtotime($end)))>strtotime(date('Ymd'))){
+		$ENDDATE=strtotime(date('Ymd'));
+	}
+	else{
+		$ENDDATE=strtotime(date('Ymd',strtotime($end)));
+	}
+	if(is_dir('../../../doc/')){
+	}
+	else{
+		mkdir('../../../doc');
+	}
+	$filepath='../doc/'.date('Ymd');
+	if(is_dir('../../'.$filepath.'/')){
+	}
+	else{
+		mkdir('../../'.$filepath);
+	}
+	$file=$filepath.'/'.$_SESSION['company'].'-'.date('YmdHis').'.csv';
+	$f=fopen('../../'.$file,'w');
+	$personsetting='';
+	for($i=1;$i<4;$i++){
+		if(isset($floorspan['person'.$i]['name'])&&$floorspan['person'.$i]['name']!=''){
+			$personsetting.=$floorspan['person'.$i]['name'].',';
+		}
+		else{
+		}
+	}
+	$paystring='';
+	foreach($otherpay as $index=>$item){
+		if($index=='pay'){
+		}
+		else{
+			$paystring.=iconv("UTF-8","Big5",$item['name']).',';
+		}
+	}
+	$check=0;
+	fwrite($f,'營業日,班別,類型,結帳時間,帳單編號,桌號,帳單金額,服務費,現金,信用卡,其他支付,電子發票,'.$personsetting.'序,品項(備註),單價,數量,小計,帳單備註,其他支付方式,'.$paystring.PHP_EOL);
+	for($d=strtotime(date('Ymd',strtotime($start)));$d<=$ENDDATE;$d=strtotime(date('Ymd',$d).' +1 month')){
+		if($_SESSION['DB']==''){
+			$taste=parse_ini_file('../../../ourpos/'.$_SESSION['company'].'/'.$_POST['dbname'].'/'.$_SESSION['company'].'-taste.ini',true);
+			
+			if(file_exists('../../../ourpos/'.$_SESSION['company'].'/'.$_POST['dbname'].'/SALES_'.date('Ym',$d).'.db')){
+				$conn=sqlconnect('../../../ourpos/'.$_SESSION['company'].'/'.$_POST['dbname'],'SALES_'.date('Ym',$d).'.db','','','','sqlite');
+			}
+			else{
+			}
+		}
+		else{
+			$taste=parse_ini_file('../../../ourpos/'.$_SESSION['company'].'/'.$_SESSION['DB'].'/'.$_SESSION['company'].'-taste.ini',true);
+			
+			if(file_exists('../../../ourpos/'.$_SESSION['company'].'/'.$_SESSION['DB'].'/SALES_'.date('Ym',$d).'.db')){
+				$conn=sqlconnect('../../../ourpos/'.$_SESSION['company'].'/'.$_SESSION['DB'],'SALES_'.date('Ym',$d).'.db','','','','sqlite');
+			}
+			else{
+			}
+		}
+		if(!isset($conn)||!$conn){
+			//echo '資料庫尚未上傳資料。';
+		}
+		else{
+			$sql='SELECT CST012.*,CST011.INVOICENUMBER,CST011.SALESTTLAMT,CST011.TAX1,CST011.TAX2,CST011.TAX3,CST011.TAX4,CST011.TAX5,CST011.TAX6,CST011.TAX7,CST011.TAX8,CST011.TA1,CST011.TA2,CST011.TA3,CST011.TA4,CST011.TA5,CST011.TA6,CST011.TA7,CST011.TA8,CST011.TA9,CST011.TA10,CST011.TABLENUMBER,CST011.NBCHKNUMBER FROM CST012 JOIN CST011 ON CST011.BIZDATE=CST012.BIZDATE AND CST011.CONSECNUMBER=CST012.CONSECNUMBER WHERE CST012.BIZDATE BETWEEN "'.$start.'" AND "'.$end.'" AND (DTLMODE="1" AND DTLTYPE="1" AND DTLFUNC="01") ORDER BY CST012.BIZDATE ASC,CST012.CONSECNUMBER ASC,CST012.LINENUMBER';
+			$first=sqlquery($conn,$sql,'sqlite');
+			if(sizeof($first)==0){
+			}
+			else{
+				for($i=0;$i<sizeof($first);$i++){
+					//echo $first[$i]['ITEMNAME'];
+					$temp=preg_split('/-/',$first[$i]['REMARKS']);
+					$tempperson='';
+					for($item=1;$item<4;$item++){
+						if(isset($floorspan['person'.$item]['name'])&&$floorspan['person'.$item]['name']!=''){
+							$tempperson.=$first[$i]['TAX'.(5+$item)].',';
+						}
+						else{
+						}
+					}
+					$tempotherpay='';
+					foreach($otherpay as $index=>$item){
+						if($index=='pay'){
+						}
+						else{
+							$tempotherpay.=$first[$i][$item['dbname']].',';
+						}
+					}
+					$temp=preg_split('/-/',$first[$i]['REMARKS']);
+					if($check!=$first[$i]['CONSECNUMBER']){
+						fwrite($f,$first[$i]['BIZDATE'].','.$first[$i]['ZCOUNTER'].','.iconv("UTF-8","Big5",$saletype['name']['listtype'.$temp[0]]).','.substr($first[$i]['CREATEDATETIME'],0,4).'/'.substr($first[$i]['CREATEDATETIME'],4,2).'/'.substr($first[$i]['CREATEDATETIME'],6,2).' '.substr($first[$i]['CREATEDATETIME'],8,2).':'.substr($first[$i]['CREATEDATETIME'],10,2).','.$first[$i]['CONSECNUMBER'].','.$first[$i]['TABLENUMBER'].','.$first[$i]['SALESTTLAMT'].','.$first[$i]['TAX1'].','.$first[$i]['TAX2'].','.$first[$i]['TAX3'].','.$first[$i]['TAX4'].','.$first[$i]['INVOICENUMBER'].','.$tempperson.(intval($first[$i]['LINENUMBER']/2)+1).','.iconv("UTF-8","Big5",$first[$i]['ITEMNAME']).','.$first[$i]['UNITPRICE'].','.$first[$i]['QTY'].','.$first[$i]['AMT']);
+						if($first[$i]['NBCHKNUMBER']==''){
+							fwrite($f,',');
+						}
+						else{
+							fwrite($f,',作廢');
+						}
+						fwrite($f,',,'.$tempotherpay.PHP_EOL);
+						
+						if($first[$i]['SELECTIVEITEM1']!=''){
+							for($j=1;$j<=10;$j++){
+								if($first[$i]['SELECTIVEITEM'.$j]==''){
+									break;
+								}
+								else{
+									fwrite($f,',,,,,,,,,,,,'.(intval($first[$i]['LINENUMBER']/2)+1).','.iconv("UTF-8","Big5",$taste[intval(substr($first[$i]['SELECTIVEITEM'.$j],0,5))]['name1']).','.$taste[intval(substr($first[$i]['SELECTIVEITEM'.$j],0,5))]['money'].','.intval(substr($first[$i]['SELECTIVEITEM'.$j],5)).',');
+									if($first[$i]['NBCHKNUMBER']==''){
+										fwrite($f,',');
+									}
+									else{
+										fwrite($f,',作廢');
+									}
+									fwrite($f,','.PHP_EOL);
+									
+								}
+							}
+						}
+						else{
+						}
+						$check=$first[$i]['CONSECNUMBER'];
+					}
+					else{
+						fwrite($f,',,,,,,,,,,,,'.(intval($first[$i]['LINENUMBER']/2)+1).','.iconv("UTF-8","Big5",$first[$i]['ITEMNAME']).','.$first[$i]['UNITPRICE'].','.$first[$i]['QTY'].','.$first[$i]['AMT']);
+						if($first[$i]['NBCHKNUMBER']==''){
+							fwrite($f,',');
+						}
+						else{
+							fwrite($f,',作廢');
+						}
+						fwrite($f,','.PHP_EOL);
+						
+						if($first[$i]['SELECTIVEITEM1']!=''){
+							for($j=1;$j<=10;$j++){
+								if($first[$i]['SELECTIVEITEM'.$j]==''){
+									break;
+								}
+								else{
+									fwrite($f,',,,,,,,,,,,,'.(intval($first[$i]['LINENUMBER']/2)+1).','.iconv("UTF-8","Big5",$taste[intval(substr($first[$i]['SELECTIVEITEM'.$j],0,5))]['name1']).','.$taste[intval(substr($first[$i]['SELECTIVEITEM'.$j],0,5))]['money'].','.intval(substr($first[$i]['SELECTIVEITEM'.$j],5)).',');
+									if($first[$i]['NBCHKNUMBER']==''){
+										fwrite($f,',');
+									}
+									else{
+										fwrite($f,',作廢');
+									}
+									fwrite($f,','.PHP_EOL);
+									
+								}
+							}
+						}
+						else{
+						}
+					}
+				}
+			}
+		}
+		sqlclose($conn,'sqlite');
+	}
+	fclose($f);
+	echo $file;
+}
+else{
+}
+?>

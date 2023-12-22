@@ -1,0 +1,8 @@
+[name]
+text1="請輸入帳號"		;請輸入帳號
+text2="請輸入密碼"		;請輸入密碼
+button1="離開"			;離開
+button2="清除"			;清除
+button3="確認"			;確認
+systemhint1="目前POS營業日為："
+systemhint2="請問是否需要自動交班？"

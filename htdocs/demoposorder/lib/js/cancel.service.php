@@ -1,0 +1,9 @@
+<?php
+$f=fopen('../../../kds/items/noread/service/cancel_'.$_POST['tablenumber'].'.ini','w');
+fclose($f);
+if(file_exists('../../serviceitems/'.$_POST['tablenumber'].'.ini')){
+	unlink('../../serviceitems/'.$_POST['tablenumber'].'.ini');
+}
+else{
+}
+?>

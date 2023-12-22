@@ -1,0 +1,38 @@
+<?php
+include_once '../../../tool/inilib.php';
+$tastegroup=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/'.$_POST['company'].'-tastegroup.ini',true);
+if(!file_exists('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/timeout.ini')){
+	date_default_timezone_set('Asia/Taipei');
+}
+else{
+	$timeout=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/timeout.ini',true);
+	if(!isset($timeout['time']['name'])){
+		date_default_timezone_set('Asia/Taipei');
+	}
+	else{
+		date_default_timezone_set($timeout['time']['name']);
+	}
+}
+
+if(strlen($_POST['number'])>0){
+	$tastegroup[$_POST['number']]['groupno']=$_POST['number'];
+	$tastegroup[$_POST['number']]['name']=$_POST['name'];
+	$tastegroup[$_POST['number']]['public']='1';
+	$tastegroup[$_POST['number']]['pos']=$_POST['pos'];
+	$tastegroup[$_POST['number']]['kds']='0';
+	$tastegroup[$_POST['number']]['seq']=$_POST['number'];
+}
+else{
+	$row=sizeof($tastegroup);
+	$tastegroup[$row]['groupno']=$row;
+	$tastegroup[$row]['name']=$_POST['name'];
+	$tastegroup[$row]['public']='1';
+	$tastegroup[$row]['pos']=$_POST['pos'];
+	$tastegroup[$row]['kds']='0';
+	$tastegroup[$row]['seq']=$row;
+}
+write_ini_file($tastegroup,'../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/'.$_POST['company'].'-tastegroup.ini');
+$ver=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/ver.ini',true);
+$ver['ver']['update']=date('YmdHis');
+write_ini_file($ver,'../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/ver.ini');
+?>

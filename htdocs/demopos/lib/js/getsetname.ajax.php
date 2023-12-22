@@ -1,0 +1,20 @@
+<?php
+$list=array();
+if(file_exists('../../syspram/buttons-1.ini')){
+	$buttons1=parse_ini_file('../../syspram/buttons-1.ini',true);
+	$list['button1']=$buttons1['name'][$_POST['type']];
+}
+else{
+	$buttons1='-1';
+	$list['button1']='';
+}
+if(file_exists('../../syspram/buttons-2.ini')){
+	$buttons2=parse_ini_file('../../syspram/buttons-2.ini',true);
+	$list['button2']=$buttons2['name'][$_POST['type']];
+}
+else{
+	$buttons2='-1';
+	$list['button2']='';
+}
+echo json_encode($list);
+?>

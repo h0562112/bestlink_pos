@@ -1,0 +1,82 @@
+<?php
+//print_r($_POST);
+if(isset($_POST['data']['success'])&&$_POST['data']['success']=='true'){
+	if(file_exists('../../../database/initsetting.ini')){
+		$init=parse_ini_file('../../../database/initsetting.ini',true);
+	}
+	else{
+		$init['init']['accounting']='1';
+	}
+	if($init['init']['accounting']=='1'){
+		$invmachine='m1';
+	}
+	else{
+		if(file_exists('../../../database/mapping.ini')){
+			$dbmapping=parse_ini_file('../../../database/mapping.ini',true);
+			if(isset($dbmapping['map'][$_POST['machine']])){
+				$invmachine=$dbmapping['map'][$_POST['machine']];
+			}
+			else{
+				$invmachine='m1';
+			}
+		}
+		else{
+			$invmachine='m1';
+		}
+	}
+	//include_once '../../../tool/dbTool.inc.php';
+	$path='../../../trnx/Number/'.$invmachine.'/';//祇布腹郎参隔畖
+	if(file_exists($path)){
+	}
+	else{
+		mkdir($path);
+	}
+	if(isset($_POST['data']['data'][0]['start'])){
+		foreach($_POST['data']['data'] as $data){
+			$temppath=$path.$data['period'].'/'.$data['type'].'/';
+			//$invdbpath='../../../database/sale/'.(intval(substr($data['period'],0,strlen($data['period'])-2))+1911).substr($data['period'],-2);
+			//$invdbname='invdata_'.(intval(substr($data['period'],0,strlen($data['period'])-2))+1911).substr($data['period'],-2).'_'.$invmachine.'.db';
+			/*if(file_exists($invdbpath.'/'.$invdbname)){
+			}
+			else{
+				if(file_exists("../../../database/sale/EMinvdata.DB")){
+				}
+				else{
+					include_once './create.emptyDB.php';
+					create('EMinvdata');
+				}
+				copy("../../../database/sale/EMinvdata.db",$invdbpath.'/'.$invdbname);
+			}*/
+			//$conn=sqlconnect($invdbpath,$invdbname,'','','','sqlite');
+			$sql='';
+			if(file_exists($path.$data['period'])){
+			}
+			else{
+				mkdir($path.$data['period']);
+			}
+			if(file_exists($path.$data['period'].'/'.$data['type'])){
+			}
+			else{
+				mkdir($path.$data['period'].'/'.$data['type']);
+			}
+			for($i=intval($data['start']);$i<=intval($data['end']);$i++){
+				$f=fopen($temppath.$data['track'].str_pad($i,8,'0',STR_PAD_LEFT).'.inv','w');
+				fclose($f);
+				//$sql .= 'INSERT INTO number VALUE ("'.$_POST['company'].'","'.$_POST['story'].'","'.$data['track'].str_pad($i,8,'0',STR_PAD_LEFT).'","'.$data['period'].'","1");';
+			}
+			//sqlnoresponse($conn,$sql,'sqliteexec');
+			//sqlclose($conn,'sqlite');
+		}
+		$f=fopen('../../../print/noread/add.txt','w');
+		fclose($f);
+		date_default_timezone_set('Asia/Taipei');
+		$f=fopen('../../../printlog.txt','a');
+		fwrite($f,date('Y/m/d H:i:s').' -- create.invfile.php '.iconv('big5','utf-8','干祇布').PHP_EOL);
+		fclose($f);
+	}
+	else{
+	}
+}
+else{
+}
+?>

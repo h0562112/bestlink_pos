@@ -1,0 +1,5 @@
+path= https://apis.quickclick.cc/v1/orders/0026812035/accept
+header= Content-Type: application/json
+        Authorization: QC S_20220418172937:hcNqOnl/23TDKJNjxNuPucedPDXpKyPQEPhPyCW76Ng=
+        Seed: 1665543375
+response= {"error":{"message":"Cannot accept the order. The order is already accepted","code":"ORDER_IS_ACCEPTED","devMessage":"Error: Cannot accept the order. The order is already accepted\n    at /usr/app/src/core/orders.js:3715:17\n    at _fulfilled (/usr/app/node_modules/q/q.js:854:54)\n    at /usr/app/node_modules/q/q.js:883:30\n    at Promise.promise.promiseDispatch (/usr/app/node_modules/q/q.js:816:13)\n    at /usr/app/node_modules/q/q.js:624:44\n    at runSingle (/usr/app/node_modules/q/q.js:137:13)\n    at flush (/usr/app/node_modules/q/q.js:125:13)\n    at processTicksAndRejections (internal/process/task_queues.js:79:11)","name":"Error"}}

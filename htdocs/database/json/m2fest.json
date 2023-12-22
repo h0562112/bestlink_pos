@@ -1,0 +1,12 @@
+{
+  "short_name": "TablePlus",
+  "name": "TablePlus點餐系統",
+  "icons": [
+    {
+      "src": "/favicon.ico"
+    }
+  ],
+  "start_url": "/demopos/index.php?submachine=m2",
+  "display": "fullscreen",
+  "orientation": "landscape"
+}

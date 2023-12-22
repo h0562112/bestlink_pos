@@ -1,0 +1,552 @@
+<?php
+include_once '../../../tool/dbTool.inc.php';
+include_once '../../../tool/inilib.php';
+$items=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/'.$_POST['company'].'-menu.ini',true);
+if(!file_exists('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/timeout.ini')){
+	date_default_timezone_set('Asia/Taipei');
+}
+else{
+	$timeout=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/timeout.ini',true);
+	if(!isset($timeout['time']['name'])){
+		date_default_timezone_set('Asia/Taipei');
+	}
+	else{
+		date_default_timezone_set($timeout['time']['name']);
+	}
+}
+$conn=sqlconnect('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'],'menu.db','','','','sqlite');
+if(isset($_POST['seq'])&&$_POST['seq']!=''){
+}
+else{
+	$_POST['seq']='1';
+}
+if(isset($_POST['taste'])&&sizeof($_POST['taste'])>0){//具有專屬備註
+	$taste='';
+	for($i=0;$i<sizeof($_POST['taste']);$i++){
+		if($taste!=''){
+			$taste=$taste.','.$_POST['taste'][$i];
+		}
+		else{
+			$taste=$_POST['taste'][$i];
+		}
+	}
+	$taste='1;'.$taste;
+}
+else{
+}
+if(isset($_POST['number'])&&$_POST['number']==''){
+	$now=date('YmdHis');
+	$sql='SELECT COUNT(*) AS num FROM itemsdata';
+	$num=sqlquery($conn,$sql,'sqlite');
+	if($num[0]['num']==0){
+		$sql='INSERT INTO itemsdata SELECT "'.$_POST['company'].'",1,NULL,0,NULL,'.$_POST['seq'].',NULL,"'.$_POST['front'].'","'.$_POST['rear'].'",';
+		if(isset($taste)){
+			$sql=$sql.'"'.$taste.'"';
+		}
+		else{
+			$sql=$sql.'NULL';
+		}
+		$sql=$sql.',NULL,"'.$now.'"';
+	}
+	else{
+		$sql='INSERT INTO itemsdata SELECT "'.$_POST['company'].'",(SELECT inumber FROM itemsdata ORDER BY substr("0000000000"||inumber, -10) DESC LIMIT 1)+1,NULL,0,NULL,'.$_POST['seq'].',NULL,"'.$_POST['front'].'","'.$_POST['rear'].'",';
+		if(isset($taste)){
+			$sql=$sql.'"'.$taste.'"';
+		}
+		else{
+			$sql=$sql.'NULL';
+		}
+		$sql=$sql.',NULL,"'.$now.'"';
+	}
+	if(isset($_POST['quickorder'])&&$_POST['quickorder']!=""){
+		$sql=$sql.',"'.$_POST['quickorder'].'",1';
+	}
+	else{
+		$sql=$sql.',NULL,1';
+	}
+	echo $sql;
+	sqlnoresponse($conn,$sql,'sqlite');
+	$sql='SELECT inumber FROM itemsdata WHERE createtime="'.$now.'"';
+	$number=sqlquery($conn,$sql,'sqlite');
+	$number=$number[0]['inumber'];
+}
+else{
+	$sql='UPDATE itemsdata SET frontsq='.$_POST['seq'].',fronttype="'.$_POST['front'].'",reartype="'.$_POST['rear'].'"';
+	if(isset($_POST['quickorder'])&&$_POST['quickorder']!=""){
+		$sql=$sql.',quickorder="'.$_POST['quickorder'].'"';
+	}
+	else{
+		$sql=$sql.',quickorder=NULL';
+	}
+	if(isset($taste)){
+		$sql=$sql.',taste="'.$taste.'"';
+	}
+	else{
+		$sql=$sql.',taste=NULL';
+	}
+	$sql=$sql.' WHERE inumber="'.$_POST['number'].'"';
+	sqlnoresponse($conn,$sql,'sqlite');
+	$number=$_POST['number'];
+}
+sqlclose($conn,'sqlite');
+
+$items[$number]['name1']=$_POST['name1'];
+$items[$number]['size1']=$_POST['size1'];
+$items[$number]['color1']=$_POST['color1'];
+if(isset($_POST['bold1'])){
+	$items[$number]['bold1']="1";
+}
+else{
+	$items[$number]['bold1']="0";
+}
+$items[$number]['name2']=$_POST['name2'];
+$items[$number]['size2']=$_POST['size2'];
+$items[$number]['color2']=$_POST['color2'];
+if(isset($_POST['bold2'])){
+	$items[$number]['bold2']="1";
+}
+else{
+	$items[$number]['bold2']="0";
+}
+if(isset($_POST['straw'])){
+	$items[$number]['straw']=$_POST['straw'];
+}
+else{
+	$items[$number]['straw']="999";
+}
+if(isset($_POST['openmoney'])){
+	$items[$number]['openmoney']=$_POST['openmoney'];
+}
+else{
+	$items[$number]['openmoney']="0";
+}
+if(isset($_POST['charge'])){
+	$items[$number]['charge']=$_POST['charge'];
+}
+else{
+	$items[$number]['charge']="0";
+}
+if(isset($_POST['personcount'])){
+	$items[$number]['personcount']=$_POST['personcount'];
+}
+else{
+	$items[$number]['personcount']='0';
+}
+if(isset($_POST['unit'])){
+	$items[$number]['unit']=$_POST['unit'];
+}
+else{
+	$items[$number]['unit']='0';
+}
+if(isset($_FILES['itemimg'])&&$_FILES['itemimg']["name"]!=""){
+	$items[$number]['image']=$number.'.'.pathinfo($_FILES['itemimg']["name"], PATHINFO_EXTENSION);
+}
+else{
+}
+if(isset($_POST['discount1'])){
+	$items[$number]['dis1']=1;
+	for($i=0;$i<sizeof($_POST['discount1']);$i++){
+		$items[$number]['dis1']=intval($items[$number]['dis1'])*intval($_POST['discount1'][$i]);
+	}
+}
+else{
+	$items[$number]['dis1']='';
+}
+if(isset($_POST['discount2'])){
+	$items[$number]['dis2']=1;
+	for($i=0;$i<sizeof($_POST['discount2']);$i++){
+		$items[$number]['dis2']=intval($items[$number]['dis2'])*intval($_POST['discount2'][$i]);
+	}
+}
+else{
+	$items[$number]['dis2']='';
+}
+if(isset($_POST['discount3'])){
+	$items[$number]['dis3']=1;
+	for($i=0;$i<sizeof($_POST['discount3']);$i++){
+		$items[$number]['dis3']=intval($items[$number]['dis3'])*intval($_POST['discount3'][$i]);
+	}
+}
+else{
+	$items[$number]['dis3']='';
+}
+if(isset($_POST['discount4'])){
+	$items[$number]['dis4']=1;
+	for($i=0;$i<sizeof($_POST['discount4']);$i++){
+		$items[$number]['dis4']=intval($items[$number]['dis4'])*intval($_POST['discount4'][$i]);
+	}
+}
+else{
+	$items[$number]['dis4']='';
+}
+/*
+if(isset($items[$number]['dis1'])){
+}
+else{
+	$items[$number]['dis1']='';
+	$items[$number]['dis2']='';
+	$items[$number]['dis3']='';
+	$items[$number]['dis4']='';
+}
+*/
+$mnumber=0;
+for($i=0;$i<6;$i++){
+	if($_POST['money'.($i+1)]!=''){
+		$mnumber++;
+	}
+	else{
+	}
+}
+$items[$number]['mnumber']=$mnumber;
+if(isset($_POST['insaleinv'])){
+	$items[$number]['insaleinv']="1";
+}
+else{
+	$items[$number]['insaleinv']="0";
+}
+if($_POST['mname11']!=""){
+	$items[$number]['mname11']=$_POST['mname11'];
+}
+/*else if($_POST['mname11']==""&&$_POST['money1']!=""){
+	$items[$number]['mname11']=$_POST['money1'];
+}*/
+else{
+	$items[$number]['mname11']="";
+}
+$items[$number]['mname12']=$_POST['mname12'];
+$items[$number]['money1']=$_POST['money1'];
+if(isset($_POST['unit1'])){
+	$items[$number]['unit1']=$_POST['unit1'];
+}
+else{
+	$items[$number]['unit1']='1';
+}
+if(isset($_POST['getpointtype1'])){
+	$items[$number]['getpointtype1']=$_POST['getpointtype1'];
+}
+else{
+	$items[$number]['getpointtype1']="1";
+}
+if(isset($_POST['getpoint1'])){
+	$items[$number]['getpoint1']=$_POST['getpoint1'];
+}
+else{
+	$items[$number]['getpoint1']="0";
+}
+if($_POST['mname21']!=""){
+	$items[$number]['mname21']=$_POST['mname21'];
+}
+/*else if($_POST['mname21']==""&&$_POST['money2']!=""){
+	$items[$number]['mname21']=$_POST['money2'];
+}*/
+else{
+	$items[$number]['mname21']="";
+}
+$items[$number]['mname22']=$_POST['mname22'];
+$items[$number]['money2']=$_POST['money2'];
+if(isset($_POST['unit2'])){
+	$items[$number]['unit2']=$_POST['unit2'];
+}
+else{
+	$items[$number]['unit2']='1';
+}
+if(isset($_POST['getpointtype2'])){
+	$items[$number]['getpointtype2']=$_POST['getpointtype2'];
+}
+else{
+	$items[$number]['getpointtype2']="1";
+}
+if(isset($_POST['getpoint2'])){
+	$items[$number]['getpoint2']=$_POST['getpoint2'];
+}
+else{
+	$items[$number]['getpoint2']="0";
+}
+if($_POST['mname31']!=""){
+	$items[$number]['mname31']=$_POST['mname31'];
+}
+/*else if($_POST['mname31']==""&&$_POST['money3']!=""){
+	$items[$number]['mname31']=$_POST['money3'];
+}*/
+else{
+	$items[$number]['mname31']="";
+}
+$items[$number]['mname32']=$_POST['mname32'];
+$items[$number]['money3']=$_POST['money3'];
+if(isset($_POST['unit3'])){
+	$items[$number]['unit3']=$_POST['unit3'];
+}
+else{
+	$items[$number]['unit3']='1';
+}
+if(isset($_POST['getpointtype3'])){
+	$items[$number]['getpointtype3']=$_POST['getpointtype3'];
+}
+else{
+	$items[$number]['getpointtype3']="1";
+}
+if(isset($_POST['getpoint3'])){
+	$items[$number]['getpoint3']=$_POST['getpoint3'];
+}
+else{
+	$items[$number]['getpoint3']="0";
+}
+if($_POST['mname41']!=""){
+	$items[$number]['mname41']=$_POST['mname41'];
+}
+/*else if($_POST['mname41']==""&&$_POST['money4']!=""){
+	$items[$number]['mname41']=$_POST['money4'];
+}*/
+else{
+	$items[$number]['mname41']="";
+}
+$items[$number]['mname42']=$_POST['mname42'];
+$items[$number]['money4']=$_POST['money4'];
+if(isset($_POST['unit4'])){
+	$items[$number]['unit4']=$_POST['unit4'];
+}
+else{
+	$items[$number]['unit4']='1';
+}
+if(isset($_POST['getpointtype4'])){
+	$items[$number]['getpointtype4']=$_POST['getpointtype4'];
+}
+else{
+	$items[$number]['getpointtype4']="1";
+}
+if(isset($_POST['getpoint4'])){
+	$items[$number]['getpoint4']=$_POST['getpoint4'];
+}
+else{
+	$items[$number]['getpoint4']="0";
+}
+if($_POST['mname51']!=""){
+	$items[$number]['mname51']=$_POST['mname51'];
+}
+/*else if($_POST['mname51']==""&&$_POST['money5']!=""){
+	$items[$number]['mname51']=$_POST['money5'];
+}*/
+else{
+	$items[$number]['mname51']="";
+}
+$items[$number]['mname52']=$_POST['mname52'];
+$items[$number]['money5']=$_POST['money5'];
+if(isset($_POST['unit5'])){
+	$items[$number]['unit5']=$_POST['unit5'];
+}
+else{
+	$items[$number]['unit5']='1';
+}
+if(isset($_POST['getpointtype5'])){
+	$items[$number]['getpointtype5']=$_POST['getpointtype5'];
+}
+else{
+	$items[$number]['getpointtype5']="1";
+}
+if(isset($_POST['getpoint5'])){
+	$items[$number]['getpoint5']=$_POST['getpoint5'];
+}
+else{
+	$items[$number]['getpoint5']="0";
+}
+if($_POST['mname61']!=""){
+	$items[$number]['mname61']=$_POST['mname61'];
+}
+/*else if($_POST['mname61']==""&&$_POST['money6']!=""){
+	$items[$number]['mname61']=$_POST['money6'];
+}*/
+else{
+	$items[$number]['mname61']="";
+}
+$items[$number]['mname62']=$_POST['mname62'];
+$items[$number]['money6']=$_POST['money6'];
+if(isset($_POST['unit6'])){
+	$items[$number]['unit6']=$_POST['unit6'];
+}
+else{
+	$items[$number]['unit6']='1';
+}
+if(isset($_POST['getpointtype6'])){
+	$items[$number]['getpointtype6']=$_POST['getpointtype6'];
+}
+else{
+	$items[$number]['getpointtype6']="1";
+}
+if(isset($_POST['getpoint6'])){
+	$items[$number]['getpoint6']=$_POST['getpoint6'];
+}
+else{
+	$items[$number]['getpoint6']="0";
+}
+$items[$number]['mname71']='';
+$items[$number]['mname72']='';
+$items[$number]['money7']='';
+$items[$number]['unit7']='';
+$items[$number]['mname81']='';
+$items[$number]['mname82']='';
+$items[$number]['money8']='';
+$items[$number]['unit8']='';
+$items[$number]['mname91']='';
+$items[$number]['mname92']='';
+$items[$number]['money9']='';
+$items[$number]['unit9']='';
+if(isset($_POST['bgcolor'])){
+	$items[$number]['bgcolor']=$_POST['bgcolor'];
+}
+else{
+	$items[$number]['bgcolor']='#FFFF85';
+}
+$stock=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/stock.ini',true);
+if(isset($_POST['counter'])){
+	if($_POST['counter']=='1'){
+		$items[$number]['counter']=$_POST['counter'];
+		if(isset($_POST['limit'])&&strlen($_POST['limit'])>0&&intval($_POST['limit']>0)&&is_numeric($_POST['limit'])){
+			$stock[$number]['stock']=$_POST['limit'];
+		}
+		else{
+			$stock[$number]['stock']='0';
+		}
+	}
+	else if(($_POST['counter']=='2'||$_POST['counter']=='3')&&isset($_POST['limit'])&&strlen($_POST['limit'])>0&&intval($_POST['limit']>0)&&is_numeric($_POST['limit'])){
+		$items[$number]['counter']=$_POST['counter'];
+		$stock[$number]['stock']=$_POST['limit'];
+	}
+	else{
+		$items[$number]['counter']='0';
+		$stock[$number]['stock']='0';
+	}
+}
+else{
+	$items[$number]['counter']='0';
+	$stock[$number]['stock']='0';
+}
+write_ini_file($stock,'../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/stock.ini');
+if(isset($_POST['printtype'])&&strlen($_POST['printtype'])>0){
+	$items[$number]['printtype']=$_POST['printtype'];
+}
+else{
+	$items[$number]['printtype']='';
+}
+$items[$number]['state']='1';
+for($i=1;$i<=6;$i++){
+	if(isset($_POST['introtitle'.$i])){
+		$items[$number]['introtitle'.$i]=$_POST['introtitle'.$i];
+	}
+	else{
+		$items[$number]['introtitle'.$i]='';
+	}
+	if(isset($_POST['introduction'.$i])){
+		$items[$number]['introduction'.$i]=$_POST['introduction'.$i];
+	}
+	else{
+		$items[$number]['introduction'.$i]='';
+	}
+	if(isset($_POST['introcolor'.$i])){
+		$items[$number]['introcolor'.$i]=$_POST['introcolor'.$i];
+	}
+	else{
+		$items[$number]['introcolor'.$i]='#000000';
+	}
+}
+if(!isset($_POST['tagsize'])||floatval($_POST['tagsize'])<=0){
+	$items[$number]['tagsize']='12';
+}
+else{
+	$items[$number]['tagsize']=$_POST['tagsize'];
+}
+if((!isset($_POST['kds'])||$_POST['kds']=='')||(!isset($_POST['kdsgroup'])||$_POST['kdsgroup']=='')){
+	$items[$number]['kds']='';
+	$items[$number]['kdsgroup']='';
+}
+else{
+	$items[$number]['kds']=$_POST['kds'];
+	$items[$number]['kdsgroup']=$_POST['kdsgroup'];
+}
+/*if(isset($_POST['quickorder'])&&$_POST['quickorder']!=""){
+	$items[$number]['qrnumber']=$_POST['quickorder'];
+}
+else{
+	$items[$number]['qrnumber']='';
+}*/
+if(isset($_POST['itemdis'])){
+	$items[$number]['itemdis']=$_POST['itemdis'];
+}
+else{
+	$items[$number]['itemdis']=1;
+}
+if(isset($_POST['listdis'])){
+	$items[$number]['listdis']=$_POST['listdis'];
+}
+else{
+	$items[$number]['listdis']=1;
+}
+if(isset($_POST['bothdis'])){
+	$items[$number]['bothdis']=$_POST['bothdis'];
+}
+else{
+	$items[$number]['bothdis']=1;
+}
+if(isset($_POST['mempoint'])){
+	$items[$number]['mempoint']=$_POST['mempoint'];
+}
+else{
+	$items[$number]['mempoint']=1;
+}
+if(isset($_POST['getpointtype'])){
+	$items[$number]['getpointtype']=$_POST['getpointtype'];
+}
+else{
+	$items[$number]['getpointtype']=1;
+}
+
+if(isset($_POST['getpoint'])){
+	$items[$number]['getpoint']=$_POST['getpoint'];
+}
+else{
+	$items[$number]['getpoint']=0;
+}
+if(isset($_POST['webvisible'])){
+	$items[$number]['webvisible']=$_POST['webvisible'];
+}
+else{
+	$items[$number]['webvisible']=1;
+}
+write_ini_file($items,'../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/'.$_POST['company'].'-menu.ini');
+if(isset($_FILES['itemimg'])&&$_FILES['itemimg']["name"]!=""){
+	$target_dir = '../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/img/';
+	$refilename=$target_dir.$number.".".pathinfo($_FILES['itemimg']["name"], PATHINFO_EXTENSION);//更換檔名但保留原副檔名
+	if(file_exists($refilename)){
+		unlink($refilename);
+	}
+	$target_file = $target_dir .'img'. iconv("utf-8","big5",$_FILES['itemimg']["name"]);
+	$uploadOk = 1;
+	$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+	if(isset($_POST["submit"])) {
+		$check = getimagesize($_FILES['itemimg']["tmp_name"]);
+		if($check !== false) {
+			//echo "File is an image - " . $check["mime"] . ".";
+			$uploadOk = 1;
+		} else {
+			echo "File is not an image.";
+			$uploadOk = 0;
+		}
+	}
+	if ($uploadOk == 0) {
+		echo "Sorry, your file was not uploaded.";
+	// if everything is ok, try to upload file
+	} else {
+		if (move_uploaded_file($_FILES['itemimg']["tmp_name"], $target_file)) {
+			//echo "The file ". basename( $_FILES["Img"]["name"]). " has been uploaded.";
+		} else {
+			echo "Sorry, there was an error uploading your file.";
+		}
+	}
+	$imgfile=$target_dir.'img'.iconv("utf-8","big5",$_FILES['itemimg']["name"]);
+	rename($imgfile,$refilename);
+}
+else{
+}
+$ver=parse_ini_file('../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/ver.ini',true);
+$ver['ver']['update']=date('YmdHis');
+write_ini_file($ver,'../../../menudata/'.$_POST['company'].'/'.$_POST['dep'].'/ver.ini');
+?>

@@ -1,0 +1,23 @@
+[basic]
+company="體系代號"
+story="門市代號"
+storyname="門市名稱"
+safe="發票安全庫存量＊預設為0"
+Name="發票抬頭"
+cname="發票抬頭（密文）for唯統POS"
+Identifier="統一編號"
+cid="統一編號（密文）for唯統POS"
+address="門市地址"
+tel="門市連絡電話"
+itemname="發票總計－品項名稱"
+;start[]=9
+;end[]=23
+;interval=15
+sendinvlocation="發票平台；1＞亮點2＞神通3＞中鼎"
+[zdninv]		;中鼎發票
+url="中鼎API路徑－http://eiic.zdn.tw/public/api/"
+id="中鼎ID（門市統編）"
+psw="中鼎PW(預設0424732003)"
+getinvbyonce="中鼎取發票（當發票不足basic－＞safe張數時，一次取 X 本發票下來；1本50張）"
+[inv]
+total="發票申請組數"

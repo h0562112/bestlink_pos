@@ -1,0 +1,268 @@
+<?php
+include_once '../../../tool/dbTool.inc.php';
+$conn=sqlconnect('../../../database/sale','SALES_'.substr($_POST['data'][0][0],0,6).'.db','','','','sqlite');
+$sql='SELECT * FROM tempCST011 WHERE BIZDATE="'.$_POST['data'][0][0].'" AND CONSECNUMBER IN ("'.implode('","',array_column($_POST['data'],1)).'") ORDER BY CONSECNUMBER ASC';
+$tempCST011=sqlquery($conn,$sql,'sqlite');
+$sql='SELECT * FROM tempCST012 WHERE BIZDATE="'.$_POST['data'][0][0].'" AND CONSECNUMBER IN ("'.implode('","',array_column($_POST['data'],1)).'") AND ((DTLMODE="1" AND DTLTYPE="1" AND DTLFUNC="01") OR (DTLMODE="1" AND DTLTYPE="3" AND DTLFUNC="02" AND ITEMCODE="item")) ORDER BY CONSECNUMBER ASC,LINENUMBER ASC';
+$tempCST012=sqlquery($conn,$sql,'sqlite');
+$sql='SELECT CONSECNUMBER,AMT FROM tempCST012 WHERE ITEMCODE="autodis" AND BIZDATE="'.$_POST['data'][0][0].'" AND CONSECNUMBER IN ("'.implode('","',array_column($_POST['data'],1)).'") ORDER BY CONSECNUMBER ASC';
+$autodis=sqlquery($conn,$sql,'sqlite');
+sqlclose($conn,'sqlite');
+
+$init=parse_ini_file('../../../database/initsetting.ini',true);
+if(file_exists('../../syspram/buttons-'.$init['init']['firlan'].'.ini')){
+	$buttons=parse_ini_file('../../syspram/buttons-'.$init['init']['firlan'].'.ini',true);
+}
+else{
+	$buttons=parse_ini_file('../../syspram/buttons-1.ini',true);
+}
+$print=parse_ini_file('../../../database/printlisttag.ini',true);
+$menu=parse_ini_file('../../../database/'.$_POST['company'].'-menu.ini',true);
+$taste=parse_ini_file('../../../database/'.$_POST['company'].'-taste.ini',true);
+$res=array();
+$salenomap=array_column($_POST['data'],2,1);
+//print_r($salenomap);
+foreach($tempCST011 as $list1){
+	$res[$list1['CONSECNUMBER']]['machinetype']=$list1['TERMINALNUMBER'];
+	$res[$list1['CONSECNUMBER']]['memno']=$list1['CUSTCODE'];
+	$addselect=preg_split('/;-;/',$list1['CUSTCODE']);
+	if(isset($addselect[2])){
+		$res[$list1['CONSECNUMBER']]['memaddno']=$addselect[2];
+	}
+	else{
+		$res[$list1['CONSECNUMBER']]['memaddno']='1';
+	}
+	$res[$list1['CONSECNUMBER']]['consecnumber']=$list1['CONSECNUMBER'];
+	$res[$list1['CONSECNUMBER']]['saleno']=$salenomap[$list1['CONSECNUMBER']];
+	$res[$list1['CONSECNUMBER']]['bizdate']=$list1['BIZDATE'];
+	$res[$list1['CONSECNUMBER']]['listtype']=$list1['REMARKS'];
+	$res[$list1['CONSECNUMBER']]['typename']=$buttons['name']['listtype'.substr($list1['REMARKS'],0,1)];
+	$res[$list1['CONSECNUMBER']]['invsalemoney']=$list1['TAX5'];
+	$res[$list1['CONSECNUMBER']]['charge']=$list1['TAX1'];
+	$res[$list1['CONSECNUMBER']]['tempban']="";//目前無法輸入統編
+	$res[$list1['CONSECNUMBER']]['tempbuytype']=$print['item']['tempbuytype'];
+	if(isset($print['item']['printclientlist'])){
+		$res[$list1['CONSECNUMBER']]['printclientlist']=$print['item']['printclientlist'];
+	}
+	else{
+		$res[$list1['CONSECNUMBER']]['printclientlist']='';
+	}
+	$res[$list1['CONSECNUMBER']]['total']=$list1['SALESTTLAMT'];
+	$res[$list1['CONSECNUMBER']]['totalnumber']=$list1['SALESTTLQTY'];
+	$res[$list1['CONSECNUMBER']]['tablenumber']=$list1['TABLENUMBER'];
+	$res[$list1['CONSECNUMBER']]['usercode']=$list1['CLKCODE'];
+	$res[$list1['CONSECNUMBER']]['username']=$list1['CLKNAME'];
+	$res[$list1['CONSECNUMBER']]['invlist']=$init['init']['invlist'];
+	$res[$list1['CONSECNUMBER']]['person1']=$list1['TAX6'];
+	$res[$list1['CONSECNUMBER']]['person2']=$list1['TAX7'];
+	$res[$list1['CONSECNUMBER']]['person3']=$list1['TAX8'];
+	if(isset($_POST['autosale'])&&$_POST['autosale']=='1'){
+		$res[$list1['CONSECNUMBER']]['looptype']=$init['init']['listprint'];
+		$res[$list1['CONSECNUMBER']]['sendtype']='result';
+		$res[$list1['CONSECNUMBER']]['creditcard']='';
+		$res[$list1['CONSECNUMBER']]['tempban']='';
+		$res[$list1['CONSECNUMBER']]['tempcontainer']='';
+		$res[$list1['CONSECNUMBER']]['treetel']='';//目前自動出單不使用集點樹
+		$res[$list1['CONSECNUMBER']]['ttlfloor']=0;
+		$res[$list1['CONSECNUMBER']]['itemdis']=0;
+		$res[$list1['CONSECNUMBER']]['autodis']=0;
+		$res[$list1['CONSECNUMBER']]['autodiscontent']='';
+		$res[$list1['CONSECNUMBER']]['autodispremoney']='';
+		$res[$list1['CONSECNUMBER']]['listtotal']=$list1['SALESTTLAMT'];
+		$res[$list1['CONSECNUMBER']]['memberdis']=0;
+		$res[$list1['CONSECNUMBER']]['floorspan']=0;
+		$res[$list1['CONSECNUMBER']]['coupon1']=0;
+		$res[$list1['CONSECNUMBER']]['coupon2']=0;
+		$res[$list1['CONSECNUMBER']]['listdis1']=0;
+		$res[$list1['CONSECNUMBER']]['listdis2']=0;
+		$res[$list1['CONSECNUMBER']]['should']=$list1['SALESTTLAMT'];
+		$res[$list1['CONSECNUMBER']]['cashcomm']=0;
+		$res[$list1['CONSECNUMBER']]['already']=$list1['SALESTTLAMT'];
+		$res[$list1['CONSECNUMBER']]['cashmoney']=$list1['SALESTTLAMT'];
+		$res[$list1['CONSECNUMBER']]['cash']=0;
+		$res[$list1['CONSECNUMBER']]['other']=0;
+		$res[$list1['CONSECNUMBER']]['otherstring']='';
+		$res[$list1['CONSECNUMBER']]['otherfix']=0;
+		$res[$list1['CONSECNUMBER']]['change']=0;
+	}
+	else{
+	}
+}
+if(isset($autodis[0]['AMT'])){//存在自動優惠金額，需要將金額回補至total，便於明細單列印
+	foreach($autodis as $aud){
+		$res[$aud['CONSECNUMBER']]['total']-=$aud['AMT'];
+	}
+}
+else{
+}
+$conn=sqlconnect('../../../database','menu.db','','','','sqlite');
+$grouptime=0;
+for($i=0;$i<sizeof($tempCST012);$i=$i+2){
+	$res[$tempCST012[$i]['CONSECNUMBER']]['linenumber[]'][]=intval($tempCST012[$i]['LINENUMBER']);
+	if($grouptime>0){//2020/8/19 判斷是否為套餐品項
+		$res[$tempCST012[$i]['CONSECNUMBER']]['order[]'][]='－';
+		$grouptime--;
+	}
+	else if(isset($res[$tempCST012[$i]['CONSECNUMBER']]['order[]'])){
+		$res[$tempCST012[$i]['CONSECNUMBER']]['order[]'][]=sizeof($res[$tempCST012[$i]['CONSECNUMBER']]['order[]'])+1;
+	}
+	else{
+		$res[$tempCST012[$i]['CONSECNUMBER']]['order[]'][]=1;
+	}
+	$res[$tempCST012[$i]['CONSECNUMBER']]['typeno[]'][]=intval($tempCST012[$i]['ITEMGRPCODE']);
+	$res[$tempCST012[$i]['CONSECNUMBER']]['type[]'][]='';
+	$res[$tempCST012[$i]['CONSECNUMBER']]['no[]'][]=intval($tempCST012[$i]['ITEMCODE']);
+	if(isset($menu[intval($tempCST012[$i]['ITEMCODE'])]['charge'])){
+		$res[$tempCST012[$i]['CONSECNUMBER']]['needcharge[]'][]=$menu[intval($tempCST012[$i]['ITEMCODE'])]['charge'];
+	}
+	else{
+		$res[$tempCST012[$i]['CONSECNUMBER']]['needcharge[]'][]='1';
+	}
+	$res[$tempCST012[$i]['CONSECNUMBER']]['personcount[]'][]=$menu[intval($tempCST012[$i]['ITEMCODE'])]['personcount'];
+	$res[$tempCST012[$i]['CONSECNUMBER']]['dis1[]'][]=$menu[intval($tempCST012[$i]['ITEMCODE'])]['dis1'];
+	$res[$tempCST012[$i]['CONSECNUMBER']]['dis2[]'][]=$menu[intval($tempCST012[$i]['ITEMCODE'])]['dis2'];
+	$res[$tempCST012[$i]['CONSECNUMBER']]['dis3[]'][]=$menu[intval($tempCST012[$i]['ITEMCODE'])]['dis3'];
+	$res[$tempCST012[$i]['CONSECNUMBER']]['dis4[]'][]=$menu[intval($tempCST012[$i]['ITEMCODE'])]['dis4'];
+	$res[$tempCST012[$i]['CONSECNUMBER']]['name[]'][]=$tempCST012[$i]['ITEMNAME'];
+	$res[$tempCST012[$i]['CONSECNUMBER']]['name2[]'][]='';
+	$sql='SELECT isgroup,childtype FROM itemsdata WHERE inumber="'.intval($tempCST012[$i]['ITEMCODE']).'"';
+	$itemdata=sqlquery($conn,$sql,'sqlite');
+	$res[$tempCST012[$i]['CONSECNUMBER']]['isgroup[]'][]=$itemdata[0]['isgroup'];
+	if($itemdata[0]['isgroup']==0){
+	}
+	else{
+		$grouptime=$itemdata[0]['isgroup'];
+	}
+	$res[$tempCST012[$i]['CONSECNUMBER']]['childtype[]'][]=$itemdata[0]['childtype'];
+	if(strlen($itemdata[0]['childtype'])==0){
+	}
+	else{
+		$sptoken=preg_split('/,/',$itemdata[0]['childtype']);
+		for($st=0;$st<sizeof($sptoken);$st++){
+			if(!preg_match('/;/',$sptoken[$st])){
+				$grouptime++;
+			}
+			else{
+			}
+		}
+	}
+	$res[$tempCST012[$i]['CONSECNUMBER']]['mname1[]'][]=$tempCST012[$i]['UNITPRICELINK'];
+	$res[$tempCST012[$i]['CONSECNUMBER']]['mname2[]'][]='';
+	if(isset($menu[intval($tempCST012[$i]['ITEMCODE'])]['insaleinv'])){
+		$res[$tempCST012[$i]['CONSECNUMBER']]['insaleinv[]'][]=$menu[intval($tempCST012[$i]['ITEMCODE'])]['insaleinv'];
+	}
+	else{
+		$res[$tempCST012[$i]['CONSECNUMBER']]['insaleinv[]'][]='1';
+	}
+	$res[$tempCST012[$i]['CONSECNUMBER']]['unitprice[]'][]=$tempCST012[$i]['UNITPRICE'];
+	//$res[$tempCST012[$i]['CONSECNUMBER']]['money[]'][]=floatval($tempCST012[$i]['UNITPRICE'])*floatval($tempCST012[$i]['QTY']);//2020/8/19 這部分還沒加上備註金額，往後移動
+	$res[$tempCST012[$i]['CONSECNUMBER']]['discount[]'][]=-$tempCST012[$i+1]['AMT'];
+	$res[$tempCST012[$i]['CONSECNUMBER']]['discontent[]'][]=$tempCST012[$i+1]['ITEMGRPCODE'];
+	$res[$tempCST012[$i]['CONSECNUMBER']]['number[]'][]=$tempCST012[$i]['QTY'];
+	//$res[$tempCST012[$i]['CONSECNUMBER']]['subtotal[]'][]=floatval($tempCST012[$i]['UNITPRICE'])*floatval($tempCST012[$i]['QTY'])-$tempCST012[$i+1]['AMT'];//2020/8/19 這部分還沒加上備註金額，往後移動
+	$tasteno='';
+	$tastename='';
+	$tasteprice='';
+	$tastenumber='';
+	$tastemoney=0;
+	for($t=1;$t<=10;$t++){
+		if($tempCST012[$i]['SELECTIVEITEM'.$t]==null){
+			break;
+		}
+		else{
+			//2021/7/9 修改備註只能儲存10種的限制，利用字串串接的方式(與原本結構通用)
+			$temptaste=preg_split('/,/',$tempCST012[$i]['SELECTIVEITEM'.$t]);
+			for($j=0;$j<sizeof($temptaste);$j++){
+				if(substr($temptaste[$j],0,5)=='99999'){
+					if($tasteno==''&&strlen($tasteno)==0){
+						$tasteno='99999';
+						$tastename=substr($temptaste[$j],7);
+						$tasteprice='0';
+						$tastenumber='1';
+					}
+					else{
+						$tasteno=$tasteno.',99999';
+						$tastename=$tastename.','.substr($temptaste[$j],7);
+						$tasteprice=$tasteprice.',0';
+						$tastenumber=$tastenumber.',1';
+					}
+				}
+				else{
+					if($tasteno==''&&strlen($tasteno)==0){
+						$tasteno=intval(substr($temptaste[$j],0,-1));
+						$tastename=$taste[intval(substr($temptaste[$j],0,-1))]['name1'];
+						$tasteprice=$taste[intval(substr($temptaste[$j],0,-1))]['money'];
+						$tastenumber=intval(substr($temptaste[$j],-1));
+					}
+					else{
+						$tasteno=$tasteno.','.intval(substr($temptaste[$j],0,-1));
+						$tastename=$tastename.','.$taste[intval(substr($temptaste[$j],0,-1))]['name1'];
+						$tasteprice=$tasteprice.','.$taste[intval(substr($temptaste[$j],0,-1))]['money'];
+						$tastenumber=$tastenumber.','.intval(substr($temptaste[$j],-1));
+					}
+					if(intval(substr($temptaste[$j],-1))!=1){
+						$tastename=$tastename.','.substr($temptaste[$j],-1);
+					}
+					else{
+					}
+					$tastemoney=floatval($tastemoney)+floatval($taste[intval(substr($temptaste[$j],0,-1))]['money'])*floatval(substr($temptaste[$j],-1));
+				}
+			}
+		}
+		/*else if(substr($tempCST012[$i]['SELECTIVEITEM'.$t],0,5)=='99999'){
+			if($tasteno==''&&strlen($tasteno)==0){
+				$tasteno='99999';
+				$tastename=substr($tempCST012[$i]['SELECTIVEITEM'.$t],7);
+				$tasteprice='0';
+				$tastenumber='1';
+			}
+			else{
+				$tasteno=$tasteno.',99999';
+				$tastename=$tastename.','.substr($tempCST012[$i]['SELECTIVEITEM'.$t],7);
+				$tasteprice=$tasteprice.',0';
+				$tastenumber=$tastenumber.',1';
+			}
+		}
+		else{
+			if($tasteno==''&&strlen($tasteno)==0){
+				$tasteno=intval(substr($tempCST012[$i]['SELECTIVEITEM'.$t],0,-1));
+				$tastename=$taste[intval(substr($tempCST012[$i]['SELECTIVEITEM'.$t],0,-1))]['name1'];
+				$tasteprice=$taste[intval(substr($tempCST012[$i]['SELECTIVEITEM'.$t],0,-1))]['money'];
+				$tastenumber=intval(substr($tempCST012[$i]['SELECTIVEITEM'.$t],-1));
+			}
+			else{
+				$tasteno=$tasteno.','.intval(substr($tempCST012[$i]['SELECTIVEITEM'.$t],0,-1));
+				$tastename=$tastename.','.$taste[intval(substr($tempCST012[$i]['SELECTIVEITEM'.$t],0,-1))]['name1'];
+				$tasteprice=$tasteprice.','.$taste[intval(substr($tempCST012[$i]['SELECTIVEITEM'.$t],0,-1))]['money'];
+				$tastenumber=$tastenumber.','.intval(substr($tempCST012[$i]['SELECTIVEITEM'.$t],-1));
+			}
+			$tastemoney=floatval($tastemoney)+floatval($taste[intval(substr($tempCST012[$i]['SELECTIVEITEM'.$t],0,-1))]['money'])*floatval(substr($tempCST012[$i]['SELECTIVEITEM'.$t],-1));
+		}*/
+	}
+	$res[$tempCST012[$i]['CONSECNUMBER']]['taste1[]'][]=$tasteno;
+	$res[$tempCST012[$i]['CONSECNUMBER']]['taste1name[]'][]=$tastename;
+	$res[$tempCST012[$i]['CONSECNUMBER']]['taste1price[]'][]=$tasteprice;
+	$res[$tempCST012[$i]['CONSECNUMBER']]['taste1number[]'][]=$tastenumber;
+	$res[$tempCST012[$i]['CONSECNUMBER']]['taste1money[]'][]=$tastemoney;
+	
+	$res[$tempCST012[$i]['CONSECNUMBER']]['money[]'][]=floatval($tempCST012[$i]['UNITPRICE'])+floatval($tastemoney);//2020/8/19 加上備註金額
+	$res[$tempCST012[$i]['CONSECNUMBER']]['subtotal[]'][]=(floatval($tempCST012[$i]['UNITPRICE'])+floatval($tastemoney))*floatval($tempCST012[$i]['QTY'])-$tempCST012[$i+1]['AMT'];//2020/8/19 加上備註金額
+
+	if(isset($menu[intval($tempCST012[$i]['ITEMCODE'])]['itemdis'])){
+		$res[$tempCST012[$i]['CONSECNUMBER']]['itemdis[]'][]=$menu[intval($tempCST012[$i]['ITEMCODE'])]['itemdis'];
+	}
+	else{
+		$res[$tempCST012[$i]['CONSECNUMBER']]['itemdis[]'][]='1';
+	}
+	if(isset($menu[intval($tempCST012[$i]['ITEMCODE'])]['listdis'])){
+		$res[$tempCST012[$i]['CONSECNUMBER']]['listdis[]'][]=$menu[intval($tempCST012[$i]['ITEMCODE'])]['listdis'];
+	}
+	else{
+		$res[$tempCST012[$i]['CONSECNUMBER']]['listdis[]'][]='1';
+	}
+
+}
+sqlclose($conn,'sqlite');
+
+echo json_encode($res);
+?>

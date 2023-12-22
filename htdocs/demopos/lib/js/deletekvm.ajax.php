@@ -1,0 +1,18 @@
+<?php
+$dir='../../../print/kvm';
+if(is_dir($dir)){
+}
+else{
+	mkdir($dir);
+}
+$files=scandir($dir);
+if(in_array($_POST['bizdate'].';'.$_POST['consecnumber'].'.ini',$files)){
+	if(file_exists($dir.'/'.$_POST['bizdate'].';'.$_POST['consecnumber'].'.ini')){
+		unlink($dir.'/'.$_POST['bizdate'].';'.$_POST['consecnumber'].'.ini');
+	}
+	else{
+	}
+}
+else{
+}
+?>

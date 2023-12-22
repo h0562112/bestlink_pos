@@ -1,0 +1,8 @@
+<?php
+include '../../tool/dbTool.inc.php';
+$conn=sqlconnect("localhost","papermanagement","paperadmin","1qaz2wsx","utf-8",'mysql');
+$sql='SELECT * FROM tastemap WHERE company="'.$_POST['company'].'" ORDER BY type,taste';
+$frtype=sqlquery($conn,$sql,'mysql');
+sqlclose($conn,'mysql');
+echo json_encode($frtype);
+?>

@@ -1,0 +1,160 @@
+<?php
+include_once '../../../tool/inilib.php';
+if(file_exists('../../../database/mapping.ini')){
+	$dbmapping=parse_ini_file('../../../database/mapping.ini',true);
+	if(isset($dbmapping['map'][$_POST['machinename']])){
+		$invmachine=$dbmapping['map'][$_POST['machinename']];
+	}
+	else{
+		$invmachine='m1';
+	}
+}
+else{
+	$invmachine='';
+}
+$init=parse_ini_file('../../../database/initsetting.ini',true);
+if(isset($init['init']['accounting'])&&$init['init']['accounting']=='2'&&isset($invmachine)&&$invmachine!=''){//帳務以每台分機為個別主體計算
+	$timeini=parse_ini_file('../../../database/time'.$invmachine.'.ini',true);
+}
+else{
+	$timeini=parse_ini_file('../../../database/timem1.ini',true);
+}
+if(strstr($_POST['tabnum'],',')){
+	include_once '../../../tool/dbTool.inc.php';
+	$conn=sqlconnect('../../../database/sale','SALES_'.substr($_POST['bizdate'],0,6).'.db','','','','sqlite');
+	$sql='SELECT * FROM tempCST011 WHERE BIZDATE="'.$_POST['bizdate'].'" AND CONSECNUMBER="'.$_POST['consecnumber'].'"';
+	$data=sqlquery($conn,$sql,'sqlite');
+	sqlclose($conn,'sqlite');
+	$tablelist=preg_split('/,/',$_POST['tabnum']);
+	if(isset($data[0]['CONSECNUMBER'])){
+		if(file_exists('../../table/'.$_POST['bizdate'].';'.$timeini['time']['zcounter'].';'.$tablelist[0].'.ini')){
+			$tabini=parse_ini_file('../../table/'.$_POST['bizdate'].';'.$timeini['time']['zcounter'].';'.$tablelist[0].'.ini',true);
+			if($tabini[$tablelist[0]]['consecnumber']==''){
+				$delete=1;
+			}
+			else{
+			}
+		}
+		else{
+		}
+		foreach($tablelist as $tl){
+			if(file_exists('../../table/'.$_POST['bizdate'].';'.$timeini['time']['zcounter'].';'.$tl.'.ini')){
+				if(isset($delete)&&$delete==1){
+					unlink('../../table/'.$_POST['bizdate'].';'.$timeini['time']['zcounter'].';'.$tl.'.ini');
+				}
+				else{
+					$tabini=parse_ini_file('../../table/'.$_POST['bizdate'].';'.$timeini['time']['zcounter'].';'.$tl.'.ini',true);
+					$tabini[$tl]['state']="1";
+					$tabini[$tl]['machine']="";
+					write_ini_file($tabini,'../../table/'.$_POST['bizdate'].';'.$timeini['time']['zcounter'].';'.$tl.'.ini');
+				}
+			}
+			else{
+				if(isset($delete)&&$delete==1){
+				}
+				else{
+					$file='../../table/'.$_POST['bizdate'].';'.$timeini['time']['zcounter'].';'.$tl.'.ini';
+					fopen($file,'a');
+					fwrite($file,'['.$tl.']'.PHP_EOL);
+					fwrite($file,'bizdate="'.$_POST['bizdate'].'"'.PHP_EOL);
+					fwrite($file,'zcounter="'.$timeini['time']['zcounter'].'"'.PHP_EOL);
+					fwrite($file,'consecnumber="'.$_POST['consecnumber'].'"'.PHP_EOL);
+					fwrite($file,'saleamt="'.$data[0]['SALESTTLAMT'].'"'.PHP_EOL);
+					fwrite($file,'person="'.(intval($data[0]['TAX6'])+intval($data[0]['TAX7'])+intval($data[0]['TAX8'])).'"'.PHP_EOL);
+					fwrite($file,'createdatetime="'.$data[0]['CREATEDATETIME'].'"'.PHP_EOL);
+					fwrite($file,'table="'.$_POST['tabnum'].'"'.PHP_EOL);
+					fwrite($file,'tablestate="0"'.PHP_EOL);
+					fwrite($file,'state="1"'.PHP_EOL);
+					fwrite($file,'machine=""'.PHP_EOL);
+					fclose($file);
+				}
+			}
+		}
+	}
+	else{
+		foreach($tablelist as $tl){
+			if(file_exists('../../table/'.$_POST['bizdate'].';'.$timeini['time']['zcounter'].';'.$tl.'.ini')){
+				if(isset($delete)&&$delete==1){
+					unlink('../../table/'.$_POST['bizdate'].';'.$timeini['time']['zcounter'].';'.$tl.'.ini');
+				}
+				else{
+					$tabini=parse_ini_file('../../table/'.$_POST['bizdate'].';'.$timeini['time']['zcounter'].';'.$tl.'.ini',true);
+					$tabini[$tl]['state']="0";
+					$tabini[$tl]['machine']="";
+					$saleamt=$tabini[$tl]['saleamt'];
+					$person=$tabini[$tl]['person'];
+					$createdatetime=$tabini[$tl]['createdatetime'];
+					write_ini_file($tabini,'../../table/'.$_POST['bizdate'].';'.$timeini['time']['zcounter'].';'.$tl.'.ini');
+				}
+			}
+			else{
+				if(isset($delete)&&$delete==1){
+				}
+				else{
+					$file='../../table/'.$_POST['bizdate'].';'.$timeini['time']['zcounter'].';'.$tl.'.ini';
+					fopen($file,'a');
+					fwrite($file,'['.$tl.']'.PHP_EOL);
+					fwrite($file,'bizdate="'.$_POST['bizdate'].'"'.PHP_EOL);
+					fwrite($file,'zcounter="'.$timeini['time']['zcounter'].'"'.PHP_EOL);
+					fwrite($file,'consecnumber="'.$_POST['consecnumber'].'"'.PHP_EOL);
+					fwrite($file,'saleamt="'.$saleamt.'"'.PHP_EOL);
+					fwrite($file,'person="'.$person.'"'.PHP_EOL);
+					fwrite($file,'createdatetime="'.$createdatetime.'"'.PHP_EOL);
+					fwrite($file,'table="'.$_POST['tabnum'].'"'.PHP_EOL);
+					fwrite($file,'tablestate="0"'.PHP_EOL);
+					fwrite($file,'state="0"'.PHP_EOL);
+					fwrite($file,'machine=""'.PHP_EOL);
+					fclose($file);
+				}
+			}
+		}
+	}
+}
+else{
+	if(isset($_POST['listtype'])&&$_POST['listtype']=='2'){
+	}
+	else{
+		if(file_exists('../../table/'.$_POST['bizdate'].';'.$timeini['time']['zcounter'].';'.$_POST['tabnum'].'.ini')){
+			$tabini=parse_ini_file('../../table/'.$_POST['bizdate'].';'.$timeini['time']['zcounter'].';'.$_POST['tabnum'].'.ini',true);
+			if($tabini[$_POST['tabnum']]['consecnumber']==''){
+				unlink('../../table/'.$_POST['bizdate'].';'.$timeini['time']['zcounter'].';'.$_POST['tabnum'].'.ini');
+			}
+			else{
+				if($_POST['consecnumber']==''){
+					$tabini[$_POST['tabnum']]['state']="0";
+				}
+				else{
+					$tabini[$_POST['tabnum']]['state']="1";
+				}
+				$tabini[$_POST['tabnum']]['machine']="";
+				write_ini_file($tabini,'../../table/'.$_POST['bizdate'].';'.$timeini['time']['zcounter'].';'.$_POST['tabnum'].'.ini');
+			}
+		}
+		else{
+			include_once '../../../tool/dbTool.inc.php';
+			$conn=sqlconnect('../../../database/sale','SALES_'.substr($_POST['bizdate'],0,6).'.db','','','','sqlite');
+			$sql='SELECT * FROM tempCST011 WHERE BIZDATE="'.$_POST['bizdate'].'" AND CONSECNUMBER="'.$_POST['consecnumber'].'"';
+			$data=sqlquery($conn,$sql,'sqlite');
+			sqlclose($conn,'sqlite');
+			if(sizeof($data)==0){
+			}
+			else{
+				$file='../../table/'.$_POST['bizdate'].';'.$data[0]['ZCOUNTER'].';'.$_POST['tabnum'].'.ini';
+				fopen($file,'a');
+				fwrite($file,'['.$_POST['tabnum'].']'.PHP_EOL);
+				fwrite($file,'bizdate="'.$_POST['bizdate'].'"'.PHP_EOL);
+				fwrite($file,'zcounter="'.$data[0]['ZCOUNTER'].'"'.PHP_EOL);
+				fwrite($file,'consecnumber="'.$_POST['consecnumber'].'"'.PHP_EOL);
+				fwrite($file,'saleamt="'.$data[0]['SALESTTLAMT'].'"'.PHP_EOL);
+				fwrite($file,'person="'.(intval($data[0]['TAX6'])+intval($data[0]['TAX7'])+intval($data[0]['TAX8'])).'"'.PHP_EOL);
+				fwrite($file,'createdatetime="'.$data[0]['CREATEDATETIME'].'"'.PHP_EOL);
+				fwrite($file,'table="'.$_POST['tabnum'].'"'.PHP_EOL);
+				fwrite($file,'tablestate="0"'.PHP_EOL);
+				fwrite($file,'state="1"'.PHP_EOL);
+				fwrite($file,'machine=""'.PHP_EOL);
+				fclose($file);
+			}
+		}
+	}
+}
+?>

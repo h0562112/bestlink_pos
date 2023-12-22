@@ -1,0 +1,277 @@
+<?php
+include_once '../../../tool/dbTool.inc.php';
+function quicksort($origArray,$type) {//е硉逼//for程基程蔼基
+	if (sizeof($origArray) == 1) { 
+		return $origArray;
+	}
+	else if(sizeof($origArray) == 0){
+		return 'null';
+	}
+	else {
+		$left = array();
+		$right = array();
+		$newArray = array();
+		$pivot = array_pop($origArray);
+		$length = sizeof($origArray);
+		for ($i = 0; $i < $length; $i++) {
+			if (floatval($origArray[$i][$type]) <= floatval($pivot[$type])) {
+				array_push($left,$origArray[$i]);
+			} else {
+				array_push($right,$origArray[$i]);
+			}
+		}
+		if(sizeof($left)==0){
+			if(sizeof($right)==0){
+			}
+			else{
+				$tempright=quicksort($right,$type);
+				$newArray=array_merge(array($pivot),$tempright);
+			}
+		}
+		else{
+			$templeft=quicksort($left,$type);
+			$n=sizeof($templeft);
+			$start=$n;
+			$newArray=array_merge($templeft,array($pivot));
+			if(sizeof($right)==0){
+			}
+			else{
+				$tempright=quicksort($right,$type);
+				$newArray=array_merge($newArray,$tempright);
+			}
+		}
+		return $newArray;
+	}
+}
+$conn=sqlconnect("../../../database","menu.db","","","","sqlite");
+$sql='SELECT * FROM itemsdata WHERE inumber="'.$_POST['no'].'" AND fronttype="'.$_POST['childtype'].'"';
+$data=sqlquery($conn,$sql,'sqlite');
+sqlclose($conn,'sqlite');
+$init=parse_ini_file('../../../database/initsetting.ini',true);
+$items=parse_ini_file('../../../database/'.$_POST['company'].'-menu.ini',true);
+$ataste=parse_ini_file('../../../database/'.$_POST['company'].'-taste.ini',true);
+$public='';
+for($i=0;$i<sizeof($ataste);$i++){
+	if($ataste[$i]['public']=='1'&&$ataste[$i]['state']=='1'){
+		if(strlen($public)==0){
+			$public=$i;
+		}
+		else{
+			$public=$public.','.$i;
+		}
+	}
+	else{
+	}
+}
+$taste1='';
+$taste1name='';
+$taste2name='';
+$taste1money='';
+$background='';
+
+if($init['init']['publicseq']=='1'){
+	if(preg_match('/,/',$public)){
+		$ttemp2=preg_split('/,/',$public);
+		$ttemp22=array();
+		for($t=0;$t<sizeof($ttemp2);$t++){
+			if(!isset($ataste[$ttemp2[$t]]['seq'])||$ataste[$ttemp2[$t]]['seq']==''){
+				$ataste[$ttemp2[$t]]['seq']=1;
+			}
+			else{
+			}
+			array_push($ttemp22,array('index'=>$t,'no'=>$ttemp2[$t],'seq'=>$ataste[$ttemp2[$t]]['seq']));
+		}
+		$temp2=quicksort($ttemp22,'seq');
+	}
+	else if($public!=''){
+		$temp2=array(array('no'=>$public));
+	}
+	else{
+		$temp2=array();
+	}
+
+	for($i=0;$i<sizeof($temp2);$i++){
+		if($taste1==''){
+			$taste1='1;'.$temp2[$i]['no'];
+			$taste1name='1;'.$ataste[$temp2[$i]['no']]['name1'];
+			$taste2name='1;'.$ataste[$temp2[$i]['no']]['name2'];
+			$taste1money='1;'.$ataste[$temp2[$i]['no']]['money'];
+			$background='1;'.$ataste[$temp2[$i]['no']]['background'];
+		}
+		else{
+			$taste1=$taste1.','.$temp2[$i]['no'];
+			$taste1name=$taste1name.','.$ataste[$temp2[$i]['no']]['name1'];
+			$taste2name=$taste2name.','.$ataste[$temp2[$i]['no']]['name2'];
+			$taste1money=$taste1money.','.$ataste[$temp2[$i]['no']]['money'];
+			$background=$background.','.$ataste[$temp2[$i]['no']]['background'];
+		}
+	}
+	$tastecont=preg_split('/;/',$data[0]['taste']);
+	if(isset($tastecont[1])&&$tastecont[1]!=''){
+		//$temp2=preg_split('/,/',$tastecont[1]);
+		if(preg_match('/,/',$tastecont[1])){
+			$temp1=preg_split('/,/',$tastecont[1]);
+			$temp11=array();
+			for($t=0;$t<sizeof($temp1);$t++){
+				if(!isset($ataste[$temp1[$t]]['seq'])||$ataste[$temp1[$t]]['seq']==''){
+					$ataste[$temp1[$t]]['seq']=1;
+				}
+				else{
+				}
+				array_push($temp11,array('index'=>$t,'no'=>$temp1[$t],'seq'=>$ataste[$temp1[$t]]['seq']));
+			}
+			//print_r( $temp11);
+			$temp=quicksort($temp11,'seq');
+		}
+		else{
+			$temp=array();
+			array_push($temp,array('index'=>'0','no'=>$tastecont[1],'seq'=>$ataste[$tastecont[1]]['seq']));
+		}
+
+		for($i=0;$i<sizeof($temp);$i++){
+			if($ataste[$temp[$i]['no']]['public']=='0'&&$ataste[$temp[$i]['no']]['state']=='1'){
+				if($taste1==''){
+					$taste1='1;'.$temp[$i]['no'];
+					$taste1name='1;'.$ataste[$temp[$i]['no']]['name1'];
+					$taste2name='1;'.$ataste[$temp[$i]['no']]['name2'];
+					$taste1money='1;'.$ataste[$temp[$i]['no']]['money'];
+					$background='1;'.$ataste[$temp[$i]['no']]['background'];
+				}
+				else{
+					$taste1=$taste1.','.$temp[$i]['no'];
+					$taste1name=$taste1name.','.$ataste[$temp[$i]['no']]['name1'];
+					$taste2name=$taste2name.','.$ataste[$temp[$i]['no']]['name2'];
+					$taste1money=$taste1money.','.$ataste[$temp[$i]['no']]['money'];
+					$background=$background.','.$ataste[$temp[$i]['no']]['background'];
+				}
+			}
+		}
+	}
+	else{
+	}
+}
+else{
+	$tastecont=preg_split('/;/',$data[0]['taste']);
+	if(isset($tastecont[1])&&$tastecont[1]!=''){
+		//$temp2=preg_split('/,/',$tastecont[1]);
+		if(preg_match('/,/',$tastecont[1])){
+			$temp1=preg_split('/,/',$tastecont[1]);
+			$temp11=array();
+			for($t=0;$t<sizeof($temp1);$t++){
+				if(!isset($ataste[$temp1[$t]]['seq'])||$ataste[$temp1[$t]]['seq']==''){
+					$ataste[$temp1[$t]]['seq']=1;
+				}
+				else{
+				}
+				array_push($temp11,array('index'=>$t,'no'=>$temp1[$t],'seq'=>$ataste[$temp1[$t]]['seq']));
+			}
+			//print_r( $temp11);
+			$temp=quicksort($temp11,'seq');
+		}
+		else{
+			$temp=array();
+			array_push($temp,array('index'=>'0','no'=>$tastecont[1],'seq'=>$ataste[$tastecont[1]]['seq']));
+		}
+
+		for($i=0;$i<sizeof($temp);$i++){
+			if($ataste[$temp[$i]['no']]['public']=='0'&&$ataste[$temp[$i]['no']]['state']=='1'){
+				if($taste1==''){
+					$taste1='1;'.$temp[$i]['no'];
+					$taste1name='1;'.$ataste[$temp[$i]['no']]['name1'];
+					$taste2name='1;'.$ataste[$temp[$i]['no']]['name2'];
+					$taste1money='1;'.$ataste[$temp[$i]['no']]['money'];
+					$background='1;'.$ataste[$temp[$i]['no']]['background'];
+				}
+				else{
+					$taste1=$taste1.','.$temp[$i]['no'];
+					$taste1name=$taste1name.','.$ataste[$temp[$i]['no']]['name1'];
+					$taste2name=$taste2name.','.$ataste[$temp[$i]['no']]['name2'];
+					$taste1money=$taste1money.','.$ataste[$temp[$i]['no']]['money'];
+					$background=$background.','.$ataste[$temp[$i]['no']]['background'];
+				}
+			}
+		}
+	}
+	else{
+	}
+	if(preg_match('/,/',$public)){
+		$ttemp2=preg_split('/,/',$public);
+		$ttemp22=array();
+		for($t=0;$t<sizeof($ttemp2);$t++){
+			if(!isset($ataste[$ttemp2[$t]]['seq'])||$ataste[$ttemp2[$t]]['seq']==''){
+				$ataste[$ttemp2[$t]]['seq']=1;
+			}
+			else{
+			}
+			array_push($ttemp22,array('index'=>$t,'no'=>$ttemp2[$t],'seq'=>$ataste[$ttemp2[$t]]['seq']));
+		}
+		$temp2=quicksort($ttemp22,'seq');
+	}
+	else if($public!=''){
+		$temp2=array(array('no'=>$public));
+	}
+	else{
+		$temp2=array();
+	}
+	for($i=0;$i<sizeof($temp2);$i++){
+		if($taste1==''){
+			$taste1='1;'.$temp2[$i]['no'];
+			$taste1name='1;'.$ataste[$temp2[$i]['no']]['name1'];
+			$taste2name='1;'.$ataste[$temp2[$i]['no']]['name2'];
+			$taste1money='1;'.$ataste[$temp2[$i]['no']]['money'];
+			$background='1;'.$ataste[$temp2[$i]['no']]['background'];
+		}
+		else{
+			$taste1=$taste1.','.$temp2[$i]['no'];
+			$taste1name=$taste1name.','.$ataste[$temp2[$i]['no']]['name1'];
+			$taste2name=$taste2name.','.$ataste[$temp2[$i]['no']]['name2'];
+			$taste1money=$taste1money.','.$ataste[$temp2[$i]['no']]['money'];
+			$background=$background.','.$ataste[$temp2[$i]['no']]['background'];
+		}
+	}
+}
+$itemlist=array();
+if(isset($items[$_POST['no']]['insaleinv'])){
+}
+else{
+	$items[$_POST['no']]['insaleinv']='1';
+}
+if(isset($items[$_POST['no']]['charge'])){
+}
+else{
+	$items[$_POST['no']]['charge']='1';
+}
+if(isset($items[$_POST['no']]['itemdis'])){
+}
+else{
+	$items[$_POST['no']]['itemdis']='1';
+}
+if(isset($items[$_POST['no']]['listdis'])){
+}
+else{
+	$items[$_POST['no']]['listdis']='1';
+}
+for($j=1;$j<=6;$j++){
+	if(isset($items[$_POST['no']]['getpointtype'.$j])){
+		//$data[$i]['getpointtype'.$j]=$itemname[$data[$i]['inumber']]['getpointtype'.$j];
+	}
+	else{
+		$items[$_POST['no']]['getpointtype'.$j]='1';
+		//$data[$i]['getpointtype'.$j]='1';
+	}
+	if(isset($items[$_POST['no']]['getpoint'.$j])){
+		//$data[$i]['getpoint'.$j]=$itemname[$data[$i]['inumber']]['getpoint'.$j];
+	}
+	else{
+		$items[$_POST['no']]['getpoint'.$j]='0';
+		//$data[$i]['getpoint'.$j]='0';
+	}
+}
+if(isset($items[$_POST['no']]['mempoint'])){
+}
+else{
+	$items[$_POST['no']]['mempoint']='1';
+}
+$itemlist=['itemdep'=>$_POST['childtype'],'depname'=>'','number'=>$_POST['no'],'name'=>$items[$_POST['no']]['name1'],'charge'=>$items[$_POST['no']]['charge'],'mnumber'=>$items[$_POST['no']]['mnumber'],'mname11'=>$items[$_POST['no']]['mname11'],'mname21'=>$items[$_POST['no']]['mname21'],'mname31'=>$items[$_POST['no']]['mname31'],'mname41'=>$items[$_POST['no']]['mname41'],'mname51'=>$items[$_POST['no']]['mname51'],'mname61'=>$items[$_POST['no']]['mname61'],'mname12'=>$items[$_POST['no']]['mname12'],'mname22'=>$items[$_POST['no']]['mname22'],'mname32'=>$items[$_POST['no']]['mname32'],'mname42'=>$items[$_POST['no']]['mname42'],'mname52'=>$items[$_POST['no']]['mname52'],'mname62'=>$items[$_POST['no']]['mname62'],'money1'=>$items[$_POST['no']]['money1'],'money2'=>$items[$_POST['no']]['money2'],'money3'=>$items[$_POST['no']]['money3'],'money4'=>$items[$_POST['no']]['money4'],'money5'=>$items[$_POST['no']]['money5'],'money6'=>$items[$_POST['no']]['money6'],'getpointtype1'=>$items[$_POST['no']]['getpointtype1'],'getpointtype2'=>$items[$_POST['no']]['getpointtype2'],'getpointtype3'=>$items[$_POST['no']]['getpointtype3'],'getpointtype4'=>$items[$_POST['no']]['getpointtype4'],'getpointtype5'=>$items[$_POST['no']]['getpointtype5'],'getpointtype6'=>$items[$_POST['no']]['getpointtype6'],'getpoint1'=>$items[$_POST['no']]['getpoint1'],'getpoint2'=>$items[$_POST['no']]['getpoint2'],'getpoint3'=>$items[$_POST['no']]['getpoint3'],'getpoint4'=>$items[$_POST['no']]['getpoint4'],'getpoint5'=>$items[$_POST['no']]['getpoint5'],'getpoint6'=>$items[$_POST['no']]['getpoint6'],'taste'=>$taste1,'tastename1'=>$taste1name,'tastename2'=>$taste2name,'tastemoney'=>$taste1money,'background'=>$background,'insaleinv'=>$items[$_POST['no']]['insaleinv'],'itemdis'=>$items[$_POST['no']]['itemdis'],'listdis'=>$items[$_POST['no']]['listdis'],'bothdis'=>$items[$_POST['no']]['bothdis'],'usemempoint'=>$items[$_POST['no']]['mempoint']];
+echo json_encode($itemlist);
+?>
